@@ -1,0 +1,10 @@
+{
+  "name": "Presupuesto Diario",
+  "short_name": "Presupuesto",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Control diario de presupuesto y gastos.",
+  "icons": []
+}
