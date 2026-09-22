@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Presupuesto">
+<link rel="manifest" href="./manifest.webmanifest">
+<title>Presupuesto Diario</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;min-height:100vh;background:linear-gradient(180deg,#0f172a,#111827);
+color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+.app{max-width:430px;margin:auto;padding:20px 16px 40px}
+.card{
+background:#1e293b;border:1px solid #334155;border-radius:20px;
+padding:18px;margin:12px 0
+}
+h1{font-size:28px;margin:5px 0}
+h2,h3{margin-top:0}
+.muted{color:#94a3b8;font-size:14px}
+.amount{font-size:38px;font-weight:800;margin:10px 0}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+input,button{
+width:100%;border:0;border-radius:13px;padding:14px;font-size:16px
+}
+input{background:#0f172a;color:#fff;border:1px solid #475569}
+button{background:#e2e8f0;color:#0f172a;font-weight:700}
+button.secondary{background:#334155;color:#fff}
+button.danger{background:#7f1d1d;color:#fff}
+.hidden{display:none}
+.top{display:flex;justify-content:space-between;align-items:center}
+.pill{background:#0f172a;padding:7px 10px;border-radius:99px;font-size:12px}
+.meter{height:12px;background:#0f172a;border-radius:99px;overflow:hidden}
+.fill{height:100%;background:#38bdf8;width:0%;transition:.3s}
+.expense{
+display:flex;justify-content:space-between;
+padding:12px 0;border-bottom:1px solid #334155
+}
+.small{font-size:12px;color:#94a3b8}
+.setup{text-align:center;margin-top:15vh}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<section id="setup" class="setup">
+<h1>Presupuesto Diario</h1>
+<p class="muted">Organizá tu dinero día por día.</p>
+
+<div class="card">
+<label class="muted">Saldo disponible inicial</label>
+<br><br>
+<input id="initialBalance" type="number" inputmode="decimal" placeholder="Ej. 500000">
+
+<br><br>
+
+<label class="muted">Próximo día de cobro</label>
+<br><br>
+<input id="nextPayday" type="date">
+
+<br><br>
+
+<button onclick="startApp()">Comenzar</button>
+</div>
+</section>
+
+
+<main id="main" class="hidden">
+
+<div class="top">
+<div>
+<h1>Presupuesto Diario</h1>
+<div id="today" class="muted"></div>
+</div>
+<span class="pill" id="countdown"></span>
+</div>
+
+
+<div class="card">
+<div class="muted">Saldo disponible</div>
+<div class="amount" id="balance"></div>
+<button class="secondary" onclick="editBalance()">Editar saldo</button>
+</div>
+
+
+<div class="card">
+
+<div class="top">
+
+<div>
+<div class="muted">Hoy podés gastar</div>
+<div class="amount" id="dailyBudget"></div>
+</div>
+
+<div id="carryLabel" class="small"></div>
+
+</div>
+
+<div class="meter">
+<div id="meterFill" class="fill"></div>
+</div>
+
+<p id="spentText" class="muted"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Registrar gasto</h3>
+
+<div class="row">
+<input id="expenseAmount" type="number" inputmode="decimal" placeholder="$ monto">
+<input id="expenseDesc" placeholder="Descripción">
+</div>
+
+<br>
+
+<button onclick="addExpense()">Agregar gasto</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Ingreso eventual del día</h3>
+
+<div class="row">
+<input id="incomeAmount" type="number" inputmode="decimal" placeholder="$ monto">
+<button onclick="addIncome()">Agregar</button>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="top">
+<h3>Historial</h3>
+<button class="secondary" style="width:auto;padding:9px 12px" onclick="closeDay()">Cerrar día</button>
+</div>
+
+<div id="history"></div>
+
+</div>
+
+
+<div class="card">
+
+<button class="danger" onclick="resetApp()">Borrar todos los datos</button>
+
+<p class="small">
+Los datos se guardan solamente en este dispositivo.
+</p>
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+const STORAGE_KEY="presupuesto_v4";
+
+let state=null;
+
+
+function money(n){
+return new Intl.NumberFormat("es-AR",{
+style:"currency",
+currency:"ARS",
+maximumFractionDigits:0
+}).format(n||0);
+}
+
+
+function todayKey(){
+return new Date().toISOString().slice(0,10);
+}
+
+
+function dateLabel(k){
+return new Date(k+"T12:00:00").toLocaleDateString("es-AR",{
+weekday:"long",
+day:"2-digit",
+month:"2-digit",
+year:"numeric"
+});
+}
+
+
+function save(){
+localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+}
+
+
+function load(){
+
+try{
+state=JSON.parse(localStorage.getItem(STORAGE_KEY));
+}catch(e){
+state=null;
+}
+
+}
+
+
+function daysUntilPayday(){
+
+return Math.max(
+1,
+Math.ceil(
+(
+new Date(state.payday+"T23:59:59")-
+new Date()
+)/86400000
+)
+);
+
+}
+
+
+function calculateBaseDaily(){
+
+return Math.max(
+0,
+state.balance/daysUntilPayday()
+);
+
+}
+
+
+function currentDay(){
+
+const key=todayKey();
+
+if(!state.days[key]){
+
+state.days[key]={
+expenses:[],
+income:0,
+closed:false,
+carryIn:state.carryOver||0
+};
+
+}
+
+return state.days[key];
+
+}
+
+
+function migrate(){
+
+if(!state) return;
+
+state.days=state.days||{};
+state.carryOver=Number(state.carryOver)||0;
+
+if(!state.baseDailyBudget){
+state.baseDailyBudget=calculateBaseDaily();
+}
+
+}
+
+
+function startApp(){
+
+const balance=Number(
+document.getElementById("initialBalance").value
+);
+
+const payday=
+document.getElementById("nextPayday").value;
+
+if(!balance || balance<0 || !payday){
+
+alert("Completá el saldo y la fecha de cobro.");
+
+return;
+
+}
+
+state={
+balance:balance,
+payday:payday,
+baseDailyBudget:0,
+carryOver:0,
+days:{}
+};
+
+state.baseDailyBudget=calculateBaseDaily();
+
+save();
+
+render();
+
+}
+
+
+function render(){
+
+if(!state) return;
+
+migrate();
+
+document.getElementById("setup").classList.add("hidden");
+document.getElementById("main").classList.remove("hidden");
+
+const d=currentDay();
+
+const spent=d.expenses.reduce(
+(a,e)=>a+e.amount,0
+);
+
+const budget=Math.max(
+0,
+state.baseDailyBudget+(d.carryIn||0)
+);
+
+const available=Math.max(
+0,
+budget-spent
+);
+
+document.getElementById("today").textContent=
+dateLabel(todayKey());
+
+document.getElementById("balance").textContent=
+money(state.balance);
+
+document.getElementById("dailyBudget").textContent=
+money(budget);
+
+document.getElementById("carryLabel").textContent=
+d.carryIn
+? "Arrastre: "+money(d.carryIn)
+:"";
+
+document.getElementById("spentText").textContent=
+"Gastado: "+money(spent)+
+" · Disponible: "+money(available);
+
+document.getElementById("meterFill").style.width=
+Math.min(
+100,
+budget ? spent/budget*100 : 0
+)+"%";
+
+
+document.getElementById("history").innerHTML=
+Object.keys(state.days)
+.sort()
+.reverse()
+.map(k=>{
+
+const x=state.days[k];
+
+const s=x.expenses.reduce(
+(a,e)=>a+e.amount,0
+);
+
+return `
+<div class="expense">
+<span>
+${dateLabel(k)}
+<br>
+<span class="small">
+${x.closed?"Cerrado":"Abierto"}
+</span>
+</span>
+
+<span>${money(s)}</span>
+</div>
+`;
+
+}).join("");
+
+
+const diff=Math.ceil(
+(
+new Date(state.payday+"T23:59:59")-
+new Date()
+)/86400000
+);
+
+document.getElementById("countdown").textContent=
+diff>=0
+? "Cobro en "+diff+"d"
+: "Cobro vencido";
+
+save();
+
+}
+
+
+function addExpense(){
+
+const amount=Number(
+document.getElementById("expenseAmount").value
+);
+
+const desc=
+document.getElementById("expenseDesc").value.trim()
+||"Gasto";
+
+if(!amount || amount<=0) return;
+
+currentDay().expenses.push({
+amount:amount,
+desc:desc,
+time:new Date().toISOString()
+});
+
+state.balance-=amount;
+
+document.getElementById("expenseAmount").value="";
+document.getElementById("expenseDesc").value="";
+
+render();
+
+}
+
+
+function addIncome(){
+
+const amount=Number(
+document.getElementById("incomeAmount").value
+);
+
+if(!amount || amount<=0) return;
+
+currentDay().income+=amount;
+
+state.balance+=amount;
+
+state.baseDailyBudget=
+calculateBaseDaily();
+
+document.getElementById("incomeAmount").value="";
+
+render();
+
+}
+
+
+function closeDay(){
+
+const d=currentDay();
+
+if(d.closed){
+
+alert("El día ya está cerrado.");
+
+return;
+
+}
+
+const spent=d.expenses.reduce(
+(a,e)=>a+e.amount,0
+);
+
+const budget=Math.max(
+0,
+state.baseDailyBudget+(d.carryIn||0)
+);
+
+const leftover=budget-spent;
+
+d.closed=true;
+
+d.leftover=leftover;
+
+state.carryOver=leftover;
+
+save();
+
+if(leftover>=0){
+
+alert(
+"Te quedaron "+money(leftover)+
+". Se sumarán al presupuesto del próximo día."
+);
+
+}else{
+
+alert(
+"Gastaste "+money(-leftover)+
+" de más. Ese importe se descontará del próximo día."
+);
+
+}
+
+render();
+
+}
+
+
+function editBalance(){
+
+const v=prompt(
+"Nuevo saldo disponible:",
+state.balance
+);
+
+if(v===null) return;
+
+const n=Number(v);
+
+if(isNaN(n)||n<0) return;
+
+state.balance=n;
+
+state.baseDailyBudget=
+calculateBaseDaily();
+
+save();
+
+render();
+
+}
+
+
+function resetApp(){
+
+if(confirm("¿Borrar todos los datos?")){
+
+localStorage.removeItem(STORAGE_KEY);
+
+location.reload();
+
+}
+
+}
+
+
+load();
+
+if(state){
+
+migrate();
+
+render();
+
+}
+
+
+if("serviceWorker" in navigator){
+
+navigator.serviceWorker.register("./sw.js")
+.catch(()=>{});
+
+}
+
+</script>
+
+</body>
+</html>
