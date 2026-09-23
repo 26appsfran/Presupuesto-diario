@@ -1,962 +1,1777 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#0f172a">
+
 <link rel="manifest" href="./manifest.webmanifest">
+
 <title>Presupuesto Diario</title>
+
 <style>
+
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#f1f5f9;
-  color:#0f172a;
-}
-header{
-  background:#0f172a;
-  color:white;
-  padding:20px;
-  text-align:center;
-}
-main{
-  max-width:600px;
-  margin:auto;
-  padding:16px;
-}
-.card{
-  background:white;
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-h2,h3{
-  margin-top:0;
-}
-label{
-  display:block;
-  margin-top:12px;
-  font-weight:600;
-}
-input,button{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  border-radius:10px;
-  border:1px solid #cbd5e1;
-  font-size:16px;
-}
-button{
-  background:#0f172a;
-  color:white;
-  border:none;
-  font-weight:600;
-}
-button.secondary{
-  background:#64748b;
-}
-button.danger{
-  background:#dc2626;
-}
-button.small{
-  width:auto;
-  padding:7px 10px;
-  margin:0 0 0 6px;
-  font-size:13px;
-}
-.stat{
-  display:flex;
-  justify-content:space-between;
-  padding:8px 0;
-  border-bottom:1px solid #e2e8f0;
-}
-.stat:last-child{
-  border-bottom:0;
-}
-.big{
-  font-size:28px;
-  font-weight:700;
-}
-.green{
-  color:#16a34a;
-}
-.red{
-  color:#dc2626;
-}
-.muted{
-  color:#64748b;
-}
-.expense{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 0;
-  border-bottom:1px solid #e2e8f0;
-}
-.expense:last-child{
-  border-bottom:0;
-}
-.expense-info{
-  flex:1;
-}
-.actions{
-  display:flex;
-  gap:5px;
-}
-.hidden{
-  display:none;
-}
-.notice{
-  background:#e0f2fe;
-  padding:14px;
-  border-radius:12px;
-  margin-top:10px;
-}
-.tomorrow{
-  background:#dcfce7;
-  border:1px solid #86efac;
-  padding:18px;
-  border-radius:14px;
-  margin-bottom:16px;
-}
-.tomorrow-title{
-  font-weight:700;
-  font-size:16px;
-  margin-bottom:8px;
-}
-.tomorrow-amount{
-  font-size:30px;
-  font-weight:800;
-  margin:5px 0;
-}
-.closed{
-  background:#fef3c7;
-  border:1px solid #f59e0b;
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:16px;
-}
-.closed-title{
-  font-weight:700;
-  margin-bottom:5px;
-}
+
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f1f5f9;color:#0f172a}
+
+header{background:#0f172a;color:white;padding:20px;text-align:center}
+
+main{max-width:600px;margin:auto;padding:16px}
+
+.card{background:white;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+
+h2,h3{margin-top:0}
+
+label{display:block;margin-top:12px;font-weight:600}
+
+input,button{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:1px solid #cbd5e1;font-size:16px}
+
+button{background:#0f172a;color:white;border:none;font-weight:600}
+
+button.secondary{background:#64748b}
+
+button.danger{background:#dc2626}
+
+button.small{width:auto;padding:7px 10px;margin:0 0 0 6px;font-size:13px}
+
+button:disabled{opacity:.55}
+
+.stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e2e8f0}
+
+.stat:last-child{border-bottom:0}
+
+.big{font-size:28px;font-weight:700}
+
+.green{color:#16a34a}
+
+.red{color:#dc2626}
+
+.muted{color:#64748b}
+
+.expense{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e2e8f0}
+
+.expense:last-child{border-bottom:0}
+
+.expense-info{flex:1}
+
+.actions{display:flex;gap:5px}
+
+.hidden{display:none}
+
+.notice{background:#e0f2fe;padding:14px;border-radius:12px;margin-top:10px}
+
+.tomorrow{background:#dcfce7;border:1px solid #86efac;padding:18px;border-radius:14px;margin-bottom:16px}
+
+.tomorrow-title{font-weight:700;font-size:16px;margin-bottom:8px}
+
+.tomorrow-amount{font-size:30px;font-weight:800;margin:5px 0}
+
+.closed{background:#fef3c7;border:1px solid #f59e0b;padding:14px;border-radius:12px;margin-bottom:16px}
+
+.closed-title{font-weight:700;margin-bottom:5px}
+
 </style>
+
 </head>
+
 <body>
+
 <header>
-  <h1>💰 Presupuesto Diario</h1>
+
+<h1>💰 Presupuesto Diario</h1>
+
 </header>
+
 <main>
+
 <div id="setup" class="card">
-  <h2>Configurar presupuesto</h2>
-  <label>Saldo inicial</label>
-  <input
-    id="initialBalance"
-    type="number"
-    inputmode="decimal"
-    placeholder="100000"
-  >
-  <label>Fecha del próximo cobro</label>
-  <input id="nextPayday" type="date">
-  <button onclick="startApp()">Comenzar</button>
+
+<h2>Configurar presupuesto</h2>
+
+<label>Saldo inicial</label>
+
+<input id="initialBalance" type="number" inputmode="decimal" placeholder="100000">
+
+<label>Fecha del próximo cobro</label>
+
+<input id="nextPayday" type="date">
+
+<button onclick="startApp()">Comenzar</button>
+
 </div>
+
 <div id="app" class="hidden">
-  <div class="card">
-    <h2>Resumen</h2>
-    <div class="stat">
-      <span>Fecha</span>
-      <strong id="today"></strong>
-    </div>
-    <div class="stat">
-      <span>Próximo cobro</span>
-      <strong id="paydayInfo"></strong>
-    </div>
-    <div class="stat">
-      <span>Saldo</span>
-      <strong id="balance"></strong>
-    </div>
-    <div class="stat">
-      <span>Presupuesto diario</span>
-      <strong id="dailyBudget"></strong>
-    </div>
-    <div class="stat">
-      <span>Gastado hoy</span>
-      <strong id="spent"></strong>
-    </div>
-    <div class="stat">
-      <span>Disponible hoy</span>
-      <strong id="available"></strong>
-    </div>
-  </div>
-  <!-- AVISO DE DÍA CERRADO -->
-  <div id="closedNotice" class="closed hidden">
-    <div class="closed-title">
-      🔒 Día cerrado
-    </div>
-    <div>
-      Este día ya fue cerrado.
-      Para modificar gastos primero tenés que levantar el cierre.
-    </div>
-    <button
-      class="secondary"
-      onclick="requestOpenDay()"
-    >
-      Levantar cierre
-    </button>
-  </div>
-  <!-- PRESUPUESTO DE MAÑANA -->
-  <div id="tomorrowCard" class="tomorrow hidden">
-    <div class="tomorrow-title">
-      📅 Presupuesto de mañana
-    </div>
-    <div
-      id="tomorrowAmount"
-      class="tomorrow-amount"
-    ></div>
-    <div id="tomorrowDetail"></div>
-  </div>
-  <div class="card">
-    <h3>Agregar gasto</h3>
-    <label>Importe</label>
-    <input
-      id="expenseAmount"
-      type="number"
-      inputmode="decimal"
-    >
-    <label>Descripción</label>
-    <input
-      id="expenseDesc"
-      type="text"
-      placeholder="Ej: supermercado"
-    >
-    <button onclick="addExpense()">
-      Agregar gasto
-    </button>
-  </div>
-  <div class="card">
-    <h3>Gastos de hoy</h3>
-    <div id="expenseList"></div>
-  </div>
-  <div class="card">
-    <h3>Ingresar dinero</h3>
-    <label>Importe</label>
-    <input
-      id="incomeAmount"
-      type="number"
-      inputmode="decimal"
-    >
-    <button onclick="addIncome()">
-      Agregar ingreso
-    </button>
-  </div>
-  <div class="card">
-    <h3>Cierre del día</h3>
-    <p class="muted">
-      El dinero que no gastes hoy se suma al presupuesto de mañana.
-    </p>
-    <button
-      id="simulateButton"
-      onclick="simulateClose()"
-    >
-      Simular cierre de día
-    </button>
-    <div
-      id="simulation"
-      class="notice hidden"
-    ></div>
-    <button
-      id="undoSimulationBtn"
-      class="secondary hidden"
-      onclick="undoSimulation()"
-    >
-      Deshacer simulación
-    </button>
-    <button
-      id="closeButton"
-      onclick="closeDay()"
-    >
-      Cerrar día definitivamente
-    </button>
-  </div>
-  <div class="card">
-    <button
-      class="danger"
-      onclick="resetApp()"
-    >
-      Reiniciar presupuesto
-    </button>
-  </div>
+
+<div class="card">
+
+<h2>Resumen</h2>
+
+<div class="stat">
+
+<span>Fecha</span>
+
+<strong id="today"></strong>
+
 </div>
+
+<div class="stat">
+
+<span>Próximo cobro</span>
+
+<strong id="paydayInfo"></strong>
+
+</div>
+
+<div class="stat">
+
+<span>Saldo</span>
+
+<strong id="balance"></strong>
+
+</div>
+
+<div class="stat">
+
+<span>Presupuesto diario</span>
+
+<strong id="dailyBudget"></strong>
+
+</div>
+
+<div class="stat">
+
+<span>Gastado hoy</span>
+
+<strong id="spent"></strong>
+
+</div>
+
+<div class="stat">
+
+<span>Disponible hoy</span>
+
+<strong id="available"></strong>
+
+</div>
+
+</div>
+
+<div id="closedNotice" class="closed hidden">
+
+<div class="closed-title">🔒 Día cerrado</div>
+
+<div>
+
+Este día ya fue cerrado.
+
+Para modificar gastos primero tenés que levantar el cierre.
+
+</div>
+
+<button class="secondary" onclick="requestOpenDay()">
+
+Levantar cierre
+
+</button>
+
+</div>
+
+<div id="tomorrowCard" class="tomorrow hidden">
+
+<div class="tomorrow-title">
+
+📅 Presupuesto de mañana
+
+</div>
+
+<div id="tomorrowAmount" class="tomorrow-amount"></div>
+
+<div id="tomorrowDetail"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Agregar gasto</h3>
+
+<label>Importe</label>
+
+<input id="expenseAmount" type="number" inputmode="decimal">
+
+<label>Descripción</label>
+
+<input id="expenseDesc" type="text" placeholder="Ej: supermercado">
+
+<button onclick="addExpense()">
+
+Agregar gasto
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Gastos de hoy</h3>
+
+<div id="expenseList"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Ingresar dinero</h3>
+
+<label>Importe</label>
+
+<input id="incomeAmount" type="number" inputmode="decimal">
+
+<button onclick="addIncome()">
+
+Agregar ingreso
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Cierre del día</h3>
+
+<p class="muted">
+
+El dinero que no gastes hoy se suma al presupuesto de mañana.
+
+Si gastás de más, el déficit se distribuye entre los días restantes hasta el próximo cobro.
+
+</p>
+
+<button id="simulateButton" onclick="simulateClose()">
+
+Simular cierre de día
+
+</button>
+
+<div id="simulation" class="notice hidden"></div>
+
+<button id="undoSimulationBtn" class="secondary hidden" onclick="undoSimulation()">
+
+Deshacer simulación
+
+</button>
+
+<button id="closeButton" onclick="closeDay()">
+
+Cerrar día definitivamente
+
+</button>
+
+</div>
+
+<div class="card">
+
+<button class="danger" onclick="resetApp()">
+
+Reiniciar presupuesto
+
+</button>
+
+</div>
+
+</div>
+
 </main>
+
 <script>
+
 const STORAGE_KEY = "presupuesto_v6";
+
 let state = null;
+
 /* =========================
+
    FUNCIONES GENERALES
+
 ========================= */
+
 function money(value){
-  return "$" +
-    Math.round(value).toLocaleString("es-AR");
+
+return "$" + Math.round(Number(value)||0).toLocaleString("es-AR");
+
 }
-function localDateKey(date = new Date()){
-  const y = date.getFullYear();
-  const m =
-    String(date.getMonth()+1).padStart(2,"0");
-  const d =
-    String(date.getDate()).padStart(2,"0");
-  return `${y}-${m}-${d}`;
+
+function localDateKey(date=new Date()){
+
+const y=date.getFullYear();
+
+const m=String(date.getMonth()+1).padStart(2,"0");
+
+const d=String(date.getDate()).padStart(2,"0");
+
+return `${y}-${m}-${d}`;
+
 }
+
 function parseLocalDate(dateString){
-  const parts = dateString.split("-");
-  return new Date(
-    Number(parts[0]),
-    Number(parts[1])-1,
-    Number(parts[2])
-  );
+
+const parts=dateString.split("-");
+
+return new Date(
+
+Number(parts[0]),
+
+Number(parts[1])-1,
+
+Number(parts[2])
+
+);
+
 }
+
 function daysUntilPayday(){
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  const payday =
-    parseLocalDate(state.nextPayday);
-  payday.setHours(0,0,0,0);
-  const diff =
-    payday - today;
-  return Math.max(
-    1,
-    Math.ceil(diff / 86400000)
-  );
+
+const today=new Date();
+
+today.setHours(0,0,0,0);
+
+const payday=parseLocalDate(state.nextPayday);
+
+payday.setHours(0,0,0,0);
+
+const diff=payday-today;
+
+return Math.max(
+
+1,
+
+Math.ceil(diff/86400000)
+
+);
+
 }
+
 function calculateInitialDailyBudget(){
-  return Math.floor(
-    state.balance / daysUntilPayday()
-  );
+
+return Math.floor(
+
+state.balance/daysUntilPayday()
+
+);
+
 }
+
 function save(){
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(state)
-  );
+
+localStorage.setItem(
+
+STORAGE_KEY,
+
+JSON.stringify(state)
+
+);
+
 }
+
 /* =========================
+
    DÍA ACTUAL
+
 ========================= */
+
 function currentDay(){
-  const key = localDateKey();
-  if(!state.days[key]){
-    state.days[key] = {
-      expenses:[],
-      carryIn:
-        state.carryOver || 0,
-      leftover:null,
-      closed:false,
-      closedAt:null,
-      previousCarryOver:0
-    };
-    state.carryOver = 0;
-    save();
-  }
-  return state.days[key];
+
+const key=localDateKey();
+
+if(!state.days[key]){
+
+const carryIn=Number(state.carryOver)||0;
+
+const deficitIn=Number(state.deficitPerDay)||0;
+
+const previousDebt=Number(state.deficitRemaining)||0;
+
+state.days[key]={
+
+expenses:[],
+
+carryIn:carryIn,
+
+deficitIn:deficitIn,
+
+leftover:null,
+
+closed:false,
+
+closedAt:null,
+
+previousCarryOver:carryIn,
+
+previousDeficitRemaining:previousDebt,
+
+previousDeficitPerDay:deficitIn,
+
+tomorrowBudget:null,
+
+tomorrowDeficitPerDay:null,
+
+tomorrowRemainingDebt:null
+
+};
+
+state.carryOver=0;
+
+save();
+
 }
+
+const day=state.days[key];
+
+if(!Array.isArray(day.expenses)){
+
+day.expenses=[];
+
+}
+
+if(typeof day.carryIn!=="number"){
+
+day.carryIn=0;
+
+}
+
+if(typeof day.deficitIn!=="number"){
+
+day.deficitIn=0;
+
+}
+
+if(typeof day.previousCarryOver!=="number"){
+
+day.previousCarryOver=0;
+
+}
+
+if(typeof day.previousDeficitRemaining!=="number"){
+
+day.previousDeficitRemaining=0;
+
+}
+
+if(typeof day.previousDeficitPerDay!=="number"){
+
+day.previousDeficitPerDay=0;
+
+}
+
+if(typeof day.closed!=="boolean"){
+
+day.closed=false;
+
+}
+
+return day;
+
+}
+
 function dayBudget(day){
-  return Math.round(
-    state.baseDailyBudget +
-    (day.carryIn || 0)
-  );
+
+return Math.max(
+
+0,
+
+Math.round(
+
+(Number(state.baseDailyBudget)||0)+
+
+(Number(day.carryIn)||0)-
+
+(Number(day.deficitIn)||0)
+
+)
+
+);
+
 }
+
 function totalSpent(day){
-  return day.expenses.reduce(
-    (sum,e) =>
-      sum + Number(e.amount),
-    0
-  );
+
+return day.expenses.reduce(
+
+(sum,e)=>sum+Number(e.amount||0),
+
+0
+
+);
+
 }
+
 function available(day){
-  return dayBudget(day) -
-    totalSpent(day);
+
+return Math.round(
+
+dayBudget(day)-totalSpent(day)
+
+);
+
 }
+
 /* =========================
+
    INICIO
+
 ========================= */
+
 function startApp(){
-  const balance =
-    Number(
-      document.getElementById(
-        "initialBalance"
-      ).value
-    );
-  const payday =
-    document.getElementById(
-      "nextPayday"
-    ).value;
-  if(!balance || !payday){
-    alert(
-      "Completá el saldo y la fecha de cobro."
-    );
-    return;
-  }
-  state = {
-    balance:
-      Math.round(balance),
-    nextPayday:
-      payday,
-    baseDailyBudget:
-      0,
-    carryOver:
-      0,
-    days:{}
-  };
-  state.baseDailyBudget =
-    calculateInitialDailyBudget();
-  save();
-  showApp();
+
+const balance=Number(
+
+document.getElementById("initialBalance").value
+
+);
+
+const payday=document.getElementById("nextPayday").value;
+
+if(!balance||!payday){
+
+alert("Completá el saldo y la fecha de cobro.");
+
+return;
+
 }
+
+state={
+
+balance:Math.round(balance),
+
+nextPayday:payday,
+
+baseDailyBudget:0,
+
+carryOver:0,
+
+deficitRemaining:0,
+
+deficitPerDay:0,
+
+days:{}
+
+};
+
+state.baseDailyBudget=calculateInitialDailyBudget();
+
+save();
+
+showApp();
+
+}
+
 function load(){
-  const saved =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
-  if(saved){
-    state =
-      JSON.parse(saved);
-    showApp();
-  }
+
+const saved=localStorage.getItem(STORAGE_KEY);
+
+if(saved){
+
+try{
+
+state=JSON.parse(saved);
+
+state.carryOver=Number(state.carryOver)||0;
+
+state.deficitRemaining=
+
+Number(state.deficitRemaining)||0;
+
+state.deficitPerDay=
+
+Number(state.deficitPerDay)||0;
+
+state.days=state.days||{};
+
+showApp();
+
+}catch(error){
+
+console.error(error);
+
 }
+
+}
+
+}
+
 function showApp(){
-  document
-    .getElementById("setup")
-    .classList
-    .add("hidden");
-  document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
-  render();
+
+document
+
+.getElementById("setup")
+
+.classList.add("hidden");
+
+document
+
+.getElementById("app")
+
+.classList.remove("hidden");
+
+render();
+
 }
+
 /* =========================
+
    RENDER
+
 ========================= */
+
 function render(){
-  const day =
-    currentDay();
-  document.getElementById(
-    "today"
-  ).textContent =
-    new Date().toLocaleDateString(
-      "es-AR"
-    );
-  const days =
-    daysUntilPayday();
-  document.getElementById(
-    "paydayInfo"
-  ).textContent =
-    `${days} día${days === 1 ? "" : "s"}`;
-  document.getElementById(
-    "balance"
-  ).textContent =
-    money(state.balance);
-  document.getElementById(
-    "dailyBudget"
-  ).textContent =
-    money(dayBudget(day));
-  const spent =
-    totalSpent(day);
-  document.getElementById(
-    "spent"
-  ).textContent =
-    money(spent);
-  document.getElementById(
-    "available"
-  ).textContent =
-    money(available(day));
-  renderExpenses(day);
-  renderClosedState(day);
-  renderTomorrow(day);
+
+const day=currentDay();
+
+document.getElementById("today").textContent=
+
+new Date().toLocaleDateString("es-AR");
+
+const days=daysUntilPayday();
+
+document.getElementById("paydayInfo").textContent=
+
+`${days} día${days===1?"":"s"}`;
+
+document.getElementById("balance").textContent=
+
+money(state.balance);
+
+document.getElementById("dailyBudget").textContent=
+
+money(dayBudget(day));
+
+const spent=totalSpent(day);
+
+document.getElementById("spent").textContent=
+
+money(spent);
+
+const availableValue=available(day);
+
+const availableElement=
+
+document.getElementById("available");
+
+availableElement.textContent=
+
+money(availableValue);
+
+availableElement.classList.toggle(
+
+"red",
+
+availableValue<0
+
+);
+
+availableElement.classList.toggle(
+
+"green",
+
+availableValue>=0
+
+);
+
+renderExpenses(day);
+
+renderClosedState(day);
+
+renderTomorrow(day);
+
 }
+
 /* =========================
+
    ESTADO CERRADO
+
 ========================= */
+
 function renderClosedState(day){
-  const notice =
-    document.getElementById(
-      "closedNotice"
-    );
-  const closeButton =
-    document.getElementById(
-      "closeButton"
-    );
-  const simulateButton =
-    document.getElementById(
-      "simulateButton"
-    );
-  if(day.closed){
-    notice.classList.remove("hidden");
-    closeButton.textContent =
-      "Día ya cerrado";
-    closeButton.disabled = true;
-    simulateButton.disabled = true;
-  }else{
-    notice.classList.add("hidden");
-    closeButton.textContent =
-      "Cerrar día definitivamente";
-    closeButton.disabled = false;
-    simulateButton.disabled = false;
-  }
+
+const notice=document.getElementById("closedNotice");
+
+const closeButton=document.getElementById("closeButton");
+
+const simulateButton=
+
+document.getElementById("simulateButton");
+
+if(day.closed){
+
+notice.classList.remove("hidden");
+
+closeButton.textContent="Día ya cerrado";
+
+closeButton.disabled=true;
+
+simulateButton.disabled=true;
+
+}else{
+
+notice.classList.add("hidden");
+
+closeButton.textContent=
+
+"Cerrar día definitivamente";
+
+closeButton.disabled=false;
+
+simulateButton.disabled=false;
+
 }
+
+}
+
 /* =========================
+
    PRESUPUESTO MAÑANA
+
 ========================= */
+
 function renderTomorrow(day){
-  const card =
-    document.getElementById(
-      "tomorrowCard"
-    );
-  if(
-    day.closed &&
-    day.closedAt === localDateKey()
-  ){
-    const leftover =
-      Math.max(
-        0,
-        Math.round(day.leftover || 0)
-      );
-    const tomorrowBudget =
-      Math.round(
-        state.baseDailyBudget +
-        leftover
-      );
-    document.getElementById(
-      "tomorrowAmount"
-    ).textContent =
-      money(tomorrowBudget);
-    document.getElementById(
-      "tomorrowDetail"
-    ).textContent =
-      `Incluye ${money(leftover)} arrastrados de hoy.`;
-    card.classList.remove("hidden");
-  }else{
-    card.classList.add("hidden");
-  }
+
+const card=document.getElementById("tomorrowCard");
+
+if(day.closed&&day.closedAt===localDateKey()){
+
+const tomorrowBudget=
+
+Math.round(Number(day.tomorrowBudget)||0);
+
+const leftover=
+
+Math.round(Number(day.leftover)||0);
+
+const reduction=
+
+Math.round(Number(day.tomorrowDeficitPerDay)||0);
+
+const remainingDebt=
+
+Math.round(Number(day.tomorrowRemainingDebt)||0);
+
+document.getElementById("tomorrowAmount").textContent=
+
+money(tomorrowBudget);
+
+let detail;
+
+if(remainingDebt>0){
+
+detail=
+
+`Incluye ${money(leftover)} de arrastre y una reducción de ${money(reduction)} por el déficit pendiente de ${money(remainingDebt)}.`;
+
+}else{
+
+detail=
+
+`Incluye ${money(leftover)} arrastrados de hoy.`;
+
 }
+
+document.getElementById("tomorrowDetail").textContent=
+
+detail;
+
+card.classList.remove("hidden");
+
+}else{
+
+card.classList.add("hidden");
+
+}
+
+}
+
 /* =========================
+
    GASTOS
+
 ========================= */
+
 function renderExpenses(day){
-  const container =
-    document.getElementById(
-      "expenseList"
-    );
-  if(day.expenses.length === 0){
-    container.innerHTML =
-      '<p class="muted">No hay gastos registrados.</p>';
-    return;
-  }
-  container.innerHTML =
-    day.expenses.map(
-      (expense,index)=>`
-      <div class="expense">
-        <div class="expense-info">
-          <strong>
-            ${escapeHtml(
-              expense.desc ||
-              "Gasto"
-            )}
-          </strong>
-          <br>
-          <span>
-            ${money(expense.amount)}
-          </span>
-          <span class="muted">
-            · ${expense.time}
-          </span>
-        </div>
-        <div class="actions">
-          <button
-            class="small"
-            onclick="editExpense(${index})"
-          >
-            ✏️
-          </button>
-          <button
-            class="small danger"
-            onclick="deleteExpense(${index})"
-          >
-            ✕
-          </button>
-        </div>
-      </div>
-      `
-    ).join("");
+
+const container=document.getElementById("expenseList");
+
+if(day.expenses.length===0){
+
+container.innerHTML=
+
+'<p class="muted">No hay gastos registrados.</p>';
+
+return;
+
 }
+
+container.innerHTML=day.expenses.map(
+
+(expense,index)=>`
+
+<div class="expense">
+
+<div class="expense-info">
+
+<strong>
+
+${escapeHtml(expense.desc||"Gasto")}
+
+</strong>
+
+<br>
+
+<span>
+
+${money(expense.amount)}
+
+</span>
+
+<span class="muted">
+
+· ${expense.time}
+
+</span>
+
+</div>
+
+<div class="actions">
+
+<button
+
+class="small"
+
+onclick="editExpense(${index})">
+
+✏️
+
+</button>
+
+<button
+
+class="small danger"
+
+onclick="deleteExpense(${index})">
+
+✕
+
+</button>
+
+</div>
+
+</div>
+
+`
+
+).join("");
+
+}
+
 function escapeHtml(text){
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+return String(text)
+
+.replaceAll("&","&amp;")
+
+.replaceAll("<","&lt;")
+
+.replaceAll(">","&gt;")
+
+.replaceAll('"',"&quot;")
+
+.replaceAll("'","&#039;");
+
 }
+
 /* =========================
+
    COMPROBAR SI DÍA CERRADO
+
 ========================= */
+
 function checkClosed(day){
-  if(!day.closed){
-    return false;
-  }
-  const answer =
-    confirm(
-      "El día ya fue cerrado.\n\n" +
-      "¿Deseás levantar el cierre?"
-    );
-  if(answer){
-    reopenDay();
-    return false;
-  }
-  return true;
+
+if(!day.closed){
+
+return false;
+
 }
+
+const answer=confirm(
+
+"El día ya fue cerrado.\n\n"+
+
+"¿Deseás levantar el cierre?"
+
+);
+
+if(answer){
+
+reopenDay();
+
+return false;
+
+}
+
+return true;
+
+}
+
 /* =========================
+
    AGREGAR GASTO
+
 ========================= */
+
 function addExpense(){
-  const day =
-    currentDay();
-  if(checkClosed(day)){
-    return;
-  }
-  const amount =
-    Number(
-      document.getElementById(
-        "expenseAmount"
-      ).value
-    );
-  const desc =
-    document.getElementById(
-      "expenseDesc"
-    ).value.trim();
-  if(!amount || amount <= 0){
-    alert(
-      "Ingresá un importe válido."
-    );
-    return;
-  }
-  day.expenses.push({
-    amount:
-      Math.round(amount),
-    desc:
-      desc,
-    time:
-      new Date().toLocaleTimeString(
-        "es-AR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
-  });
-  state.balance =
-    Math.round(
-      state.balance - amount
-    );
-  save();
-  document.getElementById(
-    "expenseAmount"
-  ).value = "";
-  document.getElementById(
-    "expenseDesc"
-  ).value = "";
-  render();
+
+const day=currentDay();
+
+if(checkClosed(day)){
+
+return;
+
 }
+
+const amount=Number(
+
+document.getElementById("expenseAmount").value
+
+);
+
+const desc=
+
+document.getElementById("expenseDesc").value.trim();
+
+if(!amount||amount<=0){
+
+alert("Ingresá un importe válido.");
+
+return;
+
+}
+
+day.expenses.push({
+
+amount:Math.round(amount),
+
+desc:desc,
+
+time:new Date().toLocaleTimeString(
+
+"es-AR",
+
+{
+
+hour:"2-digit",
+
+minute:"2-digit"
+
+}
+
+)
+
+});
+
+state.balance=Math.round(
+
+state.balance-amount
+
+);
+
+document.getElementById("expenseAmount").value="";
+
+document.getElementById("expenseDesc").value="";
+
+save();
+
+render();
+
+}
+
 /* =========================
+
    ELIMINAR GASTO
+
 ========================= */
+
 function deleteExpense(index){
-  const day =
-    currentDay();
-  if(checkClosed(day)){
-    return;
-  }
-  const expense =
-    day.expenses[index];
-  if(!confirm(
-    `¿Eliminar el gasto de ${money(expense.amount)}?`
-  )){
-    return;
-  }
-  state.balance =
-    Math.round(
-      state.balance +
-      Number(expense.amount)
-    );
-  day.expenses.splice(
-    index,
-    1
-  );
-  save();
-  render();
+
+const day=currentDay();
+
+if(checkClosed(day)){
+
+return;
+
 }
+
+const expense=day.expenses[index];
+
+if(!confirm(
+
+`¿Eliminar el gasto de ${money(expense.amount)}?`
+
+)){
+
+return;
+
+}
+
+state.balance=Math.round(
+
+state.balance+Number(expense.amount)
+
+);
+
+day.expenses.splice(index,1);
+
+save();
+
+render();
+
+}
+
 /* =========================
+
    EDITAR GASTO
+
 ========================= */
+
 function editExpense(index){
-  const day =
-    currentDay();
-  if(checkClosed(day)){
-    return;
-  }
-  const expense =
-    day.expenses[index];
-  const newAmount =
-    prompt(
-      "Nuevo importe:",
-      expense.amount
-    );
-  if(newAmount === null){
-    return;
-  }
-  const amount =
-    Number(newAmount);
-  if(!amount || amount <= 0){
-    alert(
-      "Importe inválido."
-    );
-    return;
-  }
-  const difference =
-    Math.round(amount) -
-    Number(expense.amount);
-  expense.amount =
-    Math.round(amount);
-  state.balance =
-    Math.round(
-      state.balance -
-      difference
-    );
-  const newDesc =
-    prompt(
-      "Descripción:",
-      expense.desc || ""
-    );
-  if(newDesc !== null){
-    expense.desc =
-      newDesc.trim();
-  }
-  save();
-  render();
+
+const day=currentDay();
+
+if(checkClosed(day)){
+
+return;
+
 }
+
+const expense=day.expenses[index];
+
+const newAmount=prompt(
+
+"Nuevo importe:",
+
+expense.amount
+
+);
+
+if(newAmount===null){
+
+return;
+
+}
+
+const amount=Number(newAmount);
+
+if(!amount||amount<=0){
+
+alert("Importe inválido.");
+
+return;
+
+}
+
+const difference=
+
+Math.round(amount)-Number(expense.amount);
+
+expense.amount=Math.round(amount);
+
+state.balance=Math.round(
+
+state.balance-difference
+
+);
+
+const newDesc=prompt(
+
+"Descripción:",
+
+expense.desc||""
+
+);
+
+if(newDesc!==null){
+
+expense.desc=newDesc.trim();
+
+}
+
+save();
+
+render();
+
+}
+
 /* =========================
+
    INGRESOS
+
 ========================= */
+
 function addIncome(){
-  const day =
-    currentDay();
-  if(checkClosed(day)){
-    return;
-  }
-  const amount =
-    Number(
-      document.getElementById(
-        "incomeAmount"
-      ).value
-    );
-  if(!amount || amount <= 0){
-    alert(
-      "Ingresá un importe válido."
-    );
-    return;
-  }
-  state.balance =
-    Math.round(
-      state.balance + amount
-    );
-  document.getElementById(
-    "incomeAmount"
-  ).value = "";
-  save();
-  render();
+
+const day=currentDay();
+
+if(checkClosed(day)){
+
+return;
+
 }
+
+const amount=Number(
+
+document.getElementById("incomeAmount").value
+
+);
+
+if(!amount||amount<=0){
+
+alert("Ingresá un importe válido.");
+
+return;
+
+}
+
+state.balance=Math.round(
+
+state.balance+amount
+
+);
+
+document.getElementById("incomeAmount").value="";
+
+save();
+
+render();
+
+}
+
 /* =========================
+
+   CÁLCULO DEL CIERRE
+
+========================= */
+
+function calculateAfterClose(day){
+
+const currentAvailable=
+
+Math.round(available(day));
+
+/*
+
+  La cuota de déficit que corresponde
+
+  al día que estamos cerrando.
+
+*/
+
+const scheduledPayment=
+
+Math.round(Number(day.deficitIn)||0);
+
+/*
+
+  Primero descontamos la cuota que
+
+  ya estaba prevista para hoy.
+
+*/
+
+let remainingDebt=Math.max(
+
+0,
+
+Math.round(
+
+(Number(state.deficitRemaining)||0)-
+
+scheduledPayment
+
+)
+
+);
+
+let leftover=0;
+
+/*
+
+  Si sobra dinero, se arrastra completo.
+
+*/
+
+if(currentAvailable>=0){
+
+leftover=currentAvailable;
+
+}
+
+/*
+
+  Si falta dinero, se agrega el nuevo
+
+  déficit a la deuda pendiente.
+
+*/
+
+else{
+
+const newDeficit=
+
+Math.abs(currentAvailable);
+
+remainingDebt+=newDeficit;
+
+}
+
+/*
+
+  Después de cerrar hoy quedan estos
+
+  días antes del próximo cobro.
+
+*/
+
+const remainingDays=Math.max(
+
+0,
+
+daysUntilPayday()-1
+
+);
+
+/*
+
+  Distribuimos la deuda restante entre
+
+  los días que quedan.
+
+*/
+
+let nextDeficitPerDay=0;
+
+if(remainingDebt>0&&remainingDays>0){
+
+nextDeficitPerDay=Math.ceil(
+
+remainingDebt/remainingDays
+
+);
+
+}
+
+/*
+
+  Si ya no quedan días antes del cobro,
+
+  el déficit no continúa al siguiente ciclo.
+
+*/
+
+if(remainingDays===0){
+
+remainingDebt=0;
+
+nextDeficitPerDay=0;
+
+}
+
+/*
+
+  Presupuesto de mañana:
+
+  presupuesto base
+
+  + todo el sobrante
+
+  - cuota diaria del déficit.
+
+*/
+
+const tomorrowBudget=Math.max(
+
+0,
+
+Math.round(
+
+state.baseDailyBudget+
+
+leftover-
+
+nextDeficitPerDay
+
+)
+
+);
+
+return{
+
+currentAvailable,
+
+leftover,
+
+remainingDebt,
+
+remainingDays,
+
+nextDeficitPerDay,
+
+tomorrowBudget
+
+};
+
+}
+
+/* =========================
+
    SIMULACIÓN
+
 ========================= */
+
 function simulateClose(){
-  const day =
-    currentDay();
-  if(checkClosed(day)){
-    return;
-  }
-  const leftover =
-    Math.max(
-      0,
-      Math.round(
-        available(day)
-      )
-    );
-  const tomorrowBudget =
-    Math.round(
-      state.baseDailyBudget +
-      leftover
-    );
-  const simulation =
-    document.getElementById(
-      "simulation"
-    );
-  simulation.innerHTML = `
-    <strong>
-      Simulación
-    </strong>
-    <br><br>
-    Disponible hoy:
-    <strong>
-      ${money(leftover)}
-    </strong>
-    <br>
-    Presupuesto mañana:
-    <strong>
-      ${money(tomorrowBudget)}
-    </strong>
-  `;
-  simulation.classList.remove(
-    "hidden"
-  );
-  document
-    .getElementById(
-      "undoSimulationBtn"
-    )
-    .classList
-    .remove("hidden");
+
+const day=currentDay();
+
+if(checkClosed(day)){
+
+return;
+
 }
+
+const result=
+
+calculateAfterClose(day);
+
+const simulation=
+
+document.getElementById("simulation");
+
+let html=
+
+`<strong>Simulación</strong><br><br>`;
+
+if(result.currentAvailable>=0){
+
+html+=
+
+`Sobrante de hoy:
+
+<strong>${money(result.leftover)}</strong>
+
+<br>`;
+
+if(result.remainingDebt>0){
+
+html+=
+
+`<br>
+
+Déficit pendiente:
+
+<strong>${money(result.remainingDebt)}</strong>
+
+<br>
+
+Días restantes:
+
+<strong>${result.remainingDays}</strong>
+
+<br>
+
+Reducción diaria:
+
+<strong>${money(result.nextDeficitPerDay)}</strong>
+
+<br>`;
+
+}
+
+html+=
+
+`<br>
+
+Presupuesto mañana:
+
+<strong>${money(result.tomorrowBudget)}</strong>`;
+
+}else{
+
+const deficit=
+
+Math.abs(result.currentAvailable);
+
+html+=
+
+`Déficit de hoy:
+
+<strong>${money(deficit)}</strong>
+
+<br><br>
+
+Déficit pendiente total:
+
+<strong>${money(result.remainingDebt)}</strong>
+
+<br>
+
+Días restantes:
+
+<strong>${result.remainingDays}</strong>
+
+<br>
+
+Reducción diaria desde mañana:
+
+<strong>${money(result.nextDeficitPerDay)}</strong>
+
+<br><br>
+
+Presupuesto mañana:
+
+<strong>${money(result.tomorrowBudget)}</strong>`;
+
+}
+
+simulation.innerHTML=html;
+
+simulation.classList.remove("hidden");
+
+document
+
+.getElementById("undoSimulationBtn")
+
+.classList.remove("hidden");
+
+}
+
 function undoSimulation(){
-  document
-    .getElementById(
-      "simulation"
-    )
-    .classList
-    .add("hidden");
-  document
-    .getElementById(
-      "undoSimulationBtn"
-    )
-    .classList
-    .add("hidden");
+
+document
+
+.getElementById("simulation")
+
+.classList.add("hidden");
+
+document
+
+.getElementById("undoSimulationBtn")
+
+.classList.add("hidden");
+
 }
+
 /* =========================
+
    CIERRE DEFINITIVO
+
 ========================= */
+
 function closeDay(){
-  const day =
-    currentDay();
-  if(day.closed){
-    alert(
-      "El día ya fue cerrado."
-    );
-    return;
-  }
-  const leftover =
-    Math.max(
-      0,
-      Math.round(
-        available(day)
-      )
-    );
-  /*
-    Guardamos el estado anterior
-    para poder levantar el cierre.
-  */
-  day.previousCarryOver =
-    state.carryOver || 0;
-  day.leftover =
-    leftover;
-  day.closed =
-    true;
-  day.closedAt =
-    localDateKey();
-  state.carryOver =
-    leftover;
-  save();
-  render();
-  alert(
-    `Día cerrado.\n\n` +
-    `Saldo arrastrado a mañana: ${money(leftover)}`
-  );
+
+const day=currentDay();
+
+if(day.closed){
+
+alert("El día ya fue cerrado.");
+
+return;
+
 }
+
+const result=
+
+calculateAfterClose(day);
+
+/*
+
+  Guardamos el estado anterior
+
+  para poder levantar el cierre.
+
+*/
+
+day.previousCarryOver=
+
+Number(state.carryOver)||0;
+
+day.previousDeficitRemaining=
+
+Number(state.deficitRemaining)||0;
+
+day.previousDeficitPerDay=
+
+Number(state.deficitPerDay)||0;
+
+/*
+
+  Guardamos los resultados del cierre.
+
+*/
+
+day.leftover=
+
+result.leftover;
+
+day.tomorrowBudget=
+
+result.tomorrowBudget;
+
+day.tomorrowDeficitPerDay=
+
+result.nextDeficitPerDay;
+
+day.tomorrowRemainingDebt=
+
+result.remainingDebt;
+
+day.closed=true;
+
+day.closedAt=
+
+localDateKey();
+
+/*
+
+  El sobrante pasa íntegramente
+
+  al día siguiente.
+
+*/
+
+state.carryOver=
+
+result.leftover;
+
+/*
+
+  La deuda restante queda distribuida
+
+  para los próximos días.
+
+*/
+
+state.deficitRemaining=
+
+result.remainingDebt;
+
+state.deficitPerDay=
+
+result.nextDeficitPerDay;
+
+save();
+
+render();
+
+if(result.currentAvailable>=0){
+
+if(result.remainingDebt>0){
+
+alert(
+
+`Día cerrado.\n\n`+
+
+`Saldo arrastrado a mañana: ${money(result.leftover)}\n`+
+
+`Déficit pendiente: ${money(result.remainingDebt)}\n`+
+
+`Reducción diaria desde mañana: ${money(result.nextDeficitPerDay)}\n`+
+
+`Presupuesto de mañana: ${money(result.tomorrowBudget)}`
+
+);
+
+}else{
+
+alert(
+
+`Día cerrado.\n\n`+
+
+`Saldo arrastrado a mañana: ${money(result.leftover)}\n`+
+
+`Presupuesto de mañana: ${money(result.tomorrowBudget)}`
+
+);
+
+}
+
+}else{
+
+alert(
+
+`Día cerrado.\n\n`+
+
+`Déficit de hoy: ${money(Math.abs(result.currentAvailable))}\n`+
+
+`Déficit pendiente: ${money(result.remainingDebt)}\n`+
+
+`Reducción diaria: ${money(result.nextDeficitPerDay)}\n`+
+
+`Presupuesto de mañana: ${money(result.tomorrowBudget)}`
+
+);
+
+}
+
+}
+
 /* =========================
+
    LEVANTAR CIERRE
+
 ========================= */
+
 function requestOpenDay(){
-  const day =
-    currentDay();
-  if(!day.closed){
-    return;
-  }
-  const answer =
-    confirm(
-      "El día ya fue cerrado.\n\n" +
-      "¿Deseás levantar el cierre?"
-    );
-  if(answer){
-    reopenDay();
-  }
+
+const day=currentDay();
+
+if(!day.closed){
+
+return;
+
 }
+
+const answer=confirm(
+
+"El día ya fue cerrado.\n\n"+
+
+"¿Deseás levantar el cierre?"
+
+);
+
+if(answer){
+
+reopenDay();
+
+}
+
+}
+
 function reopenDay(){
-  const day =
-    currentDay();
-  if(!day.closed){
-    return;
-  }
-  /*
-    Recuperamos el estado que había
-    antes del cierre.
-  */
-  state.carryOver =
-    day.previousCarryOver || 0;
-  day.leftover =
-    null;
-  day.closed =
-    false;
-  day.closedAt =
-    null;
-  day.previousCarryOver =
-    0;
-  save();
-  render();
-  alert(
-    "El cierre fue levantado.\n\n" +
-    "El día volvió al estado anterior."
-  );
+
+const day=currentDay();
+
+if(!day.closed){
+
+return;
+
 }
+
+/*
+
+  Recuperamos exactamente el estado
+
+  anterior al cierre.
+
+*/
+
+state.carryOver=
+
+day.previousCarryOver||0;
+
+state.deficitRemaining=
+
+day.previousDeficitRemaining||0;
+
+state.deficitPerDay=
+
+day.previousDeficitPerDay||0;
+
+day.leftover=null;
+
+day.closed=false;
+
+day.closedAt=null;
+
+day.previousCarryOver=0;
+
+day.previousDeficitRemaining=0;
+
+day.previousDeficitPerDay=0;
+
+day.tomorrowBudget=null;
+
+day.tomorrowDeficitPerDay=null;
+
+day.tomorrowRemainingDebt=null;
+
+save();
+
+render();
+
+alert(
+
+"El cierre fue levantado.\n\n"+
+
+"El día volvió al estado anterior."
+
+);
+
+}
+
 /* =========================
+
    RESET
+
 ========================= */
+
 function resetApp(){
-  if(!confirm(
-    "¿Seguro que querés reiniciar todo el presupuesto?"
-  )){
-    return;
-  }
-  localStorage.removeItem(
-    "presupuesto_v6"
-  );
-  localStorage.removeItem(
-    "presupuesto_v5"
-  );
-  localStorage.removeItem(
-    "presupuesto_v4"
-  );
-  location.reload();
+
+if(!confirm(
+
+"¿Seguro que querés reiniciar todo el presupuesto?"
+
+)){
+
+return;
+
 }
+
+localStorage.removeItem("presupuesto_v6");
+
+localStorage.removeItem("presupuesto_v5");
+
+localStorage.removeItem("presupuesto_v4");
+
+location.reload();
+
+}
+
 /* =========================
+
    INICIO
+
 ========================= */
+
 load();
+
 if("serviceWorker" in navigator){
-  navigator.serviceWorker
-    .register("./sw.js")
-    .catch(
-      err =>
-        console.log(err)
-    );
+
+navigator.serviceWorker
+
+.register("./sw.js")
+
+.catch(
+
+err=>console.log(err)
+
+);
+
 }
+
 </script>
+
 </body>
+
 </html>
