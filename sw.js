@@ -1,4 +1,4 @@
-const CACHE = "presupuesto-diario-v3";
+const CACHE = "presupuesto-diario-v4";
 
 const FILES = [
   "./",
