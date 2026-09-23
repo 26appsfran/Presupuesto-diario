@@ -2,2019 +2,475 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f172a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Presupuesto">
-
 <link rel="manifest" href="./manifest.webmanifest">
-
 <title>Presupuesto Diario</title>
-
 <style>
-
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#f1f5f9;
   color:#0f172a;
 }
-
 header{
   background:#0f172a;
   color:white;
-  padding:20px 18px;
-  padding-top:calc(20px + env(safe-area-inset-top));
+  padding:20px;
+  text-align:center;
 }
-
-header h1{
-  margin:0;
-  font-size:25px;
-}
-
-header p{
-  margin:5px 0 0;
-  opacity:.8;
-  font-size:14px;
-}
-
 main{
-  max-width:650px;
+  max-width:600px;
   margin:auto;
   padding:16px;
-  padding-bottom:40px;
 }
-
 .card{
   background:white;
-  border-radius:18px;
+  border-radius:16px;
   padding:18px;
-  margin-bottom:15px;
-  box-shadow:0 4px 15px rgba(15,23,42,.07);
+  margin-bottom:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
-
-h2{
-  margin:0 0 12px;
-  font-size:19px;
+h2,h3{margin-top:0}
+label{
+  display:block;
+  margin-top:12px;
+  font-weight:600;
 }
-
-h3{
-  margin:18px 0 8px;
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
   font-size:16px;
 }
-
-.big{
-  font-size:34px;
-  font-weight:800;
-  margin:5px 0;
+button{
+  background:#0f172a;
+  color:white;
+  border:none;
+  font-weight:600;
 }
-
-.small{
+button.secondary{
+  background:#64748b;
+}
+button.danger{
+  background:#dc2626;
+}
+button.small{
+  width:auto;
+  padding:7px 10px;
+  margin:0 0 0 6px;
   font-size:13px;
-  color:#64748b;
 }
-
-.row{
+.stat{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #e2e8f0;
+}
+.stat:last-child{border-bottom:0}
+.big{
+  font-size:28px;
+  font-weight:700;
+}
+.green{color:#16a34a}
+.red{color:#dc2626}
+.muted{color:#64748b}
+.expense{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid #e2e8f0;
 }
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.stat{
-  background:#f8fafc;
-  border-radius:14px;
-  padding:13px;
-}
-
-.stat strong{
-  display:block;
-  font-size:19px;
-  margin-top:3px;
-}
-
-button{
-  width:100%;
-  border:0;
-  border-radius:13px;
-  padding:13px 15px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.primary{
-  background:#0f172a;
-  color:white;
-}
-
-.secondary{
-  background:#e2e8f0;
-  color:#0f172a;
-}
-
-.success{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.warning{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.danger{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:12px;
-  font-size:16px;
-  margin-top:6px;
-  margin-bottom:12px;
-  background:white;
-}
-
-label{
-  display:block;
-  font-size:13px;
-  font-weight:700;
-  color:#475569;
-}
-
-.hidden{
-  display:none !important;
-}
-
-.meter{
-  height:13px;
-  background:#e2e8f0;
-  border-radius:20px;
-  overflow:hidden;
-  margin:10px 0;
-}
-
-.meter-fill{
-  height:100%;
-  width:0%;
-  background:#16a34a;
-  transition:.25s;
-}
-
-.expense{
-  border-top:1px solid #e2e8f0;
-  padding:12px 0;
-}
-
-.expense:first-child{
-  border-top:0;
-}
-
-.expense-actions{
-  display:flex;
-  gap:7px;
-  margin-top:8px;
-}
-
-.expense-actions button{
-  width:auto;
+.expense:last-child{border-bottom:0}
+.expense-info{
   flex:1;
-  padding:9px 10px;
-  font-size:13px;
 }
-
-.simulation{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1e3a8a;
-  border-radius:14px;
-  padding:14px;
-  margin-top:12px;
-}
-
-.simulation strong{
-  font-size:20px;
-}
-
-.notice{
-  background:#f8fafc;
-  border-radius:12px;
-  padding:12px;
-  font-size:14px;
-}
-
-.setup{
-  min-height:100vh;
+.actions{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  gap:5px;
 }
-
-.setup-card{
-  width:100%;
-  max-width:500px;
-  background:white;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 8px 30px rgba(15,23,42,.1);
+.hidden{display:none}
+.notice{
+  background:#e0f2fe;
+  padding:12px;
+  border-radius:10px;
+  margin-top:10px;
 }
-
 </style>
 </head>
-
 <body>
-
-
-<!-- ==============================
-     CONFIGURACIÓN INICIAL
-============================== -->
-
-<div id="setupScreen" class="setup hidden">
-
-  <div class="setup-card">
-
-    <h1>Presupuesto Diario</h1>
-
-    <p class="small">
-      Configurá tu saldo inicial y la fecha de tu próximo cobro.
-    </p>
-
-    <label>
-      Saldo disponible inicial
-
-      <input
-        id="initialBalance"
-        type="number"
-        inputmode="decimal"
-        placeholder="Ej. 100000">
-    </label>
-
-    <label>
-      Próximo día de cobro
-
-      <input
-        id="nextPayday"
-        type="date">
-    </label>
-
-    <button
-      class="primary"
-      onclick="startApp()">
-
-      Comenzar
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- ==============================
-     APLICACIÓN
-============================== -->
-
-<div id="appScreen" class="hidden">
-
 <header>
-
-  <h1>Presupuesto Diario</h1>
-
-  <p id="headerDate"></p>
-
+  <h1>💰 Presupuesto Diario</h1>
 </header>
-
-
 <main>
-
-
-<!-- SALDO -->
-
-<div class="card">
-
-  <div class="row">
-
-    <div>
-
-      <div class="small">
-        Saldo disponible
-      </div>
-
-      <div
-        id="balance"
-        class="big">
-
-        $0
-
-      </div>
-
+<div id="setup" class="card">
+  <h2>Configurar presupuesto</h2>
+  <label>Saldo inicial</label>
+  <input id="initialBalance" type="number" inputmode="decimal" placeholder="100000">
+  <label>Fecha del próximo cobro</label>
+  <input id="nextPayday" type="date">
+  <button onclick="startApp()">Comenzar</button>
+</div>
+<div id="app" class="hidden">
+  <div class="card">
+    <h2>Resumen</h2>
+    <div class="stat">
+      <span>Fecha</span>
+      <strong id="today"></strong>
     </div>
-
-    <button
-      class="secondary"
-      style="width:auto"
-      onclick="editBalance()">
-
-      Editar
-
+    <div class="stat">
+      <span>Próximo cobro</span>
+      <strong id="paydayInfo"></strong>
+    </div>
+    <div class="stat">
+      <span>Saldo</span>
+      <strong id="balance"></strong>
+    </div>
+    <div class="stat">
+      <span>Presupuesto diario</span>
+      <strong id="dailyBudget"></strong>
+    </div>
+    <div class="stat">
+      <span>Gastado hoy</span>
+      <strong id="spent"></strong>
+    </div>
+    <div class="stat">
+      <span>Disponible hoy</span>
+      <strong id="available"></strong>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Agregar gasto</h3>
+    <label>Importe</label>
+    <input id="expenseAmount" type="number" inputmode="decimal">
+    <label>Descripción</label>
+    <input id="expenseDesc" type="text" placeholder="Ej: supermercado">
+    <button onclick="addExpense()">Agregar gasto</button>
+  </div>
+  <div class="card">
+    <h3>Gastos de hoy</h3>
+    <div id="expenseList"></div>
+  </div>
+  <div class="card">
+    <h3>Ingresar dinero</h3>
+    <label>Importe</label>
+    <input id="incomeAmount" type="number" inputmode="decimal">
+    <button onclick="addIncome()">Agregar ingreso</button>
+  </div>
+  <div class="card">
+    <h3>Cierre del día</h3>
+    <p class="muted">
+      El dinero que no gastes hoy se suma al presupuesto de mañana.
+    </p>
+    <button onclick="simulateClose()">Simular cierre de día</button>
+    <div id="simulation" class="notice hidden"></div>
+    <button id="undoSimulationBtn"
+            class="secondary hidden"
+            onclick="undoSimulation()">
+      Deshacer simulación
     </button>
-
+    <button onclick="closeDay()">Cerrar día definitivamente</button>
   </div>
-
-  <div
-    class="small"
-    id="paydayInfo">
+  <div class="card">
+    <button class="danger" onclick="resetApp()">Reiniciar presupuesto</button>
   </div>
-
 </div>
-
-
-<!-- PRESUPUESTO -->
-
-<div class="card">
-
-  <h2>
-    Presupuesto de hoy
-  </h2>
-
-  <div class="grid">
-
-    <div class="stat">
-
-      <div class="small">
-        Presupuesto
-      </div>
-
-      <strong id="dailyBudget">
-        $0
-      </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="small">
-        Gastado
-      </div>
-
-      <strong id="spentToday">
-        $0
-      </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="small">
-        Disponible hoy
-      </div>
-
-      <strong id="availableToday">
-        $0
-      </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-      <div class="small">
-        Arrastre
-      </div>
-
-      <strong id="carryOver">
-        $0
-      </strong>
-
-    </div>
-
-  </div>
-
-
-  <div class="meter">
-
-    <div
-      id="meterFill"
-      class="meter-fill">
-    </div>
-
-  </div>
-
-
-  <div
-    id="meterText"
-    class="small">
-  </div>
-
-</div>
-
-
-<!-- AGREGAR GASTO -->
-
-<div class="card">
-
-  <h2>
-    Agregar gasto
-  </h2>
-
-
-  <label>
-
-    Importe
-
-    <input
-      id="expenseAmount"
-      type="number"
-      inputmode="decimal"
-      placeholder="Ej. 5000">
-
-  </label>
-
-
-  <label>
-
-    Descripción
-
-    <input
-      id="expenseDescription"
-      type="text"
-      placeholder="Ej. supermercado">
-
-  </label>
-
-
-  <button
-    class="primary"
-    onclick="addExpense()">
-
-    Agregar gasto
-
-  </button>
-
-</div>
-
-
-<!-- INGRESO -->
-
-<div class="card">
-
-  <h2>
-    Ingreso eventual
-  </h2>
-
-
-  <label>
-
-    Importe
-
-    <input
-      id="incomeAmount"
-      type="number"
-      inputmode="decimal"
-      placeholder="Ej. 20000">
-
-  </label>
-
-
-  <button
-    class="success"
-    onclick="addIncome()">
-
-    Agregar ingreso
-
-  </button>
-
-</div>
-
-
-<!-- HISTORIAL -->
-
-<div class="card">
-
-  <h2>
-    Movimientos de hoy
-  </h2>
-
-  <div id="history"></div>
-
-</div>
-
-
-<!-- CIERRE -->
-
-<div class="card">
-
-  <h2>
-    Cierre del día
-  </h2>
-
-  <p class="small">
-
-    Primero podés simular el cierre para ver
-    cuánto tendrías disponible mañana.
-    La simulación no modifica tus datos.
-
-  </p>
-
-
-  <button
-    class="warning"
-    onclick="simulateClose()">
-
-    Simular cierre del día
-
-  </button>
-
-
-  <div id="simulationBox"></div>
-
-
-  <div style="height:10px"></div>
-
-
-  <button
-    class="primary"
-    onclick="closeDay()">
-
-    Cerrar día definitivamente
-
-  </button>
-
-</div>
-
-
-<!-- OPCIONES -->
-
-<div class="card">
-
-  <h2>
-    Opciones
-  </h2>
-
-
-  <button
-    class="secondary"
-    onclick="resetApp()">
-
-    Reiniciar aplicación
-
-  </button>
-
-</div>
-
-
 </main>
-
-</div>
-
-
 <script>
-
-
-/* ==================================
-   VERSIÓN
-================================== */
-
-const STORAGE_KEY =
-  "presupuesto_v6";
-
-
-/* ==================================
-   VARIABLES
-================================== */
-
+const STORAGE_KEY = "presupuesto_v6";
 let state = null;
-
-let simulation = null;
-
-
-/* ==================================
-   FECHA LOCAL
-================================== */
-
-function todayKey(){
-
-  const d = new Date();
-
-  const year =
-    d.getFullYear();
-
-  const month =
-    String(d.getMonth()+1)
-      .padStart(2,"0");
-
-  const day =
-    String(d.getDate())
-      .padStart(2,"0");
-
-  return `${year}-${month}-${day}`;
-
-}
-
-
-/* ==================================
-   FORMATO DINERO
-================================== */
-
 function money(value){
-
-  return new Intl.NumberFormat(
-    "es-AR",
-    {
-      style:"currency",
-      currency:"ARS",
-      maximumFractionDigits:0
-    }
-  ).format(
-    Number(value) || 0
+  return "$" + Math.round(value).toLocaleString("es-AR");
+}
+function localDateKey(date = new Date()){
+  const y = date.getFullYear();
+  const m = String(date.getMonth()+1).padStart(2,"0");
+  const d = String(date.getDate()).padStart(2,"0");
+  return `${y}-${m}-${d}`;
+}
+function parseLocalDate(dateString){
+  const parts = dateString.split("-");
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
   );
-
 }
-
-
-/* ==================================
-   FECHA
-================================== */
-
-function formatDate(key){
-
-  if(!key) return "";
-
-  const parts =
-    key.split("-");
-
-  return `${parts[2]}/${parts[1]}/${parts[0]}`;
-
-}
-
-
-/* ==================================
-   FECHA BONITA
-================================== */
-
-function niceToday(){
-
-  return new Date().toLocaleDateString(
-    "es-AR",
-    {
-      weekday:"long",
-      day:"numeric",
-      month:"long",
-      year:"numeric"
-    }
-  );
-
-}
-
-
-/* ==================================
-   CARGAR ESTADO
-================================== */
-
-function loadState(){
-
-  const saved =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
-
-
-  if(!saved){
-
-    return false;
-
-  }
-
-
-  try{
-
-    state =
-      JSON.parse(saved);
-
-    return true;
-
-  }catch(e){
-
-    console.error(e);
-
-    return false;
-
-  }
-
-}
-
-
-/* ==================================
-   GUARDAR
-================================== */
-
-function save(){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(state)
-  );
-
-}
-
-
-/* ==================================
-   DÍA ACTUAL
-================================== */
-
-function currentDay(){
-
-  const key =
-    todayKey();
-
-
-  if(!state.days){
-
-    state.days = {};
-
-  }
-
-
-  if(!state.days[key]){
-
-    state.days[key] = {
-
-      expenses:[],
-
-      income:0,
-
-      closed:false,
-
-      leftover:0,
-
-      carryIn:
-        Number(state.carryOver || 0)
-
-    };
-
-  }
-
-
-  return state.days[key];
-
-}
-
-
-/* ==================================
-   TOTAL GASTOS
-================================== */
-
-function totalExpenses(day){
-
-  if(
-    !day ||
-    !Array.isArray(day.expenses)
-  ){
-
-    return 0;
-
-  }
-
-
-  return day.expenses.reduce(
-    (total,expense) =>
-      total +
-      Number(expense.amount || 0),
-    0
-  );
-
-}
-
-
-/* ==================================
-   TOTAL INGRESOS
-================================== */
-
-function totalIncome(day){
-
-  if(!day){
-
-    return 0;
-
-  }
-
-
-  return Number(
-    day.income || 0
-  );
-
-}
-
-
-/* ==================================
-   DÍAS HASTA COBRO
-================================== */
-
 function daysUntilPayday(){
-
-  const today =
-    new Date();
-
-  const payday =
-    new Date(
-      state.nextPayday +
-      "T00:00:00"
-    );
-
-
-  today.setHours(
-    0,0,0,0
-  );
-
-  payday.setHours(
-    0,0,0,0
-  );
-
-
-  const diff =
-    payday.getTime() -
-    today.getTime();
-
-
-  const days =
-    Math.ceil(
-      diff / 86400000
-    );
-
-
-  return Math.max(
-    days,
-    1
-  );
-
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const payday = parseLocalDate(state.nextPayday);
+  payday.setHours(0,0,0,0);
+  const diff = payday - today;
+  return Math.max(1, Math.ceil(diff / 86400000));
 }
-
-
-/* ==================================
-   PRESUPUESTO BASE
-================================== */
-
-/*
-   IMPORTANTE:
-
-   Este valor se calcula UNA SOLA VEZ
-   al comenzar el período.
-
-   Después de un gasto NO se vuelve
-   a recalcular.
-*/
-
 function calculateInitialDailyBudget(){
-
-  const days =
-    daysUntilPayday();
-
-
-  return Number(
-    state.balance || 0
-  ) / days;
-
+  return Math.floor(state.balance / daysUntilPayday());
 }
-
-
-/* ==================================
-   PRESUPUESTO DEL DÍA
-================================== */
-
+function currentDay(){
+  const key = localDateKey();
+  if(!state.days[key]){
+    state.days[key] = {
+      expenses:[],
+      carryIn: state.carryOver || 0,
+      leftover:null,
+      closed:false
+    };
+    state.carryOver = 0;
+    save();
+  }
+  return state.days[key];
+}
 function dayBudget(day){
-
-  return Number(
-    state.baseDailyBudget || 0
-  ) +
-  Number(
-    day.carryIn || 0
-  );
-
+  return Math.round(state.baseDailyBudget + (day.carryIn || 0));
 }
-
-
-/* ==================================
-   DISPONIBLE DEL DÍA
-================================== */
-
-function dayAvailable(day){
-
-  return dayBudget(day) -
-         totalExpenses(day);
-
+function totalSpent(day){
+  return day.expenses.reduce((sum,e) => sum + Number(e.amount),0);
 }
-
-
-/* ==================================
-   INICIAR
-================================== */
-
+function available(day){
+  return dayBudget(day) - totalSpent(day);
+}
+function save(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+function load(){
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if(saved){
+    state = JSON.parse(saved);
+    showApp();
+  }
+}
 function startApp(){
-
-  const balance =
-    Number(
-      document.getElementById(
-        "initialBalance"
-      ).value
-    );
-
-
+  const balance = Number(
+    document.getElementById("initialBalance").value
+  );
   const payday =
-    document.getElementById(
-      "nextPayday"
-    ).value;
-
-
-  if(
-    isNaN(balance) ||
-    balance < 0
-  ){
-
-    alert(
-      "Ingresá un saldo inicial válido."
-    );
-
+    document.getElementById("nextPayday").value;
+  if(!balance || !payday){
+    alert("Completá el saldo y la fecha de cobro.");
     return;
-
   }
-
-
-  if(!payday){
-
-    alert(
-      "Seleccioná el próximo día de cobro."
-    );
-
-    return;
-
-  }
-
-
   state = {
-
-    balance:balance,
-
+    balance: Math.round(balance),
     nextPayday:payday,
-
+    // Se fija una sola vez y queda en pesos enteros.
     baseDailyBudget:0,
-
     carryOver:0,
-
     days:{}
-
   };
-
-
-  /*
-    EL PRESUPUESTO DIARIO
-    QUEDA FIJADO AHORA.
-  */
-
   state.baseDailyBudget =
     calculateInitialDailyBudget();
-
-
   save();
-
-  render();
-
+  showApp();
 }
-
-
-/* ==================================
-   EDITAR SALDO
-================================== */
-
-function editBalance(){
-
-  const value =
-    prompt(
-      "Nuevo saldo disponible:",
-      Math.round(
-        state.balance
-      )
-    );
-
-
-  if(value === null){
-
-    return;
-
-  }
-
-
-  const amount =
-    Number(value);
-
-
-  if(
-    isNaN(amount) ||
-    amount < 0
-  ){
-
-    alert(
-      "Ingresá un valor válido."
-    );
-
-    return;
-
-  }
-
-
-  state.balance =
-    amount;
-
-
-  save();
-
+function showApp(){
+  document.getElementById("setup").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
   render();
-
 }
-
-
-/* ==================================
-   AGREGAR GASTO
-================================== */
-
+function render(){
+  const day = currentDay();
+  document.getElementById("today").textContent =
+    new Date().toLocaleDateString("es-AR");
+  const days = daysUntilPayday();
+  document.getElementById("paydayInfo").textContent =
+    `${days} día${days === 1 ? "" : "s"}`;
+  document.getElementById("balance").textContent =
+    money(state.balance);
+  document.getElementById("dailyBudget").textContent =
+    money(dayBudget(day));
+  const spent = totalSpent(day);
+  document.getElementById("spent").textContent =
+    money(spent);
+  document.getElementById("available").textContent =
+    money(available(day));
+  renderExpenses(day);
+}
+function renderExpenses(day){
+  const container =
+    document.getElementById("expenseList");
+  if(day.expenses.length === 0){
+    container.innerHTML =
+      '<p class="muted">No hay gastos registrados.</p>';
+    return;
+  }
+  container.innerHTML =
+    day.expenses.map((expense,index)=>`
+      <div class="expense">
+        <div class="expense-info">
+          <strong>${escapeHtml(expense.desc || "Gasto")}</strong><br>
+          <span>${money(expense.amount)}</span>
+          <span class="muted"> · ${expense.time}</span>
+        </div>
+        <div class="actions">
+          <button class="small"
+            onclick="editExpense(${index})">
+            ✏️
+          </button>
+          <button class="small danger"
+            onclick="deleteExpense(${index})">
+            ✕
+          </button>
+        </div>
+      </div>
+    `).join("");
+}
+function escapeHtml(text){
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
 function addExpense(){
-
   const amount =
-    Number(
-      document.getElementById(
-        "expenseAmount"
-      ).value
-    );
-
-
-  const description =
-    document.getElementById(
-      "expenseDescription"
-    ).value
-    .trim();
-
-
-  if(
-    !amount ||
-    amount <= 0
-  ){
-
-    alert(
-      "Ingresá un importe válido."
-    );
-
+    Number(document.getElementById("expenseAmount").value);
+  const desc =
+    document.getElementById("expenseDesc").value.trim();
+  if(!amount || amount <= 0){
+    alert("Ingresá un importe válido.");
     return;
-
   }
-
-
-  const day =
-    currentDay();
-
-
+  const day = currentDay();
   day.expenses.push({
-
-    amount:amount,
-
-    desc:
-      description ||
-      "Gasto",
-
-    time:
-      new Date().toLocaleTimeString(
-        "es-AR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
-
+    amount:Math.round(amount),
+    desc:desc,
+    time:new Date().toLocaleTimeString(
+      "es-AR",
+      {hour:"2-digit",minute:"2-digit"}
+    )
   });
-
-
-  /*
-    EL GASTO REDUCE EL SALDO,
-    PERO NO MODIFICA
-    baseDailyBudget.
-  */
-
-  state.balance -=
-    amount;
-
-
-  document.getElementById(
-    "expenseAmount"
-  ).value = "";
-
-
-  document.getElementById(
-    "expenseDescription"
-  ).value = "";
-
-
+  state.balance =
+    Math.round(state.balance - amount);
   save();
-
+  document.getElementById("expenseAmount").value="";
+  document.getElementById("expenseDesc").value="";
   render();
-
 }
-
-
-/* ==================================
-   EDITAR GASTO
-================================== */
-
-function editExpense(index){
-
-  const day =
-    currentDay();
-
-
-  const expense =
-    day.expenses[index];
-
-
-  if(!expense){
-
+function deleteExpense(index){
+  const day = currentDay();
+  const expense = day.expenses[index];
+  if(!confirm(
+    `¿Eliminar el gasto de ${money(expense.amount)}?`
+  )){
     return;
-
   }
-
-
+  state.balance =
+    Math.round(state.balance + Number(expense.amount));
+  day.expenses.splice(index,1);
+  save();
+  render();
+}
+function editExpense(index){
+  const day = currentDay();
+  const expense = day.expenses[index];
   const newAmount =
     prompt(
       "Nuevo importe:",
       expense.amount
     );
-
-
-  if(newAmount === null){
-
+  if(newAmount === null) return;
+  const amount = Number(newAmount);
+  if(!amount || amount <= 0){
+    alert("Importe inválido.");
     return;
-
   }
-
-
-  const amount =
-    Number(newAmount);
-
-
-  if(
-    isNaN(amount) ||
-    amount <= 0
-  ){
-
-    alert(
-      "Ingresá un importe válido."
-    );
-
-    return;
-
-  }
-
-
-  const newDescription =
+  const difference =
+    Math.round(amount) - Number(expense.amount);
+  expense.amount = Math.round(amount);
+  state.balance =
+    Math.round(state.balance - difference);
+  const newDesc =
     prompt(
       "Descripción:",
       expense.desc || ""
     );
-
-
-  if(newDescription === null){
-
-    return;
-
+  if(newDesc !== null){
+    expense.desc = newDesc.trim();
   }
-
-
-  /*
-    DEVOLVEMOS EL GASTO ANTERIOR
-  */
-
-  state.balance +=
-    Number(expense.amount);
-
-
-  /*
-    DESCONTAMOS EL NUEVO
-  */
-
-  state.balance -=
-    amount;
-
-
-  expense.amount =
-    amount;
-
-
-  expense.desc =
-    newDescription.trim() ||
-    "Gasto";
-
-
   save();
-
   render();
-
 }
-
-
-/* ==================================
-   ELIMINAR GASTO
-================================== */
-
-function deleteExpense(index){
-
-  const day =
-    currentDay();
-
-
-  const expense =
-    day.expenses[index];
-
-
-  if(!expense){
-
-    return;
-
-  }
-
-
-  const ok =
-    confirm(
-      `¿Eliminar el gasto de ${money(expense.amount)}?`
-    );
-
-
-  if(!ok){
-
-    return;
-
-  }
-
-
-  /*
-    DEVOLVEMOS EL DINERO
-  */
-
-  state.balance +=
-    Number(expense.amount);
-
-
-  day.expenses.splice(
-    index,
-    1
-  );
-
-
-  save();
-
-  render();
-
-}
-
-
-/* ==================================
-   INGRESO EVENTUAL
-================================== */
-
 function addIncome(){
-
   const amount =
-    Number(
-      document.getElementById(
-        "incomeAmount"
-      ).value
-    );
-
-
-  if(
-    !amount ||
-    amount <= 0
-  ){
-
-    alert(
-      "Ingresá un importe válido."
-    );
-
+    Number(document.getElementById("incomeAmount").value);
+  if(!amount || amount <= 0){
+    alert("Ingresá un importe válido.");
     return;
-
   }
-
-
-  const day =
-    currentDay();
-
-
-  day.income =
-    Number(day.income || 0) +
-    amount;
-
-
-  state.balance +=
-    amount;
-
-
-  /*
-    IMPORTANTE:
-
-    El ingreso aumenta el saldo,
-    pero NO cambia el presupuesto
-    diario ya establecido.
-  */
-
-
-  document.getElementById(
-    "incomeAmount"
-  ).value = "";
-
-
+  state.balance =
+    Math.round(state.balance + amount);
+  document.getElementById("incomeAmount").value="";
   save();
-
   render();
-
 }
-
-
-/* ==================================
-   SIMULAR CIERRE
-================================== */
-
 function simulateClose(){
-
-  const day =
-    currentDay();
-
-
-  const budget =
-    dayBudget(day);
-
-
-  const spent =
-    totalExpenses(day);
-
-
+  const day = currentDay();
   const leftover =
-    budget - spent;
-
-
-  /*
-    MAÑANA:
-
-    presupuesto base
-    + sobrante de hoy
-  */
-
+    Math.max(0, Math.round(available(day)));
   const tomorrowBudget =
-    Number(
-      state.baseDailyBudget || 0
-    ) +
-    leftover;
-
-
-  simulation = {
-
-    budget:budget,
-
-    spent:spent,
-
-    leftover:leftover,
-
-    tomorrowBudget:
-      tomorrowBudget
-
-  };
-
-
-  renderSimulation();
-
+    Math.round(state.baseDailyBudget + leftover);
+  const simulation =
+    document.getElementById("simulation");
+  simulation.innerHTML =
+    `
+      <strong>Simulación:</strong><br><br>
+      Disponible hoy: <strong>${money(leftover)}</strong><br>
+      Presupuesto mañana:
+      <strong>${money(tomorrowBudget)}</strong>
+    `;
+  simulation.classList.remove("hidden");
+  document
+    .getElementById("undoSimulationBtn")
+    .classList.remove("hidden");
 }
-
-
-/* ==================================
-   MOSTRAR SIMULACIÓN
-================================== */
-
-function renderSimulation(){
-
-  const box =
-    document.getElementById(
-      "simulationBox"
-    );
-
-
-  if(!simulation){
-
-    box.innerHTML = "";
-
-    return;
-
-  }
-
-
-  const className =
-    simulation.leftover >= 0
-      ? "success"
-      : "danger";
-
-
-  box.innerHTML = `
-
-    <div class="simulation">
-
-      <h3 style="margin-top:0">
-        Simulación
-      </h3>
-
-      <p>
-        Presupuesto de hoy:
-        <strong>
-          ${money(simulation.budget)}
-        </strong>
-      </p>
-
-      <p>
-        Gastado:
-        <strong>
-          ${money(simulation.spent)}
-        </strong>
-      </p>
-
-      <p>
-        Resultado:
-        <strong>
-          ${money(simulation.leftover)}
-        </strong>
-      </p>
-
-      <p>
-        Presupuesto estimado para mañana:
-        <strong>
-          ${money(simulation.tomorrowBudget)}
-        </strong>
-      </p>
-
-      <button
-        class="${className}"
-        onclick="undoSimulation()">
-
-        Deshacer simulación
-
-      </button>
-
-    </div>
-
-  `;
-
-}
-
-
-/* ==================================
-   DESHACER SIMULACIÓN
-================================== */
-
 function undoSimulation(){
-
-  simulation =
-    null;
-
-
-  renderSimulation();
-
+  document
+    .getElementById("simulation")
+    .classList.add("hidden");
+  document
+    .getElementById("undoSimulationBtn")
+    .classList.add("hidden");
 }
-
-
-/* ==================================
-   CERRAR DÍA
-================================== */
-
 function closeDay(){
-
-  const day =
-    currentDay();
-
-
+  const day = currentDay();
   if(day.closed){
-
-    alert(
-      "El día ya está cerrado."
-    );
-
+    alert("Este día ya está cerrado.");
     return;
-
   }
-
-
-  const budget =
-    dayBudget(day);
-
-
-  const spent =
-    totalExpenses(day);
-
-
   const leftover =
-    budget - spent;
-
-
-  const tomorrowBudget =
-    Number(
-      state.baseDailyBudget || 0
-    ) +
-    leftover;
-
-
-  const message =
-
-`Vas a cerrar el día.
-
-Presupuesto: ${money(budget)}
-Gastado: ${money(spent)}
-Resultado: ${money(leftover)}
-
-Presupuesto estimado para mañana:
-${money(tomorrowBudget)}
-
-¿Confirmar cierre?`;
-
-
-  if(!confirm(message)){
-
-    return;
-
-  }
-
-
-  day.closed =
-    true;
-
-
-  day.leftover =
-    leftover;
-
-
-  state.carryOver =
-    leftover;
-
-
+    Math.max(0, Math.round(available(day)));
+  day.leftover = leftover;
+  day.closed = true;
+  state.carryOver = leftover;
   save();
-
-
-  simulation =
-    null;
-
-
+  render();
   alert(
-
-`Día cerrado.
-
-Resultado:
-${money(leftover)}
-
-Presupuesto estimado para mañana:
-${money(tomorrowBudget)}`
-
+    `Día cerrado.\n\n` +
+    `Disponible que pasa a mañana: ${money(leftover)}`
   );
-
-
-  render();
-
 }
-
-
-/* ==================================
-   HISTORIAL
-================================== */
-
-function renderHistory(){
-
-  const day =
-    currentDay();
-
-
-  const container =
-    document.getElementById(
-      "history"
-    );
-
-
-  let html = "";
-
-
-  if(
-    !day.expenses ||
-    day.expenses.length === 0
-  ){
-
-    html += `
-
-      <div class="notice">
-
-        Todavía no cargaste
-        gastos hoy.
-
-      </div>
-
-    `;
-
-  }else{
-
-    day.expenses.forEach(
-      (expense,index) => {
-
-        html += `
-
-          <div class="expense">
-
-            <div class="row">
-
-              <div>
-
-                <strong>
-                  ${escapeHtml(
-                    expense.desc ||
-                    "Gasto"
-                  )}
-                </strong>
-
-                <div class="small">
-
-                  ${expense.time || ""}
-
-                </div>
-
-              </div>
-
-              <strong>
-
-                ${money(
-                  expense.amount
-                )}
-
-              </strong>
-
-            </div>
-
-
-            <div class="expense-actions">
-
-              <button
-                class="secondary"
-                onclick="editExpense(${index})">
-
-                ✏️ Editar
-
-              </button>
-
-
-              <button
-                class="danger"
-                onclick="deleteExpense(${index})">
-
-                ✕ Eliminar
-
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    );
-
-  }
-
-
-  if(day.income){
-
-    html += `
-
-      <div
-        class="notice"
-        style="margin-top:12px">
-
-        Ingresos eventuales de hoy:
-
-        <strong>
-          ${money(day.income)}
-        </strong>
-
-      </div>
-
-    `;
-
-  }
-
-
-  container.innerHTML =
-    html;
-
-}
-
-
-/* ==================================
-   SEGURIDAD TEXTO
-================================== */
-
-function escapeHtml(text){
-
-  return String(text)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-/* ==================================
-   RENDER
-================================== */
-
-function render(){
-
-  if(!state){
-
-    document
-      .getElementById(
-        "setupScreen"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
-
-    document
-      .getElementById(
-        "appScreen"
-      )
-      .classList.add(
-        "hidden"
-      );
-
-
-    return;
-
-  }
-
-
-  document
-    .getElementById(
-      "setupScreen"
-    )
-    .classList.add(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "appScreen"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-
-  const day =
-    currentDay();
-
-
-  document.getElementById(
-    "headerDate"
-  ).textContent =
-    niceToday();
-
-
-  document.getElementById(
-    "balance"
-  ).textContent =
-    money(
-      state.balance
-    );
-
-
-  const days =
-    daysUntilPayday();
-
-
-  document.getElementById(
-    "paydayInfo"
-  ).textContent =
-
-    `${days} día${days === 1 ? "" : "s"} hasta el próximo cobro (${formatDate(state.nextPayday)})`;
-
-
-  const budget =
-    dayBudget(day);
-
-
-  const spent =
-    totalExpenses(day);
-
-
-  const available =
-    dayAvailable(day);
-
-
-  document.getElementById(
-    "dailyBudget"
-  ).textContent =
-    money(budget);
-
-
-  document.getElementById(
-    "spentToday"
-  ).textContent =
-    money(spent);
-
-
-  document.getElementById(
-    "availableToday"
-  ).textContent =
-    money(available);
-
-
-  document.getElementById(
-    "carryOver"
-  ).textContent =
-    money(
-      day.carryIn || 0
-    );
-
-
-  let percentage = 0;
-
-
-  if(budget > 0){
-
-    percentage =
-      Math.min(
-        Math.max(
-          spent / budget * 100,
-          0
-        ),
-        100
-      );
-
-  }
-
-
-  document.getElementById(
-    "meterFill"
-  ).style.width =
-    percentage + "%";
-
-
-  document.getElementById(
-    "meterText"
-  ).textContent =
-
-    `${Math.round(percentage)}% del presupuesto utilizado`;
-
-
-  renderHistory();
-
-  renderSimulation();
-
-}
-
-
-/* ==================================
-   REINICIAR
-================================== */
-
 function resetApp(){
-
-  const ok =
-    confirm(
-      "Esto eliminará todos los datos de la aplicación. ¿Continuar?"
-    );
-
-
-  if(!ok){
-
+  if(!confirm(
+    "¿Seguro que querés reiniciar todo el presupuesto?"
+  )){
     return;
-
   }
-
-
-  localStorage.removeItem(
-    STORAGE_KEY
-  );
-
-
-  /*
-    También eliminamos versiones
-    anteriores para evitar mezclas.
-  */
-
-  localStorage.removeItem(
-    "presupuesto_v5"
-  );
-
-  localStorage.removeItem(
-    "presupuesto_v4"
-  );
-
-
-  state =
-    null;
-
-
-  simulation =
-    null;
-
-
-  render();
-
+  localStorage.removeItem("presupuesto_v6");
+  localStorage.removeItem("presupuesto_v5");
+  localStorage.removeItem("presupuesto_v4");
+  location.reload();
 }
-
-
-/* ==================================
-   INICIO
-================================== */
-
-if(loadState()){
-
-  render();
-
-}else{
-
-  render();
-
+load();
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("./sw.js")
+    .catch(err => console.log(err));
 }
-
-
-/* ==================================
-   SERVICE WORKER
-================================== */
-
-if(
-  "serviceWorker" in navigator
-){
-
-  window.addEventListener(
-    "load",
-    () => {
-
-      navigator.serviceWorker
-        .register("./sw.js")
-        .catch(
-          error =>
-            console.log(
-              "Service Worker:",
-              error
-            )
-        );
-
-    }
-  );
-
-}
-
 </script>
-
 </body>
 </html>
