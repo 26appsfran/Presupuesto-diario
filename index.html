@@ -55,9 +55,7 @@ button{
   padding-bottom:40px;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .header{
   background:linear-gradient(135deg,#071525,#102d4a);
@@ -114,9 +112,7 @@ button{
   color:#b9c8d7;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
   margin-top:20px;
@@ -179,9 +175,7 @@ button{
   color:var(--ink);
 }
 
-/* =========================================================
-   ALERTS
-========================================================= */
+/* ALERTS */
 
 .alert{
   margin:16px 18px 0;
@@ -214,9 +208,7 @@ button{
   color:#14784f;
 }
 
-/* =========================================================
-   CONTENT
-========================================================= */
+/* CONTENT */
 
 .content{
   padding:0 18px;
@@ -232,9 +224,7 @@ button{
   margin:0 0 10px;
 }
 
-/* =========================================================
-   KPI
-========================================================= */
+/* KPI */
 
 .kpis{
   display:grid;
@@ -275,9 +265,7 @@ button{
   color:var(--blue);
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
+/* CARDS */
 
 .card{
   background:var(--card);
@@ -287,9 +275,7 @@ button{
   box-shadow:0 6px 20px rgba(7,21,37,.045);
 }
 
-/* =========================================================
-   MOVEMENTS
-========================================================= */
+/* MOVEMENTS */
 
 .movement-grid{
   display:grid;
@@ -370,9 +356,7 @@ button{
   color:#b52f38;
 }
 
-/* =========================================================
-   CONFIG
-========================================================= */
+/* CONFIG */
 
 .config-toggle{
   width:100%;
@@ -412,9 +396,7 @@ button{
   line-height:1.4;
 }
 
-/* =========================================================
-   SWITCH
-========================================================= */
+/* SWITCH */
 
 .switch-row{
   display:flex;
@@ -515,9 +497,7 @@ button{
   font-weight:900;
 }
 
-/* =========================================================
-   DAYS
-========================================================= */
+/* DAYS */
 
 .days-list{
   display:flex;
@@ -564,9 +544,7 @@ button{
   margin-top:2px;
 }
 
-/* =========================================================
-   MOVEMENT LIST
-========================================================= */
+/* MOVEMENT LIST */
 
 .movements{
   display:flex;
@@ -632,9 +610,7 @@ button{
   font-weight:900;
 }
 
-/* =========================================================
-   CLOSE
-========================================================= */
+/* CLOSE */
 
 .close-summary{
   display:grid;
@@ -676,9 +652,7 @@ button{
   margin-bottom:12px;
 }
 
-/* =========================================================
-   CHART
-========================================================= */
+/* CHART */
 
 .chart{
   display:flex;
@@ -716,9 +690,7 @@ button{
   color:var(--muted);
 }
 
-/* =========================================================
-   EMPTY
-========================================================= */
+/* EMPTY */
 
 .empty{
   text-align:center;
@@ -727,9 +699,7 @@ button{
   padding:18px 5px;
 }
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* TOAST */
 
 .toast{
   position:fixed;
@@ -754,9 +724,7 @@ button{
   transform:translateX(-50%) translateY(0);
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .footer{
   text-align:center;
@@ -767,7 +735,6 @@ button{
 }
 
 @media(max-width:420px){
-
   .hero-value{
     font-size:34px;
   }
@@ -793,27 +760,16 @@ button{
 
   <header class="header">
     <div class="header-top">
-
       <div class="brand">
-
         <div class="logo">M</div>
 
         <div>
-          <div class="brand-title">
-            Presupuesto Diario
-          </div>
-
-          <div class="brand-sub">
-            Macrodesk
-          </div>
+          <div class="brand-title">Presupuesto Diario</div>
+          <div class="brand-sub">Macrodesk</div>
         </div>
-
       </div>
 
-      <div class="version">
-        V3.3
-      </div>
-
+      <div class="version">V3.3</div>
     </div>
   </header>
 
@@ -821,9 +777,7 @@ button{
 
     <section class="content">
 
-      <!-- =================================================
-           HERO
-      ================================================== -->
+      <!-- HERO -->
 
       <div class="hero">
 
@@ -831,24 +785,15 @@ button{
           Disponible parcial de hoy
         </div>
 
-        <div
-          id="heroValue"
-          class="hero-value"
-        >
+        <div id="heroValue" class="hero-value">
           $0
         </div>
 
-        <div
-          id="heroInfo"
-          class="hero-info"
-        >
+        <div id="heroInfo" class="hero-info">
           Configurá tu presupuesto para comenzar.
         </div>
 
-        <div
-          id="prioritySummary"
-          class="priority-summary"
-        >
+        <div id="prioritySummary" class="priority-summary">
 
           <div class="priority-row">
             <span>Presupuesto base</span>
@@ -869,92 +814,37 @@ button{
 
       </div>
 
+      <!-- ALERTAS -->
 
-      <!-- =================================================
-           ALERTAS
-      ================================================== -->
+      <div id="reserveAlert" class="alert"></div>
 
-      <div
-        id="reserveAlert"
-        class="alert"
-      ></div>
-
-
-      <!-- =================================================
-           KPIs
-      ================================================== -->
+      <!-- KPIs -->
 
       <div class="kpis">
 
         <div class="kpi">
-
-          <div class="kpi-label">
-            Presupuesto de hoy
-          </div>
-
-          <div
-            id="kpiBudget"
-            class="kpi-value blue"
-          >
-            $0
-          </div>
-
+          <div class="kpi-label">Presupuesto de hoy</div>
+          <div id="kpiBudget" class="kpi-value blue">$0</div>
         </div>
 
-
         <div class="kpi">
-
-          <div class="kpi-label">
-            Gastado hoy
-          </div>
-
-          <div
-            id="kpiSpent"
-            class="kpi-value red"
-          >
-            $0
-          </div>
-
+          <div class="kpi-label">Gastado hoy</div>
+          <div id="kpiSpent" class="kpi-value red">$0</div>
         </div>
 
-
         <div class="kpi">
-
-          <div class="kpi-label">
-            Ingresos hoy
-          </div>
-
-          <div
-            id="kpiIncome"
-            class="kpi-value green"
-          >
-            $0
-          </div>
-
+          <div class="kpi-label">Ingresos hoy</div>
+          <div id="kpiIncome" class="kpi-value green">$0</div>
         </div>
 
-
         <div class="kpi">
-
-          <div class="kpi-label">
-            Saldo total
-          </div>
-
-          <div
-            id="kpiBalance"
-            class="kpi-value"
-          >
-            $0
-          </div>
-
+          <div class="kpi-label">Saldo total</div>
+          <div id="kpiBalance" class="kpi-value">$0</div>
         </div>
 
       </div>
 
-
-      <!-- =================================================
-           MOVIMIENTO
-      ================================================== -->
+      <!-- MOVIMIENTO -->
 
       <section class="section">
 
@@ -1010,10 +900,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           CONFIGURACION
-      ================================================== -->
+      <!-- CONFIGURACION -->
 
       <section class="section">
 
@@ -1025,24 +912,15 @@ button{
             type="button"
           >
 
-            <span
-              class="section-title"
-              style="margin:0"
-            >
+            <span class="section-title" style="margin:0">
               Configuración
             </span>
 
-            <span id="configArrow">
-              ▼
-            </span>
+            <span id="configArrow">▼</span>
 
           </button>
 
-
-          <div
-            id="configPanel"
-            class="config-panel"
-          >
+          <div id="configPanel" class="config-panel">
 
             <div class="field">
 
@@ -1061,12 +939,10 @@ button{
               >
 
               <div class="field-help">
-                Es el dinero total con el que contás
-                para llegar al próximo cobro.
+                Es el dinero total con el que contás para llegar al próximo cobro.
               </div>
 
             </div>
-
 
             <div class="field">
 
@@ -1080,8 +956,11 @@ button{
                 type="date"
               >
 
-            </div>
+              <div class="field-help">
+                El presupuesto se calcula desde hoy hasta el día anterior al cobro.
+              </div>
 
+            </div>
 
             <div class="field">
 
@@ -1100,12 +979,10 @@ button{
               >
 
               <div class="field-help">
-                Este importe será el presupuesto que querés
-                garantizar para cada día.
+                Este importe será el presupuesto que querés garantizar para cada día.
               </div>
 
             </div>
-
 
             <!-- PRIORIDAD -->
 
@@ -1122,7 +999,6 @@ button{
 
               </label>
 
-
               <div>
 
                 <div class="switch-title">
@@ -1130,15 +1006,13 @@ button{
                 </div>
 
                 <div class="switch-help">
-                  Si sobra dinero después de reservar
-                  el presupuesto base de todos los días,
-                  ese excedente queda disponible hoy.
+                  Si sobra dinero después de reservar el presupuesto base de todos
+                  los días, ese excedente queda disponible hoy.
                 </div>
 
               </div>
 
             </div>
-
 
             <div
               id="priorityPreview"
@@ -1150,7 +1024,7 @@ button{
               </div>
 
               <div class="preview-row">
-                <span>Días restantes</span>
+                <span>Días presupuestables</span>
                 <strong id="previewDays">0</strong>
               </div>
 
@@ -1171,7 +1045,6 @@ button{
 
             </div>
 
-
             <button
               id="saveConfigBtn"
               class="btn btn-primary"
@@ -1186,10 +1059,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           MOVIMIENTOS HOY
-      ================================================== -->
+      <!-- MOVIMIENTOS HOY -->
 
       <section class="section">
 
@@ -1208,10 +1078,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           CIERRE
-      ================================================== -->
+      <!-- CIERRE -->
 
       <section class="section">
 
@@ -1238,7 +1105,6 @@ button{
 
             </div>
 
-
             <div class="close-box">
 
               <div class="close-label">
@@ -1256,16 +1122,13 @@ button{
 
           </div>
 
-
           <div
             id="closeExplanation"
             class="close-explanation"
           >
-            El sobrante positivo se arrastra íntegramente
-            al día siguiente. Los déficits se distribuyen
-            sobre los días restantes.
+            El sobrante positivo se arrastra íntegramente al día siguiente.
+            Los déficits se distribuyen sobre los días restantes.
           </div>
-
 
           <div class="btn-row">
 
@@ -1291,10 +1154,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           7 DIAS
-      ================================================== -->
+      <!-- 7 DIAS -->
 
       <section class="section">
 
@@ -1313,10 +1173,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           DIAS FUTUROS
-      ================================================== -->
+      <!-- PLAN DE DIAS -->
 
       <section class="section">
 
@@ -1335,10 +1192,7 @@ button{
 
       </section>
 
-
-      <!-- =================================================
-           ESTADO
-      ================================================== -->
+      <!-- ESTADO -->
 
       <section class="section">
 
@@ -1363,17 +1217,15 @@ button{
 
           </button>
 
-
           <div
             id="statePanel"
             class="config-panel"
           >
 
             <div class="field-help">
-              El presupuesto diario se mantiene fijo durante
-              el día. Los gastos modifican únicamente el
-              disponible parcial. Los ingresos se asignan
-              exclusivamente al día actual.
+              El presupuesto diario se mantiene fijo durante el día.
+              Los gastos modifican únicamente el disponible parcial.
+              Los ingresos se asignan al día actual.
             </div>
 
             <div style="height:10px"></div>
@@ -1397,12 +1249,10 @@ button{
 
   </main>
 
-
   <div
     id="toast"
     class="toast"
   ></div>
-
 
   <div class="footer">
     Macrodesk · Presupuesto Diario
@@ -1410,17 +1260,14 @@ button{
 
 </div>
 
-
 <script>
 "use strict";
-
 
 /* =========================================================
    STORAGE
 ========================================================= */
 
 const STORAGE_KEY = "presupuesto_v33";
-
 
 let state = {
 
@@ -1456,7 +1303,7 @@ let state = {
 
 
 /* =========================================================
-   UTILIDADES NUMERICAS
+   UTILIDADES
 ========================================================= */
 
 function num(value){
@@ -1500,178 +1347,61 @@ function moneyCompact(value){
 }
 
 
-/* =========================================================
-   FECHAS
-========================================================= */
-
 /*
-  IMPORTANTE:
+  Devuelve la fecha LOCAL del dispositivo.
 
-  Las fechas provenientes de <input type="date">
-  tienen formato YYYY-MM-DD.
-
-  NO usamos:
-
-      new Date("2026-10-06")
-
-  porque JavaScript puede interpretarlo como UTC
-  y producir desplazamientos dependiendo de la zona
-  horaria.
-
-  En esta aplicación las fechas son fechas de calendario,
-  no momentos horarios.
-
-  Por eso las construimos explícitamente en horario local.
+  No usamos toISOString() porque UTC puede cambiar
+  el día respecto de la fecha local.
 */
-
 
 function todayKey(){
 
   const d = new Date();
 
-  return makeDateKey(
-    d.getFullYear(),
-    d.getMonth() + 1,
-    d.getDate()
-  );
-}
+  const y =
+    d.getFullYear();
 
+  const m =
+    String(d.getMonth()+1).padStart(2,"0");
 
-function makeDateKey(year,month,day){
+  const day =
+    String(d.getDate()).padStart(2,"0");
 
-  return (
-    String(year).padStart(4,"0") +
-    "-" +
-    String(month).padStart(2,"0") +
-    "-" +
-    String(day).padStart(2,"0")
-  );
-}
-
-
-function isValidDateKey(key){
-
-  if(
-    typeof key !== "string" ||
-    !/^\d{4}-\d{2}-\d{2}$/.test(key)
-  ){
-    return false;
-  }
-
-  const parts =
-    key.split("-").map(Number);
-
-  const year = parts[0];
-  const month = parts[1];
-  const day = parts[2];
-
-  if(
-    !Number.isInteger(year) ||
-    !Number.isInteger(month) ||
-    !Number.isInteger(day)
-  ){
-    return false;
-  }
-
-  if(month < 1 || month > 12){
-    return false;
-  }
-
-  if(day < 1 || day > 31){
-    return false;
-  }
-
-  const test =
-    new Date(
-      year,
-      month - 1,
-      day,
-      12,
-      0,
-      0,
-      0
-    );
-
-  return (
-    test.getFullYear() === year &&
-    test.getMonth() === month - 1 &&
-    test.getDate() === day
-  );
-}
-
-
-function parseDateKey(key){
-
-  if(!isValidDateKey(key)){
-
-    const now = new Date();
-
-    return new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      12,
-      0,
-      0,
-      0
-    );
-  }
-
-  const parts =
-    key.split("-").map(Number);
-
-  return new Date(
-    parts[0],
-    parts[1] - 1,
-    parts[2],
-    12,
-    0,
-    0,
-    0
-  );
+  return `${y}-${m}-${day}`;
 }
 
 
 /*
-  Convierte una fecha YYYY-MM-DD a un número de día
-  independiente de zona horaria.
+  Convierte YYYY-MM-DD en fecha LOCAL.
 
-  Esto hace que la resta de fechas sea estable incluso
-  si algún país utiliza cambios de horario.
+  Importante:
+  new Date("2026-10-06") puede interpretarse en UTC
+  dependiendo del navegador.
+
+  Por eso hacemos la construcción manual.
 */
 
-function dateSerial(key){
-
-  if(!isValidDateKey(key)){
-    return NaN;
-  }
+function parseDateKey(key){
 
   const parts =
-    key.split("-").map(Number);
+    String(key)
+      .split("-")
+      .map(Number);
 
-  return Math.floor(
-    Date.UTC(
-      parts[0],
-      parts[1] - 1,
-      parts[2]
-    ) / 86400000
-  );
-}
-
-
-function isFutureDate(dateString){
-
-  if(!isValidDateKey(dateString)){
-    return false;
+  if(
+    parts.length !== 3 ||
+    parts.some(
+      v => !Number.isFinite(v)
+    )
+  ){
+    return new Date();
   }
 
-  const selected =
-    dateSerial(dateString);
-
-  const today =
-    dateSerial(todayKey());
-
-  return selected > today;
+  return new Date(
+    parts[0],
+    parts[1]-1,
+    parts[2]
+  );
 }
 
 
@@ -1696,13 +1426,15 @@ function shortDate(key){
   const d =
     parseDateKey(key);
 
-  return d.toLocaleDateString(
-    "es-AR",
-    {
-      weekday:"short",
-      day:"2-digit"
-    }
-  ).replace(".","");
+  return d
+    .toLocaleDateString(
+      "es-AR",
+      {
+        weekday:"short",
+        day:"2-digit"
+      }
+    )
+    .replace(".","");
 }
 
 
@@ -1715,43 +1447,76 @@ function addDays(key,amount){
     d.getDate() + amount
   );
 
-  return makeDateKey(
-    d.getFullYear(),
-    d.getMonth() + 1,
-    d.getDate()
+  const y =
+    d.getFullYear();
+
+  const m =
+    String(d.getMonth()+1)
+      .padStart(2,"0");
+
+  const day =
+    String(d.getDate())
+      .padStart(2,"0");
+
+  return `${y}-${m}-${day}`;
+}
+
+
+/*
+  Calcula días calendario entre dos claves YYYY-MM-DD.
+
+  Ejemplo:
+
+  30/09 → 06/10 = 6
+
+  Esto significa que hay presupuesto para:
+
+  30/09
+  01/10
+  02/10
+  03/10
+  04/10
+  05/10
+
+  El 06/10 es el día de cobro y NO se presupuesta.
+*/
+
+function dateDifferenceInDays(fromKey,toKey){
+
+  const from =
+    parseDateKey(fromKey);
+
+  const to =
+    parseDateKey(toKey);
+
+  from.setHours(0,0,0,0);
+  to.setHours(0,0,0,0);
+
+  const diff =
+    to.getTime() -
+    from.getTime();
+
+  return Math.round(
+    diff / 86400000
   );
 }
 
 
 function daysUntilPayday(fromKey){
 
-  if(
-    !state.nextPayday ||
-    !isValidDateKey(state.nextPayday)
-  ){
+  if(!state.nextPayday){
     return 0;
   }
 
-  if(!isValidDateKey(fromKey)){
-    return 0;
-  }
-
-  const from =
-    dateSerial(fromKey);
-
-  const payday =
-    dateSerial(state.nextPayday);
-
-  if(
-    !Number.isFinite(from) ||
-    !Number.isFinite(payday)
-  ){
-    return 0;
-  }
+  const difference =
+    dateDifferenceInDays(
+      fromKey,
+      state.nextPayday
+    );
 
   return Math.max(
     0,
-    payday - from
+    difference
   );
 }
 
@@ -1812,6 +1577,7 @@ function loadState(){
     );
 
   }
+
 }
 
 
@@ -1835,21 +1601,22 @@ function createDay(key){
     scheduled =
       num(state.nextDayBudget);
 
-    state.nextDayBudget = null;
+    state.nextDayBudget =
+      null;
   }
-
 
   const day = {
 
     date:key,
 
-    scheduledBudget:scheduled,
+    scheduledBudget:
+      scheduled,
 
-    carryIn:num(state.carryOver),
+    carryIn:
+      num(state.carryOver),
 
-    deficitIn:num(
-      state.nextDayDeficitPerDay
-    ),
+    deficitIn:
+      num(state.nextDayDeficitPerDay),
 
     expenses:[],
 
@@ -1872,7 +1639,6 @@ function createDay(key){
     debtAfterClose:0
 
   };
-
 
   state.carryOver = 0;
 
@@ -1909,6 +1675,7 @@ function standardDayBudget(day){
       0,
       num(day.scheduledBudget)
     );
+
   }
 
   return Math.max(
@@ -1926,15 +1693,13 @@ function standardDayBudget(day){
 
 function cycleDays(){
 
-  if(
-    !state.nextPayday ||
-    !state.cycleStartDate
-  ){
+  if(!state.nextPayday){
     return 0;
   }
 
   return daysUntilPayday(
-    state.cycleStartDate
+    state.cycleStartDate ||
+    todayKey()
   );
 }
 
@@ -1953,13 +1718,13 @@ function priorityExtra(){
   }
 
   const required =
-    num(state.baseDailyBudget)
-    * totalDays;
+    num(state.baseDailyBudget) *
+    totalDays;
 
   return Math.max(
     0,
-    num(state.cycleStartingBalance)
-      - required
+    num(state.cycleStartingBalance) -
+    required
   );
 }
 
@@ -1992,7 +1757,8 @@ function dayBudget(day){
 
   return Math.max(
     0,
-    base + todayPriorityExtra(day)
+    base +
+    todayPriorityExtra(day)
   );
 }
 
@@ -2023,23 +1789,12 @@ function income(day){
 }
 
 
-/*
-  El ingreso pertenece al día actual.
-
-  Por lo tanto:
-
-  disponible =
-  presupuesto del día
-  + ingresos de hoy
-  - gastos de hoy
-*/
-
 function available(day){
 
   return (
-    dayBudget(day)
-    + income(day)
-    - spent(day)
+    dayBudget(day) +
+    income(day) -
+    spent(day)
   );
 }
 
@@ -2050,11 +1805,26 @@ function available(day){
 
 function futureDaysFromToday(){
 
+  /*
+    Si el cobro es 06/10 y hoy es 30/09:
+
+    daysUntilPayday = 6
+
+    Pero hoy ocupa uno de esos días.
+
+    Futuros:
+    01/10
+    02/10
+    03/10
+    04/10
+    05/10
+
+    = 5 días futuros.
+  */
+
   return Math.max(
     0,
-    daysUntilPayday(
-      todayKey()
-    ) - 1
+    daysUntilPayday(todayKey()) - 1
   );
 }
 
@@ -2062,8 +1832,8 @@ function futureDaysFromToday(){
 function futureReserve(){
 
   return (
-    num(state.baseDailyBudget)
-    * futureDaysFromToday()
+    num(state.baseDailyBudget) *
+    futureDaysFromToday()
   );
 }
 
@@ -2074,14 +1844,15 @@ function reserveStatus(){
     futureDaysFromToday();
 
   const required =
-    num(state.baseDailyBudget)
-    * futureDays;
+    num(state.baseDailyBudget) *
+    futureDays;
 
   const currentBalance =
     num(state.balance);
 
   const difference =
-    currentBalance - required;
+    currentBalance -
+    required;
 
   return {
 
@@ -2101,7 +1872,7 @@ function reserveStatus(){
 
 
 /* =========================================================
-   CONFIGURACION - VISTA PREVIA
+   CONFIGURACION
 ========================================================= */
 
 function updatePriorityPreview(){
@@ -2135,7 +1906,6 @@ function updatePriorityPreview(){
       "paydayInput"
     ).value;
 
-
   if(!toggle.checked){
 
     preview.classList.remove(
@@ -2145,15 +1915,12 @@ function updatePriorityPreview(){
     return;
   }
 
-
   preview.classList.add(
     "show"
   );
 
-
   if(
     !payday ||
-    !isValidDateKey(payday) ||
     base <= 0
   ){
 
@@ -2176,21 +1943,27 @@ function updatePriorityPreview(){
     return;
   }
 
+  /*
+    IMPORTANTE:
 
-  const today =
-    todayKey();
+    Los días incluyen hoy y terminan
+    el día anterior al cobro.
+  */
 
   const days =
-    Math.max(
-      0,
-      dateSerial(payday)
-      - dateSerial(today)
+    dateDifferenceInDays(
+      todayKey(),
+      payday
     );
 
+  const safeDays =
+    Math.max(
+      0,
+      days
+    );
 
   const reserve =
-    base * days;
-
+    base * safeDays;
 
   const extra =
     Math.max(
@@ -2198,39 +1971,30 @@ function updatePriorityPreview(){
       balance - reserve
     );
 
-
-  const todayBudget =
+  const today =
     base + extra;
-
 
   document.getElementById(
     "previewDays"
   ).textContent =
-    days;
-
+    safeDays;
 
   document.getElementById(
     "previewReserve"
   ).textContent =
     money(reserve);
 
-
   document.getElementById(
     "previewExtra"
   ).textContent =
     money(extra);
 
-
   document.getElementById(
     "previewToday"
   ).textContent =
-    money(todayBudget);
+    money(today);
 }
 
-
-/* =========================================================
-   CONFIGURACION
-========================================================= */
 
 function saveConfiguration(){
 
@@ -2241,12 +2005,10 @@ function saveConfiguration(){
       ).value
     );
 
-
   const payday =
     document.getElementById(
       "paydayInput"
     ).value;
-
 
   let base =
     num(
@@ -2255,12 +2017,10 @@ function saveConfiguration(){
       ).value
     );
 
-
   const priority =
     document.getElementById(
       "priorityToggle"
     ).checked;
-
 
   if(balance < 0){
 
@@ -2271,7 +2031,6 @@ function saveConfiguration(){
     return;
   }
 
-
   if(!payday){
 
     alert(
@@ -2281,49 +2040,22 @@ function saveConfiguration(){
     return;
   }
 
-
   /*
-    Validación robusta de fecha.
+    COMPARACION ROBUSTA DE FECHAS.
 
-    Esto evita que una fecha inválida pueda entrar
-    al sistema.
+    No utilizamos new Date("YYYY-MM-DD")
+    directamente para evitar problemas UTC.
   */
-
-  if(!isValidDateKey(payday)){
-
-    alert(
-      "La fecha ingresada no es válida."
-    );
-
-    return;
-  }
-
-
-  /*
-    CORRECCIÓN PRINCIPAL:
-
-    06/10/2026 es comparado como fecha de calendario
-    local y no mediante new Date("2026-10-06").
-  */
-
-  if(!isFutureDate(payday)){
-
-    alert(
-      "El próximo día de cobro debe ser posterior a hoy."
-    );
-
-    return;
-  }
-
-
-  const today =
-    todayKey();
-
 
   const days =
-    dateSerial(payday)
-    - dateSerial(today);
+    dateDifferenceInDays(
+      todayKey(),
+      payday
+    );
 
+  /*
+    El cobro debe ser como mínimo mañana.
+  */
 
   if(days <= 0){
 
@@ -2334,10 +2066,11 @@ function saveConfiguration(){
     return;
   }
 
-
   /*
-    Si no se indicó un presupuesto base,
-    calculamos el máximo promedio posible.
+    Si no se indicó presupuesto base,
+    calculamos el máximo presupuesto diario
+    que puede sostenerse hasta el día anterior
+    al cobro.
   */
 
   if(base <= 0){
@@ -2348,7 +2081,6 @@ function saveConfiguration(){
       );
   }
 
-
   if(base <= 0){
 
     alert(
@@ -2358,24 +2090,20 @@ function saveConfiguration(){
     return;
   }
 
-
   /*
-    VALIDACION MATEMATICA
+    Validación matemática:
 
-    El presupuesto base debe poder garantizarse
-    durante todos los días del ciclo.
+    días presupuestables × presupuesto base
+    no puede superar el saldo inicial.
   */
 
   const required =
     base * days;
 
-
   if(required > balance){
 
     alert(
-
       "Presupuesto base no disponible.\n\n" +
-
       "Para garantizar " +
       money(base) +
       " diarios durante " +
@@ -2383,23 +2111,19 @@ function saveConfiguration(){
       " días necesitás " +
       money(required) +
       ".\n" +
-
       "Saldo disponible: " +
       money(balance) +
       ".\n" +
-
       "Faltan: " +
       money(required - balance) +
       "."
-
     );
 
     return;
   }
 
-
   /*
-    Guardamos la configuración inicial del ciclo.
+    NUEVO CICLO
   */
 
   state.balance =
@@ -2418,44 +2142,40 @@ function saveConfiguration(){
     balance;
 
   state.cycleStartDate =
-    today;
+    todayKey();
 
+  state.carryOver =
+    0;
 
-  /*
-    Reiniciamos solamente la planificación del ciclo.
+  state.deficitRemaining =
+    0;
 
-    Los movimientos existentes no se borran.
-  */
+  state.deficitPerDay =
+    0;
 
-  state.carryOver = 0;
+  state.nextDayBudget =
+    null;
 
-  state.deficitRemaining = 0;
+  state.nextDayDeficitPerDay =
+    0;
 
-  state.deficitPerDay = 0;
-
-  state.nextDayBudget = null;
-
-  state.nextDayDeficitPerDay = 0;
-
-  state.nextDayDebt = 0;
-
+  state.nextDayDebt =
+    0;
 
   /*
-    Crear el día actual si no existe.
-
-    Si ya existe, se conserva.
+    Creamos el día actual si todavía
+    no existe.
   */
 
-  createDay(today);
-
+  createDay(
+    todayKey()
+  );
 
   saveState();
-
 
   loadConfigurationUI();
 
   render();
-
 
   document
     .getElementById(
@@ -2463,13 +2183,11 @@ function saveConfiguration(){
     )
     .classList.remove("open");
 
-
   document
     .getElementById(
       "configArrow"
     )
     .textContent = "▼";
-
 
   showToast(
     "Configuración guardada"
@@ -2490,14 +2208,12 @@ function movementData(){
       ).value
     );
 
-
   const description =
     document.getElementById(
       "descInput"
     )
     .value
     .trim();
-
 
   if(amount <= 0){
 
@@ -2508,7 +2224,6 @@ function movementData(){
     return null;
   }
 
-
   return {
 
     amount,
@@ -2518,13 +2233,14 @@ function movementData(){
       "Sin descripción",
 
     time:
-      new Date().toLocaleTimeString(
-        "es-AR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      )
+      new Date()
+        .toLocaleTimeString(
+          "es-AR",
+          {
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        )
 
   };
 }
@@ -2555,10 +2271,8 @@ function addExpense(){
     return;
   }
 
-
   const day =
     currentDay();
-
 
   if(day.closed){
 
@@ -2569,22 +2283,18 @@ function addExpense(){
     return;
   }
 
-
   day.expenses.push(
     data
   );
 
-
   state.balance -=
     data.amount;
-
 
   saveState();
 
   clearMovement();
 
   render();
-
 
   showToast(
     "Gasto registrado"
@@ -2601,10 +2311,8 @@ function addIncome(){
     return;
   }
 
-
   const day =
     currentDay();
-
 
   if(day.closed){
 
@@ -2615,48 +2323,30 @@ function addIncome(){
     return;
   }
 
-
   /*
-    INGRESO SOLO PARA HOY.
-
-    No modifica:
-
-    - presupuesto base
-    - presupuesto futuro
-    - presupuesto programado
-    - excedente estructural
-
-    Sí modifica:
-
-    - ingresos de hoy
-    - disponible parcial de hoy
-    - saldo total
+    El ingreso pertenece exclusivamente
+    al día actual.
   */
 
   day.incomes.push({
 
-    amount:
-      data.amount,
+    amount:data.amount,
 
     description:
       data.description,
 
-    time:
-      data.time
+    time:data.time
 
   });
 
-
   state.balance +=
     data.amount;
-
 
   saveState();
 
   clearMovement();
 
   render();
-
 
   showToast(
     "Ingreso registrado para hoy"
@@ -2673,7 +2363,6 @@ function deleteExpense(index){
   const day =
     currentDay();
 
-
   if(day.closed){
 
     alert(
@@ -2683,30 +2372,24 @@ function deleteExpense(index){
     return;
   }
 
-
   const item =
     day.expenses[index];
-
 
   if(!item){
     return;
   }
 
-
   state.balance +=
     num(item.amount);
-
 
   day.expenses.splice(
     index,
     1
   );
 
-
   saveState();
 
   render();
-
 
   showToast(
     "Gasto eliminado"
@@ -2719,7 +2402,6 @@ function deleteIncome(index){
   const day =
     currentDay();
 
-
   if(day.closed){
 
     alert(
@@ -2729,30 +2411,24 @@ function deleteIncome(index){
     return;
   }
 
-
   const item =
     day.incomes[index];
-
 
   if(!item){
     return;
   }
 
-
   state.balance -=
     num(item.amount);
-
 
   day.incomes.splice(
     index,
     1
   );
 
-
   saveState();
 
   render();
-
 
   showToast(
     "Ingreso eliminado"
@@ -2769,29 +2445,17 @@ function calculateAfterClose(day){
   const currentAvailable =
     available(day);
 
-
   let debt =
     num(
       state.deficitRemaining
     );
 
-
-  /*
-    El déficit que ya venía arrastrándose
-    se considera antes de calcular el nuevo.
-  */
-
   debt =
     Math.max(
       0,
-      debt - num(day.deficitIn)
+      debt -
+      num(day.deficitIn)
     );
-
-
-  /*
-    Si el disponible del día termina negativo,
-    agregamos ese déficit.
-  */
 
   if(currentAvailable < 0){
 
@@ -2801,14 +2465,9 @@ function calculateAfterClose(day){
       );
   }
 
-
   /*
-    SOBRANTE
-
-    Todo el sobrante positivo va íntegramente
-    al día siguiente.
-
-    Nunca se reparte entre todos los días.
+    Todo sobrante positivo pasa a mañana.
+    No se reparte.
   */
 
   const leftover =
@@ -2817,35 +2476,32 @@ function calculateAfterClose(day){
       currentAvailable
     );
 
-
   /*
-    Cantidad de días posteriores al día que estamos
-    cerrando.
+    Si hoy es 30/09 y cobro 06/10:
 
-    Ejemplo:
+    remainingDays = 5
 
-    Hoy 30/09
-    Cobro 06/10
+    porque quedan:
 
-    Restantes después de cerrar hoy:
+    01/10
+    02/10
+    03/10
+    04/10
+    05/10
 
-    01,02,03,04,05 = 5 días.
+    El 06/10 es cobro.
   */
 
   const remainingDays =
     Math.max(
       0,
-      daysUntilPayday(day.date) - 1
+      daysUntilPayday(
+        day.date
+      ) - 1
     );
-
 
   let nextDeficitPerDay =
     0;
-
-
-  /*
-    Solamente el déficit se distribuye.
-  */
 
   if(
     debt > 0 &&
@@ -2854,15 +2510,10 @@ function calculateAfterClose(day){
 
     nextDeficitPerDay =
       Math.ceil(
-        debt / remainingDays
+        debt /
+        remainingDays
       );
   }
-
-
-  /*
-    Si ya no quedan días antes del cobro,
-    no queda déficit distribuible.
-  */
 
   if(remainingDays === 0){
 
@@ -2871,32 +2522,21 @@ function calculateAfterClose(day){
     nextDeficitPerDay = 0;
   }
 
-
   /*
-    PRESUPUESTO DE MAÑANA
+    Mañana:
 
-    Base
+    base
     + sobrante de hoy
-    - déficit distribuido
+    - déficit correspondiente
   */
 
   const tomorrowBudget =
     Math.max(
       0,
-
-      num(
-        state.baseDailyBudget
-      )
-
-      +
-
-      leftover
-
-      -
-
+      num(state.baseDailyBudget) +
+      leftover -
       nextDeficitPerDay
     );
-
 
   return {
 
@@ -2922,17 +2562,17 @@ function closeDay(auto=false){
   const day =
     currentDay();
 
-
   if(day.closed){
     return;
   }
 
-
   const result =
-    calculateAfterClose(day);
+    calculateAfterClose(
+      day
+    );
 
-
-  day.closed = true;
+  day.closed =
+    true;
 
   day.closedAutomatically =
     auto;
@@ -2940,63 +2580,37 @@ function closeDay(auto=false){
   day.closedAt =
     new Date().toISOString();
 
-
   day.leftover =
     result.leftover;
-
 
   day.deficit =
     result.deficit;
 
-
   day.tomorrowBudget =
     result.tomorrowBudget;
-
 
   day.nextDeficitPerDay =
     result.nextDeficitPerDay;
 
-
   day.debtAfterClose =
     result.debt;
-
-
-  /*
-    El sobrante pasa exclusivamente a mañana.
-  */
 
   state.carryOver =
     result.leftover;
 
-
   state.deficitRemaining =
     result.debt;
-
 
   state.nextDayDeficitPerDay =
     result.nextDeficitPerDay;
 
-
   state.nextDayBudget =
     result.tomorrowBudget;
-
 
   state.lastProcessedDate =
     day.date;
 
-
   saveState();
-
-
-  /*
-    Creamos mañana.
-
-    createDay() consume:
-
-    - carryOver
-    - nextDayBudget
-    - nextDayDeficitPerDay
-  */
 
   createDay(
     addDays(
@@ -3005,11 +2619,9 @@ function closeDay(auto=false){
     )
   );
 
-
   saveState();
 
   render();
-
 
   showToast(
     auto
@@ -3019,20 +2631,14 @@ function closeDay(auto=false){
 }
 
 
-/* =========================================================
-   REAPERTURA
-========================================================= */
-
 function reopenDay(){
 
   const day =
     currentDay();
 
-
   if(!day.closed){
     return;
   }
-
 
   state.carryOver = 0;
 
@@ -3042,13 +2648,11 @@ function reopenDay(){
 
   state.nextDayBudget = null;
 
-
   day.closed = false;
 
   day.closedAutomatically = false;
 
   day.closedAt = "";
-
 
   day.leftover = 0;
 
@@ -3060,11 +2664,9 @@ function reopenDay(){
 
   day.debtAfterClose = 0;
 
-
   saveState();
 
   render();
-
 
   showToast(
     "Día reabierto"
@@ -3083,7 +2685,6 @@ function renderReserveAlert(){
       "reserveAlert"
     );
 
-
   if(
     !state.baseDailyBudget ||
     !state.nextPayday
@@ -3092,37 +2693,23 @@ function renderReserveAlert(){
     alert.className =
       "alert";
 
-    alert.innerHTML =
-      "";
+    alert.innerHTML = "";
 
     return;
   }
 
-
   const status =
     reserveStatus();
-
-
-  /*
-    Si no quedan días futuros,
-    no hay reserva futura.
-  */
 
   if(status.futureDays <= 0){
 
     alert.className =
       "alert";
 
-    alert.innerHTML =
-      "";
+    alert.innerHTML = "";
 
     return;
   }
-
-
-  /*
-    Si la reserva sigue protegida.
-  */
 
   if(status.possible){
 
@@ -3131,24 +2718,14 @@ function renderReserveAlert(){
       alert.className =
         "alert success show";
 
-
       alert.innerHTML =
         "<strong>Reserva futura protegida.</strong><br>" +
-
         "Con el saldo actual todavía alcanzan " +
-
         money(status.required) +
-
         " para mantener " +
-
-        money(
-          state.baseDailyBudget
-        ) +
-
+        money(state.baseDailyBudget) +
         " durante los " +
-
         status.futureDays +
-
         " días posteriores.";
 
     }else{
@@ -3156,63 +2733,30 @@ function renderReserveAlert(){
       alert.className =
         "alert";
 
-      alert.innerHTML =
-        "";
+      alert.innerHTML = "";
     }
-
 
     return;
   }
 
-
-  /*
-    La reserva futura quedó comprometida.
-  */
-
   alert.className =
     "alert danger show";
 
-
   alert.innerHTML =
-
     "<strong>⚠️ Reserva futura comprometida.</strong><br>" +
-
     "Para mantener " +
-
-    money(
-      state.baseDailyBudget
-    ) +
-
+    money(state.baseDailyBudget) +
     " durante los " +
-
     status.futureDays +
-
     " días restantes necesitás " +
-
-    money(
-      status.required
-    ) +
-
+    money(status.required) +
     ".<br>" +
-
     "Saldo actual: " +
-
-    money(
-      status.currentBalance
-    ) +
-
+    money(status.currentBalance) +
     ". " +
-
     "Faltan " +
-
-    money(
-      Math.abs(
-        status.difference
-      )
-    ) +
-
+    money(Math.abs(status.difference)) +
     ".";
-
 }
 
 
@@ -3225,22 +2769,17 @@ function render(){
   const day =
     currentDay();
 
-
   const budget =
     dayBudget(day);
-
 
   const spentToday =
     spent(day);
 
-
   const incomeToday =
     income(day);
 
-
   const currentAvailable =
     available(day);
-
 
   /*
     HERO
@@ -3251,41 +2790,26 @@ function render(){
       "heroValue"
     );
 
-
   heroValue.textContent =
-    money(
-      currentAvailable
-    );
-
+    money(currentAvailable);
 
   heroValue.classList.toggle(
     "negative",
     currentAvailable < 0
   );
 
-
   heroValue.classList.toggle(
     "positive",
     currentAvailable >= 0
   );
 
-
   document.getElementById(
     "heroInfo"
   ).textContent =
-
     "Presupuesto del día: " +
-
-    money(
-      budget
-    ) +
-
+    money(budget) +
     " · " +
-
-    formatDate(
-      day.date
-    );
-
+    formatDate(day.date);
 
   /*
     PRIORIDAD
@@ -3296,13 +2820,11 @@ function render(){
       "prioritySummary"
     );
 
-
   if(state.priorityMode){
 
     prioritySummary.classList.add(
       "show"
     );
-
 
     document.getElementById(
       "priorityBase"
@@ -3311,14 +2833,12 @@ function render(){
         state.baseDailyBudget
       );
 
-
     document.getElementById(
       "priorityExtra"
     ).textContent =
       money(
         todayPriorityExtra(day)
       );
-
 
     document.getElementById(
       "priorityReserve"
@@ -3332,9 +2852,7 @@ function render(){
     prioritySummary.classList.remove(
       "show"
     );
-
   }
-
 
   /*
     KPI
@@ -3343,76 +2861,54 @@ function render(){
   document.getElementById(
     "kpiBudget"
   ).textContent =
-    money(
-      budget
-    );
-
+    money(budget);
 
   document.getElementById(
     "kpiSpent"
   ).textContent =
-    money(
-      spentToday
-    );
-
+    money(spentToday);
 
   document.getElementById(
     "kpiIncome"
   ).textContent =
-    money(
-      incomeToday
-    );
-
+    money(incomeToday);
 
   const balanceElement =
     document.getElementById(
       "kpiBalance"
     );
 
-
   balanceElement.textContent =
-    money(
-      state.balance
-    );
-
+    money(state.balance);
 
   balanceElement.classList.toggle(
     "red",
     state.balance < 0
   );
 
-
   balanceElement.classList.toggle(
     "green",
     state.balance >= 0
   );
 
-
   /*
     CIERRE
   */
 
-  const closeAvailable =
-    document.getElementById(
-      "closeAvailable"
-    );
+  document.getElementById(
+    "closeAvailable"
+  ).textContent =
+    money(currentAvailable);
 
-
-  closeAvailable.textContent =
-    money(
-      currentAvailable
-    );
-
-
-  closeAvailable.className =
+  document.getElementById(
+    "closeAvailable"
+  ).className =
     "close-value " +
-
     (
       currentAvailable >= 0
         ? "green"
         : "red"
     );
-
 
   document.getElementById(
     "closeLeftover"
@@ -3424,20 +2920,17 @@ function render(){
       )
     );
 
-
   /*
     MOVIMIENTOS
   */
 
   renderMovements(day);
 
-
   /*
-    DIAS
+    PLAN DE DIAS
   */
 
   renderDays();
-
 
   /*
     GRAFICO
@@ -3445,13 +2938,11 @@ function render(){
 
   renderChart();
 
-
   /*
     ALERTA
   */
 
   renderReserveAlert();
-
 
   /*
     CONFIG
@@ -3472,97 +2963,71 @@ function renderMovements(day){
       "todayMovements"
     );
 
-
   const all = [];
-
 
   (day.expenses || [])
     .forEach(
       (item,index) => {
 
         all.push({
-
           ...item,
-
           type:"expense",
-
           index
-
         });
 
       }
     );
-
 
   (day.incomes || [])
     .forEach(
       (item,index) => {
 
         all.push({
-
           ...item,
-
           type:"income",
-
           index
-
         });
 
       }
     );
 
-
   all.sort(
     (a,b) =>
-
       String(b.time)
         .localeCompare(
           String(a.time)
         )
   );
 
-
   if(all.length === 0){
 
     container.innerHTML =
-      '<div class="empty">' +
-      'Todavía no hay movimientos hoy.' +
-      '</div>';
+      '<div class="empty">Todavía no hay movimientos hoy.</div>';
 
     return;
   }
 
-
   container.innerHTML =
-
-    all.map(
-      item => {
+    all
+      .map(item => {
 
         const isIncome =
           item.type === "income";
 
-
         const amount =
-
-          (isIncome
-            ? "+"
-            : "−"
+          (
+            isIncome
+              ? "+"
+              : "−"
           ) +
-
-          money(
-            item.amount
-          );
-
+          money(item.amount);
 
         const deleteAction =
-
           isIncome
             ? `deleteIncome(${item.index})`
             : `deleteExpense(${item.index})`;
 
-
         return `
-
           <div class="movement">
 
             <div class="movement-left">
@@ -3577,7 +3042,6 @@ function renderMovements(day){
 
             </div>
 
-
             <div class="movement-right">
 
               <div
@@ -3589,7 +3053,6 @@ function renderMovements(day){
               >
                 ${amount}
               </div>
-
 
               <button
                 class="delete-btn"
@@ -3603,11 +3066,10 @@ function renderMovements(day){
             </div>
 
           </div>
-
         `;
 
-      }
-    ).join("");
+      })
+      .join("");
 }
 
 
@@ -3622,17 +3084,59 @@ function renderDays(){
       "daysList"
     );
 
-
   const today =
     todayKey();
 
+  /*
+    CORRECCION PRINCIPAL:
+
+    Antes estaba:
+
+      for(let i=0;i<7;i++)
+
+    Eso hacía que siempre aparecieran
+    7 días aunque el cobro estuviera antes.
+
+    Ahora calculamos exactamente cuántos días
+    existen entre hoy y el día de cobro.
+
+    Si hoy = 30/09
+    y cobro = 06/10
+
+    daysUntilPayday = 6
+
+    Por lo tanto mostramos:
+
+    30/09
+    01/10
+    02/10
+    03/10
+    04/10
+    05/10
+
+    y NO mostramos 06/10.
+  */
+
+  const totalDays =
+    state.nextPayday
+      ? daysUntilPayday(today)
+      : 0;
 
   const rows = [];
 
+  /*
+    Si no hay configuración,
+    mostramos solamente hoy.
+  */
+
+  const daysToRender =
+    totalDays > 0
+      ? totalDays
+      : 1;
 
   for(
     let i = 0;
-    i < 7;
+    i < daysToRender;
     i++
   ){
 
@@ -3642,11 +3146,9 @@ function renderDays(){
         i
       );
 
-
     const day =
       state.days[key] ||
       null;
-
 
     if(!day){
 
@@ -3670,10 +3172,8 @@ function renderDays(){
 
       });
 
-
       continue;
     }
-
 
     rows.push({
 
@@ -3683,59 +3183,69 @@ function renderDays(){
         dayBudget(day),
 
       status:
-
         i === 0
           ? "Hoy"
-
           : day.closed
             ? "Cerrado"
             : "Planificado"
 
     });
-
   }
 
+  /*
+    Si ya estamos en la fecha de cobro
+    no debería existir presupuesto diario.
+  */
+
+  if(
+    state.nextPayday &&
+    totalDays <= 0
+  ){
+
+    container.innerHTML =
+      '<div class="empty">Hoy es la fecha de cobro. Configurá el próximo ciclo.</div>';
+
+    return;
+  }
 
   container.innerHTML =
+    rows
+      .map(row => {
 
-    rows.map(
-      row => `
+        return `
+          <div class="day-row">
 
-        <div class="day-row">
+            <div class="day-main">
 
-          <div class="day-main">
+              <div class="day-date">
+                ${escapeHtml(
+                  shortDate(row.key)
+                )}
+              </div>
 
-            <div class="day-date">
-              ${escapeHtml(
-                shortDate(row.key)
-              )}
+              <div class="day-status">
+                ${escapeHtml(
+                  row.status
+                )}
+              </div>
+
             </div>
 
-            <div class="day-status">
-              ${escapeHtml(
-                row.status
-              )}
+            <div class="day-amount">
+
+              ${money(row.budget)}
+
+              <small>
+                presupuesto
+              </small>
+
             </div>
 
           </div>
+        `;
 
-
-          <div class="day-amount">
-
-            ${money(
-              row.budget
-            )}
-
-            <small>
-              presupuesto
-            </small>
-
-          </div>
-
-        </div>
-
-      `
-    ).join("");
+      })
+      .join("");
 }
 
 
@@ -3750,17 +3260,14 @@ function renderChart(){
       "chart"
     );
 
-
   const today =
     todayKey();
 
-
   const rows = [];
 
-
   for(
-    let i = 6;
-    i >= 0;
+    let i=6;
+    i>=0;
     i--
   ){
 
@@ -3770,10 +3277,8 @@ function renderChart(){
         -i
       );
 
-
     const day =
       state.days[key];
-
 
     rows.push({
 
@@ -3785,9 +3290,7 @@ function renderChart(){
           : 0
 
     });
-
   }
-
 
   const max =
     Math.max(
@@ -3797,11 +3300,9 @@ function renderChart(){
       )
     );
 
-
   container.innerHTML =
-
-    rows.map(
-      row => {
+    rows
+      .map(row => {
 
         const height =
           Math.max(
@@ -3810,13 +3311,12 @@ function renderChart(){
               (
                 row.spent /
                 max
-              ) * 105
+              ) *
+              105
             )
           );
 
-
         return `
-
           <div class="bar-wrap">
 
             <div class="bar-value">
@@ -3840,11 +3340,10 @@ function renderChart(){
             </div>
 
           </div>
-
         `;
 
-      }
-    ).join("");
+      })
+      .join("");
 }
 
 
@@ -3859,31 +3358,27 @@ function loadConfigurationUI(){
   ).value =
     state.balance || "";
 
-
   document.getElementById(
     "paydayInput"
   ).value =
     state.nextPayday || "";
-
 
   document.getElementById(
     "baseBudgetInput"
   ).value =
     state.baseDailyBudget || "";
 
-
   document.getElementById(
     "priorityToggle"
   ).checked =
     !!state.priorityMode;
-
 
   updatePriorityPreview();
 }
 
 
 /* =========================================================
-   CIERRE AUTOMATICO
+   AUTOMATIC CLOSE
 ========================================================= */
 
 function processAutomaticClose(){
@@ -3891,24 +3386,14 @@ function processAutomaticClose(){
   const now =
     new Date();
 
-
-  /*
-    El cierre automático se basa únicamente
-    en la hora local del dispositivo.
-
-    No se utiliza la fecha como string UTC.
-  */
-
   if(
     now.getHours() < 23
   ){
     return;
   }
 
-
   const day =
     currentDay();
-
 
   if(!day.closed){
 
@@ -3923,7 +3408,6 @@ function processAutomaticClose(){
 
 let toastTimer = null;
 
-
 function showToast(message){
 
   const toast =
@@ -3931,20 +3415,16 @@ function showToast(message){
       "toast"
     );
 
-
   toast.textContent =
     message;
-
 
   toast.classList.add(
     "show"
   );
 
-
   clearTimeout(
     toastTimer
   );
-
 
   toastTimer =
     setTimeout(
@@ -4066,12 +3546,10 @@ document
           "configPanel"
         );
 
-
       const isOpen =
         panel.classList.toggle(
           "open"
         );
-
 
       document.getElementById(
         "configArrow"
@@ -4079,7 +3557,6 @@ document
         isOpen
           ? "▲"
           : "▼";
-
     }
   );
 
@@ -4145,12 +3622,10 @@ document
           "statePanel"
         );
 
-
       const isOpen =
         panel.classList.toggle(
           "open"
         );
-
 
       document.getElementById(
         "stateArrow"
@@ -4158,7 +3633,6 @@ document
         isOpen
           ? "▲"
           : "▼";
-
     }
   );
 
@@ -4180,19 +3654,25 @@ document
           "¿Querés borrar toda la información de Presupuesto Diario?"
         );
 
-
       if(!confirmed){
         return;
       }
-
 
       localStorage.removeItem(
         STORAGE_KEY
       );
 
+      /*
+        También eliminamos versiones anteriores
+        para evitar que una configuración vieja
+        interfiera con las pruebas.
+      */
+
+      localStorage.removeItem(
+        "presupuesto_v32"
+      );
 
       location.reload();
-
     }
   );
 
@@ -4227,20 +3707,19 @@ document
 
 loadState();
 
+/*
+  Creamos solamente el día actual.
+*/
 
 createDay(
   todayKey()
 );
 
-
 loadConfigurationUI();
-
 
 render();
 
-
 processAutomaticClose();
-
 
 setInterval(
   processAutomaticClose,
