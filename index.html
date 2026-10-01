@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071525">
-<title>Presupuesto Diario · Macrodesk V3.4</title>
+<title>Presupuesto Diario · Macrodesk V3.5</title>
 
 <style>
 :root{
@@ -20,8 +20,8 @@
   --card:#fff;
   --muted:#718096;
   --border:#dce5ec;
-  --shadow:0 12px 30px rgba(7,21,37,.08);
-  --radius:20px;
+  --shadow:0 10px 28px rgba(7,21,37,.075);
+  --radius:21px;
 }
 
 *{box-sizing:border-box}
@@ -37,13 +37,13 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
-button,
-input{
+button,input{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
 
 .app{
@@ -53,16 +53,18 @@ button{
   padding-bottom:40px;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header{
   background:var(--ink);
   color:white;
-  padding:18px 18px 20px;
+  padding:17px 17px 19px;
   position:sticky;
   top:0;
   z-index:50;
-  box-shadow:0 5px 20px rgba(7,21,37,.18);
+  box-shadow:0 5px 22px rgba(7,21,37,.18);
 }
 
 .header-inner{
@@ -79,9 +81,9 @@ button{
 }
 
 .logo{
-  width:42px;
-  height:42px;
-  border-radius:13px;
+  width:43px;
+  height:43px;
+  border-radius:14px;
   background:linear-gradient(135deg,var(--blue),var(--cyan));
   display:flex;
   align-items:center;
@@ -89,7 +91,7 @@ button{
   color:#fff;
   font-size:22px;
   font-weight:900;
-  box-shadow:0 8px 20px rgba(35,136,255,.25);
+  box-shadow:0 8px 22px rgba(35,136,255,.25);
 }
 
 .brand-title{
@@ -104,31 +106,37 @@ button{
   margin-top:3px;
 }
 
-.header-actions{
-  display:flex;
-  gap:7px;
-}
-
-.icon-btn{
-  width:39px;
-  height:39px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:12px;
-  background:rgba(255,255,255,.08);
-  color:white;
-  font-size:17px;
-}
-
 .version{
-  font-size:10px;
-  color:#8da1b4;
-  margin-top:5px;
+  font-size:9px;
+  color:#71879b;
+  margin-top:4px;
 }
 
-/* MAIN */
+.header-status{
+  text-align:right;
+}
+
+.header-status-label{
+  color:#8198ac;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-weight:800;
+}
+
+.header-status-value{
+  color:#d9e8f5;
+  font-size:11px;
+  font-weight:800;
+  margin-top:3px;
+}
+
+/* =========================================================
+   MAIN / CARDS
+========================================================= */
 
 main{
-  padding:16px;
+  padding:15px;
 }
 
 .card{
@@ -137,7 +145,7 @@ main{
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   padding:17px;
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 .section-title{
@@ -150,78 +158,132 @@ main{
 
 .section-title h2{
   margin:0;
-  font-size:16px;
+  font-size:15px;
+  font-weight:850;
 }
 
 .section-title small{
   color:var(--muted);
-  font-size:11px;
+  font-size:10px;
 }
 
-.hero{
+.hidden{
+  display:none!important;
+}
+
+/* =========================================================
+   MAIN FINANCIAL CARD
+========================================================= */
+
+.main-financial{
   background:
-    radial-gradient(circle at 100% 0%,rgba(22,199,201,.28),transparent 42%),
-    linear-gradient(135deg,#071525,#123452);
+    radial-gradient(circle at 100% 0%,rgba(22,199,201,.30),transparent 38%),
+    radial-gradient(circle at 0% 100%,rgba(35,136,255,.20),transparent 38%),
+    linear-gradient(140deg,#071525,#123653);
   color:#fff;
   border:0;
+  padding:20px;
   overflow:hidden;
   position:relative;
 }
 
-.hero-label{
+.financial-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.financial-label{
   color:#9fc6e8;
-  font-size:12px;
-  font-weight:700;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+}
+
+.financial-total{
+  text-align:right;
+}
+
+.financial-total-label{
+  color:#819ab0;
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:.5px;
 }
 
-.hero-amount{
-  font-size:38px;
+.financial-total-value{
+  color:#dcebf7;
+  font-size:14px;
+  font-weight:850;
+  margin-top:3px;
+}
+
+.financial-available{
+  font-size:40px;
   line-height:1;
-  font-weight:900;
-  margin:9px 0 8px;
-  letter-spacing:-1px;
+  font-weight:950;
+  letter-spacing:-1.5px;
+  margin:8px 0 7px;
 }
 
-.hero-description{
+.financial-sub{
   color:#c2d2df;
-  font-size:12px;
-  line-height:1.5;
+  font-size:11px;
+  line-height:1.45;
 }
 
-.hero-grid{
+.financial-progress{
+  height:7px;
+  background:rgba(255,255,255,.11);
+  border-radius:20px;
+  margin:17px 0 15px;
+  overflow:hidden;
+}
+
+.financial-progress-bar{
+  height:100%;
+  width:0%;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  transition:.25s ease;
+}
+
+.financial-meta{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:16px;
+  gap:8px;
 }
 
-.hero-mini{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.08);
+.financial-meta-item{
+  background:rgba(255,255,255,.075);
+  border:1px solid rgba(255,255,255,.075);
   border-radius:14px;
-  padding:11px;
+  padding:10px 11px;
 }
 
-.hero-mini-label{
-  color:#9db0c3;
-  font-size:10px;
+.financial-meta-label{
+  color:#91a9bc;
+  font-size:9px;
 }
 
-.hero-mini-value{
-  margin-top:4px;
-  font-weight:800;
-  font-size:15px;
+.financial-meta-value{
+  color:#fff;
+  font-size:14px;
+  font-weight:850;
+  margin-top:3px;
 }
 
-/* ALERTS */
+/* =========================================================
+   ALERT
+========================================================= */
 
 .alert{
-  padding:13px 14px;
-  border-radius:16px;
-  margin-bottom:14px;
-  font-size:12px;
+  padding:12px 14px;
+  border-radius:15px;
+  margin-bottom:13px;
+  font-size:11px;
   line-height:1.45;
   border:1px solid;
 }
@@ -250,133 +312,204 @@ main{
   color:#145b9e;
 }
 
-.hidden{
-  display:none!important;
+/* =========================================================
+   MOVEMENT INPUT
+========================================================= */
+
+.movement-card{
+  padding:16px;
 }
 
-/* KPIS */
-
-.kpis{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+.movement-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap:10px;
+  margin-bottom:14px;
 }
 
-.kpi{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:17px;
-  padding:14px;
+.movement-head h2{
+  margin:0;
+  font-size:15px;
 }
 
-.kpi-label{
+.movement-head span{
   color:var(--muted);
   font-size:10px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.3px;
 }
-
-.kpi-value{
-  font-size:21px;
-  font-weight:900;
-  margin-top:6px;
-}
-
-.kpi-value.green{color:var(--green)}
-.kpi-value.red{color:var(--red)}
-.kpi-value.blue{color:var(--blue)}
-
-/* MOVEMENTS */
 
 .movement-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr 1.45fr;
   gap:9px;
 }
 
 .input-group{
-  margin-bottom:11px;
+  margin-bottom:9px;
 }
 
 .input-group label{
   display:block;
   color:var(--muted);
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:6px;
+  font-size:10px;
+  font-weight:750;
+  margin-bottom:5px;
 }
 
 .input{
   width:100%;
   border:1px solid var(--border);
-  background:#f8fafc;
+  background:#f7fafc;
   color:var(--ink);
   border-radius:13px;
   padding:12px;
   outline:none;
+  font-size:13px;
 }
 
 .input:focus{
   border-color:var(--blue);
   background:white;
-  box-shadow:0 0 0 3px rgba(35,136,255,.09);
+  box-shadow:0 0 0 3px rgba(35,136,255,.08);
 }
 
-.movement-buttons{
+/* =========================================================
+   ROUND MOVEMENT BUTTONS
+========================================================= */
+
+.movement-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:5px;
+  gap:12px;
+  margin-top:7px;
 }
 
-.btn{
+.round-action{
   border:0;
-  border-radius:13px;
-  padding:12px 13px;
-  font-weight:800;
-  transition:.15s;
+  min-height:78px;
+  border-radius:19px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:850;
+  transition:.15s ease;
+  box-shadow:0 5px 14px rgba(7,21,37,.06);
 }
 
-.btn:active{
-  transform:scale(.98);
+.round-action:active{
+  transform:scale(.97);
 }
 
-.btn-expense{
-  background:#fff0f1;
+.round-icon{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  font-weight:500;
+}
+
+.expense-action{
+  background:linear-gradient(145deg,#fff5f5,#ffecee);
   color:#b6323c;
+  border:1px solid #f5d5d8;
 }
 
-.btn-income{
-  background:#eafaf3;
+.expense-action .round-icon{
+  background:#ef5b64;
+  color:white;
+  box-shadow:0 5px 12px rgba(239,91,100,.25);
+}
+
+.income-action{
+  background:linear-gradient(145deg,#f1fcf7,#e5f8ef);
   color:#12724e;
+  border:1px solid #c9ecdc;
 }
 
-.btn-primary{
-  background:var(--blue);
-  color:#fff;
+.income-action .round-icon{
+  background:#18b979;
+  color:white;
+  box-shadow:0 5px 12px rgba(24,185,121,.23);
 }
 
-.btn-dark{
-  background:var(--ink);
-  color:#fff;
+.round-label{
+  font-size:12px;
 }
 
-.btn-secondary{
-  background:#edf2f6;
+/* =========================================================
+   CONFIG COLLAPSIBLE
+========================================================= */
+
+.config-card{
+  padding:0;
+  overflow:hidden;
+}
+
+.config-toggle{
+  width:100%;
+  border:0;
+  background:white;
+  padding:16px 17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  text-align:left;
   color:var(--ink);
 }
 
-.btn-danger{
-  background:#fff0f1;
-  color:#a72d37;
+.config-toggle-left{
+  display:flex;
+  align-items:center;
+  gap:11px;
 }
 
-.btn-full{
-  width:100%;
+.config-icon{
+  width:35px;
+  height:35px;
+  border-radius:11px;
+  background:#edf5ff;
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
 }
 
-/* CONFIG */
+.config-title{
+  font-size:14px;
+  font-weight:850;
+}
+
+.config-subtitle{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px;
+}
+
+.config-chevron{
+  color:#7d8c9b;
+  font-size:18px;
+  transition:.2s;
+}
+
+.config-card.open .config-chevron{
+  transform:rotate(180deg);
+}
+
+.config-content{
+  display:none;
+  padding:0 17px 17px;
+  border-top:1px solid #edf1f4;
+}
+
+.config-card.open .config-content{
+  display:block;
+  padding-top:16px;
+}
 
 .config-grid{
   display:grid;
@@ -393,22 +526,22 @@ main{
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding:13px;
+  padding:12px;
   background:#f6f9fb;
   border:1px solid var(--border);
   border-radius:15px;
-  margin:3px 0 12px;
+  margin:2px 0 11px;
 }
 
 .switch-text strong{
   display:block;
-  font-size:13px;
+  font-size:12px;
 }
 
 .switch-text span{
   display:block;
   color:var(--muted);
-  font-size:10px;
+  font-size:9px;
   margin-top:3px;
   line-height:1.4;
 }
@@ -457,37 +590,79 @@ main{
   background:#f1f7ff;
   border:1px solid #d1e6ff;
   border-radius:15px;
-  padding:13px;
-  margin-bottom:12px;
+  padding:12px;
+  margin-bottom:11px;
 }
 
 .preview-title{
-  font-size:11px;
-  font-weight:800;
+  font-size:10px;
+  font-weight:850;
   color:#1d5f9f;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 .preview-row{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  padding:4px 0;
-  font-size:11px;
+  padding:3px 0;
+  font-size:10px;
 }
 
 .preview-row strong{
-  font-size:12px;
+  font-size:11px;
 }
 
-/* MOVEMENT LIST */
+.btn{
+  border:0;
+  border-radius:13px;
+  padding:12px 13px;
+  font-weight:800;
+  transition:.15s;
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:#fff;
+}
+
+.btn-dark{
+  background:var(--ink);
+  color:#fff;
+}
+
+.btn-secondary{
+  background:#edf2f6;
+  color:var(--ink);
+}
+
+.btn-danger{
+  background:#fff0f1;
+  color:#a72d37;
+}
+
+.btn-full{
+  width:100%;
+}
+
+/* =========================================================
+   TODAY MOVEMENTS
+========================================================= */
+
+.today-movements{
+  padding:16px 17px 8px;
+}
 
 .movement-item{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
-  padding:11px 0;
+  padding:10px 0;
   border-bottom:1px solid #edf1f4;
 }
 
@@ -497,11 +672,36 @@ main{
 
 .movement-left{
   min-width:0;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.movement-dot{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  font-size:14px;
+  font-weight:900;
+}
+
+.movement-dot.expense{
+  background:#fff0f1;
+  color:var(--red);
+}
+
+.movement-dot.income{
+  background:#eafaf3;
+  color:var(--green);
 }
 
 .movement-description{
-  font-size:13px;
-  font-weight:700;
+  font-size:12px;
+  font-weight:750;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -509,20 +709,20 @@ main{
 
 .movement-time{
   color:var(--muted);
-  font-size:10px;
-  margin-top:3px;
+  font-size:9px;
+  margin-top:2px;
 }
 
 .movement-right{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
   flex:none;
 }
 
 .movement-amount{
   font-weight:900;
-  font-size:13px;
+  font-size:12px;
 }
 
 .movement-amount.expense{
@@ -536,19 +736,30 @@ main{
 .delete-btn{
   border:0;
   background:#f1f4f6;
-  width:29px;
-  height:29px;
+  width:27px;
+  height:27px;
   border-radius:9px;
   color:#778694;
 }
 
-/* CLOSE */
+/* =========================================================
+   CLOSE DAY
+========================================================= */
+
+.close-card{
+  background:
+    linear-gradient(145deg,#e9f1fa,#f5f8fb);
+  border-color:#cbd9e7;
+}
 
 .close-box{
-  background:#f6f9fb;
-  border:1px solid var(--border);
-  border-radius:16px;
+  background:
+    linear-gradient(145deg,#123453,#174666);
+  border:0;
+  border-radius:17px;
   padding:14px;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(7,21,37,.12);
 }
 
 .close-grid{
@@ -558,21 +769,23 @@ main{
 }
 
 .close-stat{
-  background:white;
+  background:rgba(255,255,255,.075);
+  border:1px solid rgba(255,255,255,.07);
   border-radius:12px;
   padding:10px;
 }
 
 .close-stat span{
   display:block;
-  color:var(--muted);
-  font-size:10px;
+  color:#9db7cb;
+  font-size:9px;
 }
 
 .close-stat strong{
   display:block;
   margin-top:3px;
-  font-size:14px;
+  font-size:13px;
+  color:#fff;
 }
 
 .close-actions{
@@ -582,27 +795,45 @@ main{
   margin-top:10px;
 }
 
-/* DAYS */
+.close-actions .btn-dark{
+  background:#fff;
+  color:#10324d;
+}
+
+.close-actions .btn-secondary{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* =========================================================
+   DAYS
+========================================================= */
+
+.days-card{
+  padding:15px;
+}
 
 .day-list{
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:5px;
 }
 
 .day-row{
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:12px;
+  border:1px solid #e7edf2;
+  border-radius:13px;
+  padding:9px 11px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
+  background:#fbfcfd;
 }
 
 .day-row.today{
-  border-color:#9bcaff;
-  background:#f5faff;
+  border-color:#c7e0fa;
+  background:#f4f9ff;
 }
 
 .day-info{
@@ -610,32 +841,44 @@ main{
 }
 
 .day-name{
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:750;
+  color:#405366;
 }
 
 .day-date{
-  font-size:10px;
-  color:var(--muted);
-  margin-top:2px;
+  font-size:8px;
+  color:#9aa7b3;
+  margin-top:1px;
 }
 
 .day-budget{
   text-align:right;
-  font-weight:900;
-  font-size:14px;
+  font-weight:800;
+  font-size:11px;
+  color:#405366;
+}
+
+.day-row.today .day-budget{
+  color:var(--blue);
 }
 
 .day-status{
-  font-size:9px;
-  color:var(--muted);
-  margin-top:2px;
+  font-size:8px;
+  color:#9aa7b3;
+  margin-top:1px;
 }
 
-/* CHART */
+.day-row.today .day-status{
+  color:#5f8db8;
+}
+
+/* =========================================================
+   CHART
+========================================================= */
 
 .chart{
-  height:150px;
+  height:145px;
   display:flex;
   align-items:flex-end;
   gap:8px;
@@ -654,7 +897,7 @@ main{
 
 .bar{
   width:100%;
-  max-width:38px;
+  max-width:34px;
   min-height:3px;
   background:linear-gradient(to top,var(--blue),var(--cyan));
   border-radius:8px 8px 3px 3px;
@@ -673,7 +916,9 @@ main{
   white-space:nowrap;
 }
 
-/* SYSTEM */
+/* =========================================================
+   SYSTEM
+========================================================= */
 
 .system-row{
   display:flex;
@@ -681,7 +926,7 @@ main{
   gap:12px;
   padding:7px 0;
   border-bottom:1px solid #edf1f4;
-  font-size:11px;
+  font-size:10px;
 }
 
 .system-row:last-child{
@@ -694,12 +939,14 @@ main{
 
 .empty{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   text-align:center;
-  padding:15px 0;
+  padding:14px 0;
 }
 
-/* TOAST */
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast{
   position:fixed;
@@ -710,7 +957,7 @@ main{
   color:#fff;
   padding:12px 16px;
   border-radius:13px;
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
   box-shadow:0 10px 30px rgba(0,0,0,.22);
   opacity:0;
@@ -727,106 +974,47 @@ main{
   transform:translate(-50%,0);
 }
 
-/* TUTORIAL */
-
-.tutorial-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(3,10,18,.76);
-  z-index:1000;
-  display:none;
-}
-
-.tutorial-overlay.active{
-  display:block;
-}
-
-.tutorial-highlight{
-  position:absolute;
-  border:3px solid #fff;
-  border-radius:18px;
-  box-shadow:
-    0 0 0 9999px rgba(3,10,18,.76),
-    0 0 0 5px rgba(35,136,255,.45),
-    0 0 30px rgba(35,136,255,.7);
-  pointer-events:none;
-  transition:.3s;
-}
-
-.tutorial-card{
-  position:absolute;
-  width:min(340px,calc(100% - 32px));
-  left:50%;
-  transform:translateX(-50%);
-  background:white;
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.tutorial-step{
-  color:var(--blue);
-  font-size:10px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.6px;
-}
-
-.tutorial-title{
-  font-size:18px;
-  font-weight:900;
-  margin:5px 0 7px;
-}
-
-.tutorial-text{
-  color:#526273;
-  font-size:12px;
-  line-height:1.55;
-}
-
-.tutorial-actions{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  margin-top:15px;
-}
-
-.tutorial-actions .btn{
-  flex:1;
-}
-
-.tutorial-progress{
-  display:flex;
-  gap:4px;
-  margin-top:12px;
-}
-
-.tutorial-dot{
-  height:4px;
-  flex:1;
-  border-radius:10px;
-  background:#dce4eb;
-}
-
-.tutorial-dot.active{
-  background:var(--blue);
-}
-
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer{
   text-align:center;
   color:#8a99a8;
-  font-size:10px;
+  font-size:9px;
   padding:5px 15px 20px;
 }
 
 @media(max-width:420px){
-  main{padding:12px}
-  .card{padding:14px}
-  .hero-amount{font-size:34px}
-  .config-grid{grid-template-columns:1fr}
-  .config-grid .full{grid-column:auto}
+
+  main{
+    padding:12px;
+  }
+
+  .card{
+    margin-bottom:11px;
+  }
+
+  .financial-available{
+    font-size:35px;
+  }
+
+  .movement-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .config-grid{
+    grid-template-columns:1fr;
+  }
+
+  .config-grid .full{
+    grid-column:auto;
+  }
+
+  .financial-total-value{
+    font-size:13px;
+  }
 }
 </style>
 </head>
@@ -836,257 +1024,592 @@ main{
 <div class="app">
 
 <header class="header">
+
   <div class="header-inner">
+
     <div class="brand">
+
       <div class="logo">M</div>
+
       <div>
-        <div class="brand-title">Presupuesto Diario</div>
-        <div class="brand-sub">Macrodesk · Control financiero</div>
-        <div class="version">V3.4</div>
+        <div class="brand-title">
+          Presupuesto Diario
+        </div>
+
+        <div class="brand-sub">
+          Macrodesk · Control financiero
+        </div>
+
+        <div class="version">
+          V3.5
+        </div>
+      </div>
+
+    </div>
+
+    <div class="header-status">
+      <div class="header-status-label">
+        Hasta cobro
+      </div>
+
+      <div class="header-status-value" id="headerPayday">
+        —
       </div>
     </div>
 
-    <div class="header-actions">
-      <button class="icon-btn" onclick="startTutorial()" title="¿Cómo funciona?">?</button>
-    </div>
   </div>
+
 </header>
 
 <main>
 
-  <!-- HERO -->
-  <section class="card hero" id="heroTarget">
-    <div class="hero-label">Disponible parcial de hoy</div>
-    <div class="hero-amount" id="heroAvailable">$0</div>
-    <div class="hero-description" id="heroDescription">
+  <!-- =====================================================
+       TARJETA PRINCIPAL
+  ====================================================== -->
+
+  <section class="card main-financial" id="heroTarget">
+
+    <div class="financial-top">
+
+      <div>
+        <div class="financial-label">
+          Disponible de hoy
+        </div>
+      </div>
+
+      <div class="financial-total">
+
+        <div class="financial-total-label">
+          Saldo total
+        </div>
+
+        <div
+          class="financial-total-value"
+          id="mainBalance"
+        >
+          $0
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      class="financial-available"
+      id="heroAvailable"
+    >
+      $0
+    </div>
+
+    <div
+      class="financial-sub"
+      id="heroDescription"
+    >
       Configurá tu ciclo para comenzar.
     </div>
 
-    <div class="hero-grid">
-      <div class="hero-mini">
-        <div class="hero-mini-label">Presupuesto de hoy</div>
-        <div class="hero-mini-value" id="heroTodayBudget">$0</div>
+    <div class="financial-progress">
+      <div
+        class="financial-progress-bar"
+        id="financialProgress"
+      ></div>
+    </div>
+
+    <div class="financial-meta">
+
+      <div class="financial-meta-item">
+
+        <div class="financial-meta-label">
+          Presupuesto de hoy
+        </div>
+
+        <div
+          class="financial-meta-value"
+          id="heroTodayBudget"
+        >
+          $0
+        </div>
+
       </div>
 
-      <div class="hero-mini">
-        <div class="hero-mini-label">Días hasta cobrar</div>
-        <div class="hero-mini-value" id="heroDays">—</div>
+      <div class="financial-meta-item">
+
+        <div class="financial-meta-label">
+          Días hasta cobrar
+        </div>
+
+        <div
+          class="financial-meta-value"
+          id="heroDays"
+        >
+          —
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
   <!-- RESERVE ALERT -->
-  <div id="reserveAlert" class="alert hidden"></div>
 
-  <!-- KPIs -->
-  <section class="kpis" id="kpiTarget">
-    <div class="kpi">
-      <div class="kpi-label">Presupuesto diario</div>
-      <div class="kpi-value blue" id="kpiBudget">$0</div>
-    </div>
+  <div
+    id="reserveAlert"
+    class="alert hidden"
+  ></div>
 
-    <div class="kpi">
-      <div class="kpi-label">Gastado hoy</div>
-      <div class="kpi-value red" id="kpiSpent">$0</div>
-    </div>
+  <!-- =====================================================
+       INGRESAR MOVIMIENTO
+  ====================================================== -->
 
-    <div class="kpi">
-      <div class="kpi-label">Ingresos hoy</div>
-      <div class="kpi-value green" id="kpiIncome">$0</div>
-    </div>
+  <section
+    class="card movement-card"
+    id="movementTarget"
+  >
 
-    <div class="kpi">
-      <div class="kpi-label">Saldo total</div>
-      <div class="kpi-value" id="kpiBalance">$0</div>
-    </div>
-  </section>
+    <div class="movement-head">
 
-  <!-- MOVEMENT -->
-  <section class="card" id="movementTarget">
-    <div class="section-title">
-      <h2>Nuevo movimiento</h2>
-      <small>Solo afecta el saldo</small>
+      <h2>
+        Ingresar movimiento
+      </h2>
+
+      <span>
+        Actualiza tu saldo
+      </span>
+
     </div>
 
     <div class="movement-grid">
-      <div class="input-group">
-        <label>Monto</label>
-        <input id="movementAmount" class="input" type="number" min="0" step="0.01" placeholder="$ 0">
-      </div>
 
       <div class="input-group">
-        <label>Descripción</label>
-        <input id="movementDescription" class="input" type="text" maxlength="60" placeholder="Ej. supermercado">
-      </div>
-    </div>
 
-    <div class="movement-buttons">
-      <button class="btn btn-expense" onclick="addExpense()">
-        − Registrar gasto
-      </button>
-
-      <button class="btn btn-income" onclick="addIncome()">
-        + Registrar ingreso
-      </button>
-    </div>
-  </section>
-
-  <!-- CONFIGURATION -->
-  <section class="card" id="configTarget">
-    <div class="section-title">
-      <h2>Configuración del ciclo</h2>
-      <small>Se guarda en este dispositivo</small>
-    </div>
-
-    <div class="config-grid">
-
-      <div class="input-group">
-        <label>Saldo total disponible</label>
-        <input id="configBalance" class="input" type="number" min="0" step="0.01" placeholder="Ej. 252053">
-      </div>
-
-      <div class="input-group">
-        <label>Próxima fecha de cobro</label>
-        <input id="configPayday" class="input" type="date">
-      </div>
-
-      <div class="input-group full">
-        <label>Presupuesto diario base para los días futuros</label>
-        <input id="configBase" class="input" type="number" min="0" step="0.01" placeholder="Ej. 50000">
-      </div>
-
-      <div class="full switch-row">
-        <div class="switch-text">
-          <strong>Priorizar excedente hacia hoy</strong>
-          <span>
-            Protege primero el presupuesto base de los días futuros
-            y libera solamente el excedente real para hoy.
-          </span>
-        </div>
-
-        <label class="switch">
-          <input type="checkbox" id="priorityMode" onchange="updatePriorityPreview()">
-          <span class="slider"></span>
+        <label>
+          Monto
         </label>
+
+        <input
+          id="movementAmount"
+          class="input"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="$ 0"
+        >
+
       </div>
 
-      <div class="full preview" id="previewTarget">
-        <div class="preview-title">Vista previa del ciclo</div>
+      <div class="input-group">
 
-        <div class="preview-row">
-          <span>Días de presupuesto</span>
-          <strong id="previewDays">—</strong>
-        </div>
+        <label>
+          Descripción
+        </label>
 
-        <div class="preview-row">
-          <span>Días futuros protegidos</span>
-          <strong id="previewFutureDays">—</strong>
-        </div>
+        <input
+          id="movementDescription"
+          class="input"
+          type="text"
+          maxlength="60"
+          placeholder="Ej. supermercado"
+        >
 
-        <div class="preview-row">
-          <span>Reserva futura</span>
-          <strong id="previewReserve">$0</strong>
-        </div>
-
-        <div class="preview-row">
-          <span>Presupuesto de hoy</span>
-          <strong id="previewToday">$0</strong>
-        </div>
-
-        <div class="preview-row">
-          <span>Total asignado</span>
-          <strong id="previewTotal">$0</strong>
-        </div>
-      </div>
-
-      <div class="full">
-        <button class="btn btn-primary btn-full" onclick="saveConfiguration()">
-          Guardar configuración
-        </button>
       </div>
 
     </div>
+
+    <div class="movement-actions">
+
+      <button
+        class="round-action expense-action"
+        onclick="addExpense()"
+      >
+
+        <span class="round-icon">
+          −
+        </span>
+
+        <span class="round-label">
+          Gasto
+        </span>
+
+      </button>
+
+      <button
+        class="round-action income-action"
+        onclick="addIncome()"
+      >
+
+        <span class="round-icon">
+          +
+        </span>
+
+        <span class="round-label">
+          Ingreso
+        </span>
+
+      </button>
+
+    </div>
+
   </section>
 
-  <!-- TODAY MOVEMENTS -->
-  <section class="card">
+  <!-- =====================================================
+       MOVIMIENTOS DE HOY
+  ====================================================== -->
+
+  <section class="card today-movements">
+
     <div class="section-title">
-      <h2>Movimientos de hoy</h2>
-      <small id="movementCount">0 movimientos</small>
+
+      <h2>
+        Movimientos de hoy
+      </h2>
+
+      <small id="movementCount">
+        0 movimientos
+      </small>
+
     </div>
 
     <div id="movementsList"></div>
+
   </section>
 
-  <!-- CLOSE DAY -->
-  <section class="card">
+  <!-- =====================================================
+       CONFIGURACIÓN DEL CICLO
+  ====================================================== -->
+
+  <section
+    class="card config-card"
+    id="configTarget"
+  >
+
+    <button
+      class="config-toggle"
+      onclick="toggleConfiguration()"
+    >
+
+      <div class="config-toggle-left">
+
+        <div class="config-icon">
+          ⚙
+        </div>
+
+        <div>
+
+          <div class="config-title">
+            Configuración del ciclo
+          </div>
+
+          <div class="config-subtitle">
+            Saldo · cobro · presupuesto base
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="config-chevron">
+       ⌄
+      </div>
+
+    </button>
+
+    <div class="config-content">
+
+      <div class="config-grid">
+
+        <div class="input-group">
+
+          <label>
+            Saldo total disponible
+          </label>
+
+          <input
+            id="configBalance"
+            class="input"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="Ej. 252053"
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Próxima fecha de cobro
+          </label>
+
+          <input
+            id="configPayday"
+            class="input"
+            type="date"
+          >
+
+        </div>
+
+        <div class="input-group full">
+
+          <label>
+            Presupuesto diario base para los días futuros
+          </label>
+
+          <input
+            id="configBase"
+            class="input"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="Ej. 50000"
+          >
+
+        </div>
+
+        <div class="full switch-row">
+
+          <div class="switch-text">
+
+            <strong>
+              Priorizar excedente hacia hoy
+            </strong>
+
+            <span>
+              Protege primero el presupuesto base
+              de los días futuros y libera solamente
+              el excedente real para hoy.
+            </span>
+
+          </div>
+
+          <label class="switch">
+
+            <input
+              type="checkbox"
+              id="priorityMode"
+              onchange="updatePriorityPreview()"
+            >
+
+            <span class="slider"></span>
+
+          </label>
+
+        </div>
+
+        <div
+          class="full preview"
+          id="previewTarget"
+        >
+
+          <div class="preview-title">
+            Vista previa del ciclo
+          </div>
+
+          <div class="preview-row">
+            <span>Días de presupuesto</span>
+            <strong id="previewDays">—</strong>
+          </div>
+
+          <div class="preview-row">
+            <span>Días futuros protegidos</span>
+            <strong id="previewFutureDays">—</strong>
+          </div>
+
+          <div class="preview-row">
+            <span>Reserva futura</span>
+            <strong id="previewReserve">$0</strong>
+          </div>
+
+          <div class="preview-row">
+            <span>Presupuesto de hoy</span>
+            <strong id="previewToday">$0</strong>
+          </div>
+
+          <div class="preview-row">
+            <span>Total asignado</span>
+            <strong id="previewTotal">$0</strong>
+          </div>
+
+        </div>
+
+        <div class="full">
+
+          <button
+            class="btn btn-primary btn-full"
+            onclick="saveConfiguration()"
+          >
+            Guardar configuración
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       CIERRE DEL DÍA
+  ====================================================== -->
+
+  <section class="card close-card">
+
     <div class="section-title">
-      <h2>Cierre del día</h2>
-      <small id="closeStatus">Día abierto</small>
+
+      <h2>
+        Cierre del día
+      </h2>
+
+      <small id="closeStatus">
+        Día abierto
+      </small>
+
     </div>
 
     <div class="close-box">
+
       <div class="close-grid">
 
         <div class="close-stat">
-          <span>Disponible al cierre</span>
-          <strong id="closeAvailable">$0</strong>
+
+          <span>
+            Disponible al cierre
+          </span>
+
+          <strong id="closeAvailable">
+            $0
+          </strong>
+
         </div>
 
         <div class="close-stat">
-          <span>Sobrante → mañana</span>
-          <strong id="closeLeftover">$0</strong>
+
+          <span>
+            Sobrante → mañana
+          </span>
+
+          <strong id="closeLeftover">
+            $0
+          </strong>
+
         </div>
 
         <div class="close-stat">
-          <span>Déficit</span>
-          <strong id="closeDeficit">$0</strong>
+
+          <span>
+            Déficit
+          </span>
+
+          <strong id="closeDeficit">
+            $0
+          </strong>
+
         </div>
 
         <div class="close-stat">
-          <span>Presupuesto mañana</span>
-          <strong id="closeTomorrow">$0</strong>
+
+          <span>
+            Presupuesto mañana
+          </span>
+
+          <strong id="closeTomorrow">
+            $0
+          </strong>
+
         </div>
 
       </div>
 
       <div class="close-actions">
-        <button class="btn btn-dark" id="closeButton" onclick="closeDay(false)">
+
+        <button
+          class="btn btn-dark"
+          id="closeButton"
+          onclick="closeDay(false)"
+        >
           Cerrar día
         </button>
 
-        <button class="btn btn-secondary" onclick="reopenDay()">
+        <button
+          class="btn btn-secondary"
+          onclick="reopenDay()"
+        >
           Reabrir
         </button>
+
       </div>
-    </div>
-  </section>
 
-  <!-- DAYS -->
-  <section class="card">
-    <div class="section-title">
-      <h2>Plan de días</h2>
-      <small>Hasta el día anterior al cobro</small>
     </div>
 
-    <div id="daysList" class="day-list"></div>
   </section>
 
-  <!-- CHART -->
-  <section class="card">
+  <!-- =====================================================
+       PLAN DE DÍAS
+  ====================================================== -->
+
+  <section class="card days-card">
+
     <div class="section-title">
-      <h2>Actividad últimos 7 días</h2>
-      <small>Gastos</small>
+
+      <h2>
+        Plan de días
+      </h2>
+
+      <small>
+        Hasta antes del cobro
+      </small>
+
     </div>
 
-    <div id="chart" class="chart"></div>
+    <div
+      id="daysList"
+      class="day-list"
+    ></div>
+
   </section>
 
-  <!-- SYSTEM -->
+  <!-- =====================================================
+       ACTIVIDAD
+  ====================================================== -->
+
   <section class="card">
+
     <div class="section-title">
-      <h2>Estado del sistema</h2>
-      <small>Información</small>
+
+      <h2>
+        Actividad últimos 7 días
+      </h2>
+
+      <small>
+        Gastos
+      </small>
+
+    </div>
+
+    <div
+      id="chart"
+      class="chart"
+    ></div>
+
+  </section>
+
+  <!-- =====================================================
+       SISTEMA
+  ====================================================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <h2>
+        Estado del sistema
+      </h2>
+
+      <small>
+        Información
+      </small>
+
     </div>
 
     <div class="system-row">
@@ -1109,57 +1632,34 @@ main{
       <strong id="systemCycle">—</strong>
     </div>
 
-    <button class="btn btn-danger btn-full" style="margin-top:12px" onclick="resetApp()">
+    <button
+      class="btn btn-danger btn-full"
+      style="margin-top:12px"
+      onclick="resetApp()"
+    >
       Reiniciar aplicación
     </button>
+
   </section>
 
 </main>
 
 <div class="footer">
-  Macrodesk · Presupuesto Diario · V3.4
+  Macrodesk · Presupuesto Diario · V3.5
 </div>
 
 </div>
 
-<!-- TUTORIAL -->
-<div class="tutorial-overlay" id="tutorialOverlay">
-
-  <div class="tutorial-highlight" id="tutorialHighlight"></div>
-
-  <div class="tutorial-card" id="tutorialCard">
-
-    <div class="tutorial-step" id="tutorialStep">Paso 1 de 8</div>
-
-    <div class="tutorial-title" id="tutorialTitle">
-      Bienvenido a Presupuesto Diario
-    </div>
-
-    <div class="tutorial-text" id="tutorialText">
-      Vamos a mostrarte rápidamente cómo funciona.
-    </div>
-
-    <div class="tutorial-actions">
-      <button class="btn btn-secondary" onclick="tutorialPrev()" id="tutorialBack">
-        Atrás
-      </button>
-
-      <button class="btn btn-primary" onclick="tutorialNext()" id="tutorialNext">
-        Siguiente
-      </button>
-    </div>
-
-    <div class="tutorial-progress" id="tutorialProgress"></div>
-
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
+<div
+  class="toast"
+  id="toast"
+></div>
 
 <script>
 
 /* =========================================================
    CONFIGURACIÓN GENERAL
+   LÓGICA FINANCIERA V3.4 — SIN CAMBIOS
 ========================================================= */
 
 const STORAGE_KEY = "presupuesto_v34";
@@ -1190,13 +1690,12 @@ let state = {
   tutorialCompleted: false
 };
 
-let tutorialIndex = 0;
-
 /* =========================================================
    UTILIDADES
 ========================================================= */
 
 function money(value){
+
   const n = Number(value) || 0;
 
   return new Intl.NumberFormat("es-AR",{
@@ -1211,6 +1710,7 @@ function number(value){
 }
 
 function todayKey(){
+
   const d = new Date();
 
   const y = d.getFullYear();
@@ -1221,6 +1721,7 @@ function todayKey(){
 }
 
 function parseDateKey(key){
+
   if(!key) return null;
 
   const [y,m,d] = key.split("-").map(Number);
@@ -1293,6 +1794,7 @@ function toast(message){
 ========================================================= */
 
 function saveState(){
+
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(state)
@@ -1303,24 +1805,32 @@ function loadState(){
 
   try{
 
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw =
+      localStorage.getItem(STORAGE_KEY);
 
     if(!raw) return;
 
-    const parsed = JSON.parse(raw);
+    const parsed =
+      JSON.parse(raw);
 
     state = {
       ...state,
       ...parsed
     };
 
-    if(!state.days || typeof state.days !== "object"){
+    if(
+      !state.days ||
+      typeof state.days !== "object"
+    ){
       state.days = {};
     }
 
   }catch(error){
 
-    console.error("Error cargando estado:",error);
+    console.error(
+      "Error cargando estado:",
+      error
+    );
 
   }
 }
@@ -1337,14 +1847,10 @@ function createDay(key){
 
   let scheduledBudget = null;
 
-  /*
-    Si existe un presupuesto específico para mañana,
-    ese presupuesto se convierte en el presupuesto fijo
-    del nuevo día.
-  */
-
-  if(state.nextDayBudget !== null &&
-     state.nextDayBudget !== undefined){
+  if(
+    state.nextDayBudget !== null &&
+    state.nextDayBudget !== undefined
+  ){
 
     scheduledBudget = Math.max(
       0,
@@ -1360,9 +1866,11 @@ function createDay(key){
 
     scheduledBudget,
 
-    carryIn:number(state.carryOver) || 0,
+    carryIn:
+      number(state.carryOver) || 0,
 
-    deficitIn:number(state.deficitRemaining) || 0,
+    deficitIn:
+      number(state.deficitRemaining) || 0,
 
     expenses:[],
     incomes:[],
@@ -1389,7 +1897,6 @@ function createDay(key){
 }
 
 function currentDay(){
-
   return createDay(todayKey());
 }
 
@@ -1397,20 +1904,12 @@ function currentDay(){
    PRESUPUESTOS
 ========================================================= */
 
-/*
-  PRESUPUESTO NORMAL DE UN DÍA
-
-  Si el día ya tiene scheduledBudget,
-  ese valor queda fijo.
-
-  Esto es importante:
-  un gasto NO recalcula el presupuesto diario.
-*/
-
 function standardDayBudget(day){
 
-  if(day.scheduledBudget !== null &&
-     day.scheduledBudget !== undefined){
+  if(
+    day.scheduledBudget !== null &&
+    day.scheduledBudget !== undefined
+  ){
 
     return Math.max(
       0,
@@ -1426,27 +1925,10 @@ function standardDayBudget(day){
   );
 }
 
-/*
-  PRIORIDAD HACIA HOY
-
-  Esta es la corrección principal de V3.4.
-
-  Si hoy es 01/10 y se cobra 06/10:
-
-  daysUntilPayday = 5
-
-  Días futuros = 5 - 1 = 4
-
-  Reserva futura = base × 4
-
-  Hoy = saldo inicial - reserva futura
-
-  El día de cobro NO forma parte del presupuesto.
-*/
-
 function futureDaysCount(){
 
-  const days = daysUntilPayday(todayKey());
+  const days =
+    daysUntilPayday(todayKey());
 
   return Math.max(
     0,
@@ -1469,43 +1951,33 @@ function todayPriorityBudget(){
     return null;
   }
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
-  /*
-    Una vez creado el día, el presupuesto queda fijo.
-  */
-
-  if(day.scheduledBudget !== null &&
-     day.scheduledBudget !== undefined){
+  if(
+    day.scheduledBudget !== null &&
+    day.scheduledBudget !== undefined
+  ){
 
     return number(day.scheduledBudget);
   }
 
-  const reserve = futureReserve();
-
-  /*
-    El presupuesto de hoy jamás puede exceder
-    el saldo que realmente existe después de
-    proteger los días futuros.
-  */
+  const reserve =
+    futureReserve();
 
   return Math.max(
     0,
-    number(state.cycleStartingBalance) - reserve
+    number(state.cycleStartingBalance) -
+    reserve
   );
 }
 
 function dayBudget(day){
 
-  /*
-    El presupuesto de hoy con prioridad se calcula
-    solamente al crear/configurar el ciclo.
-
-    Luego queda fijo.
-  */
-
-  if(day.date === todayKey() &&
-     state.priorityMode){
+  if(
+    day.date === todayKey() &&
+    state.priorityMode
+  ){
 
     return todayPriorityBudget();
   }
@@ -1516,7 +1988,8 @@ function dayBudget(day){
 function spent(day){
 
   return (day.expenses || []).reduce(
-    (sum,item)=>sum + number(item.amount),
+    (sum,item)=>
+      sum + number(item.amount),
     0
   );
 }
@@ -1524,20 +1997,13 @@ function spent(day){
 function income(day){
 
   return (day.incomes || []).reduce(
-    (sum,item)=>sum + number(item.amount),
+    (sum,item)=>
+      sum + number(item.amount),
     0
   );
 }
 
 function available(day){
-
-  /*
-    El presupuesto diario NO cambia.
-
-    El disponible parcial sí cambia:
-
-    presupuesto + ingresos - gastos
-  */
 
   return (
     dayBudget(day) +
@@ -1552,43 +2018,61 @@ function available(day){
 
 function updatePriorityPreview(){
 
-  const balance = number(
-    document.getElementById("configBalance").value
-  );
+  const balance =
+    number(
+      document.getElementById(
+        "configBalance"
+      ).value
+    );
 
   const payday =
-    document.getElementById("configPayday").value;
+    document.getElementById(
+      "configPayday"
+    ).value;
 
-  let base = number(
-    document.getElementById("configBase").value
-  );
+  let base =
+    number(
+      document.getElementById(
+        "configBase"
+      ).value
+    );
 
   const priority =
-    document.getElementById("priorityMode").checked;
+    document.getElementById(
+      "priorityMode"
+    ).checked;
 
-  const today = todayKey();
+  const today =
+    todayKey();
 
   let days = 0;
 
   if(payday){
+
     days = Math.max(
       0,
-      dateDifferenceInDays(today,payday)
+      dateDifferenceInDays(
+        today,
+        payday
+      )
     );
   }
 
-  const futureDays = Math.max(
-    0,
-    days - 1
-  );
+  const futureDays =
+    Math.max(
+      0,
+      days - 1
+    );
 
-  /*
-    Si no se introduce base, mostramos una estimación
-    equitativa para orientar al usuario.
-  */
+  if(
+    base <= 0 &&
+    days > 0
+  ){
 
-  if(base <= 0 && days > 0){
-    base = Math.floor(balance / days);
+    base =
+      Math.floor(
+        balance / days
+      );
   }
 
   const reserve =
@@ -1600,16 +2084,18 @@ function updatePriorityPreview(){
 
   if(priority){
 
-    todayBudget = Math.max(
-      0,
-      balance - reserve
-    );
+    todayBudget =
+      Math.max(
+        0,
+        balance - reserve
+      );
 
   }else if(days > 0){
 
     todayBudget =
-      Math.floor(balance / days);
-
+      Math.floor(
+        balance / days
+      );
   }
 
   const totalAssigned =
@@ -1617,19 +2103,29 @@ function updatePriorityPreview(){
       ? todayBudget + reserve
       : todayBudget * days;
 
-  document.getElementById("previewDays").textContent =
+  document.getElementById(
+    "previewDays"
+  ).textContent =
     days || "—";
 
-  document.getElementById("previewFutureDays").textContent =
+  document.getElementById(
+    "previewFutureDays"
+  ).textContent =
     futureDays;
 
-  document.getElementById("previewReserve").textContent =
+  document.getElementById(
+    "previewReserve"
+  ).textContent =
     money(reserve);
 
-  document.getElementById("previewToday").textContent =
+  document.getElementById(
+    "previewToday"
+  ).textContent =
     money(todayBudget);
 
-  document.getElementById("previewTotal").textContent =
+  document.getElementById(
+    "previewTotal"
+  ).textContent =
     money(totalAssigned);
 }
 
@@ -1640,33 +2136,52 @@ function updatePriorityPreview(){
 function saveConfiguration(){
 
   const balance =
-    number(document.getElementById("configBalance").value);
+    number(
+      document.getElementById(
+        "configBalance"
+      ).value
+    );
 
   const payday =
-    document.getElementById("configPayday").value;
+    document.getElementById(
+      "configPayday"
+    ).value;
 
   let base =
-    number(document.getElementById("configBase").value);
+    number(
+      document.getElementById(
+        "configBase"
+      ).value
+    );
 
   const priority =
-    document.getElementById("priorityMode").checked;
+    document.getElementById(
+      "priorityMode"
+    ).checked;
 
   if(balance < 0){
 
-    alert("El saldo no puede ser negativo.");
+    alert(
+      "El saldo no puede ser negativo."
+    );
 
     return;
   }
 
   if(!payday){
 
-    alert("Ingresá la fecha de tu próximo cobro.");
+    alert(
+      "Ingresá la fecha de tu próximo cobro."
+    );
 
     return;
   }
 
   const days =
-    dateDifferenceInDays(todayKey(),payday);
+    dateDifferenceInDays(
+      todayKey(),
+      payday
+    );
 
   if(days <= 0){
 
@@ -1677,26 +2192,19 @@ function saveConfiguration(){
     return;
   }
 
-  /*
-    Si el usuario no establece una base,
-    calculamos una distribución equitativa.
-  */
-
   if(base <= 0){
 
     base =
-      Math.floor(balance / days);
+      Math.floor(
+        balance / days
+      );
   }
 
   const futureDays =
-    Math.max(0,days - 1);
-
-  /*
-    Cuando se utiliza prioridad, la reserva
-    necesaria es la de los días futuros.
-
-    El día de cobro queda fuera.
-  */
+    Math.max(
+      0,
+      days - 1
+    );
 
   if(priority){
 
@@ -1720,23 +2228,18 @@ function saveConfiguration(){
 
   }else{
 
-    /*
-      Sin prioridad también verificamos que la
-      base futura pueda sostenerse durante los
-      días futuros.
-    */
-
     const reserve =
       base * futureDays;
 
     const todayEqual =
-      Math.floor(balance / days);
+      Math.floor(
+        balance / days
+      );
 
-    if(reserve + todayEqual > balance){
-
-      /*
-        No bloqueamos por diferencia de redondeo.
-      */
+    if(
+      reserve + todayEqual >
+      balance
+    ){
 
       if(
         reserve >
@@ -1756,39 +2259,50 @@ function saveConfiguration(){
     }
   }
 
-  /*
-    Nuevo ciclo.
+  state.balance =
+    balance;
 
-    No borramos el historial visual de días anteriores,
-    pero reiniciamos las variables de distribución.
-  */
+  state.nextPayday =
+    payday;
 
-  state.balance = balance;
-  state.nextPayday = payday;
-  state.baseDailyBudget = base;
-  state.priorityMode = priority;
+  state.baseDailyBudget =
+    base;
 
-  state.cycleStartingBalance = balance;
-  state.cycleStartDate = todayKey();
+  state.priorityMode =
+    priority;
 
-  state.carryOver = 0;
-  state.deficitRemaining = 0;
-  state.deficitPerDay = 0;
-  state.nextDayBudget = null;
-  state.nextDayDeficitPerDay = 0;
-  state.nextDayDebt = 0;
+  state.cycleStartingBalance =
+    balance;
 
-  /*
-    IMPORTANTE:
-    si estamos configurando el ciclo del día actual,
-    debemos crear/reemplazar correctamente su presupuesto.
-  */
+  state.cycleStartDate =
+    todayKey();
 
-  const key = todayKey();
+  state.carryOver =
+    0;
 
-  const oldDay = state.days[key];
+  state.deficitRemaining =
+    0;
+
+  state.deficitPerDay =
+    0;
+
+  state.nextDayBudget =
+    null;
+
+  state.nextDayDeficitPerDay =
+    0;
+
+  state.nextDayDebt =
+    0;
+
+  const key =
+    todayKey();
+
+  const oldDay =
+    state.days[key];
 
   const today = {
+
     date:key,
 
     scheduledBudget:null,
@@ -1796,8 +2310,11 @@ function saveConfiguration(){
     carryIn:0,
     deficitIn:0,
 
-    expenses:oldDay?.expenses || [],
-    incomes:oldDay?.incomes || [],
+    expenses:
+      oldDay?.expenses || [],
+
+    incomes:
+      oldDay?.incomes || [],
 
     closed:false,
     closedAutomatically:false,
@@ -1810,12 +2327,6 @@ function saveConfiguration(){
     nextDeficitPerDay:0,
     debtAfterClose:0
   };
-
-  /*
-    Fijamos el presupuesto de HOY.
-
-    Esto evita que cada gasto vuelva a calcularlo.
-  */
 
   if(priority){
 
@@ -1831,21 +2342,30 @@ function saveConfiguration(){
   }else{
 
     today.scheduledBudget =
-      Math.floor(balance / days);
+      Math.floor(
+        balance / days
+      );
   }
 
-  state.days[key] = today;
+  state.days[key] =
+    today;
 
-  state.tutorialCompleted = true;
+  state.tutorialCompleted =
+    true;
 
   saveState();
 
   loadConfigurationUI();
+
   render();
 
   toast(
     "Configuración guardada. El presupuesto de hoy quedó fijo."
   );
+
+  document
+    .getElementById("configTarget")
+    .classList.remove("open");
 }
 
 /* =========================================================
@@ -1855,54 +2375,77 @@ function saveConfiguration(){
 function movementData(){
 
   const amount =
-    number(document.getElementById("movementAmount").value);
+    number(
+      document.getElementById(
+        "movementAmount"
+      ).value
+    );
 
   const description =
-    document.getElementById("movementDescription").value.trim();
+    document.getElementById(
+      "movementDescription"
+    ).value.trim();
 
   if(amount <= 0){
 
-    alert("Ingresá un monto válido.");
+    alert(
+      "Ingresá un monto válido."
+    );
 
     return null;
   }
 
   return {
+
     amount,
+
     description:
-      description || "Sin descripción",
+      description ||
+      "Sin descripción",
+
     time:
-      new Date().toLocaleTimeString("es-AR",{
-        hour:"2-digit",
-        minute:"2-digit"
-      }),
+      new Date().toLocaleTimeString(
+        "es-AR",
+        {
+          hour:"2-digit",
+          minute:"2-digit"
+        }
+      ),
+
     id:
-      Date.now() + Math.random()
+      Date.now() +
+      Math.random()
   };
 }
 
 function addExpense(){
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(day.closed){
 
-    alert("El día está cerrado. Reabrilo para modificarlo.");
+    alert(
+      "El día está cerrado. Reabrilo para modificarlo."
+    );
 
     return;
   }
 
-  const data = movementData();
+  const data =
+    movementData();
 
   if(!data) return;
 
   day.expenses.push(data);
 
-  state.balance -= data.amount;
+  state.balance -=
+    data.amount;
 
   saveState();
 
   clearMovementInputs();
+
   render();
 
   toast(
@@ -1912,37 +2455,32 @@ function addExpense(){
 
 function addIncome(){
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(day.closed){
 
-    alert("El día está cerrado. Reabrilo para modificarlo.");
+    alert(
+      "El día está cerrado. Reabrilo para modificarlo."
+    );
 
     return;
   }
 
-  const data = movementData();
+  const data =
+    movementData();
 
   if(!data) return;
 
   day.incomes.push(data);
 
-  /*
-    El ingreso modifica el saldo total,
-    pero SOLO aumenta el disponible de hoy.
-
-    No cambia:
-    - presupuesto diario
-    - presupuesto base
-    - reserva futura
-    - presupuesto de mañana
-  */
-
-  state.balance += data.amount;
+  state.balance +=
+    data.amount;
 
   saveState();
 
   clearMovementInputs();
+
   render();
 
   toast(
@@ -1952,24 +2490,34 @@ function addIncome(){
 
 function clearMovementInputs(){
 
-  document.getElementById("movementAmount").value = "";
-  document.getElementById("movementDescription").value = "";
+  document.getElementById(
+    "movementAmount"
+  ).value = "";
+
+  document.getElementById(
+    "movementDescription"
+  ).value = "";
 }
 
 function deleteExpense(id){
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(day.closed){
 
-    alert("El día está cerrado.");
+    alert(
+      "El día está cerrado."
+    );
 
     return;
   }
 
   const index =
     day.expenses.findIndex(
-      item=>String(item.id) === String(id)
+      item =>
+        String(item.id) ===
+        String(id)
     );
 
   if(index === -1) return;
@@ -1977,30 +2525,42 @@ function deleteExpense(id){
   const item =
     day.expenses[index];
 
-  state.balance += number(item.amount);
+  state.balance +=
+    number(item.amount);
 
-  day.expenses.splice(index,1);
+  day.expenses.splice(
+    index,
+    1
+  );
 
   saveState();
+
   render();
 
-  toast("Gasto eliminado.");
+  toast(
+    "Gasto eliminado."
+  );
 }
 
 function deleteIncome(id){
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(day.closed){
 
-    alert("El día está cerrado.");
+    alert(
+      "El día está cerrado."
+    );
 
     return;
   }
 
   const index =
     day.incomes.findIndex(
-      item=>String(item.id) === String(id)
+      item =>
+        String(item.id) ===
+        String(id)
     );
 
   if(index === -1) return;
@@ -2008,14 +2568,21 @@ function deleteIncome(id){
   const item =
     day.incomes[index];
 
-  state.balance -= number(item.amount);
+  state.balance -=
+    number(item.amount);
 
-  day.incomes.splice(index,1);
+  day.incomes.splice(
+    index,
+    1
+  );
 
   saveState();
+
   render();
 
-  toast("Ingreso eliminado.");
+  toast(
+    "Ingreso eliminado."
+  );
 }
 
 /* =========================================================
@@ -2027,13 +2594,6 @@ function calculateAfterClose(day){
   const currentAvailable =
     available(day);
 
-  /*
-    Un disponible negativo representa déficit.
-
-    No distribuimos sobrantes.
-    El sobrante va solamente a mañana.
-  */
-
   let debt =
     Math.max(
       0,
@@ -2043,9 +2603,10 @@ function calculateAfterClose(day){
 
   if(currentAvailable < 0){
 
-    debt += Math.abs(
-      currentAvailable
-    );
+    debt +=
+      Math.abs(
+        currentAvailable
+      );
   }
 
   const leftover =
@@ -2073,26 +2634,12 @@ function calculateAfterClose(day){
       );
   }
 
-  /*
-    Si no quedan días antes del cobro,
-    el déficit ya no se reparte.
-  */
-
   if(remainingDays === 0){
 
     debt = 0;
+
     nextDeficitPerDay = 0;
   }
-
-  /*
-    MAÑANA:
-
-    base
-    + sobrante de hoy
-    - déficit diario
-
-    El sobrante NO se reparte.
-  */
 
   const tomorrowBudget =
     Math.max(
@@ -2103,6 +2650,7 @@ function calculateAfterClose(day){
     );
 
   return {
+
     currentAvailable,
     leftover,
     debt,
@@ -2123,11 +2671,14 @@ function closeDay(auto=false){
     return;
   }
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(day.closed){
 
-    toast("El día ya está cerrado.");
+    toast(
+      "El día ya está cerrado."
+    );
 
     return;
   }
@@ -2136,7 +2687,10 @@ function closeDay(auto=false){
     calculateAfterClose(day);
 
   day.closed = true;
-  day.closedAutomatically = auto;
+
+  day.closedAutomatically =
+    auto;
+
   day.closedAt =
     new Date().toISOString();
 
@@ -2178,13 +2732,6 @@ function closeDay(auto=false){
 
   saveState();
 
-  /*
-    Creamos mañana inmediatamente.
-
-    Esto permite mostrar desde ahora
-    el presupuesto que recibió el sobrante.
-  */
-
   const tomorrow =
     parseDateKey(day.date);
 
@@ -2196,18 +2743,17 @@ function closeDay(auto=false){
     tomorrow.getFullYear();
 
   const m =
-    String(tomorrow.getMonth()+1).padStart(2,"0");
+    String(
+      tomorrow.getMonth()+1
+    ).padStart(2,"0");
 
   const d =
-    String(tomorrow.getDate()).padStart(2,"0");
+    String(
+      tomorrow.getDate()
+    ).padStart(2,"0");
 
   const tomorrowKey =
     `${y}-${m}-${d}`;
-
-  /*
-    Solo creamos mañana si sigue siendo
-    un día presupuestable antes del cobro.
-  */
 
   if(
     dateDifferenceInDays(
@@ -2216,10 +2762,13 @@ function closeDay(auto=false){
     ) > 0
   ){
 
-    createDay(tomorrowKey);
+    createDay(
+      tomorrowKey
+    );
   }
 
   saveState();
+
   render();
 
   toast(
@@ -2231,21 +2780,17 @@ function closeDay(auto=false){
 
 function reopenDay(){
 
-  const day = currentDay();
+  const day =
+    currentDay();
 
   if(!day.closed){
 
-    toast("El día ya está abierto.");
+    toast(
+      "El día ya está abierto."
+    );
 
     return;
   }
-
-  /*
-    Reabrimos el día actual.
-
-    Recuperamos el presupuesto del día y anulamos
-    la distribución que se había preparado para mañana.
-  */
 
   day.closed = false;
   day.closedAutomatically = false;
@@ -2268,7 +2813,9 @@ function reopenDay(){
 
   render();
 
-  toast("Día reabierto.");
+  toast(
+    "Día reabierto."
+  );
 }
 
 /* =========================================================
@@ -2280,7 +2827,9 @@ function reserveStatus(){
   if(!state.priorityMode){
 
     return {
+
       type:"info",
+
       text:
         "Modo prioridad desactivado. " +
         "Los presupuestos se distribuyen de forma equitativa."
@@ -2293,24 +2842,15 @@ function reserveStatus(){
   const reserve =
     futureReserve();
 
-  const today =
-    currentDay();
-
   const currentBalance =
     number(state.balance);
-
-  /*
-    La reserva futura debe medirse contra el saldo
-    actual que todavía queda.
-
-    Si los movimientos del día consumen dinero
-    destinado a los días futuros, avisamos.
-  */
 
   if(currentBalance < reserve){
 
     return {
+
       type:"danger",
+
       text:
         "Reserva futura comprometida. " +
         "Quedan " +
@@ -2324,7 +2864,9 @@ function reserveStatus(){
   }
 
   return {
+
     type:"success",
+
     text:
       "Reserva futura protegida. " +
       "Hay " +
@@ -2336,7 +2878,7 @@ function reserveStatus(){
 }
 
 /* =========================================================
-   RENDER
+   RENDER PRINCIPAL
 ========================================================= */
 
 function render(){
@@ -2357,39 +2899,75 @@ function render(){
     available(day);
 
   const days =
-    daysUntilPayday(todayKey());
+    daysUntilPayday(
+      todayKey()
+    );
 
-  document.getElementById("heroAvailable").textContent =
+  document.getElementById(
+    "heroAvailable"
+  ).textContent =
     money(availableToday);
 
-  document.getElementById("heroTodayBudget").textContent =
+  document.getElementById(
+    "mainBalance"
+  ).textContent =
+    money(state.balance);
+
+  document.getElementById(
+    "heroTodayBudget"
+  ).textContent =
     money(budget);
 
-  document.getElementById("heroDays").textContent =
+  document.getElementById(
+    "heroDays"
+  ).textContent =
     state.nextPayday
       ? days
       : "—";
 
-  document.getElementById("heroDescription").textContent =
+  document.getElementById(
+    "heroDescription"
+  ).textContent =
     state.nextPayday
       ? (
-        "Disponible parcial. " +
-        "El presupuesto de hoy permanece fijo; " +
-        "los gastos solo reducen este disponible."
+        "Presupuesto fijo de hoy. " +
+        "Los movimientos modifican solamente el disponible."
       )
       : "Configurá tu ciclo para comenzar.";
 
-  document.getElementById("kpiBudget").textContent =
-    money(budget);
+  document.getElementById(
+    "headerPayday"
+  ).textContent =
+    state.nextPayday
+      ? formatDate(state.nextPayday)
+      : "Sin configurar";
 
-  document.getElementById("kpiSpent").textContent =
-    money(spentToday);
+  /*
+    Barra visual:
 
-  document.getElementById("kpiIncome").textContent =
-    money(incomeToday);
+    Gastado / presupuesto.
 
-  document.getElementById("kpiBalance").textContent =
-    money(state.balance);
+    No interviene en ningún cálculo.
+  */
+
+  let progress = 0;
+
+  if(budget > 0){
+
+    progress =
+      Math.min(
+        100,
+        Math.max(
+          0,
+          (spentToday / budget) * 100
+        )
+      );
+  }
+
+  document.getElementById(
+    "financialProgress"
+  ).style.width =
+    progress + "%";
 
   renderReserveAlert();
   renderMovements();
@@ -2403,11 +2981,15 @@ function render(){
 function renderReserveAlert(){
 
   const el =
-    document.getElementById("reserveAlert");
+    document.getElementById(
+      "reserveAlert"
+    );
 
   if(!state.nextPayday){
 
-    el.classList.add("hidden");
+    el.classList.add(
+      "hidden"
+    );
 
     return;
   }
@@ -2416,12 +2998,15 @@ function renderReserveAlert(){
     reserveStatus();
 
   el.className =
-    "alert " + result.type;
+    "alert " +
+    result.type;
 
   el.textContent =
     result.text;
 
-  el.classList.remove("hidden");
+  el.classList.remove(
+    "hidden"
+  );
 }
 
 function renderMovements(){
@@ -2430,28 +3015,35 @@ function renderMovements(){
     currentDay();
 
   const list =
-    document.getElementById("movementsList");
+    document.getElementById(
+      "movementsList"
+    );
 
   const movements = [
 
-    ...(day.expenses || []).map(item=>({
-      ...item,
-      type:"expense"
-    })),
+    ...(day.expenses || [])
+      .map(item=>({
+        ...item,
+        type:"expense"
+      })),
 
-    ...(day.incomes || []).map(item=>({
-      ...item,
-      type:"income"
-    }))
+    ...(day.incomes || [])
+      .map(item=>({
+        ...item,
+        type:"income"
+      }))
 
   ].sort((a,b)=>{
 
-    return String(a.time).localeCompare(
-      String(b.time)
-    );
+    return String(a.time)
+      .localeCompare(
+        String(b.time)
+      );
   });
 
-  document.getElementById("movementCount").textContent =
+  document.getElementById(
+    "movementCount"
+  ).textContent =
     `${movements.length} movimiento${movements.length===1?"":"s"}`;
 
   if(!movements.length){
@@ -2471,7 +3063,9 @@ function renderMovements(){
         item.type === "expense";
 
       const sign =
-        isExpense ? "−" : "+";
+        isExpense
+          ? "−"
+          : "+";
 
       const amount =
         money(item.amount);
@@ -2482,25 +3076,45 @@ function renderMovements(){
           : `deleteIncome('${item.id}')`;
 
       return `
+
         <div class="movement-item">
 
           <div class="movement-left">
-            <div class="movement-description">
-              ${escapeHtml(item.description)}
+
+            <div
+              class="movement-dot ${isExpense?"expense":"income"}"
+            >
+              ${isExpense?"−":"+"}
             </div>
 
-            <div class="movement-time">
-              ${escapeHtml(item.time)}
+            <div>
+
+              <div class="movement-description">
+                ${escapeHtml(
+                  item.description
+                )}
+              </div>
+
+              <div class="movement-time">
+                ${escapeHtml(item.time)}
+              </div>
+
             </div>
+
           </div>
 
           <div class="movement-right">
 
-            <div class="movement-amount ${isExpense?"expense":"income"}">
+            <div
+              class="movement-amount ${isExpense?"expense":"income"}"
+            >
               ${sign}${amount}
             </div>
 
-            <button class="delete-btn" onclick="${action}">
+            <button
+              class="delete-btn"
+              onclick="${action}"
+            >
               ×
             </button>
 
@@ -2520,31 +3134,52 @@ function renderClose(){
   const availableNow =
     available(day);
 
-  document.getElementById("closeAvailable").textContent =
+  document.getElementById(
+    "closeAvailable"
+  ).textContent =
     money(availableNow);
 
-  document.getElementById("closeLeftover").textContent =
+  document.getElementById(
+    "closeLeftover"
+  ).textContent =
     money(
       day.closed
         ? day.leftover
-        : Math.max(0,availableNow)
+        : Math.max(
+            0,
+            availableNow
+          )
     );
 
-  document.getElementById("closeDeficit").textContent =
+  document.getElementById(
+    "closeDeficit"
+  ).textContent =
     money(
       day.closed
         ? day.deficit
-        : Math.max(0,-availableNow)
+        : Math.max(
+            0,
+            -availableNow
+          )
     );
 
-  document.getElementById("closeTomorrow").textContent =
-    day.closed && day.tomorrowBudget !== null
-      ? money(day.tomorrowBudget)
+  document.getElementById(
+    "closeTomorrow"
+  ).textContent =
+    day.closed &&
+    day.tomorrowBudget !== null
+      ? money(
+          day.tomorrowBudget
+        )
       : money(
-          calculateAfterClose(day).tomorrowBudget
+          calculateAfterClose(
+            day
+          ).tomorrowBudget
         );
 
-  document.getElementById("closeStatus").textContent =
+  document.getElementById(
+    "closeStatus"
+  ).textContent =
     day.closed
       ? (
         day.closedAutomatically
@@ -2553,14 +3188,18 @@ function renderClose(){
       )
       : "Día abierto";
 
-  document.getElementById("closeButton").disabled =
+  document.getElementById(
+    "closeButton"
+  ).disabled =
     day.closed;
 }
 
 function renderDays(){
 
   const container =
-    document.getElementById("daysList");
+    document.getElementById(
+      "daysList"
+    );
 
   if(!state.nextPayday){
 
@@ -2573,19 +3212,9 @@ function renderDays(){
   }
 
   const totalDays =
-    daysUntilPayday(todayKey());
-
-  /*
-    FIX V3.4:
-
-    Si hoy es 01/10 y cobrás 06/10,
-    totalDays = 5.
-
-    Se muestran:
-    01,02,03,04,05.
-
-    El 06 nunca se muestra porque es el día de cobro.
-  */
+    daysUntilPayday(
+      todayKey()
+    );
 
   if(totalDays <= 0){
 
@@ -2607,7 +3236,9 @@ function renderDays(){
   ){
 
     const d =
-      parseDateKey(todayKey());
+      parseDateKey(
+        todayKey()
+      );
 
     d.setDate(
       d.getDate()+i
@@ -2617,10 +3248,14 @@ function renderDays(){
       d.getFullYear();
 
     const m =
-      String(d.getMonth()+1).padStart(2,"0");
+      String(
+        d.getMonth()+1
+      ).padStart(2,"0");
 
     const dayNum =
-      String(d.getDate()).padStart(2,"0");
+      String(
+        d.getDate()
+      ).padStart(2,"0");
 
     const key =
       `${y}-${m}-${dayNum}`;
@@ -2647,10 +3282,6 @@ function renderDays(){
 
     }else{
 
-      /*
-        Los días futuros mantienen el presupuesto base.
-      */
-
       budget =
         state.baseDailyBudget;
     }
@@ -2672,19 +3303,27 @@ function renderDays(){
           : "Pendiente";
 
     html += `
-      <div class="day-row ${isToday?"today":""}">
+
+      <div
+        class="day-row ${isToday?"today":""}"
+      >
 
         <div class="day-info">
+
           <div class="day-name">
-            ${isToday ? "Hoy" : formatDate(key)}
+            ${isToday
+              ? "Hoy"
+              : formatDate(key)}
           </div>
 
           <div class="day-date">
             ${key}
           </div>
+
         </div>
 
         <div>
+
           <div class="day-budget">
             ${money(budget)}
           </div>
@@ -2692,26 +3331,36 @@ function renderDays(){
           <div class="day-status">
             ${status}
           </div>
+
         </div>
 
       </div>
     `;
   }
 
-  container.innerHTML = html;
+  container.innerHTML =
+    html;
 }
 
 function renderChart(){
 
   const container =
-    document.getElementById("chart");
+    document.getElementById(
+      "chart"
+    );
 
   const today =
-    parseDateKey(todayKey());
+    parseDateKey(
+      todayKey()
+    );
 
   const values = [];
 
-  for(let i=6;i>=0;i--){
+  for(
+    let i=6;
+    i>=0;
+    i--
+  ){
 
     const d =
       new Date(today);
@@ -2724,10 +3373,14 @@ function renderChart(){
       d.getFullYear();
 
     const m =
-      String(d.getMonth()+1).padStart(2,"0");
+      String(
+        d.getMonth()+1
+      ).padStart(2,"0");
 
     const dayNum =
-      String(d.getDate()).padStart(2,"0");
+      String(
+        d.getDate()
+      ).padStart(2,"0");
 
     const key =
       `${y}-${m}-${dayNum}`;
@@ -2736,23 +3389,34 @@ function renderChart(){
       state.days[key];
 
     const spentValue =
-      day ? spent(day) : 0;
+      day
+        ? spent(day)
+        : 0;
 
     values.push({
+
       key,
-      value:spentValue,
+
+      value:
+        spentValue,
+
       label:
-        d.toLocaleDateString("es-AR",{
-          day:"2-digit",
-          month:"2-digit"
-        })
+        d.toLocaleDateString(
+          "es-AR",
+          {
+            day:"2-digit",
+            month:"2-digit"
+          }
+        )
     });
   }
 
   const max =
     Math.max(
       1,
-      ...values.map(x=>x.value)
+      ...values.map(
+        x=>x.value
+      )
     );
 
   container.innerHTML =
@@ -2765,10 +3429,13 @@ function renderChart(){
         );
 
       return `
+
         <div class="bar-wrap">
 
           <div class="bar-value">
-            ${item.value ? money(item.value) : ""}
+            ${item.value
+              ? money(item.value)
+              : ""}
           </div>
 
           <div
@@ -2788,18 +3455,27 @@ function renderChart(){
 
 function renderSystem(){
 
-  document.getElementById("systemDate").textContent =
+  document.getElementById(
+    "systemDate"
+  ).textContent =
     todayKey();
 
-  document.getElementById("systemProcessed").textContent =
-    state.lastProcessedDate || "—";
+  document.getElementById(
+    "systemProcessed"
+  ).textContent =
+    state.lastProcessedDate ||
+    "—";
 
-  document.getElementById("systemPriority").textContent =
+  document.getElementById(
+    "systemPriority"
+  ).textContent =
     state.priorityMode
       ? "Activo"
       : "Desactivado";
 
-  document.getElementById("systemCycle").textContent =
+  document.getElementById(
+    "systemCycle"
+  ).textContent =
     state.nextPayday
       ? `Cobro ${state.nextPayday}`
       : "Sin configurar";
@@ -2811,17 +3487,41 @@ function renderSystem(){
 
 function loadConfigurationUI(){
 
-  document.getElementById("configBalance").value =
+  document.getElementById(
+    "configBalance"
+  ).value =
     state.balance || "";
 
-  document.getElementById("configPayday").value =
+  document.getElementById(
+    "configPayday"
+  ).value =
     state.nextPayday || "";
 
-  document.getElementById("configBase").value =
+  document.getElementById(
+    "configBase"
+  ).value =
     state.baseDailyBudget || "";
 
-  document.getElementById("priorityMode").checked =
+  document.getElementById(
+    "priorityMode"
+  ).checked =
     !!state.priorityMode;
+}
+
+/* =========================================================
+   CONFIGURACIÓN OCULTABLE
+========================================================= */
+
+function toggleConfiguration(){
+
+  const card =
+    document.getElementById(
+      "configTarget"
+    );
+
+  card.classList.toggle(
+    "open"
+  );
 }
 
 /* =========================================================
@@ -2829,11 +3529,6 @@ function loadConfigurationUI(){
 ========================================================= */
 
 function processAutomaticClose(){
-
-  /*
-    No cerramos automáticamente si no existe
-    un ciclo configurado.
-  */
 
   if(!state.nextPayday){
     return;
@@ -2849,238 +3544,11 @@ function processAutomaticClose(){
   const now =
     new Date();
 
-  /*
-    Cierre automático a las 23:00.
-  */
-
   if(now.getHours() >= 23){
 
     closeDay(true);
   }
 }
-
-/* =========================================================
-   TUTORIAL
-========================================================= */
-
-const tutorialSteps = [
-
-  {
-    target:"configTarget",
-    title:"1. Configurá tu saldo",
-    text:
-      "Primero indicá cuánto dinero tenés disponible para todo el período. Ese saldo será la base de todos los cálculos."
-  },
-
-  {
-    target:"configTarget",
-    title:"2. Indicá cuándo cobrás",
-    text:
-      "Elegí tu próxima fecha de cobro. La aplicación calcula solamente los días anteriores al cobro. Si cobrás el martes 06/10, el último día presupuestado es el lunes 05/10."
-  },
-
-  {
-    target:"configTarget",
-    title:"3. Definí tu presupuesto base",
-    text:
-      "Acá podés establecer cuánto querés reservar para cada día futuro. La aplicación comprueba que matemáticamente sea posible sostenerlo."
-  },
-
-  {
-    target:"previewTarget",
-    title:"4. Priorizá excedente hacia hoy",
-    text:
-      "Si activás esta opción, primero se protege el presupuesto de los días futuros. Todo el dinero que realmente quede por encima de esa reserva queda disponible para hoy."
-  },
-
-  {
-    target:"heroTarget",
-    title:"5. Mirá tu disponible parcial",
-    text:
-      "Este importe cambia cuando gastás o registrás un ingreso. Pero atención: el presupuesto diario permanece fijo durante todo el día."
-  },
-
-  {
-    target:"movementTarget",
-    title:"6. Registrá tus movimientos",
-    text:
-      "Usá gasto para descontar dinero y usá ingreso para sumar dinero. Un ingreso aumenta el disponible de hoy, pero no modifica el presupuesto base de los días siguientes."
-  },
-
-  {
-    target:"heroTarget",
-    title:"7. El sobrante se arrastra",
-    text:
-      "Cuando cerrás el día, si sobra dinero, ese sobrante pasa íntegramente a mañana. No se reparte entre todos los días restantes."
-  },
-
-  {
-    target:"movementTarget",
-    title:"¡Listo!",
-    text:
-      "Ya conocés el funcionamiento básico de Presupuesto Diario. Podés volver a ver esta guía cuando quieras tocando el botón ? del encabezado."
-  }
-
-];
-
-function startTutorial(){
-
-  tutorialIndex = 0;
-
-  document.getElementById(
-    "tutorialOverlay"
-  ).classList.add("active");
-
-  renderTutorialStep();
-}
-
-function renderTutorialStep(){
-
-  const step =
-    tutorialSteps[tutorialIndex];
-
-  const overlay =
-    document.getElementById("tutorialOverlay");
-
-  const highlight =
-    document.getElementById("tutorialHighlight");
-
-  const card =
-    document.getElementById("tutorialCard");
-
-  const target =
-    document.getElementById(step.target);
-
-  document.getElementById("tutorialStep").textContent =
-    `Paso ${tutorialIndex+1} de ${tutorialSteps.length}`;
-
-  document.getElementById("tutorialTitle").textContent =
-    step.title;
-
-  document.getElementById("tutorialText").textContent =
-    step.text;
-
-  document.getElementById("tutorialBack").style.visibility =
-    tutorialIndex === 0
-      ? "hidden"
-      : "visible";
-
-  document.getElementById("tutorialNext").textContent =
-    tutorialIndex === tutorialSteps.length-1
-      ? "Finalizar"
-      : "Siguiente";
-
-  const progress =
-    document.getElementById("tutorialProgress");
-
-  progress.innerHTML =
-    tutorialSteps.map((_,i)=>
-      `<div class="tutorial-dot ${i===tutorialIndex?"active":""}"></div>`
-    ).join("");
-
-  /*
-    Posicionamiento después de que el DOM
-    tenga el estado visual correcto.
-  */
-
-  requestAnimationFrame(()=>{
-
-    if(target){
-
-      const rect =
-        target.getBoundingClientRect();
-
-      highlight.style.left =
-        `${rect.left-5}px`;
-
-      highlight.style.top =
-        `${rect.top-5}px`;
-
-      highlight.style.width =
-        `${rect.width+10}px`;
-
-      highlight.style.height =
-        `${rect.height+10}px`;
-
-      /*
-        Colocamos la tarjeta debajo o encima
-        dependiendo del espacio disponible.
-      */
-
-      const cardHeight =
-        card.offsetHeight;
-
-      const spaceBelow =
-        window.innerHeight -
-        rect.bottom;
-
-      if(spaceBelow > cardHeight + 30){
-
-        card.style.top =
-          `${rect.bottom+20}px`;
-
-      }else{
-
-        card.style.top =
-          `${Math.max(15,rect.top-cardHeight-20)}px`;
-      }
-    }
-
-  });
-}
-
-function tutorialNext(){
-
-  if(
-    tutorialIndex >=
-    tutorialSteps.length-1
-  ){
-
-    finishTutorial();
-
-    return;
-  }
-
-  tutorialIndex++;
-
-  renderTutorialStep();
-}
-
-function tutorialPrev(){
-
-  if(tutorialIndex <= 0){
-    return;
-  }
-
-  tutorialIndex--;
-
-  renderTutorialStep();
-}
-
-function finishTutorial(){
-
-  state.tutorialCompleted = true;
-
-  saveState();
-
-  document.getElementById(
-    "tutorialOverlay"
-  ).classList.remove("active");
-
-  toast("Tutorial completado.");
-}
-
-window.addEventListener("resize",()=>{
-
-  if(
-    document.getElementById(
-      "tutorialOverlay"
-    ).classList.contains("active")
-  ){
-
-    renderTutorialStep();
-  }
-});
 
 /* =========================================================
    RESET
@@ -3097,15 +3565,17 @@ function resetApp(){
     return;
   }
 
-  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
 
-  /*
-    También eliminamos versiones inmediatamente
-    anteriores para evitar confusión.
-  */
+  localStorage.removeItem(
+    "presupuesto_v33"
+  );
 
-  localStorage.removeItem("presupuesto_v33");
-  localStorage.removeItem("presupuesto_v32");
+  localStorage.removeItem(
+    "presupuesto_v32"
+  );
 
   location.reload();
 }
@@ -3118,7 +3588,9 @@ function init(){
 
   loadState();
 
-  createDay(todayKey());
+  createDay(
+    todayKey()
+  );
 
   loadConfigurationUI();
 
@@ -3126,43 +3598,34 @@ function init(){
 
   processAutomaticClose();
 
-  /*
-    Revisión automática cada minuto.
-  */
-
   setInterval(
     processAutomaticClose,
     60000
   );
-
-  /*
-    Tutorial solamente la primera vez.
-  */
-
-  if(!state.tutorialCompleted){
-
-    setTimeout(()=>{
-      startTutorial();
-    },700);
-  }
 }
 
 document
-  .getElementById("configBalance")
+  .getElementById(
+    "configBalance"
+  )
   .addEventListener(
     "input",
     updatePriorityPreview
   );
 
 document
-  .getElementById("configPayday")
+  .getElementById(
+    "configPayday"
+  )
   .addEventListener(
     "change",
     updatePriorityPreview
   );
 
 document
-  .getElementById("configBase")
+  .getElementById(
+    "configBase"
+  )
   .addEventListener(
     "input",
     updatePriorityPreview
