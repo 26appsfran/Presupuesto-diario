@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071525">
-<title>Presupuesto Diario · Macrodesk</title>
+<title>Presupuesto Diario · Macrodesk V3.4</title>
 
 <style>
 :root{
@@ -24,9 +24,7 @@
   --radius:20px;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html{
   scroll-behavior:smooth;
@@ -49,271 +47,293 @@ button{
 }
 
 .app{
-  max-width:760px;
+  width:100%;
+  max-width:600px;
   margin:auto;
-  min-height:100vh;
   padding-bottom:40px;
 }
 
 /* HEADER */
 
 .header{
-  background:linear-gradient(135deg,#071525,#102d4a);
-  color:#fff;
-  padding:22px 18px 26px;
-  border-radius:0 0 28px 28px;
-  box-shadow:0 8px 25px rgba(7,21,37,.18);
+  background:var(--ink);
+  color:white;
+  padding:18px 18px 20px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 5px 20px rgba(7,21,37,.18);
 }
 
-.header-top{
+.header-inner{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:12px;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:11px;
 }
 
 .logo{
   width:42px;
   height:42px;
   border-radius:13px;
-  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#fff;
   font-size:22px;
   font-weight:900;
-  color:white;
-  box-shadow:0 7px 18px rgba(22,199,201,.22);
+  box-shadow:0 8px 20px rgba(35,136,255,.25);
 }
 
 .brand-title{
   font-size:17px;
   font-weight:800;
-  letter-spacing:.2px;
+  line-height:1.1;
 }
 
 .brand-sub{
-  font-size:12px;
-  opacity:.65;
-  margin-top:2px;
+  color:#9db0c3;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.header-actions{
+  display:flex;
+  gap:7px;
+}
+
+.icon-btn{
+  width:39px;
+  height:39px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  font-size:17px;
 }
 
 .version{
-  font-size:11px;
-  padding:6px 9px;
-  border-radius:20px;
-  background:rgba(255,255,255,.09);
-  color:#b9c8d7;
+  font-size:10px;
+  color:#8da1b4;
+  margin-top:5px;
 }
 
-/* HERO */
+/* MAIN */
 
-.hero{
-  margin-top:20px;
-  padding:22px;
-  border-radius:22px;
-  background:linear-gradient(135deg,#fff,#f7fbff);
-  box-shadow:var(--shadow);
-  border:1px solid rgba(255,255,255,.8);
+main{
+  padding:16px;
 }
-
-.hero-label{
-  color:var(--muted);
-  font-size:13px;
-  font-weight:700;
-}
-
-.hero-value{
-  font-size:38px;
-  line-height:1.1;
-  margin:7px 0 8px;
-  font-weight:900;
-  letter-spacing:-1.5px;
-}
-
-.hero-value.negative{
-  color:var(--red);
-}
-
-.hero-value.positive{
-  color:var(--green);
-}
-
-.hero-info{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.priority-summary{
-  display:none;
-  margin-top:16px;
-  padding:14px;
-  border-radius:15px;
-  background:#edf8f8;
-  border:1px solid #cceeed;
-}
-
-.priority-summary.show{
-  display:block;
-}
-
-.priority-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin:5px 0;
-  font-size:13px;
-}
-
-.priority-row strong{
-  color:var(--ink);
-}
-
-/* ALERTS */
-
-.alert{
-  margin:16px 18px 0;
-  padding:14px 16px;
-  border-radius:16px;
-  font-size:13px;
-  line-height:1.45;
-  display:none;
-}
-
-.alert.show{
-  display:block;
-}
-
-.alert.warning{
-  background:#fff6e6;
-  border:1px solid #f6d69c;
-  color:#82520a;
-}
-
-.alert.danger{
-  background:#fff0f1;
-  border:1px solid #f2b9bd;
-  color:#9d2d35;
-}
-
-.alert.success{
-  background:#eaf9f3;
-  border:1px solid #b9e9d5;
-  color:#14784f;
-}
-
-/* CONTENT */
-
-.content{
-  padding:0 18px;
-}
-
-.section{
-  margin-top:18px;
-}
-
-.section-title{
-  font-size:15px;
-  font-weight:850;
-  margin:0 0 10px;
-}
-
-/* KPI */
-
-.kpis{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:11px;
-  margin-top:18px;
-}
-
-.kpi{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:17px;
-  padding:15px;
-  box-shadow:0 6px 18px rgba(7,21,37,.04);
-}
-
-.kpi-label{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-
-.kpi-value{
-  font-size:20px;
-  font-weight:850;
-}
-
-.kpi-value.green{
-  color:var(--green);
-}
-
-.kpi-value.red{
-  color:var(--red);
-}
-
-.kpi-value.blue{
-  color:var(--blue);
-}
-
-/* CARDS */
 
 .card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:18px;
-  box-shadow:0 6px 20px rgba(7,21,37,.045);
+  box-shadow:var(--shadow);
+  padding:17px;
+  margin-bottom:14px;
 }
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:13px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:16px;
+}
+
+.section-title small{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.hero{
+  background:
+    radial-gradient(circle at 100% 0%,rgba(22,199,201,.28),transparent 42%),
+    linear-gradient(135deg,#071525,#123452);
+  color:#fff;
+  border:0;
+  overflow:hidden;
+  position:relative;
+}
+
+.hero-label{
+  color:#9fc6e8;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.hero-amount{
+  font-size:38px;
+  line-height:1;
+  font-weight:900;
+  margin:9px 0 8px;
+  letter-spacing:-1px;
+}
+
+.hero-description{
+  color:#c2d2df;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:16px;
+}
+
+.hero-mini{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:11px;
+}
+
+.hero-mini-label{
+  color:#9db0c3;
+  font-size:10px;
+}
+
+.hero-mini-value{
+  margin-top:4px;
+  font-weight:800;
+  font-size:15px;
+}
+
+/* ALERTS */
+
+.alert{
+  padding:13px 14px;
+  border-radius:16px;
+  margin-bottom:14px;
+  font-size:12px;
+  line-height:1.45;
+  border:1px solid;
+}
+
+.alert.success{
+  background:#eafaf3;
+  border-color:#b9ead4;
+  color:#126f4c;
+}
+
+.alert.warning{
+  background:#fff7e8;
+  border-color:#f4d59b;
+  color:#8a5a10;
+}
+
+.alert.danger{
+  background:#fff0f1;
+  border-color:#f2b8bc;
+  color:#a5313b;
+}
+
+.alert.info{
+  background:#edf6ff;
+  border-color:#c6e1ff;
+  color:#145b9e;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* KPIS */
+
+.kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.kpi{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:14px;
+}
+
+.kpi-label{
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+}
+
+.kpi-value{
+  font-size:21px;
+  font-weight:900;
+  margin-top:6px;
+}
+
+.kpi-value.green{color:var(--green)}
+.kpi-value.red{color:var(--red)}
+.kpi-value.blue{color:var(--blue)}
 
 /* MOVEMENTS */
 
 .movement-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:9px;
+}
+
+.input-group{
+  margin-bottom:11px;
+}
+
+.input-group label{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:6px;
 }
 
 .input{
   width:100%;
   border:1px solid var(--border);
-  border-radius:13px;
-  padding:13px 14px;
-  outline:none;
-  background:#fff;
+  background:#f8fafc;
   color:var(--ink);
-  font-size:16px;
+  border-radius:13px;
+  padding:12px;
+  outline:none;
 }
 
 .input:focus{
   border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(35,136,255,.10);
+  background:white;
+  box-shadow:0 0 0 3px rgba(35,136,255,.09);
 }
 
-.full{
-  grid-column:1/-1;
-}
-
-.btn-row{
+.movement-buttons{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:10px;
+  gap:9px;
+  margin-top:5px;
 }
 
 .btn{
-  min-height:46px;
   border:0;
   border-radius:13px;
+  padding:12px 13px;
   font-weight:800;
   transition:.15s;
 }
@@ -324,21 +344,17 @@ button{
 
 .btn-expense{
   background:#fff0f1;
-  color:#b52f38;
-  border:1px solid #f3c5c8;
+  color:#b6323c;
 }
 
 .btn-income{
-  background:#eaf9f3;
-  color:#13794f;
-  border:1px solid #bce8d5;
+  background:#eafaf3;
+  color:#12724e;
 }
 
 .btn-primary{
-  width:100%;
-  background:linear-gradient(135deg,var(--blue),#146ad0);
+  background:var(--blue);
   color:#fff;
-  padding:13px;
 }
 
 .btn-dark{
@@ -353,94 +369,80 @@ button{
 
 .btn-danger{
   background:#fff0f1;
-  color:#b52f38;
+  color:#a72d37;
+}
+
+.btn-full{
+  width:100%;
 }
 
 /* CONFIG */
 
-.config-toggle{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border:0;
-  background:transparent;
-  padding:0;
-  color:var(--ink);
+.config-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.config-panel{
-  display:none;
-  margin-top:15px;
+.config-grid .full{
+  grid-column:1/-1;
 }
-
-.config-panel.open{
-  display:block;
-}
-
-.field{
-  margin-bottom:13px;
-}
-
-.field label{
-  display:block;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:7px;
-}
-
-.field-help{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:5px;
-  line-height:1.4;
-}
-
-/* SWITCH */
 
 .switch-row{
   display:flex;
-  align-items:flex-start;
+  align-items:center;
+  justify-content:space-between;
   gap:12px;
-  padding:14px;
+  padding:13px;
+  background:#f6f9fb;
   border:1px solid var(--border);
   border-radius:15px;
-  background:#f8fafc;
-  margin-bottom:14px;
+  margin:3px 0 12px;
+}
+
+.switch-text strong{
+  display:block;
+  font-size:13px;
+}
+
+.switch-text span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+  line-height:1.4;
 }
 
 .switch{
   position:relative;
   width:48px;
   height:27px;
-  flex:0 0 48px;
+  flex:none;
 }
 
 .switch input{
-  opacity:0;
-  width:0;
-  height:0;
+  display:none;
 }
 
 .slider{
   position:absolute;
   inset:0;
-  background:#cbd5df;
   border-radius:30px;
+  background:#cbd5df;
   transition:.2s;
 }
 
 .slider:before{
   content:"";
-  position:absolute;
   width:21px;
   height:21px;
+  background:white;
+  position:absolute;
   left:3px;
   top:3px;
-  background:white;
   border-radius:50%;
-  transition:.2s;
   box-shadow:0 2px 5px rgba(0,0,0,.2);
+  transition:.2s;
 }
 
 .switch input:checked + .slider{
@@ -451,115 +453,46 @@ button{
   transform:translateX(21px);
 }
 
-.switch-title{
-  font-size:13px;
-  font-weight:800;
-}
-
-.switch-help{
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.4;
-  margin-top:3px;
-}
-
-.priority-preview{
-  display:none;
-  margin-bottom:14px;
-  border-radius:16px;
-  padding:15px;
-  background:#f3f9ff;
-  border:1px solid #d2e6fa;
-}
-
-.priority-preview.show{
-  display:block;
+.preview{
+  background:#f1f7ff;
+  border:1px solid #d1e6ff;
+  border-radius:15px;
+  padding:13px;
+  margin-bottom:12px;
 }
 
 .preview-title{
-  font-size:12px;
-  font-weight:850;
-  margin-bottom:9px;
+  font-size:11px;
+  font-weight:800;
+  color:#1d5f9f;
+  margin-bottom:8px;
 }
 
 .preview-row{
   display:flex;
   justify-content:space-between;
-  padding:5px 0;
-  font-size:12px;
-}
-
-.preview-total{
-  margin-top:7px;
-  padding-top:9px;
-  border-top:1px solid #d8e8f6;
-  font-size:14px;
-  font-weight:900;
-}
-
-/* DAYS */
-
-.days-list{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-
-.day-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:13px 14px;
-  border:1px solid var(--border);
-  border-radius:15px;
-}
-
-.day-main{
-  min-width:0;
-}
-
-.day-date{
-  font-size:13px;
-  font-weight:850;
-}
-
-.day-status{
-  color:var(--muted);
+  gap:10px;
+  padding:4px 0;
   font-size:11px;
-  margin-top:3px;
 }
 
-.day-amount{
-  text-align:right;
-  font-size:14px;
-  font-weight:850;
-}
-
-.day-amount small{
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  font-weight:600;
-  margin-top:2px;
+.preview-row strong{
+  font-size:12px;
 }
 
 /* MOVEMENT LIST */
 
-.movements{
+.movement-item{
   display:flex;
-  flex-direction:column;
-  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:11px 0;
+  border-bottom:1px solid #edf1f4;
 }
 
-.movement{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:12px;
-  border-radius:14px;
-  background:#f8fafc;
+.movement-item:last-child{
+  border-bottom:0;
 }
 
 .movement-left{
@@ -568,10 +501,10 @@ button{
 
 .movement-description{
   font-size:13px;
-  font-weight:750;
-  white-space:nowrap;
+  font-weight:700;
   overflow:hidden;
   text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .movement-time{
@@ -584,12 +517,12 @@ button{
   display:flex;
   align-items:center;
   gap:8px;
+  flex:none;
 }
 
 .movement-amount{
+  font-weight:900;
   font-size:13px;
-  font-weight:850;
-  white-space:nowrap;
 }
 
 .movement-amount.expense{
@@ -601,65 +534,112 @@ button{
 }
 
 .delete-btn{
-  width:30px;
-  height:30px;
   border:0;
+  background:#f1f4f6;
+  width:29px;
+  height:29px;
   border-radius:9px;
-  background:#fff;
-  color:#8b98a5;
-  font-weight:900;
+  color:#778694;
 }
 
 /* CLOSE */
 
-.close-summary{
+.close-box{
+  background:#f6f9fb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+}
+
+.close-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.close-stat{
+  background:white;
+  border-radius:12px;
+  padding:10px;
+}
+
+.close-stat span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.close-stat strong{
+  display:block;
+  margin-top:3px;
+  font-size:14px;
+}
+
+.close-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
-  margin-bottom:13px;
+  margin-top:10px;
 }
 
-.close-box{
-  background:#f7f9fb;
-  border-radius:14px;
+/* DAYS */
+
+.day-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.day-row{
+  border:1px solid var(--border);
+  border-radius:15px;
   padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
 
-.close-label{
+.day-row.today{
+  border-color:#9bcaff;
+  background:#f5faff;
+}
+
+.day-info{
+  min-width:0;
+}
+
+.day-name{
+  font-size:12px;
+  font-weight:800;
+}
+
+.day-date{
   font-size:10px;
   color:var(--muted);
-  font-weight:750;
+  margin-top:2px;
 }
 
-.close-value{
-  font-size:17px;
+.day-budget{
+  text-align:right;
   font-weight:900;
-  margin-top:4px;
+  font-size:14px;
 }
 
-.close-value.green{
-  color:var(--green);
-}
-
-.close-value.red{
-  color:var(--red);
-}
-
-.close-explanation{
+.day-status{
+  font-size:9px;
   color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-  margin-bottom:12px;
+  margin-top:2px;
 }
 
 /* CHART */
 
 .chart{
+  height:150px;
   display:flex;
   align-items:flex-end;
   gap:8px;
-  height:150px;
-  padding-top:15px;
+  padding-top:10px;
 }
 
 .bar-wrap{
@@ -669,34 +649,54 @@ button{
   flex-direction:column;
   justify-content:flex-end;
   align-items:center;
-  gap:5px;
+  min-width:0;
 }
 
 .bar{
   width:100%;
-  max-width:34px;
+  max-width:38px;
   min-height:3px;
-  border-radius:7px 7px 3px 3px;
-  background:linear-gradient(180deg,var(--cyan),var(--blue));
+  background:linear-gradient(to top,var(--blue),var(--cyan));
+  border-radius:8px 8px 3px 3px;
 }
 
 .bar-label{
-  font-size:9px;
+  font-size:8px;
   color:var(--muted);
+  margin-top:6px;
 }
 
 .bar-value{
-  font-size:9px;
+  font-size:8px;
+  color:var(--muted);
+  margin-bottom:3px;
+  white-space:nowrap;
+}
+
+/* SYSTEM */
+
+.system-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:7px 0;
+  border-bottom:1px solid #edf1f4;
+  font-size:11px;
+}
+
+.system-row:last-child{
+  border-bottom:0;
+}
+
+.system-row span{
   color:var(--muted);
 }
 
-/* EMPTY */
-
 .empty{
-  text-align:center;
   color:var(--muted);
   font-size:12px;
-  padding:18px 5px;
+  text-align:center;
+  padding:15px 0;
 }
 
 /* TOAST */
@@ -704,52 +704,129 @@ button{
 .toast{
   position:fixed;
   left:50%;
-  bottom:22px;
-  transform:translateX(-50%) translateY(20px);
+  bottom:20px;
+  transform:translate(-50%,20px);
   background:var(--ink);
   color:#fff;
-  padding:12px 17px;
+  padding:12px 16px;
   border-radius:13px;
   font-size:12px;
   font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
   opacity:0;
   pointer-events:none;
-  transition:.2s;
-  z-index:20;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  transition:.25s;
+  z-index:200;
+  width:max-content;
+  max-width:90%;
+  text-align:center;
 }
 
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+  transform:translate(-50%,0);
+}
+
+/* TUTORIAL */
+
+.tutorial-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(3,10,18,.76);
+  z-index:1000;
+  display:none;
+}
+
+.tutorial-overlay.active{
+  display:block;
+}
+
+.tutorial-highlight{
+  position:absolute;
+  border:3px solid #fff;
+  border-radius:18px;
+  box-shadow:
+    0 0 0 9999px rgba(3,10,18,.76),
+    0 0 0 5px rgba(35,136,255,.45),
+    0 0 30px rgba(35,136,255,.7);
+  pointer-events:none;
+  transition:.3s;
+}
+
+.tutorial-card{
+  position:absolute;
+  width:min(340px,calc(100% - 32px));
+  left:50%;
+  transform:translateX(-50%);
+  background:white;
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.tutorial-step{
+  color:var(--blue);
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+
+.tutorial-title{
+  font-size:18px;
+  font-weight:900;
+  margin:5px 0 7px;
+}
+
+.tutorial-text{
+  color:#526273;
+  font-size:12px;
+  line-height:1.55;
+}
+
+.tutorial-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:15px;
+}
+
+.tutorial-actions .btn{
+  flex:1;
+}
+
+.tutorial-progress{
+  display:flex;
+  gap:4px;
+  margin-top:12px;
+}
+
+.tutorial-dot{
+  height:4px;
+  flex:1;
+  border-radius:10px;
+  background:#dce4eb;
+}
+
+.tutorial-dot.active{
+  background:var(--blue);
 }
 
 /* FOOTER */
 
 .footer{
   text-align:center;
-  color:#9aa7b3;
+  color:#8a99a8;
   font-size:10px;
-  margin-top:25px;
-  padding:0 18px;
+  padding:5px 15px 20px;
 }
 
 @media(max-width:420px){
-  .hero-value{
-    font-size:34px;
-  }
-
-  .kpis{
-    gap:8px;
-  }
-
-  .kpi{
-    padding:13px;
-  }
-
-  .kpi-value{
-    font-size:18px;
-  }
+  main{padding:12px}
+  .card{padding:14px}
+  .hero-amount{font-size:34px}
+  .config-grid{grid-template-columns:1fr}
+  .config-grid .full{grid-column:auto}
 }
 </style>
 </head>
@@ -758,831 +835,498 @@ button{
 
 <div class="app">
 
-  <header class="header">
-    <div class="header-top">
-      <div class="brand">
-        <div class="logo">M</div>
-
-        <div>
-          <div class="brand-title">Presupuesto Diario</div>
-          <div class="brand-sub">Macrodesk</div>
-        </div>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>
+        <div class="brand-title">Presupuesto Diario</div>
+        <div class="brand-sub">Macrodesk · Control financiero</div>
+        <div class="version">V3.4</div>
       </div>
-
-      <div class="version">V3.3</div>
     </div>
-  </header>
 
-  <main>
-
-    <section class="content">
-
-      <!-- HERO -->
-
-      <div class="hero">
-
-        <div class="hero-label">
-          Disponible parcial de hoy
-        </div>
-
-        <div id="heroValue" class="hero-value">
-          $0
-        </div>
-
-        <div id="heroInfo" class="hero-info">
-          Configurá tu presupuesto para comenzar.
-        </div>
-
-        <div id="prioritySummary" class="priority-summary">
-
-          <div class="priority-row">
-            <span>Presupuesto base</span>
-            <strong id="priorityBase">$0</strong>
-          </div>
-
-          <div class="priority-row">
-            <span>Excedente liberado hoy</span>
-            <strong id="priorityExtra">$0</strong>
-          </div>
-
-          <div class="priority-row">
-            <span>Reserva días futuros</span>
-            <strong id="priorityReserve">$0</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- ALERTAS -->
-
-      <div id="reserveAlert" class="alert"></div>
-
-      <!-- KPIs -->
-
-      <div class="kpis">
-
-        <div class="kpi">
-          <div class="kpi-label">Presupuesto de hoy</div>
-          <div id="kpiBudget" class="kpi-value blue">$0</div>
-        </div>
-
-        <div class="kpi">
-          <div class="kpi-label">Gastado hoy</div>
-          <div id="kpiSpent" class="kpi-value red">$0</div>
-        </div>
-
-        <div class="kpi">
-          <div class="kpi-label">Ingresos hoy</div>
-          <div id="kpiIncome" class="kpi-value green">$0</div>
-        </div>
-
-        <div class="kpi">
-          <div class="kpi-label">Saldo total</div>
-          <div id="kpiBalance" class="kpi-value">$0</div>
-        </div>
-
-      </div>
-
-      <!-- MOVIMIENTO -->
-
-      <section class="section">
-
-        <h2 class="section-title">
-          Nuevo movimiento
-        </h2>
-
-        <div class="card">
-
-          <div class="movement-grid">
-
-            <input
-              id="amountInput"
-              class="input"
-              type="number"
-              min="0"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="Importe"
-            >
-
-            <input
-              id="descInput"
-              class="input"
-              type="text"
-              maxlength="80"
-              placeholder="Descripción"
-            >
-
-          </div>
-
-          <div class="btn-row">
-
-            <button
-              id="expenseBtn"
-              class="btn btn-expense"
-              type="button"
-            >
-              − Registrar gasto
-            </button>
-
-            <button
-              id="incomeBtn"
-              class="btn btn-income"
-              type="button"
-            >
-              + Registrar ingreso
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- CONFIGURACION -->
-
-      <section class="section">
-
-        <div class="card">
-
-          <button
-            id="configToggle"
-            class="config-toggle"
-            type="button"
-          >
-
-            <span class="section-title" style="margin:0">
-              Configuración
-            </span>
-
-            <span id="configArrow">▼</span>
-
-          </button>
-
-          <div id="configPanel" class="config-panel">
-
-            <div class="field">
-
-              <label for="balanceInput">
-                Saldo disponible del ciclo
-              </label>
-
-              <input
-                id="balanceInput"
-                class="input"
-                type="number"
-                min="0"
-                step="0.01"
-                inputmode="decimal"
-                placeholder="Ej.: 156000"
-              >
-
-              <div class="field-help">
-                Es el dinero total con el que contás para llegar al próximo cobro.
-              </div>
-
-            </div>
-
-            <div class="field">
-
-              <label for="paydayInput">
-                Próximo día de cobro
-              </label>
-
-              <input
-                id="paydayInput"
-                class="input"
-                type="date"
-              >
-
-              <div class="field-help">
-                El presupuesto se calcula desde hoy hasta el día anterior al cobro.
-              </div>
-
-            </div>
-
-            <div class="field">
-
-              <label for="baseBudgetInput">
-                Presupuesto base diario
-              </label>
-
-              <input
-                id="baseBudgetInput"
-                class="input"
-                type="number"
-                min="0"
-                step="1"
-                inputmode="decimal"
-                placeholder="Ej.: 50000"
-              >
-
-              <div class="field-help">
-                Este importe será el presupuesto que querés garantizar para cada día.
-              </div>
-
-            </div>
-
-            <!-- PRIORIDAD -->
-
-            <div class="switch-row">
-
-              <label class="switch">
-
-                <input
-                  id="priorityToggle"
-                  type="checkbox"
-                >
-
-                <span class="slider"></span>
-
-              </label>
-
-              <div>
-
-                <div class="switch-title">
-                  Priorizar excedente hacia hoy
-                </div>
-
-                <div class="switch-help">
-                  Si sobra dinero después de reservar el presupuesto base de todos
-                  los días, ese excedente queda disponible hoy.
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              id="priorityPreview"
-              class="priority-preview"
-            >
-
-              <div class="preview-title">
-                Vista previa de distribución
-              </div>
-
-              <div class="preview-row">
-                <span>Días presupuestables</span>
-                <strong id="previewDays">0</strong>
-              </div>
-
-              <div class="preview-row">
-                <span>Reserva necesaria</span>
-                <strong id="previewReserve">$0</strong>
-              </div>
-
-              <div class="preview-row">
-                <span>Excedente disponible hoy</span>
-                <strong id="previewExtra">$0</strong>
-              </div>
-
-              <div class="preview-total">
-                <span>Presupuesto de hoy: </span>
-                <strong id="previewToday">$0</strong>
-              </div>
-
-            </div>
-
-            <button
-              id="saveConfigBtn"
-              class="btn btn-primary"
-              type="button"
-            >
-              Guardar configuración
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- MOVIMIENTOS HOY -->
-
-      <section class="section">
-
-        <h2 class="section-title">
-          Movimientos de hoy
-        </h2>
-
-        <div class="card">
-
-          <div
-            id="todayMovements"
-            class="movements"
-          ></div>
-
-        </div>
-
-      </section>
-
-      <!-- CIERRE -->
-
-      <section class="section">
-
-        <h2 class="section-title">
-          Cierre del día
-        </h2>
-
-        <div class="card">
-
-          <div class="close-summary">
-
-            <div class="close-box">
-
-              <div class="close-label">
-                Disponible al cierre
-              </div>
-
-              <div
-                id="closeAvailable"
-                class="close-value"
-              >
-                $0
-              </div>
-
-            </div>
-
-            <div class="close-box">
-
-              <div class="close-label">
-                Sobrante → mañana
-              </div>
-
-              <div
-                id="closeLeftover"
-                class="close-value green"
-              >
-                $0
-              </div>
-
-            </div>
-
-          </div>
-
-          <div
-            id="closeExplanation"
-            class="close-explanation"
-          >
-            El sobrante positivo se arrastra íntegramente al día siguiente.
-            Los déficits se distribuyen sobre los días restantes.
-          </div>
-
-          <div class="btn-row">
-
-            <button
-              id="closeDayBtn"
-              class="btn btn-dark"
-              type="button"
-            >
-              Cerrar día
-            </button>
-
-            <button
-              id="reopenDayBtn"
-              class="btn btn-secondary"
-              type="button"
-            >
-              Reabrir día
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- 7 DIAS -->
-
-      <section class="section">
-
-        <h2 class="section-title">
-          Actividad últimos 7 días
-        </h2>
-
-        <div class="card">
-
-          <div
-            id="chart"
-            class="chart"
-          ></div>
-
-        </div>
-
-      </section>
-
-      <!-- PLAN DE DIAS -->
-
-      <section class="section">
-
-        <h2 class="section-title">
-          Plan de días
-        </h2>
-
-        <div class="card">
-
-          <div
-            id="daysList"
-            class="days-list"
-          ></div>
-
-        </div>
-
-      </section>
-
-      <!-- ESTADO -->
-
-      <section class="section">
-
-        <div class="card">
-
-          <button
-            id="stateToggle"
-            class="config-toggle"
-            type="button"
-          >
-
-            <span
-              class="section-title"
-              style="margin:0"
-            >
-              Estado del sistema
-            </span>
-
-            <span id="stateArrow">
-              ▼
-            </span>
-
-          </button>
-
-          <div
-            id="statePanel"
-            class="config-panel"
-          >
-
-            <div class="field-help">
-              El presupuesto diario se mantiene fijo durante el día.
-              Los gastos modifican únicamente el disponible parcial.
-              Los ingresos se asignan al día actual.
-            </div>
-
-            <div style="height:10px"></div>
-
-            <button
-              id="resetBtn"
-              class="btn btn-danger"
-              type="button"
-              style="width:100%"
-            >
-              Restablecer datos
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </section>
-
-  </main>
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
-
-  <div class="footer">
-    Macrodesk · Presupuesto Diario
+    <div class="header-actions">
+      <button class="icon-btn" onclick="startTutorial()" title="¿Cómo funciona?">?</button>
+    </div>
   </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="card hero" id="heroTarget">
+    <div class="hero-label">Disponible parcial de hoy</div>
+    <div class="hero-amount" id="heroAvailable">$0</div>
+    <div class="hero-description" id="heroDescription">
+      Configurá tu ciclo para comenzar.
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-mini">
+        <div class="hero-mini-label">Presupuesto de hoy</div>
+        <div class="hero-mini-value" id="heroTodayBudget">$0</div>
+      </div>
+
+      <div class="hero-mini">
+        <div class="hero-mini-label">Días hasta cobrar</div>
+        <div class="hero-mini-value" id="heroDays">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE ALERT -->
+  <div id="reserveAlert" class="alert hidden"></div>
+
+  <!-- KPIs -->
+  <section class="kpis" id="kpiTarget">
+    <div class="kpi">
+      <div class="kpi-label">Presupuesto diario</div>
+      <div class="kpi-value blue" id="kpiBudget">$0</div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-label">Gastado hoy</div>
+      <div class="kpi-value red" id="kpiSpent">$0</div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-label">Ingresos hoy</div>
+      <div class="kpi-value green" id="kpiIncome">$0</div>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-label">Saldo total</div>
+      <div class="kpi-value" id="kpiBalance">$0</div>
+    </div>
+  </section>
+
+  <!-- MOVEMENT -->
+  <section class="card" id="movementTarget">
+    <div class="section-title">
+      <h2>Nuevo movimiento</h2>
+      <small>Solo afecta el saldo</small>
+    </div>
+
+    <div class="movement-grid">
+      <div class="input-group">
+        <label>Monto</label>
+        <input id="movementAmount" class="input" type="number" min="0" step="0.01" placeholder="$ 0">
+      </div>
+
+      <div class="input-group">
+        <label>Descripción</label>
+        <input id="movementDescription" class="input" type="text" maxlength="60" placeholder="Ej. supermercado">
+      </div>
+    </div>
+
+    <div class="movement-buttons">
+      <button class="btn btn-expense" onclick="addExpense()">
+        − Registrar gasto
+      </button>
+
+      <button class="btn btn-income" onclick="addIncome()">
+        + Registrar ingreso
+      </button>
+    </div>
+  </section>
+
+  <!-- CONFIGURATION -->
+  <section class="card" id="configTarget">
+    <div class="section-title">
+      <h2>Configuración del ciclo</h2>
+      <small>Se guarda en este dispositivo</small>
+    </div>
+
+    <div class="config-grid">
+
+      <div class="input-group">
+        <label>Saldo total disponible</label>
+        <input id="configBalance" class="input" type="number" min="0" step="0.01" placeholder="Ej. 252053">
+      </div>
+
+      <div class="input-group">
+        <label>Próxima fecha de cobro</label>
+        <input id="configPayday" class="input" type="date">
+      </div>
+
+      <div class="input-group full">
+        <label>Presupuesto diario base para los días futuros</label>
+        <input id="configBase" class="input" type="number" min="0" step="0.01" placeholder="Ej. 50000">
+      </div>
+
+      <div class="full switch-row">
+        <div class="switch-text">
+          <strong>Priorizar excedente hacia hoy</strong>
+          <span>
+            Protege primero el presupuesto base de los días futuros
+            y libera solamente el excedente real para hoy.
+          </span>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" id="priorityMode" onchange="updatePriorityPreview()">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="full preview" id="previewTarget">
+        <div class="preview-title">Vista previa del ciclo</div>
+
+        <div class="preview-row">
+          <span>Días de presupuesto</span>
+          <strong id="previewDays">—</strong>
+        </div>
+
+        <div class="preview-row">
+          <span>Días futuros protegidos</span>
+          <strong id="previewFutureDays">—</strong>
+        </div>
+
+        <div class="preview-row">
+          <span>Reserva futura</span>
+          <strong id="previewReserve">$0</strong>
+        </div>
+
+        <div class="preview-row">
+          <span>Presupuesto de hoy</span>
+          <strong id="previewToday">$0</strong>
+        </div>
+
+        <div class="preview-row">
+          <span>Total asignado</span>
+          <strong id="previewTotal">$0</strong>
+        </div>
+      </div>
+
+      <div class="full">
+        <button class="btn btn-primary btn-full" onclick="saveConfiguration()">
+          Guardar configuración
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TODAY MOVEMENTS -->
+  <section class="card">
+    <div class="section-title">
+      <h2>Movimientos de hoy</h2>
+      <small id="movementCount">0 movimientos</small>
+    </div>
+
+    <div id="movementsList"></div>
+  </section>
+
+  <!-- CLOSE DAY -->
+  <section class="card">
+    <div class="section-title">
+      <h2>Cierre del día</h2>
+      <small id="closeStatus">Día abierto</small>
+    </div>
+
+    <div class="close-box">
+      <div class="close-grid">
+
+        <div class="close-stat">
+          <span>Disponible al cierre</span>
+          <strong id="closeAvailable">$0</strong>
+        </div>
+
+        <div class="close-stat">
+          <span>Sobrante → mañana</span>
+          <strong id="closeLeftover">$0</strong>
+        </div>
+
+        <div class="close-stat">
+          <span>Déficit</span>
+          <strong id="closeDeficit">$0</strong>
+        </div>
+
+        <div class="close-stat">
+          <span>Presupuesto mañana</span>
+          <strong id="closeTomorrow">$0</strong>
+        </div>
+
+      </div>
+
+      <div class="close-actions">
+        <button class="btn btn-dark" id="closeButton" onclick="closeDay(false)">
+          Cerrar día
+        </button>
+
+        <button class="btn btn-secondary" onclick="reopenDay()">
+          Reabrir
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAYS -->
+  <section class="card">
+    <div class="section-title">
+      <h2>Plan de días</h2>
+      <small>Hasta el día anterior al cobro</small>
+    </div>
+
+    <div id="daysList" class="day-list"></div>
+  </section>
+
+  <!-- CHART -->
+  <section class="card">
+    <div class="section-title">
+      <h2>Actividad últimos 7 días</h2>
+      <small>Gastos</small>
+    </div>
+
+    <div id="chart" class="chart"></div>
+  </section>
+
+  <!-- SYSTEM -->
+  <section class="card">
+    <div class="section-title">
+      <h2>Estado del sistema</h2>
+      <small>Información</small>
+    </div>
+
+    <div class="system-row">
+      <span>Fecha actual</span>
+      <strong id="systemDate">—</strong>
+    </div>
+
+    <div class="system-row">
+      <span>Último procesamiento</span>
+      <strong id="systemProcessed">—</strong>
+    </div>
+
+    <div class="system-row">
+      <span>Modo prioridad</span>
+      <strong id="systemPriority">—</strong>
+    </div>
+
+    <div class="system-row">
+      <span>Estado del ciclo</span>
+      <strong id="systemCycle">—</strong>
+    </div>
+
+    <button class="btn btn-danger btn-full" style="margin-top:12px" onclick="resetApp()">
+      Reiniciar aplicación
+    </button>
+  </section>
+
+</main>
+
+<div class="footer">
+  Macrodesk · Presupuesto Diario · V3.4
+</div>
 
 </div>
 
+<!-- TUTORIAL -->
+<div class="tutorial-overlay" id="tutorialOverlay">
+
+  <div class="tutorial-highlight" id="tutorialHighlight"></div>
+
+  <div class="tutorial-card" id="tutorialCard">
+
+    <div class="tutorial-step" id="tutorialStep">Paso 1 de 8</div>
+
+    <div class="tutorial-title" id="tutorialTitle">
+      Bienvenido a Presupuesto Diario
+    </div>
+
+    <div class="tutorial-text" id="tutorialText">
+      Vamos a mostrarte rápidamente cómo funciona.
+    </div>
+
+    <div class="tutorial-actions">
+      <button class="btn btn-secondary" onclick="tutorialPrev()" id="tutorialBack">
+        Atrás
+      </button>
+
+      <button class="btn btn-primary" onclick="tutorialNext()" id="tutorialNext">
+        Siguiente
+      </button>
+    </div>
+
+    <div class="tutorial-progress" id="tutorialProgress"></div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-"use strict";
 
 /* =========================================================
-   STORAGE
+   CONFIGURACIÓN GENERAL
 ========================================================= */
 
-const STORAGE_KEY = "presupuesto_v33";
+const STORAGE_KEY = "presupuesto_v34";
 
 let state = {
+  balance: 0,
+  nextPayday: "",
+  baseDailyBudget: 0,
 
-  balance:0,
+  priorityMode: false,
 
-  nextPayday:"",
+  cycleStartingBalance: 0,
+  cycleStartDate: "",
 
-  baseDailyBudget:0,
+  carryOver: 0,
 
-  priorityMode:false,
+  deficitRemaining: 0,
+  deficitPerDay: 0,
 
-  cycleStartingBalance:0,
+  nextDayBudget: null,
+  nextDayDeficitPerDay: 0,
+  nextDayDebt: 0,
 
-  cycleStartDate:"",
+  lastProcessedDate: "",
 
-  carryOver:0,
+  days: {},
 
-  deficitRemaining:0,
-
-  deficitPerDay:0,
-
-  nextDayBudget:null,
-
-  nextDayDeficitPerDay:0,
-
-  nextDayDebt:0,
-
-  lastProcessedDate:"",
-
-  days:{}
-
+  tutorialCompleted: false
 };
 
+let tutorialIndex = 0;
 
 /* =========================================================
    UTILIDADES
 ========================================================= */
 
-function num(value){
-
-  const n = Number(value);
-
-  return Number.isFinite(n)
-    ? n
-    : 0;
-}
-
-
 function money(value){
+  const n = Number(value) || 0;
 
-  const n = num(value);
-
-  return new Intl.NumberFormat(
-    "es-AR",
-    {
-      style:"currency",
-      currency:"ARS",
-      maximumFractionDigits:0
-    }
-  ).format(n);
+  return new Intl.NumberFormat("es-AR",{
+    style:"currency",
+    currency:"ARS",
+    maximumFractionDigits:0
+  }).format(n);
 }
 
-
-function moneyCompact(value){
-
-  const n = num(value);
-
-  if(Math.abs(n) >= 1000000){
-    return "$" + (n / 1000000).toFixed(1) + "M";
-  }
-
-  if(Math.abs(n) >= 1000){
-    return "$" + Math.round(n / 1000) + "k";
-  }
-
-  return money(n);
+function number(value){
+  return Number(value) || 0;
 }
-
-
-/*
-  Devuelve la fecha LOCAL del dispositivo.
-
-  No usamos toISOString() porque UTC puede cambiar
-  el día respecto de la fecha local.
-*/
 
 function todayKey(){
-
   const d = new Date();
 
-  const y =
-    d.getFullYear();
-
-  const m =
-    String(d.getMonth()+1).padStart(2,"0");
-
-  const day =
-    String(d.getDate()).padStart(2,"0");
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
 
   return `${y}-${m}-${day}`;
 }
-
-
-/*
-  Convierte YYYY-MM-DD en fecha LOCAL.
-
-  Importante:
-  new Date("2026-10-06") puede interpretarse en UTC
-  dependiendo del navegador.
-
-  Por eso hacemos la construcción manual.
-*/
 
 function parseDateKey(key){
+  if(!key) return null;
 
-  const parts =
-    String(key)
-      .split("-")
-      .map(Number);
+  const [y,m,d] = key.split("-").map(Number);
 
-  if(
-    parts.length !== 3 ||
-    parts.some(
-      v => !Number.isFinite(v)
-    )
-  ){
-    return new Date();
-  }
-
-  return new Date(
-    parts[0],
-    parts[1]-1,
-    parts[2]
-  );
+  return new Date(y,m-1,d,12,0,0,0);
 }
-
-
-function formatDate(key){
-
-  const d =
-    parseDateKey(key);
-
-  return d.toLocaleDateString(
-    "es-AR",
-    {
-      day:"2-digit",
-      month:"2-digit",
-      year:"numeric"
-    }
-  );
-}
-
-
-function shortDate(key){
-
-  const d =
-    parseDateKey(key);
-
-  return d
-    .toLocaleDateString(
-      "es-AR",
-      {
-        weekday:"short",
-        day:"2-digit"
-      }
-    )
-    .replace(".","");
-}
-
-
-function addDays(key,amount){
-
-  const d =
-    parseDateKey(key);
-
-  d.setDate(
-    d.getDate() + amount
-  );
-
-  const y =
-    d.getFullYear();
-
-  const m =
-    String(d.getMonth()+1)
-      .padStart(2,"0");
-
-  const day =
-    String(d.getDate())
-      .padStart(2,"0");
-
-  return `${y}-${m}-${day}`;
-}
-
-
-/*
-  Calcula días calendario entre dos claves YYYY-MM-DD.
-
-  Ejemplo:
-
-  30/09 → 06/10 = 6
-
-  Esto significa que hay presupuesto para:
-
-  30/09
-  01/10
-  02/10
-  03/10
-  04/10
-  05/10
-
-  El 06/10 es el día de cobro y NO se presupuesta.
-*/
 
 function dateDifferenceInDays(fromKey,toKey){
 
-  const from =
-    parseDateKey(fromKey);
+  const a = parseDateKey(fromKey);
+  const b = parseDateKey(toKey);
 
-  const to =
-    parseDateKey(toKey);
+  if(!a || !b) return 0;
 
-  from.setHours(0,0,0,0);
-  to.setHours(0,0,0,0);
+  a.setHours(12,0,0,0);
+  b.setHours(12,0,0,0);
 
-  const diff =
-    to.getTime() -
-    from.getTime();
-
-  return Math.round(
-    diff / 86400000
-  );
+  return Math.round((b-a)/86400000);
 }
 
+function daysUntilPayday(fromKey=todayKey()){
 
-function daysUntilPayday(fromKey){
-
-  if(!state.nextPayday){
-    return 0;
-  }
-
-  const difference =
-    dateDifferenceInDays(
-      fromKey,
-      state.nextPayday
-    );
+  if(!state.nextPayday) return 0;
 
   return Math.max(
     0,
-    difference
+    dateDifferenceInDays(fromKey,state.nextPayday)
   );
 }
 
+function formatDate(key){
+
+  const d = parseDateKey(key);
+
+  if(!d) return "—";
+
+  return d.toLocaleDateString("es-AR",{
+    weekday:"short",
+    day:"2-digit",
+    month:"2-digit"
+  });
+}
+
+function escapeHtml(text){
+
+  return String(text ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function toast(message){
+
+  const el = document.getElementById("toast");
+
+  el.textContent = message;
+  el.classList.add("show");
+
+  clearTimeout(window.__toastTimer);
+
+  window.__toastTimer = setTimeout(()=>{
+    el.classList.remove("show");
+  },2800);
+}
 
 /* =========================================================
    STORAGE
 ========================================================= */
 
 function saveState(){
-
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(state)
   );
 }
 
-
 function loadState(){
 
   try{
 
-    const raw =
-      localStorage.getItem(
-        STORAGE_KEY
-      );
+    const raw = localStorage.getItem(STORAGE_KEY);
 
-    if(!raw){
-      return;
-    }
+    if(!raw) return;
 
-    const saved =
-      JSON.parse(raw);
-
-    if(
-      !saved ||
-      typeof saved !== "object"
-    ){
-      return;
-    }
+    const parsed = JSON.parse(raw);
 
     state = {
       ...state,
-      ...saved
+      ...parsed
     };
 
-    if(
-      !state.days ||
-      typeof state.days !== "object"
-    ){
+    if(!state.days || typeof state.days !== "object"){
       state.days = {};
     }
 
   }catch(error){
 
-    console.error(
-      "No se pudo cargar el estado:",
-      error
-    );
+    console.error("Error cargando estado:",error);
 
   }
-
 }
 
-
 /* =========================================================
-   DIAS
+   DÍAS
 ========================================================= */
 
 function createDay(key){
@@ -1591,205 +1335,209 @@ function createDay(key){
     return state.days[key];
   }
 
-  let scheduled = null;
+  let scheduledBudget = null;
 
-  if(
-    state.nextDayBudget !== null &&
-    state.nextDayBudget !== undefined
-  ){
+  /*
+    Si existe un presupuesto específico para mañana,
+    ese presupuesto se convierte en el presupuesto fijo
+    del nuevo día.
+  */
 
-    scheduled =
-      num(state.nextDayBudget);
+  if(state.nextDayBudget !== null &&
+     state.nextDayBudget !== undefined){
 
-    state.nextDayBudget =
-      null;
+    scheduledBudget = Math.max(
+      0,
+      number(state.nextDayBudget)
+    );
+
+    state.nextDayBudget = null;
   }
 
   const day = {
 
     date:key,
 
-    scheduledBudget:
-      scheduled,
+    scheduledBudget,
 
-    carryIn:
-      num(state.carryOver),
+    carryIn:number(state.carryOver) || 0,
 
-    deficitIn:
-      num(state.nextDayDeficitPerDay),
+    deficitIn:number(state.deficitRemaining) || 0,
 
     expenses:[],
-
     incomes:[],
 
     closed:false,
-
     closedAutomatically:false,
-
     closedAt:"",
 
     leftover:0,
-
     deficit:0,
 
     tomorrowBudget:null,
 
     nextDeficitPerDay:0,
-
     debtAfterClose:0
-
   };
-
-  state.carryOver = 0;
-
-  state.nextDayDeficitPerDay = 0;
 
   state.days[key] = day;
 
-  saveState();
+  state.carryOver = 0;
+  state.deficitPerDay = 0;
 
   return day;
 }
 
-
 function currentDay(){
 
-  return createDay(
-    todayKey()
-  );
+  return createDay(todayKey());
 }
 
-
 /* =========================================================
-   PRESUPUESTO BASE
+   PRESUPUESTOS
 ========================================================= */
+
+/*
+  PRESUPUESTO NORMAL DE UN DÍA
+
+  Si el día ya tiene scheduledBudget,
+  ese valor queda fijo.
+
+  Esto es importante:
+  un gasto NO recalcula el presupuesto diario.
+*/
 
 function standardDayBudget(day){
 
-  if(
-    day.scheduledBudget !== null &&
-    day.scheduledBudget !== undefined
-  ){
+  if(day.scheduledBudget !== null &&
+     day.scheduledBudget !== undefined){
 
     return Math.max(
       0,
-      num(day.scheduledBudget)
+      number(day.scheduledBudget)
     );
-
   }
 
   return Math.max(
     0,
-    num(state.baseDailyBudget)
-      + num(day.carryIn)
-      - num(day.deficitIn)
+    number(state.baseDailyBudget) +
+    number(day.carryIn) -
+    number(day.deficitIn)
   );
 }
 
+/*
+  PRIORIDAD HACIA HOY
 
-/* =========================================================
-   PRIORIDAD HACIA HOY
-========================================================= */
+  Esta es la corrección principal de V3.4.
 
-function cycleDays(){
+  Si hoy es 01/10 y se cobra 06/10:
 
-  if(!state.nextPayday){
-    return 0;
-  }
+  daysUntilPayday = 5
 
-  return daysUntilPayday(
-    state.cycleStartDate ||
-    todayKey()
-  );
-}
+  Días futuros = 5 - 1 = 4
 
+  Reserva futura = base × 4
 
-function priorityExtra(){
+  Hoy = saldo inicial - reserva futura
 
-  if(!state.priorityMode){
-    return 0;
-  }
+  El día de cobro NO forma parte del presupuesto.
+*/
 
-  const totalDays =
-    cycleDays();
+function futureDaysCount(){
 
-  if(totalDays <= 0){
-    return 0;
-  }
-
-  const required =
-    num(state.baseDailyBudget) *
-    totalDays;
+  const days = daysUntilPayday(todayKey());
 
   return Math.max(
     0,
-    num(state.cycleStartingBalance) -
-    required
+    days - 1
   );
 }
 
+function futureReserve(){
 
-function todayPriorityExtra(day){
-
-  if(!state.priorityMode){
-    return 0;
-  }
-
-  if(day.date !== todayKey()){
-    return 0;
-  }
-
-  if(
-    day.scheduledBudget !== null &&
-    day.scheduledBudget !== undefined
-  ){
-    return 0;
-  }
-
-  return priorityExtra();
+  return Math.max(
+    0,
+    number(state.baseDailyBudget) *
+    futureDaysCount()
+  );
 }
 
+function todayPriorityBudget(){
+
+  if(!state.priorityMode){
+    return null;
+  }
+
+  const day = currentDay();
+
+  /*
+    Una vez creado el día, el presupuesto queda fijo.
+  */
+
+  if(day.scheduledBudget !== null &&
+     day.scheduledBudget !== undefined){
+
+    return number(day.scheduledBudget);
+  }
+
+  const reserve = futureReserve();
+
+  /*
+    El presupuesto de hoy jamás puede exceder
+    el saldo que realmente existe después de
+    proteger los días futuros.
+  */
+
+  return Math.max(
+    0,
+    number(state.cycleStartingBalance) - reserve
+  );
+}
 
 function dayBudget(day){
 
-  const base =
-    standardDayBudget(day);
+  /*
+    El presupuesto de hoy con prioridad se calcula
+    solamente al crear/configurar el ciclo.
 
-  return Math.max(
-    0,
-    base +
-    todayPriorityExtra(day)
-  );
+    Luego queda fijo.
+  */
+
+  if(day.date === todayKey() &&
+     state.priorityMode){
+
+    return todayPriorityBudget();
+  }
+
+  return standardDayBudget(day);
 }
-
-
-/* =========================================================
-   MOVIMIENTOS
-========================================================= */
 
 function spent(day){
 
-  return (day.expenses || [])
-    .reduce(
-      (sum,item) =>
-        sum + num(item.amount),
-      0
-    );
+  return (day.expenses || []).reduce(
+    (sum,item)=>sum + number(item.amount),
+    0
+  );
 }
-
 
 function income(day){
 
-  return (day.incomes || [])
-    .reduce(
-      (sum,item) =>
-        sum + num(item.amount),
-      0
-    );
+  return (day.incomes || []).reduce(
+    (sum,item)=>sum + number(item.amount),
+    0
+  );
 }
 
-
 function available(day){
+
+  /*
+    El presupuesto diario NO cambia.
+
+    El disponible parcial sí cambia:
+
+    presupuesto + ingresos - gastos
+  */
 
   return (
     dayBudget(day) +
@@ -1798,264 +1546,127 @@ function available(day){
   );
 }
 
-
 /* =========================================================
-   RESERVA FUTURA
-========================================================= */
-
-function futureDaysFromToday(){
-
-  /*
-    Si el cobro es 06/10 y hoy es 30/09:
-
-    daysUntilPayday = 6
-
-    Pero hoy ocupa uno de esos días.
-
-    Futuros:
-    01/10
-    02/10
-    03/10
-    04/10
-    05/10
-
-    = 5 días futuros.
-  */
-
-  return Math.max(
-    0,
-    daysUntilPayday(todayKey()) - 1
-  );
-}
-
-
-function futureReserve(){
-
-  return (
-    num(state.baseDailyBudget) *
-    futureDaysFromToday()
-  );
-}
-
-
-function reserveStatus(){
-
-  const futureDays =
-    futureDaysFromToday();
-
-  const required =
-    num(state.baseDailyBudget) *
-    futureDays;
-
-  const currentBalance =
-    num(state.balance);
-
-  const difference =
-    currentBalance -
-    required;
-
-  return {
-
-    futureDays,
-
-    required,
-
-    currentBalance,
-
-    difference,
-
-    possible:
-      difference >= 0
-
-  };
-}
-
-
-/* =========================================================
-   CONFIGURACION
+   PREVIEW
 ========================================================= */
 
 function updatePriorityPreview(){
 
-  const toggle =
-    document.getElementById(
-      "priorityToggle"
-    );
-
-  const preview =
-    document.getElementById(
-      "priorityPreview"
-    );
-
-  const balance =
-    num(
-      document.getElementById(
-        "balanceInput"
-      ).value
-    );
-
-  const base =
-    num(
-      document.getElementById(
-        "baseBudgetInput"
-      ).value
-    );
-
-  const payday =
-    document.getElementById(
-      "paydayInput"
-    ).value;
-
-  if(!toggle.checked){
-
-    preview.classList.remove(
-      "show"
-    );
-
-    return;
-  }
-
-  preview.classList.add(
-    "show"
+  const balance = number(
+    document.getElementById("configBalance").value
   );
 
-  if(
-    !payday ||
-    base <= 0
-  ){
+  const payday =
+    document.getElementById("configPayday").value;
 
-    document.getElementById(
-      "previewDays"
-    ).textContent = "—";
+  let base = number(
+    document.getElementById("configBase").value
+  );
 
-    document.getElementById(
-      "previewReserve"
-    ).textContent = "$0";
+  const priority =
+    document.getElementById("priorityMode").checked;
 
-    document.getElementById(
-      "previewExtra"
-    ).textContent = "$0";
+  const today = todayKey();
 
-    document.getElementById(
-      "previewToday"
-    ).textContent = "$0";
+  let days = 0;
 
-    return;
+  if(payday){
+    days = Math.max(
+      0,
+      dateDifferenceInDays(today,payday)
+    );
   }
 
-  /*
-    IMPORTANTE:
+  const futureDays = Math.max(
+    0,
+    days - 1
+  );
 
-    Los días incluyen hoy y terminan
-    el día anterior al cobro.
+  /*
+    Si no se introduce base, mostramos una estimación
+    equitativa para orientar al usuario.
   */
 
-  const days =
-    dateDifferenceInDays(
-      todayKey(),
-      payday
-    );
-
-  const safeDays =
-    Math.max(
-      0,
-      days
-    );
+  if(base <= 0 && days > 0){
+    base = Math.floor(balance / days);
+  }
 
   const reserve =
-    base * safeDays;
+    priority
+      ? base * futureDays
+      : 0;
 
-  const extra =
-    Math.max(
+  let todayBudget = 0;
+
+  if(priority){
+
+    todayBudget = Math.max(
       0,
       balance - reserve
     );
 
-  const today =
-    base + extra;
+  }else if(days > 0){
 
-  document.getElementById(
-    "previewDays"
-  ).textContent =
-    safeDays;
+    todayBudget =
+      Math.floor(balance / days);
 
-  document.getElementById(
-    "previewReserve"
-  ).textContent =
+  }
+
+  const totalAssigned =
+    priority
+      ? todayBudget + reserve
+      : todayBudget * days;
+
+  document.getElementById("previewDays").textContent =
+    days || "—";
+
+  document.getElementById("previewFutureDays").textContent =
+    futureDays;
+
+  document.getElementById("previewReserve").textContent =
     money(reserve);
 
-  document.getElementById(
-    "previewExtra"
-  ).textContent =
-    money(extra);
+  document.getElementById("previewToday").textContent =
+    money(todayBudget);
 
-  document.getElementById(
-    "previewToday"
-  ).textContent =
-    money(today);
+  document.getElementById("previewTotal").textContent =
+    money(totalAssigned);
 }
 
+/* =========================================================
+   GUARDAR CONFIGURACIÓN
+========================================================= */
 
 function saveConfiguration(){
 
   const balance =
-    num(
-      document.getElementById(
-        "balanceInput"
-      ).value
-    );
+    number(document.getElementById("configBalance").value);
 
   const payday =
-    document.getElementById(
-      "paydayInput"
-    ).value;
+    document.getElementById("configPayday").value;
 
   let base =
-    num(
-      document.getElementById(
-        "baseBudgetInput"
-      ).value
-    );
+    number(document.getElementById("configBase").value);
 
   const priority =
-    document.getElementById(
-      "priorityToggle"
-    ).checked;
+    document.getElementById("priorityMode").checked;
 
   if(balance < 0){
 
-    alert(
-      "El saldo no puede ser negativo."
-    );
+    alert("El saldo no puede ser negativo.");
 
     return;
   }
 
   if(!payday){
 
-    alert(
-      "Ingresá la fecha del próximo día de cobro."
-    );
+    alert("Ingresá la fecha de tu próximo cobro.");
 
     return;
   }
 
-  /*
-    COMPARACION ROBUSTA DE FECHAS.
-
-    No utilizamos new Date("YYYY-MM-DD")
-    directamente para evitar problemas UTC.
-  */
-
   const days =
-    dateDifferenceInDays(
-      todayKey(),
-      payday
-    );
-
-  /*
-    El cobro debe ser como mínimo mañana.
-  */
+    dateDifferenceInDays(todayKey(),payday);
 
   if(days <= 0){
 
@@ -2067,133 +1678,175 @@ function saveConfiguration(){
   }
 
   /*
-    Si no se indicó presupuesto base,
-    calculamos el máximo presupuesto diario
-    que puede sostenerse hasta el día anterior
-    al cobro.
+    Si el usuario no establece una base,
+    calculamos una distribución equitativa.
   */
 
   if(base <= 0){
 
     base =
-      Math.floor(
-        balance / days
+      Math.floor(balance / days);
+  }
+
+  const futureDays =
+    Math.max(0,days - 1);
+
+  /*
+    Cuando se utiliza prioridad, la reserva
+    necesaria es la de los días futuros.
+
+    El día de cobro queda fuera.
+  */
+
+  if(priority){
+
+    const reserve =
+      base * futureDays;
+
+    if(reserve > balance){
+
+      alert(
+        "No se puede guardar esta configuración.\n\n" +
+        "La reserva futura necesaria es " +
+        money(reserve) +
+        ", pero el saldo disponible es " +
+        money(balance) +
+        ".\n\n" +
+        "Reducí el presupuesto base o aumentá el saldo."
       );
-  }
 
-  if(base <= 0){
+      return;
+    }
 
-    alert(
-      "Ingresá un presupuesto base diario mayor a cero."
-    );
+  }else{
 
-    return;
+    /*
+      Sin prioridad también verificamos que la
+      base futura pueda sostenerse durante los
+      días futuros.
+    */
+
+    const reserve =
+      base * futureDays;
+
+    const todayEqual =
+      Math.floor(balance / days);
+
+    if(reserve + todayEqual > balance){
+
+      /*
+        No bloqueamos por diferencia de redondeo.
+      */
+
+      if(
+        reserve >
+        balance - todayEqual
+      ){
+
+        alert(
+          "La configuración no cierra matemáticamente.\n\n" +
+          "El presupuesto base de " +
+          money(base) +
+          " para los días futuros no puede sostenerse " +
+          "con el saldo disponible."
+        );
+
+        return;
+      }
+    }
   }
 
   /*
-    Validación matemática:
+    Nuevo ciclo.
 
-    días presupuestables × presupuesto base
-    no puede superar el saldo inicial.
+    No borramos el historial visual de días anteriores,
+    pero reiniciamos las variables de distribución.
   */
 
-  const required =
-    base * days;
+  state.balance = balance;
+  state.nextPayday = payday;
+  state.baseDailyBudget = base;
+  state.priorityMode = priority;
 
-  if(required > balance){
+  state.cycleStartingBalance = balance;
+  state.cycleStartDate = todayKey();
 
-    alert(
-      "Presupuesto base no disponible.\n\n" +
-      "Para garantizar " +
-      money(base) +
-      " diarios durante " +
-      days +
-      " días necesitás " +
-      money(required) +
-      ".\n" +
-      "Saldo disponible: " +
-      money(balance) +
-      ".\n" +
-      "Faltan: " +
-      money(required - balance) +
-      "."
-    );
+  state.carryOver = 0;
+  state.deficitRemaining = 0;
+  state.deficitPerDay = 0;
+  state.nextDayBudget = null;
+  state.nextDayDeficitPerDay = 0;
+  state.nextDayDebt = 0;
 
-    return;
+  /*
+    IMPORTANTE:
+    si estamos configurando el ciclo del día actual,
+    debemos crear/reemplazar correctamente su presupuesto.
+  */
+
+  const key = todayKey();
+
+  const oldDay = state.days[key];
+
+  const today = {
+    date:key,
+
+    scheduledBudget:null,
+
+    carryIn:0,
+    deficitIn:0,
+
+    expenses:oldDay?.expenses || [],
+    incomes:oldDay?.incomes || [],
+
+    closed:false,
+    closedAutomatically:false,
+    closedAt:"",
+
+    leftover:0,
+    deficit:0,
+
+    tomorrowBudget:null,
+    nextDeficitPerDay:0,
+    debtAfterClose:0
+  };
+
+  /*
+    Fijamos el presupuesto de HOY.
+
+    Esto evita que cada gasto vuelva a calcularlo.
+  */
+
+  if(priority){
+
+    const reserve =
+      base * futureDays;
+
+    today.scheduledBudget =
+      Math.max(
+        0,
+        balance - reserve
+      );
+
+  }else{
+
+    today.scheduledBudget =
+      Math.floor(balance / days);
   }
 
-  /*
-    NUEVO CICLO
-  */
+  state.days[key] = today;
 
-  state.balance =
-    balance;
-
-  state.nextPayday =
-    payday;
-
-  state.baseDailyBudget =
-    base;
-
-  state.priorityMode =
-    priority;
-
-  state.cycleStartingBalance =
-    balance;
-
-  state.cycleStartDate =
-    todayKey();
-
-  state.carryOver =
-    0;
-
-  state.deficitRemaining =
-    0;
-
-  state.deficitPerDay =
-    0;
-
-  state.nextDayBudget =
-    null;
-
-  state.nextDayDeficitPerDay =
-    0;
-
-  state.nextDayDebt =
-    0;
-
-  /*
-    Creamos el día actual si todavía
-    no existe.
-  */
-
-  createDay(
-    todayKey()
-  );
+  state.tutorialCompleted = true;
 
   saveState();
 
   loadConfigurationUI();
-
   render();
 
-  document
-    .getElementById(
-      "configPanel"
-    )
-    .classList.remove("open");
-
-  document
-    .getElementById(
-      "configArrow"
-    )
-    .textContent = "▼";
-
-  showToast(
-    "Configuración guardada"
+  toast(
+    "Configuración guardada. El presupuesto de hoy quedó fijo."
   );
 }
-
 
 /* =========================================================
    MOVIMIENTOS
@@ -2202,242 +1855,171 @@ function saveConfiguration(){
 function movementData(){
 
   const amount =
-    num(
-      document.getElementById(
-        "amountInput"
-      ).value
-    );
+    number(document.getElementById("movementAmount").value);
 
   const description =
-    document.getElementById(
-      "descInput"
-    )
-    .value
-    .trim();
+    document.getElementById("movementDescription").value.trim();
 
   if(amount <= 0){
 
-    alert(
-      "Ingresá un importe mayor a cero."
-    );
+    alert("Ingresá un monto válido.");
 
     return null;
   }
 
   return {
-
     amount,
-
     description:
-      description ||
-      "Sin descripción",
-
+      description || "Sin descripción",
     time:
-      new Date()
-        .toLocaleTimeString(
-          "es-AR",
-          {
-            hour:"2-digit",
-            minute:"2-digit"
-          }
-        )
-
+      new Date().toLocaleTimeString("es-AR",{
+        hour:"2-digit",
+        minute:"2-digit"
+      }),
+    id:
+      Date.now() + Math.random()
   };
 }
 
-
-function clearMovement(){
-
-  document.getElementById(
-    "amountInput"
-  ).value = "";
-
-  document.getElementById(
-    "descInput"
-  ).value = "";
-
-  document.getElementById(
-    "amountInput"
-  ).focus();
-}
-
-
 function addExpense(){
 
-  const data =
-    movementData();
-
-  if(!data){
-    return;
-  }
-
-  const day =
-    currentDay();
+  const day = currentDay();
 
   if(day.closed){
 
-    alert(
-      "El día ya está cerrado."
-    );
+    alert("El día está cerrado. Reabrilo para modificarlo.");
 
     return;
   }
 
-  day.expenses.push(
-    data
-  );
+  const data = movementData();
 
-  state.balance -=
-    data.amount;
+  if(!data) return;
+
+  day.expenses.push(data);
+
+  state.balance -= data.amount;
 
   saveState();
 
-  clearMovement();
-
+  clearMovementInputs();
   render();
 
-  showToast(
-    "Gasto registrado"
+  toast(
+    "Gasto registrado. El presupuesto diario no cambió."
   );
 }
-
 
 function addIncome(){
 
-  const data =
-    movementData();
-
-  if(!data){
-    return;
-  }
-
-  const day =
-    currentDay();
+  const day = currentDay();
 
   if(day.closed){
 
-    alert(
-      "El día ya está cerrado."
-    );
+    alert("El día está cerrado. Reabrilo para modificarlo.");
 
     return;
   }
 
+  const data = movementData();
+
+  if(!data) return;
+
+  day.incomes.push(data);
+
   /*
-    El ingreso pertenece exclusivamente
-    al día actual.
+    El ingreso modifica el saldo total,
+    pero SOLO aumenta el disponible de hoy.
+
+    No cambia:
+    - presupuesto diario
+    - presupuesto base
+    - reserva futura
+    - presupuesto de mañana
   */
 
-  day.incomes.push({
-
-    amount:data.amount,
-
-    description:
-      data.description,
-
-    time:data.time
-
-  });
-
-  state.balance +=
-    data.amount;
+  state.balance += data.amount;
 
   saveState();
 
-  clearMovement();
-
+  clearMovementInputs();
   render();
 
-  showToast(
-    "Ingreso registrado para hoy"
+  toast(
+    "Ingreso registrado. Se suma al disponible de hoy."
   );
 }
 
+function clearMovementInputs(){
 
-/* =========================================================
-   BORRAR MOVIMIENTOS
-========================================================= */
+  document.getElementById("movementAmount").value = "";
+  document.getElementById("movementDescription").value = "";
+}
 
-function deleteExpense(index){
+function deleteExpense(id){
 
-  const day =
-    currentDay();
+  const day = currentDay();
 
   if(day.closed){
 
-    alert(
-      "Reabrí el día para modificar movimientos."
-    );
+    alert("El día está cerrado.");
 
     return;
   }
+
+  const index =
+    day.expenses.findIndex(
+      item=>String(item.id) === String(id)
+    );
+
+  if(index === -1) return;
 
   const item =
     day.expenses[index];
 
-  if(!item){
-    return;
-  }
+  state.balance += number(item.amount);
 
-  state.balance +=
-    num(item.amount);
-
-  day.expenses.splice(
-    index,
-    1
-  );
+  day.expenses.splice(index,1);
 
   saveState();
-
   render();
 
-  showToast(
-    "Gasto eliminado"
-  );
+  toast("Gasto eliminado.");
 }
 
+function deleteIncome(id){
 
-function deleteIncome(index){
-
-  const day =
-    currentDay();
+  const day = currentDay();
 
   if(day.closed){
 
-    alert(
-      "Reabrí el día para modificar movimientos."
-    );
+    alert("El día está cerrado.");
 
     return;
   }
+
+  const index =
+    day.incomes.findIndex(
+      item=>String(item.id) === String(id)
+    );
+
+  if(index === -1) return;
 
   const item =
     day.incomes[index];
 
-  if(!item){
-    return;
-  }
+  state.balance -= number(item.amount);
 
-  state.balance -=
-    num(item.amount);
-
-  day.incomes.splice(
-    index,
-    1
-  );
+  day.incomes.splice(index,1);
 
   saveState();
-
   render();
 
-  showToast(
-    "Ingreso eliminado"
-  );
+  toast("Ingreso eliminado.");
 }
 
-
 /* =========================================================
-   CIERRE
+   CIERRE DEL DÍA
 ========================================================= */
 
 function calculateAfterClose(day){
@@ -2445,30 +2027,26 @@ function calculateAfterClose(day){
   const currentAvailable =
     available(day);
 
-  let debt =
-    num(
-      state.deficitRemaining
-    );
+  /*
+    Un disponible negativo representa déficit.
 
-  debt =
+    No distribuimos sobrantes.
+    El sobrante va solamente a mañana.
+  */
+
+  let debt =
     Math.max(
       0,
-      debt -
-      num(day.deficitIn)
+      number(state.deficitRemaining) -
+      number(day.deficitIn)
     );
 
   if(currentAvailable < 0){
 
-    debt +=
-      Math.abs(
-        currentAvailable
-      );
+    debt += Math.abs(
+      currentAvailable
+    );
   }
-
-  /*
-    Todo sobrante positivo pasa a mañana.
-    No se reparte.
-  */
 
   const leftover =
     Math.max(
@@ -2476,32 +2054,13 @@ function calculateAfterClose(day){
       currentAvailable
     );
 
-  /*
-    Si hoy es 30/09 y cobro 06/10:
-
-    remainingDays = 5
-
-    porque quedan:
-
-    01/10
-    02/10
-    03/10
-    04/10
-    05/10
-
-    El 06/10 es cobro.
-  */
-
   const remainingDays =
     Math.max(
       0,
-      daysUntilPayday(
-        day.date
-      ) - 1
+      daysUntilPayday(day.date) - 1
     );
 
-  let nextDeficitPerDay =
-    0;
+  let nextDeficitPerDay = 0;
 
   if(
     debt > 0 &&
@@ -2510,73 +2069,74 @@ function calculateAfterClose(day){
 
     nextDeficitPerDay =
       Math.ceil(
-        debt /
-        remainingDays
+        debt / remainingDays
       );
   }
+
+  /*
+    Si no quedan días antes del cobro,
+    el déficit ya no se reparte.
+  */
 
   if(remainingDays === 0){
 
     debt = 0;
-
     nextDeficitPerDay = 0;
   }
 
   /*
-    Mañana:
+    MAÑANA:
 
     base
     + sobrante de hoy
-    - déficit correspondiente
+    - déficit diario
+
+    El sobrante NO se reparte.
   */
 
   const tomorrowBudget =
     Math.max(
       0,
-      num(state.baseDailyBudget) +
+      number(state.baseDailyBudget) +
       leftover -
       nextDeficitPerDay
     );
 
   return {
-
+    currentAvailable,
     leftover,
-
-    deficit:
-      currentAvailable < 0
-        ? Math.abs(currentAvailable)
-        : 0,
-
-    tomorrowBudget,
-
+    debt,
+    remainingDays,
     nextDeficitPerDay,
-
-    debt
-
+    tomorrowBudget
   };
 }
 
-
 function closeDay(auto=false){
 
-  const day =
-    currentDay();
+  if(!state.nextPayday){
+
+    alert(
+      "Primero configurá tu próximo día de cobro."
+    );
+
+    return;
+  }
+
+  const day = currentDay();
 
   if(day.closed){
+
+    toast("El día ya está cerrado.");
+
     return;
   }
 
   const result =
-    calculateAfterClose(
-      day
-    );
+    calculateAfterClose(day);
 
-  day.closed =
-    true;
-
-  day.closedAutomatically =
-    auto;
-
+  day.closed = true;
+  day.closedAutomatically = auto;
   day.closedAt =
     new Date().toISOString();
 
@@ -2584,7 +2144,7 @@ function closeDay(auto=false){
     result.leftover;
 
   day.deficit =
-    result.deficit;
+    result.debt;
 
   day.tomorrowBudget =
     result.tomorrowBudget;
@@ -2601,167 +2161,182 @@ function closeDay(auto=false){
   state.deficitRemaining =
     result.debt;
 
-  state.nextDayDeficitPerDay =
+  state.deficitPerDay =
     result.nextDeficitPerDay;
 
   state.nextDayBudget =
     result.tomorrowBudget;
+
+  state.nextDayDeficitPerDay =
+    result.nextDeficitPerDay;
+
+  state.nextDayDebt =
+    result.debt;
 
   state.lastProcessedDate =
     day.date;
 
   saveState();
 
-  createDay(
-    addDays(
-      day.date,
-      1
-    )
+  /*
+    Creamos mañana inmediatamente.
+
+    Esto permite mostrar desde ahora
+    el presupuesto que recibió el sobrante.
+  */
+
+  const tomorrow =
+    parseDateKey(day.date);
+
+  tomorrow.setDate(
+    tomorrow.getDate()+1
   );
+
+  const y =
+    tomorrow.getFullYear();
+
+  const m =
+    String(tomorrow.getMonth()+1).padStart(2,"0");
+
+  const d =
+    String(tomorrow.getDate()).padStart(2,"0");
+
+  const tomorrowKey =
+    `${y}-${m}-${d}`;
+
+  /*
+    Solo creamos mañana si sigue siendo
+    un día presupuestable antes del cobro.
+  */
+
+  if(
+    dateDifferenceInDays(
+      tomorrowKey,
+      state.nextPayday
+    ) > 0
+  ){
+
+    createDay(tomorrowKey);
+  }
 
   saveState();
-
   render();
 
-  showToast(
+  toast(
     auto
-      ? "Día cerrado automáticamente"
-      : "Día cerrado"
+      ? "Día cerrado automáticamente."
+      : "Día cerrado correctamente."
   );
 }
-
 
 function reopenDay(){
 
-  const day =
-    currentDay();
+  const day = currentDay();
 
   if(!day.closed){
+
+    toast("El día ya está abierto.");
+
     return;
   }
 
-  state.carryOver = 0;
+  /*
+    Reabrimos el día actual.
 
-  state.deficitRemaining = 0;
-
-  state.nextDayDeficitPerDay = 0;
-
-  state.nextDayBudget = null;
+    Recuperamos el presupuesto del día y anulamos
+    la distribución que se había preparado para mañana.
+  */
 
   day.closed = false;
-
   day.closedAutomatically = false;
-
   day.closedAt = "";
 
   day.leftover = 0;
-
   day.deficit = 0;
-
   day.tomorrowBudget = null;
-
   day.nextDeficitPerDay = 0;
-
   day.debtAfterClose = 0;
+
+  state.carryOver = 0;
+  state.deficitRemaining = 0;
+  state.deficitPerDay = 0;
+  state.nextDayBudget = null;
+  state.nextDayDeficitPerDay = 0;
+  state.nextDayDebt = 0;
 
   saveState();
 
   render();
 
-  showToast(
-    "Día reabierto"
-  );
+  toast("Día reabierto.");
 }
 
-
 /* =========================================================
-   ALERTA DE RESERVA
+   RESERVA FUTURA
 ========================================================= */
 
-function renderReserveAlert(){
+function reserveStatus(){
 
-  const alert =
-    document.getElementById(
-      "reserveAlert"
-    );
+  if(!state.priorityMode){
 
-  if(
-    !state.baseDailyBudget ||
-    !state.nextPayday
-  ){
-
-    alert.className =
-      "alert";
-
-    alert.innerHTML = "";
-
-    return;
+    return {
+      type:"info",
+      text:
+        "Modo prioridad desactivado. " +
+        "Los presupuestos se distribuyen de forma equitativa."
+    };
   }
 
-  const status =
-    reserveStatus();
+  const futureDays =
+    futureDaysCount();
 
-  if(status.futureDays <= 0){
+  const reserve =
+    futureReserve();
 
-    alert.className =
-      "alert";
+  const today =
+    currentDay();
 
-    alert.innerHTML = "";
+  const currentBalance =
+    number(state.balance);
 
-    return;
-  }
+  /*
+    La reserva futura debe medirse contra el saldo
+    actual que todavía queda.
 
-  if(status.possible){
+    Si los movimientos del día consumen dinero
+    destinado a los días futuros, avisamos.
+  */
 
-    if(state.priorityMode){
+  if(currentBalance < reserve){
 
-      alert.className =
-        "alert success show";
-
-      alert.innerHTML =
-        "<strong>Reserva futura protegida.</strong><br>" +
-        "Con el saldo actual todavía alcanzan " +
-        money(status.required) +
-        " para mantener " +
+    return {
+      type:"danger",
+      text:
+        "Reserva futura comprometida. " +
+        "Quedan " +
+        futureDays +
+        " días futuros y necesitás " +
+        money(reserve) +
+        " para mantener la base de " +
         money(state.baseDailyBudget) +
-        " durante los " +
-        status.futureDays +
-        " días posteriores.";
-
-    }else{
-
-      alert.className =
-        "alert";
-
-      alert.innerHTML = "";
-    }
-
-    return;
+        " por día."
+    };
   }
 
-  alert.className =
-    "alert danger show";
-
-  alert.innerHTML =
-    "<strong>⚠️ Reserva futura comprometida.</strong><br>" +
-    "Para mantener " +
-    money(state.baseDailyBudget) +
-    " durante los " +
-    status.futureDays +
-    " días restantes necesitás " +
-    money(status.required) +
-    ".<br>" +
-    "Saldo actual: " +
-    money(status.currentBalance) +
-    ". " +
-    "Faltan " +
-    money(Math.abs(status.difference)) +
-    ".";
+  return {
+    type:"success",
+    text:
+      "Reserva futura protegida. " +
+      "Hay " +
+      money(reserve) +
+      " reservados para los " +
+      futureDays +
+      " días posteriores a hoy."
+  };
 }
 
-
 /* =========================================================
-   RENDER PRINCIPAL
+   RENDER
 ========================================================= */
 
 function render(){
@@ -2778,574 +2353,457 @@ function render(){
   const incomeToday =
     income(day);
 
-  const currentAvailable =
+  const availableToday =
     available(day);
 
-  /*
-    HERO
-  */
+  const days =
+    daysUntilPayday(todayKey());
 
-  const heroValue =
-    document.getElementById(
-      "heroValue"
-    );
+  document.getElementById("heroAvailable").textContent =
+    money(availableToday);
 
-  heroValue.textContent =
-    money(currentAvailable);
-
-  heroValue.classList.toggle(
-    "negative",
-    currentAvailable < 0
-  );
-
-  heroValue.classList.toggle(
-    "positive",
-    currentAvailable >= 0
-  );
-
-  document.getElementById(
-    "heroInfo"
-  ).textContent =
-    "Presupuesto del día: " +
-    money(budget) +
-    " · " +
-    formatDate(day.date);
-
-  /*
-    PRIORIDAD
-  */
-
-  const prioritySummary =
-    document.getElementById(
-      "prioritySummary"
-    );
-
-  if(state.priorityMode){
-
-    prioritySummary.classList.add(
-      "show"
-    );
-
-    document.getElementById(
-      "priorityBase"
-    ).textContent =
-      money(
-        state.baseDailyBudget
-      );
-
-    document.getElementById(
-      "priorityExtra"
-    ).textContent =
-      money(
-        todayPriorityExtra(day)
-      );
-
-    document.getElementById(
-      "priorityReserve"
-    ).textContent =
-      money(
-        futureReserve()
-      );
-
-  }else{
-
-    prioritySummary.classList.remove(
-      "show"
-    );
-  }
-
-  /*
-    KPI
-  */
-
-  document.getElementById(
-    "kpiBudget"
-  ).textContent =
+  document.getElementById("heroTodayBudget").textContent =
     money(budget);
 
-  document.getElementById(
-    "kpiSpent"
-  ).textContent =
+  document.getElementById("heroDays").textContent =
+    state.nextPayday
+      ? days
+      : "—";
+
+  document.getElementById("heroDescription").textContent =
+    state.nextPayday
+      ? (
+        "Disponible parcial. " +
+        "El presupuesto de hoy permanece fijo; " +
+        "los gastos solo reducen este disponible."
+      )
+      : "Configurá tu ciclo para comenzar.";
+
+  document.getElementById("kpiBudget").textContent =
+    money(budget);
+
+  document.getElementById("kpiSpent").textContent =
     money(spentToday);
 
-  document.getElementById(
-    "kpiIncome"
-  ).textContent =
+  document.getElementById("kpiIncome").textContent =
     money(incomeToday);
 
-  const balanceElement =
-    document.getElementById(
-      "kpiBalance"
-    );
-
-  balanceElement.textContent =
+  document.getElementById("kpiBalance").textContent =
     money(state.balance);
 
-  balanceElement.classList.toggle(
-    "red",
-    state.balance < 0
-  );
-
-  balanceElement.classList.toggle(
-    "green",
-    state.balance >= 0
-  );
-
-  /*
-    CIERRE
-  */
-
-  document.getElementById(
-    "closeAvailable"
-  ).textContent =
-    money(currentAvailable);
-
-  document.getElementById(
-    "closeAvailable"
-  ).className =
-    "close-value " +
-    (
-      currentAvailable >= 0
-        ? "green"
-        : "red"
-    );
-
-  document.getElementById(
-    "closeLeftover"
-  ).textContent =
-    money(
-      Math.max(
-        0,
-        currentAvailable
-      )
-    );
-
-  /*
-    MOVIMIENTOS
-  */
-
-  renderMovements(day);
-
-  /*
-    PLAN DE DIAS
-  */
-
-  renderDays();
-
-  /*
-    GRAFICO
-  */
-
-  renderChart();
-
-  /*
-    ALERTA
-  */
-
   renderReserveAlert();
-
-  /*
-    CONFIG
-  */
-
+  renderMovements();
+  renderClose();
+  renderDays();
+  renderChart();
+  renderSystem();
   updatePriorityPreview();
 }
 
+function renderReserveAlert(){
 
-/* =========================================================
-   MOVIMIENTOS UI
-========================================================= */
+  const el =
+    document.getElementById("reserveAlert");
 
-function renderMovements(day){
+  if(!state.nextPayday){
 
-  const container =
-    document.getElementById(
-      "todayMovements"
-    );
-
-  const all = [];
-
-  (day.expenses || [])
-    .forEach(
-      (item,index) => {
-
-        all.push({
-          ...item,
-          type:"expense",
-          index
-        });
-
-      }
-    );
-
-  (day.incomes || [])
-    .forEach(
-      (item,index) => {
-
-        all.push({
-          ...item,
-          type:"income",
-          index
-        });
-
-      }
-    );
-
-  all.sort(
-    (a,b) =>
-      String(b.time)
-        .localeCompare(
-          String(a.time)
-        )
-  );
-
-  if(all.length === 0){
-
-    container.innerHTML =
-      '<div class="empty">Todavía no hay movimientos hoy.</div>';
+    el.classList.add("hidden");
 
     return;
   }
 
-  container.innerHTML =
-    all
-      .map(item => {
+  const result =
+    reserveStatus();
 
-        const isIncome =
-          item.type === "income";
+  el.className =
+    "alert " + result.type;
 
-        const amount =
-          (
-            isIncome
-              ? "+"
-              : "−"
-          ) +
-          money(item.amount);
+  el.textContent =
+    result.text;
 
-        const deleteAction =
-          isIncome
-            ? `deleteIncome(${item.index})`
-            : `deleteExpense(${item.index})`;
-
-        return `
-          <div class="movement">
-
-            <div class="movement-left">
-
-              <div class="movement-description">
-                ${escapeHtml(item.description)}
-              </div>
-
-              <div class="movement-time">
-                ${escapeHtml(item.time || "")}
-              </div>
-
-            </div>
-
-            <div class="movement-right">
-
-              <div
-                class="movement-amount ${
-                  isIncome
-                    ? "income"
-                    : "expense"
-                }"
-              >
-                ${amount}
-              </div>
-
-              <button
-                class="delete-btn"
-                type="button"
-                onclick="${deleteAction}"
-                aria-label="Eliminar movimiento"
-              >
-                ×
-              </button>
-
-            </div>
-
-          </div>
-        `;
-
-      })
-      .join("");
+  el.classList.remove("hidden");
 }
 
+function renderMovements(){
 
-/* =========================================================
-   PLAN DE DIAS
-========================================================= */
+  const day =
+    currentDay();
+
+  const list =
+    document.getElementById("movementsList");
+
+  const movements = [
+
+    ...(day.expenses || []).map(item=>({
+      ...item,
+      type:"expense"
+    })),
+
+    ...(day.incomes || []).map(item=>({
+      ...item,
+      type:"income"
+    }))
+
+  ].sort((a,b)=>{
+
+    return String(a.time).localeCompare(
+      String(b.time)
+    );
+  });
+
+  document.getElementById("movementCount").textContent =
+    `${movements.length} movimiento${movements.length===1?"":"s"}`;
+
+  if(!movements.length){
+
+    list.innerHTML =
+      `<div class="empty">
+        Todavía no hay movimientos registrados.
+      </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    movements.map(item=>{
+
+      const isExpense =
+        item.type === "expense";
+
+      const sign =
+        isExpense ? "−" : "+";
+
+      const amount =
+        money(item.amount);
+
+      const action =
+        isExpense
+          ? `deleteExpense('${item.id}')`
+          : `deleteIncome('${item.id}')`;
+
+      return `
+        <div class="movement-item">
+
+          <div class="movement-left">
+            <div class="movement-description">
+              ${escapeHtml(item.description)}
+            </div>
+
+            <div class="movement-time">
+              ${escapeHtml(item.time)}
+            </div>
+          </div>
+
+          <div class="movement-right">
+
+            <div class="movement-amount ${isExpense?"expense":"income"}">
+              ${sign}${amount}
+            </div>
+
+            <button class="delete-btn" onclick="${action}">
+              ×
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+function renderClose(){
+
+  const day =
+    currentDay();
+
+  const availableNow =
+    available(day);
+
+  document.getElementById("closeAvailable").textContent =
+    money(availableNow);
+
+  document.getElementById("closeLeftover").textContent =
+    money(
+      day.closed
+        ? day.leftover
+        : Math.max(0,availableNow)
+    );
+
+  document.getElementById("closeDeficit").textContent =
+    money(
+      day.closed
+        ? day.deficit
+        : Math.max(0,-availableNow)
+    );
+
+  document.getElementById("closeTomorrow").textContent =
+    day.closed && day.tomorrowBudget !== null
+      ? money(day.tomorrowBudget)
+      : money(
+          calculateAfterClose(day).tomorrowBudget
+        );
+
+  document.getElementById("closeStatus").textContent =
+    day.closed
+      ? (
+        day.closedAutomatically
+          ? "Cerrado automáticamente"
+          : "Día cerrado"
+      )
+      : "Día abierto";
+
+  document.getElementById("closeButton").disabled =
+    day.closed;
+}
 
 function renderDays(){
 
   const container =
-    document.getElementById(
-      "daysList"
-    );
+    document.getElementById("daysList");
 
-  const today =
-    todayKey();
-
-  /*
-    CORRECCION PRINCIPAL:
-
-    Antes estaba:
-
-      for(let i=0;i<7;i++)
-
-    Eso hacía que siempre aparecieran
-    7 días aunque el cobro estuviera antes.
-
-    Ahora calculamos exactamente cuántos días
-    existen entre hoy y el día de cobro.
-
-    Si hoy = 30/09
-    y cobro = 06/10
-
-    daysUntilPayday = 6
-
-    Por lo tanto mostramos:
-
-    30/09
-    01/10
-    02/10
-    03/10
-    04/10
-    05/10
-
-    y NO mostramos 06/10.
-  */
-
-  const totalDays =
-    state.nextPayday
-      ? daysUntilPayday(today)
-      : 0;
-
-  const rows = [];
-
-  /*
-    Si no hay configuración,
-    mostramos solamente hoy.
-  */
-
-  const daysToRender =
-    totalDays > 0
-      ? totalDays
-      : 1;
-
-  for(
-    let i = 0;
-    i < daysToRender;
-    i++
-  ){
-
-    const key =
-      addDays(
-        today,
-        i
-      );
-
-    const day =
-      state.days[key] ||
-      null;
-
-    if(!day){
-
-      rows.push({
-
-        key,
-
-        budget:
-          i === 0
-            ? dayBudget(
-                currentDay()
-              )
-            : num(
-                state.baseDailyBudget
-              ),
-
-        status:
-          i === 0
-            ? "Hoy"
-            : "Planificado"
-
-      });
-
-      continue;
-    }
-
-    rows.push({
-
-      key,
-
-      budget:
-        dayBudget(day),
-
-      status:
-        i === 0
-          ? "Hoy"
-          : day.closed
-            ? "Cerrado"
-            : "Planificado"
-
-    });
-  }
-
-  /*
-    Si ya estamos en la fecha de cobro
-    no debería existir presupuesto diario.
-  */
-
-  if(
-    state.nextPayday &&
-    totalDays <= 0
-  ){
+  if(!state.nextPayday){
 
     container.innerHTML =
-      '<div class="empty">Hoy es la fecha de cobro. Configurá el próximo ciclo.</div>';
+      `<div class="empty">
+        Configurá tu próximo día de cobro para ver el plan.
+      </div>`;
 
     return;
   }
 
-  container.innerHTML =
-    rows
-      .map(row => {
+  const totalDays =
+    daysUntilPayday(todayKey());
 
-        return `
-          <div class="day-row">
+  /*
+    FIX V3.4:
 
-            <div class="day-main">
+    Si hoy es 01/10 y cobrás 06/10,
+    totalDays = 5.
 
-              <div class="day-date">
-                ${escapeHtml(
-                  shortDate(row.key)
-                )}
-              </div>
+    Se muestran:
+    01,02,03,04,05.
 
-              <div class="day-status">
-                ${escapeHtml(
-                  row.status
-                )}
-              </div>
+    El 06 nunca se muestra porque es el día de cobro.
+  */
 
-            </div>
+  if(totalDays <= 0){
 
-            <div class="day-amount">
+    container.innerHTML =
+      `<div class="empty">
+        Hoy es la fecha de cobro.
+        Configurá el próximo ciclo.
+      </div>`;
 
-              ${money(row.budget)}
+    return;
+  }
 
-              <small>
-                presupuesto
-              </small>
-
-            </div>
-
-          </div>
-        `;
-
-      })
-      .join("");
-}
-
-
-/* =========================================================
-   GRAFICO
-========================================================= */
-
-function renderChart(){
-
-  const container =
-    document.getElementById(
-      "chart"
-    );
-
-  const today =
-    todayKey();
-
-  const rows = [];
+  let html = "";
 
   for(
-    let i=6;
-    i>=0;
-    i--
+    let i=0;
+    i<totalDays;
+    i++
   ){
 
+    const d =
+      parseDateKey(todayKey());
+
+    d.setDate(
+      d.getDate()+i
+    );
+
+    const y =
+      d.getFullYear();
+
+    const m =
+      String(d.getMonth()+1).padStart(2,"0");
+
+    const dayNum =
+      String(d.getDate()).padStart(2,"0");
+
     const key =
-      addDays(
-        today,
-        -i
-      );
+      `${y}-${m}-${dayNum}`;
 
     const day =
       state.days[key];
 
-    rows.push({
+    let budget = 0;
 
+    if(day){
+
+      budget =
+        dayBudget(day);
+
+    }else if(i === 0){
+
+      budget =
+        state.priorityMode
+          ? todayPriorityBudget()
+          : Math.floor(
+              state.cycleStartingBalance /
+              totalDays
+            );
+
+    }else{
+
+      /*
+        Los días futuros mantienen el presupuesto base.
+      */
+
+      budget =
+        state.baseDailyBudget;
+    }
+
+    if(day?.closed){
+
+      budget =
+        dayBudget(day);
+    }
+
+    const isToday =
+      key === todayKey();
+
+    const status =
+      day?.closed
+        ? "Cerrado"
+        : isToday
+          ? "Hoy"
+          : "Pendiente";
+
+    html += `
+      <div class="day-row ${isToday?"today":""}">
+
+        <div class="day-info">
+          <div class="day-name">
+            ${isToday ? "Hoy" : formatDate(key)}
+          </div>
+
+          <div class="day-date">
+            ${key}
+          </div>
+        </div>
+
+        <div>
+          <div class="day-budget">
+            ${money(budget)}
+          </div>
+
+          <div class="day-status">
+            ${status}
+          </div>
+        </div>
+
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
+}
+
+function renderChart(){
+
+  const container =
+    document.getElementById("chart");
+
+  const today =
+    parseDateKey(todayKey());
+
+  const values = [];
+
+  for(let i=6;i>=0;i--){
+
+    const d =
+      new Date(today);
+
+    d.setDate(
+      d.getDate()-i
+    );
+
+    const y =
+      d.getFullYear();
+
+    const m =
+      String(d.getMonth()+1).padStart(2,"0");
+
+    const dayNum =
+      String(d.getDate()).padStart(2,"0");
+
+    const key =
+      `${y}-${m}-${dayNum}`;
+
+    const day =
+      state.days[key];
+
+    const spentValue =
+      day ? spent(day) : 0;
+
+    values.push({
       key,
-
-      spent:
-        day
-          ? spent(day)
-          : 0
-
+      value:spentValue,
+      label:
+        d.toLocaleDateString("es-AR",{
+          day:"2-digit",
+          month:"2-digit"
+        })
     });
   }
 
   const max =
     Math.max(
       1,
-      ...rows.map(
-        r => r.spent
-      )
+      ...values.map(x=>x.value)
     );
 
   container.innerHTML =
-    rows
-      .map(row => {
+    values.map(item=>{
 
-        const height =
-          Math.max(
-            3,
-            Math.round(
-              (
-                row.spent /
-                max
-              ) *
-              105
-            )
-          );
+      const height =
+        Math.max(
+          3,
+          (item.value/max)*105
+        );
 
-        return `
-          <div class="bar-wrap">
+      return `
+        <div class="bar-wrap">
 
-            <div class="bar-value">
-              ${moneyCompact(
-                row.spent
-              )}
-            </div>
-
-            <div
-              class="bar"
-              style="height:${height}px"
-              title="${money(
-                row.spent
-              )}"
-            ></div>
-
-            <div class="bar-label">
-              ${escapeHtml(
-                shortDate(row.key)
-              )}
-            </div>
-
+          <div class="bar-value">
+            ${item.value ? money(item.value) : ""}
           </div>
-        `;
 
-      })
-      .join("");
+          <div
+            class="bar"
+            style="height:${height}px"
+          ></div>
+
+          <div class="bar-label">
+            ${item.label}
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
 }
 
+function renderSystem(){
+
+  document.getElementById("systemDate").textContent =
+    todayKey();
+
+  document.getElementById("systemProcessed").textContent =
+    state.lastProcessedDate || "—";
+
+  document.getElementById("systemPriority").textContent =
+    state.priorityMode
+      ? "Activo"
+      : "Desactivado";
+
+  document.getElementById("systemCycle").textContent =
+    state.nextPayday
+      ? `Cobro ${state.nextPayday}`
+      : "Sin configurar";
+}
 
 /* =========================================================
    CONFIG UI
@@ -3353,378 +2811,364 @@ function renderChart(){
 
 function loadConfigurationUI(){
 
-  document.getElementById(
-    "balanceInput"
-  ).value =
+  document.getElementById("configBalance").value =
     state.balance || "";
 
-  document.getElementById(
-    "paydayInput"
-  ).value =
+  document.getElementById("configPayday").value =
     state.nextPayday || "";
 
-  document.getElementById(
-    "baseBudgetInput"
-  ).value =
+  document.getElementById("configBase").value =
     state.baseDailyBudget || "";
 
-  document.getElementById(
-    "priorityToggle"
-  ).checked =
+  document.getElementById("priorityMode").checked =
     !!state.priorityMode;
-
-  updatePriorityPreview();
 }
 
-
 /* =========================================================
-   AUTOMATIC CLOSE
+   CIERRE AUTOMÁTICO
 ========================================================= */
 
 function processAutomaticClose(){
 
-  const now =
-    new Date();
+  /*
+    No cerramos automáticamente si no existe
+    un ciclo configurado.
+  */
 
-  if(
-    now.getHours() < 23
-  ){
+  if(!state.nextPayday){
     return;
   }
 
   const day =
     currentDay();
 
-  if(!day.closed){
+  if(day.closed){
+    return;
+  }
+
+  const now =
+    new Date();
+
+  /*
+    Cierre automático a las 23:00.
+  */
+
+  if(now.getHours() >= 23){
 
     closeDay(true);
   }
 }
 
-
 /* =========================================================
-   TOAST
+   TUTORIAL
 ========================================================= */
 
-let toastTimer = null;
+const tutorialSteps = [
 
-function showToast(message){
+  {
+    target:"configTarget",
+    title:"1. Configurá tu saldo",
+    text:
+      "Primero indicá cuánto dinero tenés disponible para todo el período. Ese saldo será la base de todos los cálculos."
+  },
 
-  const toast =
+  {
+    target:"configTarget",
+    title:"2. Indicá cuándo cobrás",
+    text:
+      "Elegí tu próxima fecha de cobro. La aplicación calcula solamente los días anteriores al cobro. Si cobrás el martes 06/10, el último día presupuestado es el lunes 05/10."
+  },
+
+  {
+    target:"configTarget",
+    title:"3. Definí tu presupuesto base",
+    text:
+      "Acá podés establecer cuánto querés reservar para cada día futuro. La aplicación comprueba que matemáticamente sea posible sostenerlo."
+  },
+
+  {
+    target:"previewTarget",
+    title:"4. Priorizá excedente hacia hoy",
+    text:
+      "Si activás esta opción, primero se protege el presupuesto de los días futuros. Todo el dinero que realmente quede por encima de esa reserva queda disponible para hoy."
+  },
+
+  {
+    target:"heroTarget",
+    title:"5. Mirá tu disponible parcial",
+    text:
+      "Este importe cambia cuando gastás o registrás un ingreso. Pero atención: el presupuesto diario permanece fijo durante todo el día."
+  },
+
+  {
+    target:"movementTarget",
+    title:"6. Registrá tus movimientos",
+    text:
+      "Usá gasto para descontar dinero y usá ingreso para sumar dinero. Un ingreso aumenta el disponible de hoy, pero no modifica el presupuesto base de los días siguientes."
+  },
+
+  {
+    target:"heroTarget",
+    title:"7. El sobrante se arrastra",
+    text:
+      "Cuando cerrás el día, si sobra dinero, ese sobrante pasa íntegramente a mañana. No se reparte entre todos los días restantes."
+  },
+
+  {
+    target:"movementTarget",
+    title:"¡Listo!",
+    text:
+      "Ya conocés el funcionamiento básico de Presupuesto Diario. Podés volver a ver esta guía cuando quieras tocando el botón ? del encabezado."
+  }
+
+];
+
+function startTutorial(){
+
+  tutorialIndex = 0;
+
+  document.getElementById(
+    "tutorialOverlay"
+  ).classList.add("active");
+
+  renderTutorialStep();
+}
+
+function renderTutorialStep(){
+
+  const step =
+    tutorialSteps[tutorialIndex];
+
+  const overlay =
+    document.getElementById("tutorialOverlay");
+
+  const highlight =
+    document.getElementById("tutorialHighlight");
+
+  const card =
+    document.getElementById("tutorialCard");
+
+  const target =
+    document.getElementById(step.target);
+
+  document.getElementById("tutorialStep").textContent =
+    `Paso ${tutorialIndex+1} de ${tutorialSteps.length}`;
+
+  document.getElementById("tutorialTitle").textContent =
+    step.title;
+
+  document.getElementById("tutorialText").textContent =
+    step.text;
+
+  document.getElementById("tutorialBack").style.visibility =
+    tutorialIndex === 0
+      ? "hidden"
+      : "visible";
+
+  document.getElementById("tutorialNext").textContent =
+    tutorialIndex === tutorialSteps.length-1
+      ? "Finalizar"
+      : "Siguiente";
+
+  const progress =
+    document.getElementById("tutorialProgress");
+
+  progress.innerHTML =
+    tutorialSteps.map((_,i)=>
+      `<div class="tutorial-dot ${i===tutorialIndex?"active":""}"></div>`
+    ).join("");
+
+  /*
+    Posicionamiento después de que el DOM
+    tenga el estado visual correcto.
+  */
+
+  requestAnimationFrame(()=>{
+
+    if(target){
+
+      const rect =
+        target.getBoundingClientRect();
+
+      highlight.style.left =
+        `${rect.left-5}px`;
+
+      highlight.style.top =
+        `${rect.top-5}px`;
+
+      highlight.style.width =
+        `${rect.width+10}px`;
+
+      highlight.style.height =
+        `${rect.height+10}px`;
+
+      /*
+        Colocamos la tarjeta debajo o encima
+        dependiendo del espacio disponible.
+      */
+
+      const cardHeight =
+        card.offsetHeight;
+
+      const spaceBelow =
+        window.innerHeight -
+        rect.bottom;
+
+      if(spaceBelow > cardHeight + 30){
+
+        card.style.top =
+          `${rect.bottom+20}px`;
+
+      }else{
+
+        card.style.top =
+          `${Math.max(15,rect.top-cardHeight-20)}px`;
+      }
+    }
+
+  });
+}
+
+function tutorialNext(){
+
+  if(
+    tutorialIndex >=
+    tutorialSteps.length-1
+  ){
+
+    finishTutorial();
+
+    return;
+  }
+
+  tutorialIndex++;
+
+  renderTutorialStep();
+}
+
+function tutorialPrev(){
+
+  if(tutorialIndex <= 0){
+    return;
+  }
+
+  tutorialIndex--;
+
+  renderTutorialStep();
+}
+
+function finishTutorial(){
+
+  state.tutorialCompleted = true;
+
+  saveState();
+
+  document.getElementById(
+    "tutorialOverlay"
+  ).classList.remove("active");
+
+  toast("Tutorial completado.");
+}
+
+window.addEventListener("resize",()=>{
+
+  if(
     document.getElementById(
-      "toast"
-    );
+      "tutorialOverlay"
+    ).classList.contains("active")
+  ){
 
-  toast.textContent =
-    message;
-
-  toast.classList.add(
-    "show"
-  );
-
-  clearTimeout(
-    toastTimer
-  );
-
-  toastTimer =
-    setTimeout(
-      () => {
-
-        toast.classList.remove(
-          "show"
-        );
-
-      },
-      2200
-    );
-}
-
-
-/* =========================================================
-   SEGURIDAD HTML
-========================================================= */
-
-function escapeHtml(value){
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-}
-
-
-/* =========================================================
-   EVENTOS
-========================================================= */
-
-document
-  .getElementById(
-    "expenseBtn"
-  )
-  .addEventListener(
-    "click",
-    addExpense
-  );
-
-
-document
-  .getElementById(
-    "incomeBtn"
-  )
-  .addEventListener(
-    "click",
-    addIncome
-  );
-
-
-document
-  .getElementById(
-    "closeDayBtn"
-  )
-  .addEventListener(
-    "click",
-    () => closeDay(false)
-  );
-
-
-document
-  .getElementById(
-    "reopenDayBtn"
-  )
-  .addEventListener(
-    "click",
-    reopenDay
-  );
-
-
-document
-  .getElementById(
-    "saveConfigBtn"
-  )
-  .addEventListener(
-    "click",
-    saveConfiguration
-  );
-
-
-/* =========================================================
-   CONFIG TOGGLE
-========================================================= */
-
-document
-  .getElementById(
-    "configToggle"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      const panel =
-        document.getElementById(
-          "configPanel"
-        );
-
-      const isOpen =
-        panel.classList.toggle(
-          "open"
-        );
-
-      document.getElementById(
-        "configArrow"
-      ).textContent =
-        isOpen
-          ? "▲"
-          : "▼";
-    }
-  );
-
-
-/* =========================================================
-   PRIORITY
-========================================================= */
-
-document
-  .getElementById(
-    "priorityToggle"
-  )
-  .addEventListener(
-    "change",
-    updatePriorityPreview
-  );
-
-
-document
-  .getElementById(
-    "balanceInput"
-  )
-  .addEventListener(
-    "input",
-    updatePriorityPreview
-  );
-
-
-document
-  .getElementById(
-    "baseBudgetInput"
-  )
-  .addEventListener(
-    "input",
-    updatePriorityPreview
-  );
-
-
-document
-  .getElementById(
-    "paydayInput"
-  )
-  .addEventListener(
-    "change",
-    updatePriorityPreview
-  );
-
-
-/* =========================================================
-   STATE TOGGLE
-========================================================= */
-
-document
-  .getElementById(
-    "stateToggle"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      const panel =
-        document.getElementById(
-          "statePanel"
-        );
-
-      const isOpen =
-        panel.classList.toggle(
-          "open"
-        );
-
-      document.getElementById(
-        "stateArrow"
-      ).textContent =
-        isOpen
-          ? "▲"
-          : "▼";
-    }
-  );
-
+    renderTutorialStep();
+  }
+});
 
 /* =========================================================
    RESET
 ========================================================= */
 
-document
-  .getElementById(
-    "resetBtn"
-  )
-  .addEventListener(
-    "click",
-    () => {
+function resetApp(){
 
-      const confirmed =
-        confirm(
-          "¿Querés borrar toda la información de Presupuesto Diario?"
-        );
+  const confirmed =
+    confirm(
+      "¿Querés borrar toda la información de Presupuesto Diario?"
+    );
 
-      if(!confirmed){
-        return;
-      }
+  if(!confirmed){
+    return;
+  }
 
-      localStorage.removeItem(
-        STORAGE_KEY
-      );
+  localStorage.removeItem(STORAGE_KEY);
 
-      /*
-        También eliminamos versiones anteriores
-        para evitar que una configuración vieja
-        interfiera con las pruebas.
-      */
+  /*
+    También eliminamos versiones inmediatamente
+    anteriores para evitar confusión.
+  */
 
-      localStorage.removeItem(
-        "presupuesto_v32"
-      );
+  localStorage.removeItem("presupuesto_v33");
+  localStorage.removeItem("presupuesto_v32");
 
-      location.reload();
-    }
-  );
-
+  location.reload();
+}
 
 /* =========================================================
-   ENTER EN MOVIMIENTO
+   INICIALIZACIÓN
 ========================================================= */
 
-document
-  .getElementById(
-    "amountInput"
-  )
-  .addEventListener(
-    "keydown",
-    event => {
+function init(){
 
-      if(
-        event.key === "Enter"
-      ){
+  loadState();
 
-        addExpense();
+  createDay(todayKey());
 
-      }
+  loadConfigurationUI();
 
-    }
+  render();
+
+  processAutomaticClose();
+
+  /*
+    Revisión automática cada minuto.
+  */
+
+  setInterval(
+    processAutomaticClose,
+    60000
   );
 
+  /*
+    Tutorial solamente la primera vez.
+  */
 
-/* =========================================================
-   INICIALIZACION
-========================================================= */
+  if(!state.tutorialCompleted){
 
-loadState();
+    setTimeout(()=>{
+      startTutorial();
+    },700);
+  }
+}
 
-/*
-  Creamos solamente el día actual.
-*/
+document
+  .getElementById("configBalance")
+  .addEventListener(
+    "input",
+    updatePriorityPreview
+  );
 
-createDay(
-  todayKey()
-);
+document
+  .getElementById("configPayday")
+  .addEventListener(
+    "change",
+    updatePriorityPreview
+  );
 
-loadConfigurationUI();
+document
+  .getElementById("configBase")
+  .addEventListener(
+    "input",
+    updatePriorityPreview
+  );
 
-render();
-
-processAutomaticClose();
-
-setInterval(
-  processAutomaticClose,
-  60 * 1000
-);
+init();
 
 </script>
 
