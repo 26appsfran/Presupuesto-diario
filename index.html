@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071525">
-<title>Presupuesto Diario · Macrodesk V3.5</title>
+<title>Presupuesto Diario · Macrodesk V3.6</title>
 <style>
 :root{
 --ink:#071525;--ink2:#10253b;--blue:#2388ff;--cyan:#16c7c9;
@@ -14,97 +14,241 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{
+margin:0;background:var(--bg);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif
+}
 button,input{font:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .app{width:100%;max-width:600px;margin:auto;padding-bottom:40px}
-.header{background:var(--ink);color:#fff;padding:17px 17px 19px;position:sticky;top:0;z-index:50;box-shadow:0 5px 22px rgba(7,21,37,.18)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.header{
+background:var(--ink);color:#fff;padding:17px 17px 19px;
+position:sticky;top:0;z-index:50;
+box-shadow:0 5px 22px rgba(7,21,37,.18)
+}
+.header-inner{
+display:flex;align-items:center;justify-content:space-between;gap:12px
+}
 .brand{display:flex;align-items:center;gap:11px}
-.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;box-shadow:0 8px 22px rgba(35,136,255,.25)}
+.logo{
+width:43px;height:43px;border-radius:14px;
+background:linear-gradient(135deg,var(--blue),var(--cyan));
+display:flex;align-items:center;justify-content:center;
+color:#fff;font-size:22px;font-weight:900;
+box-shadow:0 8px 22px rgba(35,136,255,.25)
+}
 .brand-title{font-size:17px;font-weight:800;line-height:1.1}
 .brand-sub{color:#9db0c3;font-size:11px;margin-top:3px}
 .version{font-size:9px;color:#71879b;margin-top:4px}
 .header-status{text-align:right}
-.header-status-label{color:#8198ac;font-size:9px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
-.header-status-value{color:#d9e8f5;font-size:11px;font-weight:800;margin-top:3px}
+.header-status-label{
+color:#8198ac;font-size:9px;text-transform:uppercase;
+letter-spacing:.6px;font-weight:800
+}
+.header-status-value{
+color:#d9e8f5;font-size:11px;font-weight:800;margin-top:3px
+}
 main{padding:15px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:17px;margin-bottom:13px}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+.card{
+background:var(--card);border:1px solid var(--border);
+border-radius:var(--radius);box-shadow:var(--shadow);
+padding:17px;margin-bottom:13px
+}
+.section-title{
+display:flex;align-items:center;justify-content:space-between;
+gap:10px;margin-bottom:13px
+}
 .section-title h2{margin:0;font-size:15px;font-weight:850}
 .section-title small{color:var(--muted);font-size:10px}
 .hidden{display:none!important}
 
 .main-financial{
-background:radial-gradient(circle at 100% 0%,rgba(22,199,201,.30),transparent 38%),radial-gradient(circle at 0% 100%,rgba(35,136,255,.20),transparent 38%),linear-gradient(140deg,#071525,#123653);
+background:
+radial-gradient(circle at 100% 0%,rgba(22,199,201,.30),transparent 38%),
+radial-gradient(circle at 0% 100%,rgba(35,136,255,.20),transparent 38%),
+linear-gradient(140deg,#071525,#123653);
 color:#fff;border:0;padding:20px;overflow:hidden;position:relative
 }
-.financial-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.financial-label{color:#9fc6e8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px}
+.financial-top{
+display:flex;align-items:flex-start;justify-content:space-between;gap:12px
+}
+.financial-label{
+color:#9fc6e8;font-size:10px;font-weight:800;
+text-transform:uppercase;letter-spacing:.7px
+}
 .financial-total{text-align:right}
-.financial-total-label{color:#819ab0;font-size:9px;text-transform:uppercase;letter-spacing:.5px}
-.financial-total-value{color:#dcebf7;font-size:14px;font-weight:850;margin-top:3px}
-.financial-available{font-size:40px;line-height:1;font-weight:950;letter-spacing:-1.5px;margin:8px 0 7px}
+.financial-total-label{
+color:#819ab0;font-size:9px;text-transform:uppercase;letter-spacing:.5px
+}
+.financial-total-value{
+color:#dcebf7;font-size:14px;font-weight:850;margin-top:3px
+}
+.financial-available{
+font-size:40px;line-height:1;font-weight:950;
+letter-spacing:-1.5px;margin:8px 0 7px
+}
 .financial-sub{color:#c2d2df;font-size:11px;line-height:1.45}
-.financial-progress{height:7px;background:rgba(255,255,255,.11);border-radius:20px;margin:17px 0 15px;overflow:hidden}
-.financial-progress-bar{height:100%;width:0%;border-radius:20px;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:.25s ease}
-.financial-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.financial-meta-item{background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.075);border-radius:14px;padding:10px 11px}
+.financial-progress{
+height:7px;background:rgba(255,255,255,.11);
+border-radius:20px;margin:17px 0 15px;overflow:hidden
+}
+.financial-progress-bar{
+height:100%;width:0%;border-radius:20px;
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+transition:.25s ease
+}
+.financial-meta{
+display:grid;grid-template-columns:1fr 1fr;gap:8px
+}
+.financial-meta-item{
+background:rgba(255,255,255,.075);
+border:1px solid rgba(255,255,255,.075);
+border-radius:14px;padding:10px 11px
+}
 .financial-meta-label{color:#91a9bc;font-size:9px}
-.financial-meta-value{color:#fff;font-size:14px;font-weight:850;margin-top:3px}
+.financial-meta-value{
+color:#fff;font-size:14px;font-weight:850;margin-top:3px
+}
 
-.alert{padding:12px 14px;border-radius:15px;margin-bottom:13px;font-size:11px;line-height:1.45;border:1px solid}
+.alert{
+padding:12px 14px;border-radius:15px;margin-bottom:13px;
+font-size:11px;line-height:1.45;border:1px solid
+}
 .alert.success{background:#eafaf3;border-color:#b9ead4;color:#126f4c}
 .alert.warning{background:#fff7e8;border-color:#f4d59b;color:#8a5a10}
 .alert.danger{background:#fff0f1;border-color:#f2b8bc;color:#a5313b}
 .alert.info{background:#edf6ff;border-color:#c6e1ff;color:#145b9e}
 
 .movement-card{padding:16px}
-.movement-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.movement-head{
+display:flex;align-items:center;justify-content:space-between;
+gap:10px;margin-bottom:14px
+}
 .movement-head h2{margin:0;font-size:15px}
 .movement-head span{color:var(--muted);font-size:10px}
-.movement-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:9px}
+.movement-grid{
+display:grid;grid-template-columns:1fr 1.45fr;gap:9px
+}
 .input-group{margin-bottom:9px}
-.input-group label{display:block;color:var(--muted);font-size:10px;font-weight:750;margin-bottom:5px}
-.input{width:100%;border:1px solid var(--border);background:#f7fafc;color:var(--ink);border-radius:13px;padding:12px;outline:none;font-size:13px}
-.input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(35,136,255,.08)}
-
-.movement-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:7px}
-.round-action{border:0;min-height:78px;border-radius:19px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:850;transition:.15s ease;box-shadow:0 5px 14px rgba(7,21,37,.06)}
+.input-group label{
+display:block;color:var(--muted);font-size:10px;
+font-weight:750;margin-bottom:5px
+}
+.input{
+width:100%;border:1px solid var(--border);
+background:#f7fafc;color:var(--ink);border-radius:13px;
+padding:12px;outline:none;font-size:13px
+}
+.input:focus{
+border-color:var(--blue);background:#fff;
+box-shadow:0 0 0 3px rgba(35,136,255,.08)
+}
+.movement-actions{
+display:grid;grid-template-columns:1fr 1fr;
+gap:12px;margin-top:7px
+}
+.round-action{
+border:0;min-height:78px;border-radius:19px;
+display:flex;align-items:center;justify-content:center;
+gap:10px;font-weight:850;transition:.15s ease;
+box-shadow:0 5px 14px rgba(7,21,37,.06)
+}
 .round-action:active{transform:scale(.97)}
-.round-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:500}
-.expense-action{background:linear-gradient(145deg,#fff5f5,#ffecee);color:#b6323c;border:1px solid #f5d5d8}
-.expense-action .round-icon{background:#ef5b64;color:#fff;box-shadow:0 5px 12px rgba(239,91,100,.25)}
-.income-action{background:linear-gradient(145deg,#f1fcf7,#e5f8ef);color:#12724e;border:1px solid #c9ecdc}
-.income-action .round-icon{background:#18b979;color:#fff;box-shadow:0 5px 12px rgba(24,185,121,.23)}
+.round-icon{
+width:38px;height:38px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:23px;font-weight:500
+}
+.expense-action{
+background:linear-gradient(145deg,#fff5f5,#ffecee);
+color:#b6323c;border:1px solid #f5d5d8
+}
+.expense-action .round-icon{
+background:#ef5b64;color:#fff;
+box-shadow:0 5px 12px rgba(239,91,100,.25)
+}
+.income-action{
+background:linear-gradient(145deg,#f1fcf7,#e5f8ef);
+color:#12724e;border:1px solid #c9ecdc
+}
+.income-action .round-icon{
+background:#18b979;color:#fff;
+box-shadow:0 5px 12px rgba(24,185,121,.23)
+}
 .round-label{font-size:12px}
 
 .config-card{padding:0;overflow:hidden}
-.config-toggle{width:100%;border:0;background:#fff;padding:16px 17px;display:flex;align-items:center;justify-content:space-between;text-align:left;color:var(--ink)}
-.config-toggle-left{display:flex;align-items:center;gap:11px}
-.config-icon{width:35px;height:35px;border-radius:11px;background:#edf5ff;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:17px}
+.config-toggle{
+width:100%;border:0;background:#fff;padding:16px 17px;
+display:flex;align-items:center;justify-content:space-between;
+text-align:left;color:var(--ink)
+}
+.config-toggle-left{
+display:flex;align-items:center;gap:11px
+}
+.config-icon{
+width:35px;height:35px;border-radius:11px;
+background:#edf5ff;color:var(--blue);
+display:flex;align-items:center;justify-content:center;font-size:17px
+}
 .config-title{font-size:14px;font-weight:850}
-.config-subtitle{color:var(--muted);font-size:10px;margin-top:2px}
-.config-chevron{color:#7d8c9b;font-size:18px;transition:.2s}
+.config-subtitle{
+color:var(--muted);font-size:10px;margin-top:2px
+}
+.config-chevron{
+color:#7d8c9b;font-size:18px;transition:.2s
+}
 .config-card.open .config-chevron{transform:rotate(180deg)}
-.config-content{display:none;padding:0 17px 17px;border-top:1px solid #edf1f4}
-.config-card.open .config-content{display:block;padding-top:16px}
-.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.config-content{
+display:none;padding:0 17px 17px;
+border-top:1px solid #edf1f4
+}
+.config-card.open .config-content{
+display:block;padding-top:16px
+}
+.config-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
 .config-grid .full{grid-column:1/-1}
-.switch-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;background:#f6f9fb;border:1px solid var(--border);border-radius:15px;margin:2px 0 11px}
+.switch-row{
+display:flex;align-items:center;justify-content:space-between;
+gap:12px;padding:12px;background:#f6f9fb;
+border:1px solid var(--border);border-radius:15px;margin:2px 0 11px
+}
 .switch-text strong{display:block;font-size:12px}
-.switch-text span{display:block;color:var(--muted);font-size:9px;margin-top:3px;line-height:1.4}
+.switch-text span{
+display:block;color:var(--muted);font-size:9px;
+margin-top:3px;line-height:1.4
+}
 .switch{position:relative;width:48px;height:27px;flex:none}
 .switch input{display:none}
-.slider{position:absolute;inset:0;border-radius:30px;background:#cbd5df;transition:.2s}
-.slider:before{content:"";width:21px;height:21px;background:#fff;position:absolute;left:3px;top:3px;border-radius:50%;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:.2s}
+.slider{
+position:absolute;inset:0;border-radius:30px;
+background:#cbd5df;transition:.2s
+}
+.slider:before{
+content:"";width:21px;height:21px;background:#fff;
+position:absolute;left:3px;top:3px;border-radius:50%;
+box-shadow:0 2px 5px rgba(0,0,0,.2);transition:.2s
+}
 .switch input:checked+.slider{background:var(--blue)}
 .switch input:checked+.slider:before{transform:translateX(21px)}
-.preview{background:#f1f7ff;border:1px solid #d1e6ff;border-radius:15px;padding:12px;margin-bottom:11px}
-.preview-title{font-size:10px;font-weight:850;color:#1d5f9f;margin-bottom:7px}
-.preview-row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:10px}
+.preview{
+background:#f1f7ff;border:1px solid #d1e6ff;
+border-radius:15px;padding:12px;margin-bottom:11px
+}
+.preview-title{
+font-size:10px;font-weight:850;color:#1d5f9f;margin-bottom:7px
+}
+.preview-row{
+display:flex;justify-content:space-between;gap:10px;
+padding:3px 0;font-size:10px
+}
 .preview-row strong{font-size:11px}
-.btn{border:0;border-radius:13px;padding:12px 13px;font-weight:800;transition:.15s}
+.btn{
+border:0;border-radius:13px;padding:12px 13px;
+font-weight:800;transition:.15s
+}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-dark{background:var(--ink);color:#fff}
@@ -113,55 +257,137 @@ color:#fff;border:0;padding:20px;overflow:hidden;position:relative
 .btn-full{width:100%}
 
 .today-movements{padding:16px 17px 8px}
-.movement-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #edf1f4}
+.movement-item{
+display:flex;align-items:center;justify-content:space-between;
+gap:10px;padding:10px 0;border-bottom:1px solid #edf1f4
+}
 .movement-item:last-child{border-bottom:0}
-.movement-left{min-width:0;display:flex;align-items:center;gap:9px}
-.movement-dot{width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px;font-weight:900}
+.movement-left{
+min-width:0;display:flex;align-items:center;gap:9px
+}
+.movement-dot{
+width:30px;height:30px;border-radius:10px;
+display:flex;align-items:center;justify-content:center;
+flex:none;font-size:14px;font-weight:900
+}
 .movement-dot.expense{background:#fff0f1;color:var(--red)}
 .movement-dot.income{background:#eafaf3;color:var(--green)}
-.movement-description{font-size:12px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.movement-time{color:var(--muted);font-size:9px;margin-top:2px}
-.movement-right{display:flex;align-items:center;gap:7px;flex:none}
+.movement-description{
+font-size:12px;font-weight:750;overflow:hidden;
+text-overflow:ellipsis;white-space:nowrap
+}
+.movement-time{
+color:var(--muted);font-size:9px;margin-top:2px
+}
+.movement-right{
+display:flex;align-items:center;gap:7px;flex:none
+}
 .movement-amount{font-weight:900;font-size:12px}
 .movement-amount.expense{color:var(--red)}
 .movement-amount.income{color:var(--green)}
-.delete-btn{border:0;background:#f1f4f6;width:27px;height:27px;border-radius:9px;color:#778694}
+.delete-btn{
+border:0;background:#f1f4f6;width:27px;height:27px;
+border-radius:9px;color:#778694
+}
 
-.close-card{background:linear-gradient(145deg,#e9f1fa,#f5f8fb);border-color:#cbd9e7}
-.close-box{background:linear-gradient(145deg,#123453,#174666);border:0;border-radius:17px;padding:14px;color:#fff;box-shadow:0 8px 20px rgba(7,21,37,.12)}
-.close-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.close-stat{background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px}
+.close-card{
+background:linear-gradient(145deg,#e9f1fa,#f5f8fb);
+border-color:#cbd9e7
+}
+.close-box{
+background:linear-gradient(145deg,#123453,#174666);
+border:0;border-radius:17px;padding:14px;color:#fff;
+box-shadow:0 8px 20px rgba(7,21,37,.12)
+}
+.close-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:8px
+}
+.close-stat{
+background:rgba(255,255,255,.075);
+border:1px solid rgba(255,255,255,.07);
+border-radius:12px;padding:10px
+}
 .close-stat span{display:block;color:#9db7cb;font-size:9px}
-.close-stat strong{display:block;margin-top:3px;font-size:13px;color:#fff}
-.close-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
-.close-actions .btn-dark{background:#fff;color:#10324d}
-.close-actions .btn-secondary{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.12)}
+.close-stat strong{
+display:block;margin-top:3px;font-size:13px;color:#fff
+}
+.close-actions{
+display:grid;grid-template-columns:1fr 1fr;
+gap:9px;margin-top:10px
+}
+.close-actions .btn-dark{
+background:#fff;color:#10324d
+}
+.close-actions .btn-secondary{
+background:rgba(255,255,255,.12);color:#fff;
+border:1px solid rgba(255,255,255,.12)
+}
 
 .days-card{padding:15px}
 .day-list{display:flex;flex-direction:column;gap:5px}
-.day-row{border:1px solid #e7edf2;border-radius:13px;padding:9px 11px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fbfcfd}
-.day-row.today{border-color:#c7e0fa;background:#f4f9ff}
+.day-row{
+border:1px solid #e7edf2;border-radius:13px;padding:9px 11px;
+display:flex;align-items:center;justify-content:space-between;
+gap:10px;background:#fbfcfd
+}
+.day-row.today{
+border-color:#c7e0fa;background:#f4f9ff
+}
 .day-info{min-width:0}
 .day-name{font-size:11px;font-weight:750;color:#405366}
 .day-date{font-size:8px;color:#9aa7b3;margin-top:1px}
-.day-budget{text-align:right;font-weight:800;font-size:11px;color:#405366}
+.day-budget{
+text-align:right;font-weight:800;font-size:11px;color:#405366
+}
 .day-row.today .day-budget{color:var(--blue)}
 .day-status{font-size:8px;color:#9aa7b3;margin-top:1px}
 .day-row.today .day-status{color:#5f8db8}
 
-.chart{height:145px;display:flex;align-items:flex-end;gap:8px;padding-top:10px}
-.bar-wrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;min-width:0}
-.bar{width:100%;max-width:34px;min-height:3px;background:linear-gradient(to top,var(--blue),var(--cyan));border-radius:8px 8px 3px 3px}
+.chart{
+height:145px;display:flex;align-items:flex-end;
+gap:8px;padding-top:10px
+}
+.bar-wrap{
+flex:1;height:100%;display:flex;flex-direction:column;
+justify-content:flex-end;align-items:center;min-width:0
+}
+.bar{
+width:100%;max-width:34px;min-height:3px;
+background:linear-gradient(to top,var(--blue),var(--cyan));
+border-radius:8px 8px 3px 3px
+}
 .bar-label{font-size:8px;color:var(--muted);margin-top:6px}
-.bar-value{font-size:8px;color:var(--muted);margin-bottom:3px;white-space:nowrap}
+.bar-value{
+font-size:8px;color:var(--muted);
+margin-bottom:3px;white-space:nowrap
+}
 
-.system-row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #edf1f4;font-size:10px}
+.system-row{
+display:flex;justify-content:space-between;gap:12px;
+padding:7px 0;border-bottom:1px solid #edf1f4;
+font-size:10px
+}
 .system-row:last-child{border-bottom:0}
 .system-row span{color:var(--muted)}
-.empty{color:var(--muted);font-size:11px;text-align:center;padding:14px 0}
-.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 16px;border-radius:13px;font-size:11px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.22);opacity:0;pointer-events:none;transition:.25s;z-index:200;width:max-content;max-width:90%;text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.footer{text-align:center;color:#8a99a8;font-size:9px;padding:5px 15px 20px}
+.empty{
+color:var(--muted);font-size:11px;text-align:center;padding:14px 0
+}
+.toast{
+position:fixed;left:50%;bottom:20px;
+transform:translate(-50%,20px);
+background:var(--ink);color:#fff;padding:12px 16px;
+border-radius:13px;font-size:11px;font-weight:700;
+box-shadow:0 10px 30px rgba(0,0,0,.22);
+opacity:0;pointer-events:none;transition:.25s;z-index:200;
+width:max-content;max-width:90%;text-align:center
+}
+.toast.show{
+opacity:1;transform:translate(-50%,0)
+}
+.footer{
+text-align:center;color:#8a99a8;
+font-size:9px;padding:5px 15px 20px
+}
 
 @media(max-width:420px){
 main{padding:12px}
@@ -185,9 +411,10 @@ main{padding:12px}
 <div>
 <div class="brand-title">Presupuesto Diario</div>
 <div class="brand-sub">Macrodesk · Control financiero</div>
-<div class="version">V3.5</div>
+<div class="version">V3.6</div>
 </div>
 </div>
+
 <div class="header-status">
 <div class="header-status-label">Hasta cobro</div>
 <div class="header-status-value" id="headerPayday">—</div>
@@ -200,6 +427,7 @@ main{padding:12px}
 <section class="card main-financial">
 <div class="financial-top">
 <div class="financial-label">Disponible de hoy</div>
+
 <div class="financial-total">
 <div class="financial-total-label">Saldo total</div>
 <div class="financial-total-value" id="mainBalance">$0</div>
@@ -207,115 +435,205 @@ main{padding:12px}
 </div>
 
 <div class="financial-available" id="heroAvailable">$0</div>
-<div class="financial-sub" id="heroDescription">Configurá tu ciclo para comenzar.</div>
+
+<div class="financial-sub" id="heroDescription">
+Configurá tu ciclo para comenzar.
+</div>
 
 <div class="financial-progress">
 <div class="financial-progress-bar" id="financialProgress"></div>
 </div>
 
 <div class="financial-meta">
+
 <div class="financial-meta-item">
 <div class="financial-meta-label">Presupuesto de hoy</div>
 <div class="financial-meta-value" id="heroTodayBudget">$0</div>
 </div>
+
 <div class="financial-meta-item">
 <div class="financial-meta-label">Días hasta cobrar</div>
 <div class="financial-meta-value" id="heroDays">—</div>
 </div>
+
 </div>
 </section>
 
 <div id="reserveAlert" class="alert hidden"></div>
 
 <section class="card movement-card">
+
 <div class="movement-head">
 <h2>Ingresar movimiento</h2>
 <span>Actualiza tu saldo</span>
 </div>
 
 <div class="movement-grid">
+
 <div class="input-group">
 <label>Monto</label>
-<input id="movementAmount" class="input" type="number" min="0" step="0.01" placeholder="$ 0">
+<input
+id="movementAmount"
+class="input"
+type="number"
+min="0"
+step="0.01"
+placeholder="$ 0">
 </div>
+
 <div class="input-group">
 <label>Descripción</label>
-<input id="movementDescription" class="input" type="text" maxlength="60" placeholder="Ej. supermercado">
+<input
+id="movementDescription"
+class="input"
+type="text"
+maxlength="60"
+placeholder="Ej. supermercado">
 </div>
+
 </div>
 
 <div class="movement-actions">
+
 <button class="round-action expense-action" onclick="addExpense()">
 <span class="round-icon">−</span>
 <span class="round-label">Gasto</span>
 </button>
+
 <button class="round-action income-action" onclick="addIncome()">
 <span class="round-icon">+</span>
 <span class="round-label">Ingreso</span>
 </button>
+
 </div>
 </section>
 
 <section class="card today-movements">
+
 <div class="section-title">
 <h2>Movimientos de hoy</h2>
 <small id="movementCount">0 movimientos</small>
 </div>
+
 <div id="movementsList"></div>
+
 </section>
 
 <section class="card config-card" id="configTarget">
+
 <button class="config-toggle" onclick="toggleConfiguration()">
+
 <div class="config-toggle-left">
+
 <div class="config-icon">⚙</div>
+
 <div>
 <div class="config-title">Configuración del ciclo</div>
-<div class="config-subtitle">Saldo · cobro · presupuesto base</div>
+<div class="config-subtitle">
+Saldo · cobro · presupuesto base
 </div>
 </div>
+
+</div>
+
 <div class="config-chevron">⌄</div>
+
 </button>
 
 <div class="config-content">
+
 <div class="config-grid">
 
 <div class="input-group">
 <label>Saldo total disponible</label>
-<input id="configBalance" class="input" type="number" min="0" step="0.01" placeholder="Ej. 227000">
+<input
+id="configBalance"
+class="input"
+type="number"
+min="0"
+step="0.01"
+placeholder="Ej. 227000">
 </div>
 
 <div class="input-group">
 <label>Próxima fecha de cobro</label>
-<input id="configPayday" class="input" type="date">
+<input
+id="configPayday"
+class="input"
+type="date">
 </div>
 
 <div class="input-group full">
 <label>Presupuesto diario base para los días futuros</label>
-<input id="configBase" class="input" type="number" min="0" step="0.01" placeholder="Ej. 50000">
+<input
+id="configBase"
+class="input"
+type="number"
+min="0"
+step="0.01"
+placeholder="Ej. 50000">
 </div>
 
 <div class="full switch-row">
+
 <div class="switch-text">
 <strong>Priorizar excedente hacia hoy</strong>
-<span>Protege primero el presupuesto base de los días futuros y deja el excedente real para hoy.</span>
+<span>
+Protege primero el presupuesto base de los días futuros y deja el excedente real para hoy.
+</span>
 </div>
+
 <label class="switch">
-<input type="checkbox" id="priorityMode" onchange="updatePriorityPreview()">
+<input
+type="checkbox"
+id="priorityMode"
+onchange="updatePriorityPreview()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="full preview">
-<div class="preview-title">Vista previa del ciclo</div>
-<div class="preview-row"><span>Días de presupuesto</span><strong id="previewDays">—</strong></div>
-<div class="preview-row"><span>Días futuros protegidos</span><strong id="previewFutureDays">—</strong></div>
-<div class="preview-row"><span>Reserva futura</span><strong id="previewReserve">$0</strong></div>
-<div class="preview-row"><span>Presupuesto de hoy</span><strong id="previewToday">$0</strong></div>
-<div class="preview-row"><span>Total asignado</span><strong id="previewTotal">$0</strong></div>
+
+<div class="preview-title">
+Vista previa del ciclo
+</div>
+
+<div class="preview-row">
+<span>Días de presupuesto</span>
+<strong id="previewDays">—</strong>
+</div>
+
+<div class="preview-row">
+<span>Días futuros protegidos</span>
+<strong id="previewFutureDays">—</strong>
+</div>
+
+<div class="preview-row">
+<span>Reserva futura</span>
+<strong id="previewReserve">$0</strong>
+</div>
+
+<div class="preview-row">
+<span>Presupuesto de hoy</span>
+<strong id="previewToday">$0</strong>
+</div>
+
+<div class="preview-row">
+<span>Total asignado</span>
+<strong id="previewTotal">$0</strong>
+</div>
+
 </div>
 
 <div class="full">
-<button class="btn btn-primary btn-full" onclick="saveConfiguration()">Guardar configuración</button>
+
+<button
+class="btn btn-primary btn-full"
+onclick="saveConfiguration()">
+Guardar configuración
+</button>
+
 </div>
 
 </div>
@@ -323,71 +641,121 @@ main{padding:12px}
 </section>
 
 <section class="card close-card">
+
 <div class="section-title">
 <h2>Cierre del día</h2>
 <small id="closeStatus">Día abierto</small>
 </div>
 
 <div class="close-box">
+
 <div class="close-grid">
+
 <div class="close-stat">
 <span>Disponible al cierre</span>
 <strong id="closeAvailable">$0</strong>
 </div>
+
 <div class="close-stat">
 <span>Sobrante → mañana</span>
 <strong id="closeLeftover">$0</strong>
 </div>
+
 <div class="close-stat">
 <span>Déficit</span>
 <strong id="closeDeficit">$0</strong>
 </div>
+
 <div class="close-stat">
 <span>Presupuesto mañana</span>
 <strong id="closeTomorrow">$0</strong>
 </div>
+
 </div>
 
 <div class="close-actions">
-<button class="btn btn-dark" id="closeButton" onclick="closeDay(false)">Cerrar día</button>
-<button class="btn btn-secondary" onclick="reopenDay()">Reabrir</button>
+
+<button
+class="btn btn-dark"
+id="closeButton"
+onclick="closeDay(false)">
+Cerrar día
+</button>
+
+<button
+class="btn btn-secondary"
+onclick="reopenDay()">
+Reabrir
+</button>
+
 </div>
 </div>
 </section>
 
 <section class="card days-card">
+
 <div class="section-title">
 <h2>Plan de días</h2>
 <small>Hasta antes del cobro</small>
 </div>
+
 <div id="daysList" class="day-list"></div>
+
 </section>
 
 <section class="card">
+
 <div class="section-title">
 <h2>Actividad últimos 7 días</h2>
 <small>Gastos</small>
 </div>
+
 <div id="chart" class="chart"></div>
+
 </section>
 
 <section class="card">
+
 <div class="section-title">
 <h2>Estado del sistema</h2>
 <small>Información</small>
 </div>
 
-<div class="system-row"><span>Fecha actual</span><strong id="systemDate">—</strong></div>
-<div class="system-row"><span>Último procesamiento</span><strong id="systemProcessed">—</strong></div>
-<div class="system-row"><span>Modo prioridad</span><strong id="systemPriority">—</strong></div>
-<div class="system-row"><span>Estado del ciclo</span><strong id="systemCycle">—</strong></div>
+<div class="system-row">
+<span>Fecha actual</span>
+<strong id="systemDate">—</strong>
+</div>
 
-<button class="btn btn-danger btn-full" style="margin-top:12px" onclick="resetApp()">Reiniciar aplicación</button>
+<div class="system-row">
+<span>Último procesamiento</span>
+<strong id="systemProcessed">—</strong>
+</div>
+
+<div class="system-row">
+<span>Modo prioridad</span>
+<strong id="systemPriority">—</strong>
+</div>
+
+<div class="system-row">
+<span>Estado del ciclo</span>
+<strong id="systemCycle">—</strong>
+</div>
+
+<button
+class="btn btn-danger btn-full"
+style="margin-top:12px"
+onclick="resetApp()">
+Reiniciar aplicación
+</button>
+
 </section>
 
 </main>
 
-<div class="footer">Macrodesk · Presupuesto Diario · V3.5</div>
+<div class="footer">
+Macrodesk · Presupuesto Diario · V3.6
+</div>
+
 </div>
 
 <div class="toast" id="toast"></div>
@@ -396,18 +764,34 @@ main{padding:12px}
 const STORAGE_KEY="presupuesto_v34";
 
 let state={
-balance:0,nextPayday:"",baseDailyBudget:0,priorityMode:false,
-cycleStartingBalance:0,cycleStartDate:"",carryOver:0,
-deficitRemaining:0,deficitPerDay:0,nextDayBudget:null,
-nextDayDeficitPerDay:0,nextDayDebt:0,lastProcessedDate:"",
+balance:0,
+nextPayday:"",
+baseDailyBudget:0,
+priorityMode:false,
+cycleStartingBalance:0,
+cycleStartDate:"",
+carryOver:0,
+deficitRemaining:0,
+deficitPerDay:0,
+nextDayBudget:null,
+nextDayDeficitPerDay:0,
+nextDayDebt:0,
+lastProcessedDate:"",
 days:{}
 };
 
 function money(value){
-return new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(Number(value)||0);
+return new Intl.NumberFormat("es-AR",{
+style:"currency",
+currency:"ARS",
+maximumFractionDigits:0
+}).format(Number(value)||0);
 }
 
-function number(value){return Number(value)||0}
+function number(value){
+const n=Number(value);
+return Number.isFinite(n)?n:0;
+}
 
 function todayKey(){
 const d=new Date();
@@ -421,52 +805,117 @@ return new Date(y,m-1,d,12,0,0,0);
 }
 
 function dateDifferenceInDays(fromKey,toKey){
-const a=parseDateKey(fromKey),b=parseDateKey(toKey);
+const a=parseDateKey(fromKey);
+const b=parseDateKey(toKey);
+
 if(!a||!b)return 0;
+
 return Math.round((b-a)/86400000);
 }
 
 function daysUntilPayday(fromKey=todayKey()){
 if(!state.nextPayday)return 0;
-return Math.max(0,dateDifferenceInDays(fromKey,state.nextPayday));
+return Math.max(
+0,
+dateDifferenceInDays(fromKey,state.nextPayday)
+);
 }
 
 function formatDate(key){
 const d=parseDateKey(key);
+
 if(!d)return "—";
-return d.toLocaleDateString("es-AR",{weekday:"short",day:"2-digit",month:"2-digit"});
+
+return d.toLocaleDateString(
+"es-AR",
+{
+weekday:"short",
+day:"2-digit",
+month:"2-digit"
+}
+);
 }
 
 function escapeHtml(text){
-return String(text??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+return String(text??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
 
 function toast(message){
+
 const el=document.getElementById("toast");
+
 el.textContent=message;
 el.classList.add("show");
+
 clearTimeout(window.__toastTimer);
-window.__toastTimer=setTimeout(()=>el.classList.remove("show"),2800);
+
+window.__toastTimer=setTimeout(
+()=>el.classList.remove("show"),
+2800
+);
 }
 
 function saveState(){
-localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(state)
+);
 }
 
 function loadState(){
+
 try{
+
 const raw=localStorage.getItem(STORAGE_KEY);
+
 if(!raw)return;
+
 const parsed=JSON.parse(raw);
-state={...state,...parsed};
-if(!state.days||typeof state.days!=="object")state.days={};
-}catch(error){
-console.error("Error cargando estado:",error);
+
+state={
+...state,
+...parsed
+};
+
+if(!state.days||typeof state.days!=="object"){
+state.days={};
 }
+
+Object.values(state.days).forEach(day=>{
+
+day.expenses=
+Array.isArray(day.expenses)
+?day.expenses
+:[];
+
+day.incomes=
+Array.isArray(day.incomes)
+?day.incomes
+:[];
+
+});
+
+}catch(error){
+
+console.error(
+"Error cargando estado:",
+error
+);
+
+}
+
 }
 
 function createDay(key){
-if(state.days[key])return state.days[key];
+
+if(state.days[key]){
+return state.days[key];
+}
 
 const day={
 date:key,
@@ -486,14 +935,87 @@ debtAfterClose:0
 };
 
 state.days[key]=day;
+
 return day;
 }
 
-function currentDay(){return createDay(todayKey())}
+function currentDay(){
+return createDay(todayKey());
+}
+
+function spent(day){
+
+return(day.expenses||[])
+.reduce(
+(sum,item)=>sum+number(item.amount),
+0
+);
+
+}
+
+function income(day){
+
+return(day.incomes||[])
+.reduce(
+(sum,item)=>sum+number(item.amount),
+0
+);
+
+}
+
+function totalExpenses(){
+
+return Object.values(state.days||{})
+.reduce(
+(sum,day)=>sum+spent(day),
+0
+);
+
+}
+
+function totalIncome(){
+
+return Object.values(state.days||{})
+.reduce(
+(sum,day)=>sum+income(day),
+0
+);
+
+}
+
+function calculatedBalance(){
+
+if(!state.nextPayday){
+return number(state.balance);
+}
+
+return number(state.cycleStartingBalance)
++totalIncome()
+-totalExpenses();
+}
+
+function syncBalance(){
+
+if(!state.nextPayday){
+return;
+}
+
+state.balance=Math.max(
+0,
+calculatedBalance()
+);
+}
 
 function standardDayBudget(day){
-if(day.scheduledBudget!==null&&day.scheduledBudget!==undefined){
-return Math.max(0,number(day.scheduledBudget));
+
+if(
+day.scheduledBudget!==null&&
+day.scheduledBudget!==undefined
+){
+return Math.max(
+0,
+number(day.scheduledBudget)
+);
 }
 
 return Math.max(
@@ -505,21 +1027,40 @@ number(day.deficitIn)
 }
 
 function futureDaysCount(){
-return Math.max(0,daysUntilPayday(todayKey())-1);
+
+return Math.max(
+0,
+daysUntilPayday(todayKey())-1
+);
+
 }
 
 function futureReserve(){
-return Math.max(0,number(state.baseDailyBudget)*futureDaysCount());
+
+return Math.max(
+0,
+number(state.baseDailyBudget)*
+futureDaysCount()
+);
+
 }
 
 function todayPriorityBudget(){
-if(!state.priorityMode)return null;
+
+if(!state.priorityMode){
+return null;
+}
 
 const day=currentDay();
 
-if(day.scheduledBudget!==null&&day.scheduledBudget!==undefined){
+if(
+day.scheduledBudget!==null&&
+day.scheduledBudget!==undefined
+){
 return number(day.scheduledBudget);
 }
+
+syncBalance();
 
 return Math.max(
 0,
@@ -528,101 +1069,214 @@ number(state.balance)-futureReserve()
 }
 
 function dayBudget(day){
-if(day.date===todayKey()&&state.priorityMode){
+
+if(
+day.date===todayKey()&&
+state.priorityMode
+){
 return todayPriorityBudget();
 }
+
 return standardDayBudget(day);
 }
 
-function spent(day){
-return(day.expenses||[]).reduce((sum,item)=>sum+number(item.amount),0);
-}
-
-function income(day){
-return(day.incomes||[]).reduce((sum,item)=>sum+number(item.amount),0);
-}
-
 function available(day){
-return dayBudget(day)+income(day)-spent(day);
+
+return(
+dayBudget(day)+
+income(day)-
+spent(day)
+);
+
 }
 
 function updatePriorityPreview(){
 
-const balance=number(document.getElementById("configBalance").value);
-const payday=document.getElementById("configPayday").value;
-let base=number(document.getElementById("configBase").value);
-const priority=document.getElementById("priorityMode").checked;
+const balance=number(
+document.getElementById("configBalance").value
+);
 
-let days=payday?Math.max(0,dateDifferenceInDays(todayKey(),payday)):0;
-const futureDays=Math.max(0,days-1);
+const payday=
+document.getElementById("configPayday").value;
 
-if(base<=0&&days>0)base=Math.floor(balance/days);
+let base=number(
+document.getElementById("configBase").value
+);
 
-const reserve=priority?base*futureDays:base*futureDays;
+const priority=
+document.getElementById("priorityMode").checked;
+
+const days=payday
+?Math.max(
+0,
+dateDifferenceInDays(
+todayKey(),
+payday
+)
+)
+:0;
+
+const futureDays=
+Math.max(
+0,
+days-1
+);
+
+if(base<=0&&days>0){
+base=Math.floor(balance/days);
+}
+
+const reserve=base*futureDays;
+
 let todayBudget=0;
 
 if(priority){
-todayBudget=Math.max(0,balance-reserve);
+
+todayBudget=Math.max(
+0,
+balance-reserve
+);
+
 }else if(days>0){
-todayBudget=Math.floor(balance/days);
+
+todayBudget=Math.floor(
+balance/days
+);
+
 }
 
-const totalAssigned=priority?todayBudget+reserve:todayBudget*days;
+const totalAssigned=priority
+?todayBudget+reserve
+:todayBudget*days;
 
-document.getElementById("previewDays").textContent=days||"—";
-document.getElementById("previewFutureDays").textContent=futureDays;
-document.getElementById("previewReserve").textContent=money(reserve);
-document.getElementById("previewToday").textContent=money(todayBudget);
-document.getElementById("previewTotal").textContent=money(totalAssigned);
+document.getElementById("previewDays")
+.textContent=days||"—";
+
+document.getElementById("previewFutureDays")
+.textContent=futureDays;
+
+document.getElementById("previewReserve")
+.textContent=money(reserve);
+
+document.getElementById("previewToday")
+.textContent=money(todayBudget);
+
+document.getElementById("previewTotal")
+.textContent=money(totalAssigned);
 }
 
 function saveConfiguration(){
 
-const balance=number(document.getElementById("configBalance").value);
-const payday=document.getElementById("configPayday").value;
-let base=number(document.getElementById("configBase").value);
-const priority=document.getElementById("priorityMode").checked;
+const balance=number(
+document.getElementById("configBalance").value
+);
 
-if(balance<0){
-alert("El saldo no puede ser negativo.");
+const payday=
+document.getElementById("configPayday").value;
+
+let base=number(
+document.getElementById("configBase").value
+);
+
+const priority=
+document.getElementById("priorityMode").checked;
+
+if(balance<=0){
+
+alert(
+"Ingresá un saldo disponible mayor a $0."
+);
+
 return;
 }
 
 if(!payday){
-alert("Ingresá la fecha de tu próximo cobro.");
+
+alert(
+"Ingresá la fecha de tu próximo cobro."
+);
+
 return;
 }
 
-const days=dateDifferenceInDays(todayKey(),payday);
+const days=
+dateDifferenceInDays(
+todayKey(),
+payday
+);
 
 if(days<=0){
-alert("El próximo día de cobro debe ser posterior a hoy.");
+
+alert(
+"El próximo día de cobro debe ser posterior a hoy."
+);
+
 return;
 }
 
 if(base<=0){
-base=Math.floor(balance/days);
+
+base=Math.floor(
+balance/days
+);
+
 }
 
-const futureDays=Math.max(0,days-1);
-const reserve=base*futureDays;
+const futureDays=
+Math.max(
+0,
+days-1
+);
+
+const reserve=
+base*futureDays;
 
 if(reserve>balance){
+
 alert(
 "No se puede guardar esta configuración.\n\n"+
-"La reserva futura necesaria es "+money(reserve)+
-", pero el saldo disponible es "+money(balance)+
-".\n\nReducí el presupuesto base o aumentá el saldo."
+"La reserva futura necesaria es "+
+money(reserve)+
+", pero el saldo disponible es "+
+money(balance)+
+".\n\n"+
+"Reducí el presupuesto base o aumentá el saldo."
 );
+
 return;
 }
 
-state.balance=balance;
+const today=todayKey();
+
+const oldDay=state.days[today];
+
+const existingExpenses=
+oldDay?.expenses||[];
+
+const existingIncomes=
+oldDay?.incomes||[];
+
+const previousMovementNet=
+existingIncomes.reduce(
+(sum,item)=>sum+number(item.amount),
+0
+)-
+existingExpenses.reduce(
+(sum,item)=>sum+number(item.amount),
+0
+);
+
 state.nextPayday=payday;
 state.baseDailyBudget=base;
 state.priorityMode=priority;
-state.cycleStartingBalance=balance;
-state.cycleStartDate=todayKey();
+state.cycleStartDate=today;
+
+state.cycleStartingBalance=
+Math.max(
+0,
+balance-previousMovementNet
+);
+
 state.carryOver=0;
 state.deficitRemaining=0;
 state.deficitPerDay=0;
@@ -630,16 +1284,22 @@ state.nextDayBudget=null;
 state.nextDayDeficitPerDay=0;
 state.nextDayDebt=0;
 
-const key=todayKey();
-const oldDay=state.days[key];
+const todayBudget=priority
+?Math.max(
+0,
+balance-reserve
+)
+:Math.floor(
+balance/days
+);
 
-const today={
-date:key,
-scheduledBudget:null,
+state.days[today]={
+date:today,
+scheduledBudget:todayBudget,
 carryIn:0,
 deficitIn:0,
-expenses:oldDay?.expenses||[],
-incomes:oldDay?.incomes||[],
+expenses:existingExpenses,
+incomes:existingIncomes,
 closed:false,
 closedAutomatically:false,
 closedAt:"",
@@ -650,35 +1310,55 @@ nextDeficitPerDay:0,
 debtAfterClose:0
 };
 
-today.scheduledBudget=priority
-?Math.max(0,balance-reserve)
-:Math.floor(balance/days);
-
-state.days[key]=today;
+syncBalance();
 
 saveState();
 render();
 
-document.getElementById("configTarget").classList.remove("open");
+document
+.getElementById("configTarget")
+.classList.remove("open");
 
-toast("Configuración guardada correctamente.");
+toast(
+"Configuración guardada correctamente."
+);
 }
 
 function movementData(){
 
-const amount=number(document.getElementById("movementAmount").value);
-const description=document.getElementById("movementDescription").value.trim();
+const amount=number(
+document.getElementById("movementAmount").value
+);
+
+const description=
+document
+.getElementById("movementDescription")
+.value
+.trim();
 
 if(amount<=0){
-alert("Ingresá un monto válido.");
+
+alert(
+"Ingresá un monto válido."
+);
+
 return null;
 }
 
 return{
 amount,
-description:description||"Sin descripción",
-time:new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"}),
-id:Date.now()+Math.random()
+description:
+description||"Sin descripción",
+time:
+new Date().toLocaleTimeString(
+"es-AR",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+),
+id:
+Date.now()+Math.random()
 };
 }
 
@@ -687,21 +1367,42 @@ function addExpense(){
 const day=currentDay();
 
 if(day.closed){
-alert("El día está cerrado. Reabrilo para modificarlo.");
+
+alert(
+"El día está cerrado. Reabrilo para modificarlo."
+);
+
+return;
+}
+
+if(!state.nextPayday){
+
+alert(
+"Primero configurá tu ciclo."
+);
+
+document
+.getElementById("configTarget")
+.classList.add("open");
+
 return;
 }
 
 const data=movementData();
+
 if(!data)return;
 
 day.expenses.push(data);
-state.balance-=data.amount;
+
+syncBalance();
 
 saveState();
 clearMovementInputs();
 render();
 
-toast("Gasto registrado. El presupuesto diario no cambió.");
+toast(
+"Gasto registrado."
+);
 }
 
 function addIncome(){
@@ -709,26 +1410,53 @@ function addIncome(){
 const day=currentDay();
 
 if(day.closed){
-alert("El día está cerrado. Reabrilo para modificarlo.");
+
+alert(
+"El día está cerrado. Reabrilo para modificarlo."
+);
+
+return;
+}
+
+if(!state.nextPayday){
+
+alert(
+"Primero configurá tu ciclo."
+);
+
+document
+.getElementById("configTarget")
+.classList.add("open");
+
 return;
 }
 
 const data=movementData();
+
 if(!data)return;
 
 day.incomes.push(data);
-state.balance+=data.amount;
+
+syncBalance();
 
 saveState();
 clearMovementInputs();
 render();
 
-toast("Ingreso registrado. Se suma al disponible de hoy.");
+toast(
+"Ingreso registrado."
+);
 }
 
 function clearMovementInputs(){
-document.getElementById("movementAmount").value="";
-document.getElementById("movementDescription").value="";
+
+document.getElementById(
+"movementAmount"
+).value="";
+
+document.getElementById(
+"movementDescription"
+).value="";
 }
 
 function deleteExpense(id){
@@ -736,19 +1464,34 @@ function deleteExpense(id){
 const day=currentDay();
 
 if(day.closed){
-alert("El día está cerrado.");
+
+alert(
+"El día está cerrado."
+);
+
 return;
 }
 
-const index=day.expenses.findIndex(item=>String(item.id)===String(id));
+const index=
+day.expenses.findIndex(
+item=>String(item.id)===String(id)
+);
+
 if(index===-1)return;
 
-state.balance+=number(day.expenses[index].amount);
-day.expenses.splice(index,1);
+day.expenses.splice(
+index,
+1
+);
+
+syncBalance();
 
 saveState();
 render();
-toast("Gasto eliminado.");
+
+toast(
+"Gasto eliminado."
+);
 }
 
 function deleteIncome(id){
@@ -756,37 +1499,81 @@ function deleteIncome(id){
 const day=currentDay();
 
 if(day.closed){
-alert("El día está cerrado.");
+
+alert(
+"El día está cerrado."
+);
+
 return;
 }
 
-const index=day.incomes.findIndex(item=>String(item.id)===String(id));
+const index=
+day.incomes.findIndex(
+item=>String(item.id)===String(id)
+);
+
 if(index===-1)return;
 
-state.balance-=number(day.incomes[index].amount);
-day.incomes.splice(index,1);
+day.incomes.splice(
+index,
+1
+);
+
+syncBalance();
 
 saveState();
 render();
-toast("Ingreso eliminado.");
+
+toast(
+"Ingreso eliminado."
+);
 }
 
 function calculateAfterClose(day){
 
-const currentAvailable=available(day);
-const leftover=Math.max(0,currentAvailable);
-const deficit=Math.max(0,-currentAvailable);
-const remainingDays=Math.max(0,daysUntilPayday(day.date)-1);
+const currentAvailable=
+available(day);
+
+const leftover=
+Math.max(
+0,
+currentAvailable
+);
+
+const deficit=
+Math.max(
+0,
+-currentAvailable
+);
+
+const remainingDays=
+Math.max(
+0,
+daysUntilPayday(day.date)-1
+);
 
 let nextDeficitPerDay=0;
 
-if(deficit>0&&remainingDays>0){
-nextDeficitPerDay=Math.ceil(deficit/remainingDays);
+if(
+deficit>0&&
+remainingDays>0
+){
+
+nextDeficitPerDay=
+Math.ceil(
+deficit/remainingDays
+);
+
 }
 
 const tomorrowBudget=
 remainingDays>0
-?Math.max(0,number(state.baseDailyBudget)+leftover-nextDeficitPerDay)
+?Math.max(
+0,
+number(state.baseDailyBudget)+
+leftover-
+nextDeficitPerDay
+)
 :0;
 
 return{
@@ -802,45 +1589,90 @@ tomorrowBudget
 function closeDay(auto=false){
 
 if(!state.nextPayday){
-alert("Primero configurá tu próximo día de cobro.");
+
+alert(
+"Primero configurá tu próximo día de cobro."
+);
+
 return;
 }
 
 const day=currentDay();
 
 if(day.closed){
-toast("El día ya está cerrado.");
+
+toast(
+"El día ya está cerrado."
+);
+
 return;
 }
 
-const result=calculateAfterClose(day);
+syncBalance();
+
+const result=
+calculateAfterClose(day);
 
 day.closed=true;
 day.closedAutomatically=auto;
-day.closedAt=new Date().toISOString();
-day.leftover=result.leftover;
-day.deficit=result.deficit;
-day.tomorrowBudget=result.tomorrowBudget;
-day.nextDeficitPerDay=result.nextDeficitPerDay;
-day.debtAfterClose=result.deficit;
+day.closedAt=
+new Date().toISOString();
 
-state.carryOver=result.leftover;
-state.deficitRemaining=result.deficit;
-state.deficitPerDay=result.nextDeficitPerDay;
-state.nextDayBudget=result.tomorrowBudget;
-state.nextDayDeficitPerDay=result.nextDeficitPerDay;
-state.nextDayDebt=result.deficit;
-state.lastProcessedDate=day.date;
+day.leftover=
+result.leftover;
 
-const tomorrow=parseDateKey(day.date);
-tomorrow.setDate(tomorrow.getDate()+1);
+day.deficit=
+result.deficit;
+
+day.tomorrowBudget=
+result.tomorrowBudget;
+
+day.nextDeficitPerDay=
+result.nextDeficitPerDay;
+
+day.debtAfterClose=
+result.deficit;
+
+state.carryOver=
+result.leftover;
+
+state.deficitRemaining=
+result.deficit;
+
+state.deficitPerDay=
+result.nextDeficitPerDay;
+
+state.nextDayBudget=
+result.tomorrowBudget;
+
+state.nextDayDeficitPerDay=
+result.nextDeficitPerDay;
+
+state.nextDayDebt=
+result.deficit;
+
+state.lastProcessedDate=
+day.date;
+
+const tomorrow=
+parseDateKey(day.date);
+
+tomorrow.setDate(
+tomorrow.getDate()+1
+);
 
 const tomorrowKey=
 `${tomorrow.getFullYear()}-${String(tomorrow.getMonth()+1).padStart(2,"0")}-${String(tomorrow.getDate()).padStart(2,"0")}`;
 
-if(dateDifferenceInDays(tomorrowKey,state.nextPayday)>0){
+if(
+dateDifferenceInDays(
+tomorrowKey,
+state.nextPayday
+)>0
+){
 
-const next=createDay(tomorrowKey);
+const next=
+createDay(tomorrowKey);
 
 next.scheduledBudget=
 Math.max(
@@ -857,7 +1689,11 @@ next.deficitIn=0;
 saveState();
 render();
 
-toast(auto?"Día cerrado automáticamente.":"Día cerrado correctamente.");
+toast(
+auto
+?"Día cerrado automáticamente."
+:"Día cerrado correctamente."
+);
 }
 
 function reopenDay(){
@@ -865,7 +1701,11 @@ function reopenDay(){
 const day=currentDay();
 
 if(!day.closed){
-toast("El día ya está abierto.");
+
+toast(
+"El día ya está abierto."
+);
+
 return;
 }
 
@@ -878,16 +1718,23 @@ day.tomorrowBudget=null;
 day.nextDeficitPerDay=0;
 day.debtAfterClose=0;
 
-const tomorrow=parseDateKey(day.date);
-tomorrow.setDate(tomorrow.getDate()+1);
+const tomorrow=
+parseDateKey(day.date);
+
+tomorrow.setDate(
+tomorrow.getDate()+1
+);
 
 const tomorrowKey=
 `${tomorrow.getFullYear()}-${String(tomorrow.getMonth()+1).padStart(2,"0")}-${String(tomorrow.getDate()).padStart(2,"0")}`;
 
 if(state.days[tomorrowKey]){
+
 state.days[tomorrowKey].scheduledBudget=null;
 state.days[tomorrowKey].carryIn=0;
 state.days[tomorrowKey].deficitIn=0;
+state.days[tomorrowKey].closed=false;
+
 }
 
 state.carryOver=0;
@@ -900,27 +1747,46 @@ state.nextDayDebt=0;
 saveState();
 render();
 
-toast("Día reabierto.");
+toast(
+"Día reabierto."
+);
 }
 
 function reserveStatus(){
 
 if(!state.nextPayday){
-return{type:"info",text:"Configurá tu ciclo para comenzar."};
+
+return{
+type:"info",
+text:
+"Configurá tu ciclo para comenzar."
+};
+
 }
 
 if(!state.priorityMode){
+
 return{
 type:"info",
-text:"Modo prioridad desactivado. Los presupuestos se distribuyen de forma equitativa."
+text:
+"Modo prioridad desactivado. Los presupuestos se distribuyen de forma equitativa."
 };
+
 }
 
-const reserve=futureReserve();
-const currentBalance=number(state.balance);
-const futureDays=futureDaysCount();
+syncBalance();
+
+const reserve=
+futureReserve();
+
+const currentBalance=
+number(state.balance);
+
+const futureDays=
+futureDaysCount();
 
 if(currentBalance<reserve){
+
 return{
 type:"danger",
 text:
@@ -932,6 +1798,7 @@ money(reserve)+
 money(state.baseDailyBudget)+
 " por día."
 };
+
 }
 
 return{
@@ -947,32 +1814,76 @@ futureDays+
 
 function render(){
 
+syncBalance();
+
 const day=currentDay();
-const budget=dayBudget(day);
-const spentToday=spent(day);
-const availableToday=available(day);
-const days=daysUntilPayday(todayKey());
 
-document.getElementById("heroAvailable").textContent=money(availableToday);
-document.getElementById("mainBalance").textContent=money(state.balance);
-document.getElementById("heroTodayBudget").textContent=money(budget);
-document.getElementById("heroDays").textContent=state.nextPayday?days:"—";
+const budget=
+dayBudget(day);
 
-document.getElementById("heroDescription").textContent=
+const spentToday=
+spent(day);
+
+const availableToday=
+available(day);
+
+const days=
+daysUntilPayday(todayKey());
+
+document.getElementById(
+"heroAvailable"
+).textContent=
+money(availableToday);
+
+document.getElementById(
+"mainBalance"
+).textContent=
+money(state.balance);
+
+document.getElementById(
+"heroTodayBudget"
+).textContent=
+money(budget);
+
+document.getElementById(
+"heroDays"
+).textContent=
+state.nextPayday
+?days
+:"—";
+
+document.getElementById(
+"heroDescription"
+).textContent=
 state.nextPayday
 ?"Presupuesto fijo de hoy. Los movimientos modifican solamente el disponible."
 :"Configurá tu ciclo para comenzar.";
 
-document.getElementById("headerPayday").textContent=
-state.nextPayday?formatDate(state.nextPayday):"Sin configurar";
+document.getElementById(
+"headerPayday"
+).textContent=
+state.nextPayday
+?formatDate(state.nextPayday)
+:"Sin configurar";
 
 let progress=0;
 
 if(budget>0){
-progress=Math.min(100,Math.max(0,(spentToday/budget)*100));
+
+progress=Math.min(
+100,
+Math.max(
+0,
+(spentToday/budget)*100
+)
+);
+
 }
 
-document.getElementById("financialProgress").style.width=progress+"%";
+document.getElementById(
+"financialProgress"
+).style.width=
+progress+"%";
 
 renderReserveAlert();
 renderMovements();
@@ -986,104 +1897,214 @@ updatePriorityPreview();
 
 function renderReserveAlert(){
 
-const el=document.getElementById("reserveAlert");
+const el=
+document.getElementById(
+"reserveAlert"
+);
 
 if(!state.nextPayday){
-el.classList.add("hidden");
+
+el.classList.add(
+"hidden"
+);
+
 return;
 }
 
-const result=reserveStatus();
+const result=
+reserveStatus();
 
-el.className="alert "+result.type;
-el.textContent=result.text;
-el.classList.remove("hidden");
+el.className=
+"alert "+result.type;
+
+el.textContent=
+result.text;
+
+el.classList.remove(
+"hidden"
+);
 }
 
 function renderMovements(){
 
 const day=currentDay();
 
-const list=document.getElementById("movementsList");
+const list=
+document.getElementById(
+"movementsList"
+);
 
 const movements=[
-...(day.expenses||[]).map(item=>({...item,type:"expense"})),
-...(day.incomes||[]).map(item=>({...item,type:"income"}))
+...(day.expenses||[])
+.map(
+item=>({...item,type:"expense"})
+),
+...(day.incomes||[])
+.map(
+item=>({...item,type:"income"})
+)
 ];
 
-document.getElementById("movementCount").textContent=
+movements.sort(
+(a,b)=>{
+return String(a.time||"")
+.localeCompare(
+String(b.time||"")
+);
+}
+);
+
+document.getElementById(
+"movementCount"
+).textContent=
 `${movements.length} movimiento${movements.length===1?"":"s"}`;
 
 if(!movements.length){
-list.innerHTML='<div class="empty">Todavía no hay movimientos registrados.</div>';
+
+list.innerHTML=
+'<div class="empty">Todavía no hay movimientos registrados.</div>';
+
 return;
 }
 
-list.innerHTML=movements.map(item=>{
+list.innerHTML=
+movements.map(item=>{
 
-const expense=item.type==="expense";
-const sign=expense?"−":"+";
-const action=expense
+const expense=
+item.type==="expense";
+
+const sign=
+expense?"−":"+";
+
+const action=
+expense
 ?`deleteExpense('${item.id}')`
 :`deleteIncome('${item.id}')`;
 
 return`
 <div class="movement-item">
+
 <div class="movement-left">
-<div class="movement-dot ${expense?"expense":"income"}">${sign}</div>
+
+<div class="movement-dot ${expense?"expense":"income"}">
+${sign}
+</div>
+
 <div>
-<div class="movement-description">${escapeHtml(item.description)}</div>
-<div class="movement-time">${escapeHtml(item.time)}</div>
+
+<div class="movement-description">
+${escapeHtml(item.description)}
+</div>
+
+<div class="movement-time">
+${escapeHtml(item.time)}
+</div>
+
 </div>
 </div>
+
 <div class="movement-right">
-<div class="movement-amount ${expense?"expense":"income"}">${sign}${money(item.amount)}</div>
-<button class="delete-btn" onclick="${action}">×</button>
+
+<div class="movement-amount ${expense?"expense":"income"}">
+${sign}${money(item.amount)}
 </div>
+
+<button
+class="delete-btn"
+onclick="${action}">
+×
+</button>
+
+</div>
+
 </div>`;
+
 }).join("");
 }
 
 function renderClose(){
 
 const day=currentDay();
-const availableNow=available(day);
-const result=calculateAfterClose(day);
 
-document.getElementById("closeAvailable").textContent=money(availableNow);
+const availableNow=
+available(day);
 
-document.getElementById("closeLeftover").textContent=
-money(day.closed?day.leftover:result.leftover);
+const result=
+calculateAfterClose(day);
 
-document.getElementById("closeDeficit").textContent=
-money(day.closed?day.deficit:result.deficit);
+document.getElementById(
+"closeAvailable"
+).textContent=
+money(availableNow);
 
-document.getElementById("closeTomorrow").textContent=
-money(day.closed&&day.tomorrowBudget!==null
-?day.tomorrowBudget
-:result.tomorrowBudget);
-
-document.getElementById("closeStatus").textContent=
+document.getElementById(
+"closeLeftover"
+).textContent=
+money(
 day.closed
-?(day.closedAutomatically?"Cerrado automáticamente":"Día cerrado")
+?day.leftover
+:result.leftover
+);
+
+document.getElementById(
+"closeDeficit"
+).textContent=
+money(
+day.closed
+?day.deficit
+:result.deficit
+);
+
+document.getElementById(
+"closeTomorrow"
+).textContent=
+money(
+day.closed&&
+day.tomorrowBudget!==null
+?day.tomorrowBudget
+:result.tomorrowBudget
+);
+
+document.getElementById(
+"closeStatus"
+).textContent=
+day.closed
+?(
+day.closedAutomatically
+?"Cerrado automáticamente"
+:"Día cerrado"
+)
 :"Día abierto";
 
-document.getElementById("closeButton").disabled=day.closed;
+document.getElementById(
+"closeButton"
+).disabled=
+day.closed;
 }
 
 function renderDays(){
 
-const container=document.getElementById("daysList");
+const container=
+document.getElementById(
+"daysList"
+);
 
 if(!state.nextPayday){
-container.innerHTML='<div class="empty">Configurá tu próximo día de cobro para ver el plan.</div>';
+
+container.innerHTML=
+'<div class="empty">Configurá tu próximo día de cobro para ver el plan.</div>';
+
 return;
 }
 
-const totalDays=daysUntilPayday(todayKey());
+const totalDays=
+daysUntilPayday(todayKey());
 
 if(totalDays<=0){
-container.innerHTML='<div class="empty">Hoy es la fecha de cobro. Configurá el próximo ciclo.</div>';
+
+container.innerHTML=
+'<div class="empty">Hoy es la fecha de cobro. Configurá el próximo ciclo.</div>';
+
 return;
 }
 
@@ -1091,29 +2112,47 @@ let html="";
 
 for(let i=0;i<totalDays;i++){
 
-const d=parseDateKey(todayKey());
-d.setDate(d.getDate()+i);
+const d=
+parseDateKey(todayKey());
+
+d.setDate(
+d.getDate()+i
+);
 
 const key=
 `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 
-const day=state.days[key];
+const day=
+state.days[key];
 
 let budget=0;
 
 if(day){
-budget=dayBudget(day);
+
+budget=
+dayBudget(day);
+
 }else if(i===0){
-budget=state.priorityMode
+
+budget=
+state.priorityMode
 ?todayPriorityBudget()
-:Math.floor(state.balance/totalDays);
+:Math.floor(
+state.balance/totalDays
+);
+
 }else{
-budget=state.baseDailyBudget;
+
+budget=
+state.baseDailyBudget;
+
 }
 
-const isToday=key===todayKey();
+const isToday=
+key===todayKey();
 
-const status=day?.closed
+const status=
+day?.closed
 ?"Cerrado"
 :isToday
 ?"Hoy"
@@ -1121,68 +2160,139 @@ const status=day?.closed
 
 html+=`
 <div class="day-row ${isToday?"today":""}">
+
 <div class="day-info">
-<div class="day-name">${isToday?"Hoy":formatDate(key)}</div>
-<div class="day-date">${key}</div>
+
+<div class="day-name">
+${isToday?"Hoy":formatDate(key)}
 </div>
+
+<div class="day-date">
+${key}
+</div>
+
+</div>
+
 <div>
-<div class="day-budget">${money(budget)}</div>
-<div class="day-status">${status}</div>
+
+<div class="day-budget">
+${money(budget)}
 </div>
+
+<div class="day-status">
+${status}
+</div>
+
+</div>
+
 </div>`;
 }
 
-container.innerHTML=html;
+container.innerHTML=
+html;
 }
 
 function renderChart(){
 
-const container=document.getElementById("chart");
-const today=parseDateKey(todayKey());
+const container=
+document.getElementById(
+"chart"
+);
+
+const today=
+parseDateKey(todayKey());
+
 const values=[];
 
 for(let i=6;i>=0;i--){
 
-const d=new Date(today);
-d.setDate(d.getDate()-i);
+const d=
+new Date(today);
+
+d.setDate(
+d.getDate()-i
+);
 
 const key=
 `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 
-const day=state.days[key];
+const day=
+state.days[key];
 
 values.push({
-value:day?spent(day):0,
-label:d.toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit"})
+value:
+day?spent(day):0,
+label:
+d.toLocaleDateString(
+"es-AR",
+{
+day:"2-digit",
+month:"2-digit"
+}
+)
 });
 }
 
-const max=Math.max(1,...values.map(x=>x.value));
+const max=
+Math.max(
+1,
+...values.map(
+x=>x.value
+)
+);
 
-container.innerHTML=values.map(item=>{
+container.innerHTML=
+values.map(item=>{
 
-const height=Math.max(3,(item.value/max)*105);
+const height=
+Math.max(
+3,
+(item.value/max)*105
+);
 
 return`
 <div class="bar-wrap">
-<div class="bar-value">${item.value?money(item.value):""}</div>
-<div class="bar" style="height:${height}px"></div>
-<div class="bar-label">${item.label}</div>
+
+<div class="bar-value">
+${item.value?money(item.value):""}
+</div>
+
+<div
+class="bar"
+style="height:${height}px">
+</div>
+
+<div class="bar-label">
+${item.label}
+</div>
+
 </div>`;
+
 }).join("");
 }
 
 function renderSystem(){
 
-document.getElementById("systemDate").textContent=todayKey();
+document.getElementById(
+"systemDate"
+).textContent=
+todayKey();
 
-document.getElementById("systemProcessed").textContent=
+document.getElementById(
+"systemProcessed"
+).textContent=
 state.lastProcessedDate||"—";
 
-document.getElementById("systemPriority").textContent=
-state.priorityMode?"Activo":"Desactivado";
+document.getElementById(
+"systemPriority"
+).textContent=
+state.priorityMode
+?"Activo"
+:"Desactivado";
 
-document.getElementById("systemCycle").textContent=
+document.getElementById(
+"systemCycle"
+).textContent=
 state.nextPayday
 ?`Cobro ${state.nextPayday}`
 :"Sin configurar";
@@ -1190,14 +2300,33 @@ state.nextPayday
 
 function loadConfigurationUI(){
 
-document.getElementById("configBalance").value=state.balance||"";
-document.getElementById("configPayday").value=state.nextPayday||"";
-document.getElementById("configBase").value=state.baseDailyBudget||"";
-document.getElementById("priorityMode").checked=!!state.priorityMode;
+document.getElementById(
+"configBalance"
+).value=
+state.balance||"";
+
+document.getElementById(
+"configPayday"
+).value=
+state.nextPayday||"";
+
+document.getElementById(
+"configBase"
+).value=
+state.baseDailyBudget||"";
+
+document.getElementById(
+"priorityMode"
+).checked=
+!!state.priorityMode;
 }
 
 function toggleConfiguration(){
-document.getElementById("configTarget").classList.toggle("open");
+
+document
+.getElementById("configTarget")
+.classList.toggle("open");
+
 }
 
 function processAutomaticClose(){
@@ -1209,19 +2338,32 @@ const day=currentDay();
 if(day.closed)return;
 
 if(new Date().getHours()>=23){
+
 closeDay(true);
+
 }
+
 }
 
 function resetApp(){
 
-if(!confirm("¿Querés borrar toda la información de Presupuesto Diario?")){
+if(!confirm(
+"¿Querés borrar toda la información de Presupuesto Diario?"
+)){
 return;
 }
 
-localStorage.removeItem(STORAGE_KEY);
-localStorage.removeItem("presupuesto_v33");
-localStorage.removeItem("presupuesto_v32");
+localStorage.removeItem(
+STORAGE_KEY
+);
+
+localStorage.removeItem(
+"presupuesto_v33"
+);
+
+localStorage.removeItem(
+"presupuesto_v32"
+);
 
 location.reload();
 }
@@ -1230,24 +2372,55 @@ function init(){
 
 loadState();
 
-createDay(todayKey());
+createDay(
+todayKey()
+);
+
+syncBalance();
 
 loadConfigurationUI();
 
 render();
 
-if(!state.nextPayday||!state.cycleStartDate){
-document.getElementById("configTarget").classList.add("open");
+if(
+!state.nextPayday||
+!state.cycleStartDate
+){
+
+document
+.getElementById("configTarget")
+.classList.add("open");
+
 }
 
 processAutomaticClose();
 
-setInterval(processAutomaticClose,60000);
+setInterval(
+processAutomaticClose,
+60000
+);
 }
 
-document.getElementById("configBalance").addEventListener("input",updatePriorityPreview);
-document.getElementById("configPayday").addEventListener("change",updatePriorityPreview);
-document.getElementById("configBase").addEventListener("input",updatePriorityPreview);
+document
+.getElementById("configBalance")
+.addEventListener(
+"input",
+updatePriorityPreview
+);
+
+document
+.getElementById("configPayday")
+.addEventListener(
+"change",
+updatePriorityPreview
+);
+
+document
+.getElementById("configBase")
+.addEventListener(
+"input",
+updatePriorityPreview
+);
 
 init();
 </script>
