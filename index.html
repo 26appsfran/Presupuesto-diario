@@ -13,7 +13,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}
-button,input,select{font:inherit}button{cursor:pointer}
+button,input{font:inherit}button{cursor:pointer}
 .app-header{background:linear-gradient(120deg,#071525,#102f4b);color:white;padding:22px 18px 28px}
 .header-inner,main{width:min(100%,1050px);margin:auto}
 .brand{display:flex;align-items:center;gap:12px}
@@ -22,7 +22,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 .brand-subtitle{margin-top:3px;font-size:12px;color:#b8d0e5}
 .header-date{margin-top:22px;color:#c6d7e7;font-size:13px}
 .header-title{margin:7px 0 0;font-size:clamp(23px,5vw,31px);font-weight:800}
-main{padding:18px 14px 90px}
+main{padding:18px 14px 100px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:var(--shadow);min-width:0}
 .hero-card{margin-top:-3px;color:white;background:linear-gradient(135deg,#102943,#0a1c30);border:none;overflow:hidden;position:relative}
 .hero-card::after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-65px;top:-85px;background:rgba(22,199,201,.12);pointer-events:none}
@@ -33,302 +33,148 @@ main{padding:18px 14px 90px}
 .hero-stat{padding:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:13px;min-width:0}
 .hero-stat-label{color:#bed0df;font-size:12px;margin-bottom:8px}
 .hero-stat-value{font-size:clamp(17px,4vw,23px);font-weight:800;overflow-wrap:anywhere}
-.green-text{color:#5ce3ac}.red-text{color:#ff838a}.cyan-text{color:#61e3e4}.muted{color:var(--muted)}
-.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.green-text{color:#5ce3ac}.red-text{color:#ff838a}.cyan-text{color:#61e3e4}
+.section-heading{margin-bottom:16px}
 .section-heading h2{margin:0;font-size:17px;font-weight:800}
 .section-heading p{margin:5px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
 .grid-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .field{min-width:0}
 .field label{display:block;margin-bottom:7px;font-size:12px;font-weight:750;color:#526176}
-.field input,.field select{display:block;width:100%;min-width:0;border:1px solid #dbe4ed;border-radius:11px;padding:12px;outline:none;background:#fbfdff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
-.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(35,136,255,.12)}
-.action-button{border:0;border-radius:11px;padding:12px 15px;font-weight:800;font-size:13px;transition:transform .15s,opacity .15s}
-.action-button:active{transform:scale(.98)}.action-button:disabled{opacity:.45;cursor:not-allowed}
+.field input{display:block;width:100%;min-width:0;border:1px solid #dbe4ed;border-radius:11px;padding:12px;outline:none;background:#fbfdff;color:var(--ink)}
+.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(35,136,255,.12)}
+.action-button{border:0;border-radius:11px;padding:12px 15px;font-weight:800;font-size:13px;width:100%}
 .primary-button{background:linear-gradient(120deg,var(--blue),#3476e8);color:white}
-.warning-button{background:#fff3dc;color:#925e00}
-.full-button{width:100%}
-.form-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.warning-button{background:#fff0f0;color:#c5303b;width:auto;padding:6px 12px;font-size:12px;border-radius:8px}
 .movement-list{display:flex;flex-direction:column;gap:10px}
-.movement{display:flex;align-items:center;gap:11px;border:1px solid var(--border);border-radius:13px;padding:12px;min-width:0}
-.movement-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:12px;font-size:17px;font-weight:900}
-.movement-icon.expense{background:#fff0f0;color:var(--red)}
-.movement-info{min-width:0;flex:1}.movement-description{font-weight:750;font-size:13px;overflow-wrap:anywhere}
+.movement{display:flex;align-items:center;gap:11px;border:1px solid var(--border);border-radius:13px;padding:12px}
+.movement-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;font-size:17px;font-weight:900;background:#fff0f0;color:var(--red)}
+.movement-info{flex:1}.movement-description{font-weight:750;font-size:13px}
 .movement-time{margin-top:4px;color:var(--muted);font-size:11px}
-.movement-right{text-align:right;flex:0 0 auto}.movement-amount{font-size:13px;font-weight:850;white-space:nowrap}
-.mini-button.delete{background:#fff0f0;color:#c5303b;border:0;padding:4px 7px;border-radius:7px;font-size:11px;font-weight:750;margin-top:4px}
-.empty-state{text-align:center;padding:24px 10px;color:var(--muted);font-size:13px;line-height:1.6}
+.movement-right{text-align:right}.movement-amount{font-size:13px;font-weight:850}
+.mini-button.delete{background:transparent;color:#c5303b;border:0;padding:4px 0;font-size:11px;font-weight:750;cursor:pointer}
+.empty-state{text-align:center;padding:24px 10px;color:var(--muted);font-size:13px}
 .progress-track{height:8px;background:#eaf0f5;border-radius:999px;overflow:hidden;margin-top:13px}
 .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:999px;transition:width .25s}
 .footer{text-align:center;font-size:11px;color:#8190a1;padding:24px 0 22px}
-
-.cafecito-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--blue);
-  color: white;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: 800;
-  font-size: 14px;
-  box-shadow: 0 4px 15px rgba(35,136,255,0.4);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 9999;
-  transition: transform 0.2s, background-color 0.2s;
-}
-.cafecito-btn:hover {
-  background-color: #176bd0;
-  transform: translateY(-2px);
-}
-.cafecito-btn:active {
-  transform: translateY(0);
-}
-
+.cafecito-btn{position:fixed;bottom:20px;right:20px;background-color:var(--blue);color:white;text-decoration:none;padding:12px 20px;border-radius:50px;font-weight:800;font-size:14px;box-shadow:0 4px 15px rgba(35,136,255,0.4);display:flex;align-items:center;gap:8px;z-index:9999}
 @media(max-width:560px){
- main{padding:14px 10px 90px}.card{padding:16px;border-radius:15px}.hero-card{padding:20px}
- .grid-two{grid-template-columns:1fr}
- .movement{padding:10px;gap:8px}.movement-icon{width:34px;height:34px;flex-basis:34px}
- .movement-amount{font-size:12px}
- .cafecito-btn { bottom: 15px; right: 15px; padding: 10px 16px; font-size: 13px; }
+ main{padding:14px 10px 90px}.grid-two{grid-template-columns:1fr}
+ .cafecito-btn{bottom:15px;right:15px;padding:10px 16px;font-size:13px}
 }
 </style>
 </head>
 <body>
-
 <header class="app-header">
   <div class="header-inner">
-    <div class="brand">
-      <div class="brand-mark">M</div>
-      <div><div class="brand-name">MACRODESK</div><div class="brand-subtitle">Finanzas personales</div></div>
-    </div>
+    <div class="brand"><div class="brand-mark">M</div><div><div class="brand-name">MACRODESK</div><div class="brand-subtitle">Finanzas personales</div></div></div>
     <div class="header-date" id="headerDate"></div>
     <h1 class="header-title">Presupuesto Diario</h1>
   </div>
 </header>
-
 <main>
   <section class="card hero-card">
     <div class="eyebrow">Disponible para hoy</div>
     <div class="main-amount" id="todayBudget">$0,00</div>
-    <div class="hero-caption" id="daysLeftSummary">Configurá el período de cobro para calcular los días</div>
-    
-    <div class="progress-track">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
+    <div class="hero-caption" id="daysLeftSummary">Configurá el período de cobro</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-label">Total Remanente</div>
-        <div class="hero-stat-value cyan-text" id="totalRemaining">$0,00</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-label">Gastos Acumulados</div>
-        <div class="hero-stat-value red-text" id="totalExpenses">$0,00</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-label">Total Remanente</div><div class="hero-stat-value cyan-text" id="totalRemaining">$0,00</div></div>
+      <div class="hero-stat"><div class="hero-stat-label">Reserva Protegida</div><div class="hero-stat-value green-text" id="displayReserve">$0,00</div></div>
     </div>
   </section>
-
   <div class="grid-two">
     <section class="card">
-      <div class="section-heading">
-        <div>
-          <h2>Configuración Inicial</h2>
-          <p>Monto disponible inicial y fecha del próximo cobro.</p>
-        </div>
-      </div>
-      <div class="field" style="margin-bottom: 12px;">
-        <label for="monthlyIncome">Monto Inicial Cobrado ($)</label>
-        <input type="number" id="monthlyIncome" placeholder="Ej: 450000" min="0">
-      </div>
-      <div class="field">
-        <label for="nextPayDate">Fecha Próximo Cobro</label>
-        <input type="date" id="nextPayDate">
-      </div>
-      <div class="form-actions">
-        <button class="action-button primary-button full-button" onclick="saveConfig()">Establecer Presupuesto</button>
-      </div>
+      <div class="section-heading"><h2>Configuración Inicial</h2><p>Sueldo, fecha y reserva.</p></div>
+      <div class="field" style="margin-bottom:12px"><label>Monto Cobrado ($)</label><input type="number" id="monthlyIncome" placeholder="Ej: 450000"></div>
+      <div class="field" style="margin-bottom:12px"><label>Monto a Reservar ($)</label><input type="number" id="reserveAmount" value="0"></div>
+      <div class="field"><label>Fecha Próximo Cobro</label><input type="date" id="nextPayDate"></div>
+      <button class="action-button primary-button" style="margin-top:12px" onclick="saveConfig()">Establecer Presupuesto</button>
     </section>
-
     <section class="card">
-      <div class="section-heading">
-        <div>
-          <h2>Registrar Gasto</h2>
-          <p>Los consumos ingresados se descontarán de tu cuota diaria.</p>
-        </div>
-      </div>
-      <div class="field" style="margin-bottom: 12px;">
-        <label for="expenseDescription">Descripción del gasto</label>
-        <input type="text" id="expenseDescription" placeholder="Ej: Supermercado, Almuerzo">
-      </div>
-      <div class="field">
-        <label for="expenseAmount">Monto ($)</label>
-        <input type="number" id="expenseAmount" placeholder="Ej: 3500" min="0">
-      </div>
-      <div class="form-actions">
-        <button class="action-button primary-button full-button" onclick="addExpense()">Restar Dinero</button>
-      </div>
+      <div class="section-heading"><h2>Registrar Gasto</h2><p>Descuenta de tu cuota diaria.</p></div>
+      <div class="field" style="margin-bottom:12px"><label>Descripción</label><input type="text" id="expenseDescription" placeholder="Ej: Almuerzo"></div>
+      <div class="field"><label>Monto ($)</label><input type="number" id="expenseAmount" placeholder="Ej: 3500"></div>
+      <button class="action-button primary-button" style="margin-top:12px" onclick="addExpense()">Restar Dinero</button>
     </section>
   </div>
-
   <section class="card">
-    <div class="section-heading">
-      <div>
-        <h2>Historial de Movimientos</h2>
-        <p>Listado de consumos manuales anotados en el período.</p>
-      </div>
-      <button class="action-button warning-button" style="padding: 6px 12px; font-size: 12px; border-radius: 8px;" onclick="resetAll()">Reiniciar Período</button>
+    <div class="section-heading" style="display:flex;justify-content:between;align-items:center">
+      <div><h2>Historial de Movimientos</h2><p>Consumos del período.</p></div>
+      <button class="action-button warning-button" onclick="resetAll()">Reiniciar</button>
     </div>
     <div id="movementsContainer" class="movement-list"></div>
   </section>
 </main>
-
-<footer class="footer">
-  &copy; 2026 Macrodesk • Planificación Financiera Modular.
-</footer>
-
-<a href="https://cafecito.app" target="_blank" class="cafecito-btn" id="cafecitoLink">
-  <span>☕</span> Invitame un Cafecito
-</a>
-
+<footer class="footer">&copy; 2026 Macrodesk</footer>
+<a href="https://cafecito.app" target="_blank" class="cafecito-btn" id="cafecitoLink"><span>☕</span> Invitame un Cafecito</a>
 <script>
-let state = {
-  income: 0,
-  nextPayDate: '',
-  expenses: []
-};
-
+let state = { income: 0, reserve: 0, nextPayDate: '', expenses: [] };
 window.onload = function() {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  document.getElementById('headerDate').innerText = new Date().toLocaleDateString('es-AR', options);
-  
-  const savedState = localStorage.getItem('macrodesk_budget_data');
-  if (savedState) {
-    state = JSON.parse(savedState);
+  document.getElementById('headerDate').innerText = new Date().toLocaleDateString('es-AR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const saved = localStorage.getItem('macrodesk_data');
+  if (saved) {
+    state = JSON.parse(saved);
     document.getElementById('monthlyIncome').value = state.income || '';
+    document.getElementById('reserveAmount').value = state.reserve || 0;
     document.getElementById('nextPayDate').value = state.nextPayDate || '';
   }
   calculateAll();
 };
-
 function saveConfig() {
-  const incomeInput = parseFloat(document.getElementById('monthlyIncome').value) || 0;
-  const dateInput = document.getElementById('nextPayDate').value;
-
-  if (incomeInput <= 0 || !dateInput) {
-    alert('Ingresá valores iniciales válidos para configurar el ciclo.');
-    return;
-  }
-
-  state.income = incomeInput;
-  state.nextPayDate = dateInput;
-
-  persistData();
+  state.income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
+  state.reserve = parseFloat(document.getElementById('reserveAmount').value) || 0;
+  state.nextPayDate = document.getElementById('nextPayDate').value;
+  localStorage.setItem('macrodesk_data', JSON.stringify(state));
   calculateAll();
 }
-
 function addExpense() {
-  const descInput = document.getElementById('expenseDescription').value.trim();
-  const amountInput = parseFloat(document.getElementById('expenseAmount').value) || 0;
-
-  if (!descInput || amountInput <= 0) {
-    alert('Por favor, ingresá una descripción y un monto correcto.');
-    return;
-  }
-
-  const newExpense = {
-    id: Date.now(),
-    description: descInput,
-    amount: amountInput,
-    date: new Date().toLocaleDateString('es-AR')
-  };
-
-  state.expenses.push(newExpense);
-
+  const desc = document.getElementById('expenseDescription').value.trim();
+  const amt = parseFloat(document.getElementById('expenseAmount').value) || 0;
+  if (!desc || amt <= 0) return alert('Datos incorrectos');
+  state.expenses.push({ id: Date.now(), description: desc, amount: amt, date: new Date().toLocaleDateString('es-AR') });
   document.getElementById('expenseDescription').value = '';
   document.getElementById('expenseAmount').value = '';
-
-  persistData();
+  localStorage.setItem('macrodesk_data', JSON.stringify(state));
   calculateAll();
 }
-
 function deleteExpense(id) {
-  state.expenses = state.expenses.filter(exp => exp.id !== id);
-  persistData();
+  state.expenses = state.expenses.filter(e => e.id !== id);
+  localStorage.setItem('macrodesk_data', JSON.stringify(state));
   calculateAll();
 }
-
 function calculateAll() {
-  const totalExpenses = state.expenses.reduce((sum, exp) => sum + exp.amount, 0);
-
-  let daysLeft = 0;
+  const totalExp = state.expenses.reduce((s, e) => s + e.amount, 0);
+  const pool = state.income - state.reserve;
+  let days = 0;
   if (state.nextPayDate) {
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const targetDate = new Date(state.nextPayDate + 'T00:00:00');
-    const differenceInTime = targetDate.getTime() - today.getTime();
-    daysLeft = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+    const today = new Date(); today.setHours(0,0,0,0);
+    days = Math.ceil((new Date(state.nextPayDate+'T00:00:00') - today) / (1000*3600*24));
   }
-
-  const displayDays = daysLeft > 0 ? daysLeft : 1;
-  const remainingFunds = state.income - totalExpenses;
-  const dailyBudget = remainingFunds > 0 ? (remainingFunds / displayDays) : 0;
-
-  let progressPercent = 0;
-  if (state.income > 0) {
-    progressPercent = Math.min(((state.income - remainingFunds) / state.income) * 100, 100);
-  }
-
-  document.getElementById('todayBudget').innerText = formatCurrency(dailyBudget);
-  document.getElementById('totalRemaining').innerText = formatCurrency(remainingFunds);
-  document.getElementById('totalExpenses').innerText = formatCurrency(totalExpenses);
-  document.getElementById('progressFill').style.width = progressPercent + '%';
-
-  if (state.nextPayDate) {
-    document.getElementById('daysLeftSummary').innerText = "Faltan " + daysLeft + " días para el próximo cobro.";
-  } else {
-    document.getElementById('daysLeftSummary').innerText = 'Configurá tu próxima fecha de cobro para calcular el presupuesto diario.';
-  }
-
-  renderMovements();
+  const displayDays = days > 0 ? days : 1;
+  const remaining = pool - totalExp;
+  const daily = remaining > 0 ? (remaining / displayDays) : 0;
+Usa el código con precaución.
+document.getElementById('todayBudget').innerText = formatCurrency(daily);
+document.getElementById('totalRemaining').innerText = formatCurrency(Math.max(0, state.income - totalExp));
+document.getElementById('displayReserve').innerText = formatCurrency(state.reserve);
+document.getElementById('progressFill').style.width = state.income > 0 ? Math.min((totalExp/state.income)*100, 100)+'%' : '0%';
+document.getElementById('daysLeftSummary').innerText = state.nextPayDate ? Faltan ${days} días para el cobro. : 'Configurá tu fecha de cobro.';
+renderMovements();
 }
-
 function renderMovements() {
-  const container = document.getElementById('movementsContainer');
-  container.innerHTML = '';
-
-  if (state.expenses.length === 0) {
-    container.innerHTML = '<div class="empty-state">No hay gastos cargados en este período.<br>Los que ingreses se restarán dinámicamente de tu día.</div>';
-    return;
-  }
-
-  [...state.expenses].reverse().forEach(exp => {
-    const div = document.createElement('div');
-    div.className = 'movement';
-    div.innerHTML = '<div class="movement-icon expense">💸</div><div class="movement-info"><div class="movement-description">' + exp.description + '</div><div class="movement-time">' + exp.date + '</div></div><div class="movement-right"><div class="movement-amount red-text">-' + formatCurrency(exp.amount) + '</div><button class="mini-button delete" onclick="deleteExpense(' + exp.id + ')">Borrar</button></div>';
-    container.appendChild(div);
-  });
+const c = document.getElementById('movementsContainer'); c.innerHTML = '';
+if (state.expenses.length === 0) { c.innerHTML = 'Sin gastos. Los excedentes se trasladan solos al día de hoy.'; return; }
+[...state.expenses].reverse().forEach(e => {
+const d = document.createElement('div'); d.className = 'movement';
+d.innerHTML = <div class="movement-icon">💸</div><div class="movement-info"><div class="movement-description">${e.description}</div><div class="movement-time">${e.date}</div></div><div class="movement-right"><div class="movement-amount">-${formatCurrency(e.amount)}</div><button class="mini-button delete" onclick="deleteExpense(${e.id})">Borrar</button></div>;
+c.appendChild(d);
+});
 }
+function formatCurrency(a) { return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(a); }
+function resetAll() { if (confirm('¿Reiniciar?')) { localStorage.removeItem('macrodesk_data'); state = { income: 0, reserve: 0, nextPayDate: '', expenses: [] }; location.reload(); } }
 
-function formatCurrency(amount) {
-  return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(amount);
-}
 
-function persistData() {
-  localStorage.setItem('macrodesk_budget_data', JSON.stringify(state));
-}
 
-function resetAll() {
-  if (confirm('¿Querés borrar todos los gastos y la configuración de este período?')) {
-    localStorage.removeItem('macrodesk_budget_data');
-    state = { income: 0, nextPayDate: '', expenses: [] };
-    document.getElementById('monthlyIncome').value = '';
-    document.getElementById('nextPayDate').value = '';
-    calculateAll();
-  }
-}
-</script>
-</body>
-</html>
+<FollowUp>
+Pegá esto en tu **GitHub** y contame si impactó bien el cambio en **Netlify** para ver tu app con las funciones activas.
+</FollowUp>
